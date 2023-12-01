@@ -4,6 +4,35 @@ title: The Markdoc syntax
 
 # {% $markdoc.frontmatter.title %}
 
+## Look Kai
+
+{% side-by-side %}
+
+{% item %}
+
+### It does that nice
+
+Side by side thing
+
+{% /item %}
+
+{% item %}
+
+### thing 
+
+
+```js
+const x = "that you like"
+```
+
+
+{% /item %}
+
+{% /side-by-side %}
+
+
+
+
 Markdoc syntax is a superset of Markdown, specifically the [CommonMark specification](https://commonmark.org/). Markdoc adds a few extensions to the syntax, such as tags and annotations, which we describe below. These extensions enable Markdoc's powerful extensibility model.
 
 For a formal grammar of the Markdoc tag syntax, refer to the [Markdoc syntax spec](/spec).

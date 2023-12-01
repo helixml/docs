@@ -140,6 +140,8 @@ export default function MyApp(props) {
         Skip to content
       </a>
       <TopNav>
+        <Link href="https://tryhelix.ai">Home</Link>
+        <Link href="/">Developers</Link>
         <Link href="/docs/getting-started">Docs</Link>
         <Link href="https://github.com/markdoc/markdoc">GitHub</Link>
         <Link href="https://github.com/markdoc/markdoc/discussions">
@@ -160,6 +162,8 @@ export default function MyApp(props) {
       </div>
       <div className="footer-bar">
         <Footer landing={isLandingPage}>
+          <Link href="https://tryhelix.ai">Home</Link>
+          <Link href="/">Developers</Link>
           <Link href="/docs/getting-started">Docs</Link>
           <Link href="https://github.com/markdoc/markdoc">GitHub</Link>
           <Link href="https://github.com/markdoc/markdoc/discussions">

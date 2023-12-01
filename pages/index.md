@@ -1,13 +1,13 @@
 ---
 title: A powerful, flexible, Markdown-based authoring framework
-description: From personal blogs to massive documentation sites, Markdoc is a content authoring system that grows with you.
+description: From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing precious GPU memory.
 ---
 
 {% section .hero %}
 
 {% typewriter /%}
 
-> From personal blogs to massive documentation sites, Markdoc is a content authoring system that grows with you.
+> Looking for a private GenAI platform? From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing precious GPU memory.
 
 [View docs](/docs/getting-started) {% .primary %}
 
@@ -15,7 +15,7 @@ description: From personal blogs to massive documentation sites, Markdoc is a co
 
 {% section .try .no-mobile %}
 
-{% sandbox height="630px" options={"scrollbarStyle": null} /%}
+![Dashboard](/dashboard.png)
 
 {% /section %}
 
@@ -29,18 +29,18 @@ description: From personal blogs to massive documentation sites, Markdoc is a co
 
   {% item %}
 
-  ### Open source {% .jumbo %}
+  ### Open weights {% .jumbo %}
 
-  Maintain full control over your code and content. Markdoc is open-source and fully extensible.
+  Maintain full control over your data and models derived from it. Because we use open source models, you can own the weights, stay in control, and simplify data governance. Not your weights, not your brain. 🤯
   {% /item %}
 
 - {% ascii "pencil" /%}
 
   {% item %}
 
-  ### Developer & writer friendly {% .jumbo %}
+  ### Human friendly {% .jumbo %}
 
-  Markdoc delivers a powerful, flexible, developer experience (DX) with an equally capable authoring experience (AX).
+  The natural chat interface to data prep and fine tuning workflows allows you to fine tune highly performant, optimized and small models that excel at specific tasks. This makes training your own AI accessible to everyone. 🧑
 
   {% /item %}
 
@@ -48,9 +48,9 @@ description: From personal blogs to massive documentation sites, Markdoc is a co
 
   {% item %}
 
-  ### Adopt anywhere {% .jumbo %}
+  ### Developer &amp; DevOps friendly {% .jumbo %}
 
-  Use Markdoc to create interactive documentation experiences, static content sites, authoring tooling, and more.
+  A deployment of Helix is simple to integrate with: we have a [simple API](/docs/api) and you can also see what API calls to make from inside the [chat app](https://app.tryhelix.ai/). DevOps is easy from small to big: deploy on a single VM with Docker Compose, roll out the control plane to Kubernetes with our Helm chart, and deploy GPU runners from any computer running Linux with an NVIDIA GPU, including deploying on RunPod and Vast.ai 👩‍💻
 
   {% /item %}
 
@@ -66,69 +66,30 @@ description: From personal blogs to massive documentation sites, Markdoc is a co
 
 ## Get started quickly {% .jumbo %}
 
-[Markdoc core](https://github.com/markdoc/markdoc) is a lightweight package containing everything you need to get started. If you want to get going even faster, check out our [Next.js plugin](https://github.com/markdoc/next.js) and deploy a Markdoc documentation site with zero boilerplate.
+[Try the Helix App](https://app.tryhelix.ai) today to see what it can do, then come back here to learn how to deploy it yourself.
 
-[Explore documentation](/docs/getting-started) {% .primary %}
+[Connect your own GPU runner](/docs/own-runner/) to our SaaS to see how easy it is to attach a GPU runner to a control plane.
 
-[Live edit]() {% .primary %} {% .live-edit %}
+[Deploy the control plane](/docs/control-plane/) on Kubernetes or Docker Compose for a fully private deployment to see how to deploy it yourself.
+
+[Docs](/docs/) {% .primary %}
 
 {% /item %}
 
+## Easy to use API
+
+Create a new chat session:
+
 ```shell
-npm install @markdoc/markdoc
+curl https://app.tryhelix.ai/api/v1/sessions \
+  -H 'Authorization: Bearer <YOUR_API_KEY>'
+  -d "input=yo&mode=inference&type=text"
 ```
 
-```js
-import Markdoc from '@markdoc/markdoc';
+Generate an image:
 
-const doc = `
-# Hello world.
-> My first Markdoc page
-`;
-
-const ast = Markdoc.parse(doc);
-
-const content = Markdoc.transform(ast);
-
-const html = Markdoc.renderers.html(content);
+```shell
+curl https://app.tryhelix.ai/api/v1/sessions \
+  -H 'Authorization: Bearer <YOUR_API_KEY>'
+  -d "input=flying fish&mode=inference&type=image"
 ```
-
-{% /side-by-side %}
-
-{% /section %}
-
-{% section .by-stripe %}
-
-{% side-by-side %}
-
-### Markdoc powers Stripe documentation {% .jumbo %}
-
-Stripe created Markdoc to power its largest and [most detailed content site](https://stripe.com/docs). Since then, we have adopted it across the company, writing hundreds of thousands of lines of Markdoc to create thousands of pages of expressive, custom documentation.
-
-{% /side-by-side %}
-
----
-
-{% features %}
-
-- **Familiar syntax**
-
-  Markdoc is a syntactic extension of [Markdown](https://commonmark.org/), so you can keep using all the syntax and tooling you are used to.
-
-  [Learn the syntax](/docs/syntax) {% .primary %}
-
-- **Easily extensible**
-
-  Markdoc lets you customize all aspects of the system, from [custom tags](/docs/tags) and [nodes](/docs/nodes) to entirely [new renderers](/docs/render).
-
-  [Learn more](/docs/render) {% .primary %}
-
-- **Built-in validation**
-
-  You can add custom validation throughout your content system, ensuring nothing breaks and your content remains consistent.
-
-  [Learn more](/docs/validation) {% .primary %}
-
-{% /features %}
-
-{% /section %}

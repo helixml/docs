@@ -85,7 +85,7 @@ function Type({ text, onEnd }) {
 }
 
 const text =
-  'Markdoc is a powerful, flexible, Markdown-based authoring framework.';
+  'Helix is Open AI in a box. Your box. Use chat or API. Deploy anywhere.';
 
 export function Typewriter() {
   const [state, setState] = React.useState(0);
@@ -94,34 +94,14 @@ export function Typewriter() {
   const next = React.useCallback(() => setState((s) => s + 1), []);
 
   return (
-    <h1 className="jumbo" aria-label={text}>
+    <h1 className="jumbo" aria-label={text} style={{maxWidth:"900px"}}>
       <span className="prefers-no-animation">{text}</span>
-      <span aria-hidden="true" className="prefers-animation">
-        <Swapper before="# Markdoc" after="Markdoc is" onEnd={next} />
-        {state >= 1 && <Type text=" a " onEnd={next} />}
-        {state >= 2 && (
-          <Swapper before="{% type %}" after="powerful," onEnd={next} />
-        )}
-        {state >= 3 && (
-          <>
-            <br />
-            <Type text=" flexible, Markdown-based " onEnd={next} />
-          </>
-        )}
-        {state >= 4 && (
-          <>
-            <br />
-            <Swapper
-              before="{% toolchain %}"
-              after="authoring framework."
-              onEnd={setDone}
-            />
-          </>
-        )}
+      <span className="prefers-animation">
+          <Type text={text} onEnd={next} />
+      </span>
         <span className="cursor-container">
           <div className="cursor" />
         </span>
-      </span>
       <style jsx>
         {`
           .prefers-no-animation {
