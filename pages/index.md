@@ -31,7 +31,7 @@ description: From language models to image models and more, Helix brings the bes
 
   ### Open weights {% .jumbo %}
 
-  Maintain full control over your data and models derived from it. Because we use open source models, you can own the weights, stay in control, and simplify data governance. Not your weights, not your brain. 🤯
+  Maintain full control over your data and models derived from it. Because we use open source models, you can own the weights, stay in control, and simplify data governance. Remove vendor lock-in and improve latency and security.
   {% /item %}
 
 - {% ascii "pencil" /%}
@@ -40,7 +40,7 @@ description: From language models to image models and more, Helix brings the bes
 
   ### Human friendly {% .jumbo %}
 
-  The natural chat interface to data prep and fine tuning workflows allows you to fine tune highly performant, optimized and small models that excel at specific tasks. This makes training your own AI accessible to everyone. 🧑
+  The natural chat interface to data prep and fine tuning workflows allows you to fine tune highly performant, optimized and small models that excel at specific tasks. This makes training your own AI accessible to everyone.
 
   {% /item %}
 
@@ -50,7 +50,7 @@ description: From language models to image models and more, Helix brings the bes
 
   ### Developer &amp; DevOps friendly {% .jumbo %}
 
-  A deployment of Helix is simple to integrate with: we have a [simple API](/docs/api) and you can also see what API calls to make from inside the [chat app](https://app.tryhelix.ai/). DevOps is easy from small to big: deploy on a single VM with Docker Compose, roll out the control plane to Kubernetes with our Helm chart, and deploy GPU runners from any computer running Linux with an NVIDIA GPU, including deploying on RunPod and Vast.ai 👩‍💻
+  A deployment of Helix is simple to integrate with: we have a [simple API](/docs/api) and you can also see what API calls to make from inside the [chat app](https://app.tryhelix.ai/). DevOps is easy from small to big: deploy on a single VM with Docker Compose, roll out the control plane to Kubernetes with our Helm chart, and deploy GPU runners from any computer running Linux with an NVIDIA GPU, including deploying on RunPod and Vast.ai.
 
   {% /item %}
 
