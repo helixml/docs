@@ -1,3 +1,5 @@
+yarn dev
+
 # Markdoc docs
 
 [Markdoc](https://markdoc.dev) is a [Markdown](https://commonmark.org)-based syntax and toolchain for creating custom documentation sites and experiences.
