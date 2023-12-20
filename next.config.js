@@ -11,7 +11,7 @@ module.exports = withMarkdoc()({
     return [
       {
         source: '/docs',
-        destination: '/docs/getting-started',
+        destination: '/docs/overview',
         permanent: false
       }
     ];

@@ -1,13 +1,13 @@
 ---
 title: Create your own AI using any data
-description: From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing precious GPU memory.
+description: From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing the tradeoff between GPU memory and latency.
 ---
 
 {% section .hero %}
 
 {% typewriter /%}
 
-> Looking for a private GenAI platform? From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing precious GPU memory.
+> Looking for a private GenAI platform? From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing the tradeoff between GPU memory and latency.
 
 [View docs](/docs/getting-started) {% .primary %}
 
@@ -50,7 +50,7 @@ description: From language models to image models and more, Helix brings the bes
 
   ### Developer &amp; DevOps friendly {% .jumbo %}
 
-  A deployment of Helix is simple to integrate with: we have a [simple API](/docs/api) and you can also see what API calls to make from inside the [chat app](https://app.tryhelix.ai/). DevOps is easy from small to big: deploy on a single VM with Docker Compose, roll out the control plane to Kubernetes with our Helm chart, and deploy GPU runners from any computer running Linux with an NVIDIA GPU, including deploying on RunPod and Vast.ai.
+  Helix is simple to integrate with: we have a [simple API](/docs/api) and you can also see what API calls to make from inside the [chat app](https://app.tryhelix.ai/). Deploying the stack is easy with our optimized containers, deploy GPU runners with NVIDIA Docker or RunPod.
 
   {% /item %}
 
@@ -66,11 +66,9 @@ description: From language models to image models and more, Helix brings the bes
 
 ## Get started quickly {% .jumbo %}
 
-[Try the Helix App](https://app.tryhelix.ai) today to see what it can do, then come back here to learn how to deploy it yourself.
+Try our hosted [Helix Cloud](https://app.tryhelix.ai) today to see what it can do, then come back here to learn how to deploy it yourself.
 
-Connect your own GPU runner (coming soon) to our SaaS to see how easy it is to attach a GPU runner to a control plane.
-
-[Deploy the control plane](/docs/control-plane/) on Kubernetes (coming soon) or Docker Compose for a fully private deployment to see how to deploy it yourself.
+[Deploy the control plane](/docs/control-plane/) and then attach runners for a fully private deployment on any infrastructure.
 
 [Docs](/docs/) {% .primary %}
 
@@ -94,4 +92,6 @@ curl https://app.tryhelix.ai/api/v1/sessions \
   -d "input=flying fish&mode=inference&type=image"
 ```
 
-Get your API key from [Account](https://app.tryhelix.ai/account) page in the app
+Get your API key from [Account](https://app.tryhelix.ai/account) page in the app.
+
+[Full API reference](/docs/api)
