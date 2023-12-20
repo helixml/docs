@@ -1,5 +1,5 @@
 ---
-title: A powerful, flexible, Markdown-based authoring framework
+title: Create your own AI using any data
 description: From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing precious GPU memory.
 ---
 

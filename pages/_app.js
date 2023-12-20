@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 
 import { AppLink as Link } from '../components/AppLink';
 import { Footer, SideNav, TableOfContents, TopNav } from '../components/Shell';
@@ -19,10 +20,11 @@ import 'prismjs/plugins/autolinker/prism-autolinker.min';
 import 'prismjs/themes/prism.css';
 import 'codemirror/lib/codemirror.css';
 
+
 import '../public/globals.css';
 
-const TITLE = 'Markdoc';
-const DESCRIPTION = 'A powerful, flexible, Markdown-based authoring framework';
+const TITLE = 'Helix';
+const DESCRIPTION = 'Create your own AI using any data';
 const MARKDOC = `
 
 
@@ -88,9 +90,9 @@ export default function MyApp(props) {
   return (
     <div className={`${isLandingPage ? 'page--landing' : ''}`}>
       <Head>
-        <title>{`${TITLE} | ${title}`}</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>{`${TITLE} | ${title}`} HELLO</title>
+        <link rel="shortcut icon" href="/images/helix-logo.png" />
+        <link rel="icon" href="/images/helix-logo.png" />
         <link
           rel="preload"
           as="font"
@@ -135,6 +137,16 @@ export default function MyApp(props) {
           content="https://markdoc.dev/images/share.png"
         />
       </Head>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-85V4E1WPBP" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-85V4E1WPBP');
+        `}
+      </Script>
       {/* https://webaim.org/techniques/skipnav/ */}
       <a href="#skip-nav" className="skip-nav">
         Skip to content
