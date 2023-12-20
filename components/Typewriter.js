@@ -1,73 +1,6 @@
 import React from 'react';
 
 const TYPE_DURATION = 30;
-const SWAP_DURATION = 400;
-const SWAP_DELAY = 150;
-const SWAP_FUNCTION = 'cubic-bezier(0.75, 0, 0.25, 1)';
-
-function Swapper({ before, after, onEnd }) {
-  const [running, setRunning] = React.useState(false);
-  const ref = React.useRef(false);
-  const state = running ? 'running' : 'paused';
-
-  return (
-    <span className="swapper">
-      <div
-        className="before"
-        onAnimationEnd={() => {
-          // Call onAnimationEnd once per lifecycle
-          if (!ref.current && onEnd) {
-            onEnd(true);
-            ref.current = true;
-          }
-        }}
-      >
-        <Type text={before} onEnd={() => setRunning(true)} />
-      </div>
-      {running && <div className="after">{after}</div>}
-      <style jsx>
-        {`
-          .swapper {
-            display: inline-flex;
-            flex-direction: column;
-            height: var(--line-height-jumbo);
-            overflow-y: hidden;
-          }
-          .before {
-            color: var(--translucent);
-            animation: swap ${SWAP_DURATION}ms ${SWAP_FUNCTION} ${SWAP_DELAY}ms
-                both ${state},
-              fade ${SWAP_DURATION}ms ${SWAP_FUNCTION} ${SWAP_DELAY}ms reverse
-                both ${state};
-            user-select: none;
-          }
-          .after {
-            animation: swap ${SWAP_DURATION}ms ${SWAP_FUNCTION} ${SWAP_DELAY}ms
-                both running,
-              fade ${SWAP_DURATION}ms ${SWAP_FUNCTION} ${SWAP_DELAY}ms normal
-                both running;
-          }
-          @keyframes swap {
-            from {
-              transform: translateY(0);
-            }
-            to {
-              transform: translateY(-100%);
-            }
-          }
-          @keyframes fade {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-        `}
-      </style>
-    </span>
-  );
-}
 
 function Type({ text, onEnd }) {
   const [state, setState] = React.useState(0);
@@ -90,6 +23,8 @@ const text =
 export function Typewriter() {
   const [state, setState] = React.useState(0);
   const [done, setDone] = React.useState(false);
+  // placate compiler
+  console.log(state, setDone)
 
   const next = React.useCallback(() => setState((s) => s + 1), []);
 
