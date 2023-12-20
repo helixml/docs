@@ -6,48 +6,44 @@ const items = [
   {
     title: 'Get started',
     links: [
-      { href: '/docs/overview', children: 'What is Markdoc?' },
-      { href: '/docs/getting-started', children: 'Installation' },
+      { href: '/docs/overview', children: 'What is Helix?' },
+      { href: '/docs/getting-started', children: 'Getting Started' },
       { href: '/docs/faq', children: 'FAQ' },
-      { href: '/sandbox', children: 'Try it out' }
+      { href: '/docs/architecture', children: 'Architecture' },
     ]
   },
   {
-    title: 'Core concepts',
+    title: 'Using Helix',
     links: [
-      { href: '/docs/syntax', children: 'Syntax and schema' },
-      { href: '/docs/nodes', children: 'Nodes' },
-      { href: '/docs/tags', children: 'Tags' },
-      { href: '/docs/attributes', children: 'Attributes' },
-      { href: '/docs/variables', children: 'Variables' },
-      { href: '/docs/functions', children: 'Functions' },
-      {
-        href: '/docs/render',
-        children: 'Rendering'
-      },
-      {
-        href: '/docs/config',
-        children: 'Config objects'
-      },
-      { href: '/docs/validation', children: 'Validation' }
+      { href: '/docs/text-inference', children: 'Text Inference' },
+      { href: '/docs/image-inference', children: 'Image Inference' },
+      { href: '/docs/text-finetuning', children: 'Text Finetuning' },
+      { href: '/docs/image-finetuning', children: 'Image Finetuning' },
     ]
   },
   {
-    title: 'Integration guides',
+    title: 'Models',
     links: [
-      { href: '/docs/examples', children: 'Common examples' },
-      { href: '/docs/examples/html', children: 'Using with HTML' },
-      { href: '/docs/nextjs', children: 'Using with Next.js' },
-      { href: '/docs/examples/react', children: 'Using with React' }
+      { href: '/docs/models', children: 'AI Models Helix Uses' },
+      { href: '/docs/finetuning', children: 'How Finetuning Works' },
     ]
   },
   {
-    title: 'Advanced concepts',
+    title: 'Private Deployment',
     links: [
-      { href: '/docs/frontmatter', children: 'Frontmatter' },
-      { href: '/docs/partials', children: 'Partials' }
+      { href: '/docs/controlplane', children: 'Common examples' },
+      { href: '/docs/runners', children: 'How Runners Work' },
+      { href: '/docs/docker', children: 'Docker Runner' },
+      { href: '/docs/runpod', children: 'Runpod Runners' },
+      { href: '/docs/lambdalabs', children: 'Lambda Labs Runners' }
     ]
-  }
+  },
+  {
+    title: 'API',
+    links: [
+      { href: '/docs/api', children: 'API Reference' },
+    ]
+  },
 ];
 
 export function SideNav() {

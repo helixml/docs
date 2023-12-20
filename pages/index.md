@@ -68,9 +68,9 @@ description: From language models to image models and more, Helix brings the bes
 
 [Try the Helix App](https://app.tryhelix.ai) today to see what it can do, then come back here to learn how to deploy it yourself.
 
-[Connect your own GPU runner](/docs/own-runner/) to our SaaS to see how easy it is to attach a GPU runner to a control plane.
+Connect your own GPU runner (coming soon) to our SaaS to see how easy it is to attach a GPU runner to a control plane.
 
-[Deploy the control plane](/docs/control-plane/) on Kubernetes or Docker Compose for a fully private deployment to see how to deploy it yourself.
+[Deploy the control plane](/docs/control-plane/) on Kubernetes (coming soon) or Docker Compose for a fully private deployment to see how to deploy it yourself.
 
 [Docs](/docs/) {% .primary %}
 
@@ -93,3 +93,5 @@ curl https://app.tryhelix.ai/api/v1/sessions \
   -H 'Authorization: Bearer <YOUR_API_KEY>'
   -d "input=flying fish&mode=inference&type=image"
 ```
+
+Get your API key from [Account](https://app.tryhelix.ai/account) page in the app

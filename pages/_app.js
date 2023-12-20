@@ -143,13 +143,10 @@ export default function MyApp(props) {
         <Link href="https://tryhelix.ai">Home</Link>
         <Link href="/">Developers</Link>
         <Link href="/docs/getting-started">Docs</Link>
-        <Link href="https://github.com/markdoc/markdoc">GitHub</Link>
-        <Link href="https://github.com/markdoc/markdoc/discussions">
-          Community
-        </Link>
-        <Link href="https://twitter.com/StripeDev">Twitter</Link>
-        <span className="primary no-mobile">
-          <Link href="/sandbox">Try</Link>
+        <Link href="https://github.com/helixml/helix">GitHub</Link>
+        <Link href="https://twitter.com/helixml">Twitter</Link>
+        <span className="primary">
+          <Link href="https://app.tryhelix.ai/">Try</Link>
         </span>
       </TopNav>
       <div className="page">
@@ -165,11 +162,8 @@ export default function MyApp(props) {
           <Link href="https://tryhelix.ai">Home</Link>
           <Link href="/">Developers</Link>
           <Link href="/docs/getting-started">Docs</Link>
-          <Link href="https://github.com/markdoc/markdoc">GitHub</Link>
-          <Link href="https://github.com/markdoc/markdoc/discussions">
-            Community
-          </Link>
-          <Link href="https://twitter.com/StripeDev">Twitter</Link>
+          <Link href="https://github.com/helixml/helix">GitHub</Link>
+          <Link href="https://twitter.com/helixml">Twitter</Link>
         </Footer>
       </div>
       <style jsx global>
