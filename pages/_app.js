@@ -90,7 +90,7 @@ export default function MyApp(props) {
   return (
     <div className={`${isLandingPage ? 'page--landing' : ''}`}>
       <Head>
-        <title>{`${TITLE} | ${title}`} HELLO</title>
+        <title>{`${TITLE} | ${title}`}</title>
         <link rel="shortcut icon" href="/images/helix-logo.png" />
         <link rel="icon" href="/images/helix-logo.png" />
         <link
@@ -154,7 +154,7 @@ export default function MyApp(props) {
       <TopNav>
         <Link href="https://tryhelix.ai">Home</Link>
         <Link href="/">Developers</Link>
-        <Link href="/docs/getting-started">Docs</Link>
+        <Link href="/docs/overview">Docs</Link>
         <Link href="https://github.com/helixml/helix">GitHub</Link>
         <Link href="https://twitter.com/helixml">Twitter</Link>
         <span className="primary">
@@ -173,7 +173,7 @@ export default function MyApp(props) {
         <Footer landing={isLandingPage}>
           <Link href="https://tryhelix.ai">Home</Link>
           <Link href="/">Developers</Link>
-          <Link href="/docs/getting-started">Docs</Link>
+          <Link href="/docs/overview">Docs</Link>
           <Link href="https://github.com/helixml/helix">GitHub</Link>
           <Link href="https://twitter.com/helixml">Twitter</Link>
         </Footer>
