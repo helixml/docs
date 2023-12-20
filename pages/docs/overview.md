@@ -9,7 +9,7 @@ Helix is a generative AI platform that you can run on our cloud or deploy in you
 
 {% youtube
   src="https://www.youtube-nocookie.com/embed/v6XZT8u6khI"
-  title="Introducing Markdoc"
+  title="Introducing Helix"
   width="90%" /%}
 
 ## How Helix works
