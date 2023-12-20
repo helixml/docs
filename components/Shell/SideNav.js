@@ -22,16 +22,40 @@ const items = [
     ]
   },
   {
+    title: 'Text Fine Tuning Examples',
+    links: [
+      { href: '/docs/papers', children: 'Insights from Papers' },
+      { href: '/docs/engaging-content', children: 'Customer Content Personas' },
+      { href: '/docs/insights-data', children: 'Insights on Private Slack Data' },
+      { href: '/docs/website-content', children: 'Analyze Website Content' },
+    ]
+  },
+  {
+    title: 'Image Fine Tuning Examples',
+    links: [
+      { href: '/docs/professional-headshots', children: 'Professional Headshots' },
+      { href: '/docs/for-sale-signs', children: 'Real Estate Demo' },
+    ]
+  },
+  {
+    title: 'Prompt Guides',
+    links: [
+      { href: '/docs/text-prompts', children: 'Text Prompt Examples' },
+      { href: '/docs/image-prompts', children: 'Image Prompt Examples' },
+    ]
+  },
+  {
     title: 'Models',
     links: [
       { href: '/docs/models', children: 'AI Models Helix Uses' },
+      { href: '/docs/dataprep', children: 'How Data Prep Works' },
       { href: '/docs/finetuning', children: 'How Finetuning Works' },
     ]
   },
   {
     title: 'Private Deployment',
     links: [
-      { href: '/docs/controlplane', children: 'Common examples' },
+      { href: '/docs/controlplane', children: 'Deploying Control Plane' },
       { href: '/docs/runners', children: 'How Runners Work' },
       { href: '/docs/docker', children: 'Docker Runner' },
       { href: '/docs/runpod', children: 'Runpod Runners' },
