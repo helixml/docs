@@ -31,7 +31,7 @@ Log in at [app.tryhelix.ai](https://app.tryhelix.ai).
 
 * Make 5 distinct CTA messages and buttons for [Your product]
 
-* Create a [social media] campaign plan for launching an [your product], aimed at [ Your target audience]
+* Create a [social media] campaign plan for launching an [your product], aimed at [Your target audience]
 
 * Analyze these below metrics to improve email open rates for a fashion brand <paste metrics>
 
