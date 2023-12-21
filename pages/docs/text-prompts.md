@@ -5,8 +5,17 @@ description:
 
 # {% $markdoc.frontmatter.title %}
 
+Helix uses the [Mistral](https://mistral.ai/) series of large language models to provide high quality responses with relatively small memory GPU footprint, including fine-tuning teach the model new information or styles of reasoning and presenting information.
 
-## Marketing prompts
+
+## Log in
+
+Log in at [app.tryhelix.ai](https://app.tryhelix.ai).
+
+
+## Good prompts to try for Mistral-7B (ChatGPT alternative)
+
+### Marketing prompts
 
 * Can you provide me with some ideas for blog posts about [topic of your choice]?
 
@@ -40,7 +49,7 @@ description:
 
 * Write a 100-character meta description for my blog post about <topic>.
 
-## Business prompts
+### Business prompts
 
 _(these would also work well when [fine-tuned](/docs/text-finetuning) on latest industry specific info, such as a report)_
 
