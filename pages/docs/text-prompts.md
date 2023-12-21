@@ -12,6 +12,8 @@ Helix uses the [Mistral](https://mistral.ai/) series of large language models to
 
 Log in at [app.tryhelix.ai](https://app.tryhelix.ai).
 
+![](/images/chat.png)
+
 
 ## Good prompts to try for Mistral-7B (ChatGPT alternative)
 
