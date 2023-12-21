@@ -19,7 +19,7 @@ Text models use [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
   * [Inference](/docs/image-inference)
   * [Fine-tuning](/docs/image-finetuning)
 
-Text models use the excellent [cog](https://github.com/replicate/cog) (in particular [cog-sdxl](https://github.com/replicate/cog-sdxl)).
+Image models use the excellent [cog](https://github.com/replicate/cog) (in particular [cog-sdxl](https://github.com/replicate/cog-sdxl)).
 
 ## Video Models
 
