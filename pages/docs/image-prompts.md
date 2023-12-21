@@ -1,5 +1,5 @@
 ---
-title: Text Prompt Examples
+title: Image Prompt Examples
 description:
 ---
 

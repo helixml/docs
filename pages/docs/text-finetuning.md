@@ -11,8 +11,8 @@ Helix uses the [Mistral](https://mistral.ai/) series of large language models to
 ## Now let's fine tune a text model
 
 1. Click "Finetune" and select "Text".
-2. Now pick a recent paper from [https://arxiv.org/](https://arxiv.org/) on a subject that's interesting to you (click the "recent" link to find something the base model definitely won't know about).
-3. Paste the PDF link into the "add URL" field. You can also paste in plain text or drag and drop documents (pdf, docx) into the file upload form.
+2. Now choose your data source. For example, you can pick a recent paper from [https://arxiv.org/](https://arxiv.org/) on a subject that's interesting to you (click the "recent" link to find something the base model definitely won't know about).
+3. For example, paste a PDF link into the "add URL" field. You can also paste in plain text or drag and drop documents (pdf, docx) into the file upload form.
 4. Click next, then it will generate question-answer pairs from the document that are used to train the model. Accept the default question-answer pairs and it will train the model. This will take about 10 minutes. 
 5. Come back when it's finished and then try talking to the chatbot.
 
