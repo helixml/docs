@@ -10,7 +10,7 @@ Helix uses the [Mistral](https://mistral.ai/) series of large language models to
 
 ## Try chatting to the chatbot
 
-Log in at [https://app.tryhelix.ai](app.tryhelix.ai).
+Log in at [app.tryhelix.ai](https://app.tryhelix.ai).
 
 Ask it "give me 3 ideas for a blog post about an AI powered bicycle".
 
