@@ -13,6 +13,8 @@ description:
 
 Text models use [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
 
+See [this](https://github.com/lukemarsden/axolotl/blob/new-long-running/helix-mistral-instruct-v1.yml) for the fine-tuning configuration we use.
+
 ## Image Models
 
 * [Stable Diffusion XL](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0)
@@ -20,6 +22,8 @@ Text models use [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
   * [Fine-tuning](/docs/image-finetuning)
 
 Image models use the excellent [cog](https://github.com/replicate/cog) (in particular [cog-sdxl](https://github.com/replicate/cog-sdxl)).
+
+See [this](https://github.com/helixml/helix/blob/main/cog/helix_cog_wrapper.py) for the settings we use.
 
 ## Video Models
 
