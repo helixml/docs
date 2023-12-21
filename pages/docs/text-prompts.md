@@ -42,7 +42,7 @@ description:
 
 ## Business prompts
 
-_(these would also work well when [fine-tuned](/docs/text-finetuning) on latest industry specific info)_
+_(these would also work well when [fine-tuned](/docs/text-finetuning) on latest industry specific info, such as a report)_
 
 * Analyze the current state of [industry] and its trends, challenges, and opportunities, including relevant data and statistics. Provide a list of key players and a short and long-term industry forecast, and explain any potential impact of current events or future developments.
 
