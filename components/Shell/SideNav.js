@@ -38,10 +38,11 @@ const items = [
     ]
   },
   {
-    title: 'Prompt Guides',
+    title: 'Guidance',
     links: [
       { href: '/docs/text-prompts', children: 'Text Prompt Examples' },
       { href: '/docs/image-prompts', children: 'Image Prompt Examples' },
+      { href: '/docs/text-fine-tune-guidance', children: 'Fine Tuning Guidance' },
     ]
   },
   {
