@@ -1,5 +1,5 @@
 ---
-title: Gain Insights from Recent Published Papers
+title: Understand Which Content Your Customers Find Engaging and Generate Content Ideas
 
 description:
 ---

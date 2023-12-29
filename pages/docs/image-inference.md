@@ -1,5 +1,5 @@
 ---
-title: Text Inference
+title: Image Inference
 description:
 ---
 
