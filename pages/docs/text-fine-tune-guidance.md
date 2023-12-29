@@ -10,7 +10,7 @@ Helix uses the [Mistral](https://mistral.ai/) series of large language models to
 
 ## Data Best Practices
 
-* Your data must asnswer the question
+* Your data must answer the question
 * More data is better
 * Only include data that is relevant to your problem
 
@@ -30,4 +30,4 @@ Helix uses the [Mistral](https://mistral.ai/) series of large language models to
 
 ## Reach out!
 
-Please suggest your own or encourage us to write more on this on [Discord](https://discord.gg/VJftd844GE)!
+Please suggest improvements to this doc or encourage us to write more on this on [Discord](https://discord.gg/VJftd844GE)!
