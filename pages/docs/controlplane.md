@@ -31,8 +31,8 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
-    europe-docker.pkg.dev/helixml/helix/runner:v0.2.3 \
-    --api-host https://app.tryhelix.ai --api-token <YOUR_API_TOKEN> \
+    europe-docker.pkg.dev/helixml/helix/runner:v0.2.9 \
+    --api-host https://app.tryhelix.ai --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory 40GB \
     --allow-multiple-copies --timeout-seconds 120
