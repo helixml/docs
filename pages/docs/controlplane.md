@@ -11,6 +11,8 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 
 ## Deployment on Docker Compose
 
+**Requires:** x86_64 architecture
+
 ```
 git clone https://github.com/helixml/helix
 cd helix
@@ -28,6 +30,8 @@ Then load `http://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser (the app runs on
 
 
 ## Attaching a runner
+
+**Requires:** x86_64 architecture, Linux and NVIDIA
 
 Ensure you have the [NVIDIA docker toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) installed.
 
@@ -49,6 +53,7 @@ Notes:
 * Update `memory` to correspond to how much GPU memory you have
 * You can add `-e CUDA_VISIBLE_DEVICES=1` before the image name to target a specific GPU on the system. If you want to use multiple GPUs on a node, you'll need to run multiple runner containers (in that case, remember to give them different names)
 * Make sure to run the container with `--restart always` or equivalent in your container runtime, since the runner will exit if it detects an unrecoverable error and should be restarted automatically
+* If you want to run the runner on the same machine as the controlplane, either: (a) set `--network host` and set `--api-host http://localhost` so that the runner can connect on localhost via the exposed port, or (b) use `--api-host http://172.17.0.1` so that the runner can connect to the API server via the docker bridge IP
 
 ## Questions? Bugs?
 
