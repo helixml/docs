@@ -21,7 +21,7 @@ cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
 ```
-docker-compose up --build -d
+docker-compose up -d
 ```
 
 You'll want to point a DNS hostname at the IP address of your server.
