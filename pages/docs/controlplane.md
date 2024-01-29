@@ -16,7 +16,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 ```
 git clone https://github.com/helixml/helix
 cd helix
-git checkout 0.3.8
+git checkout 0.4.0
 cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
@@ -41,7 +41,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
-    europe-docker.pkg.dev/helixml/helix/runner:0.3.8 \
+    europe-docker.pkg.dev/helixml/helix/runner:0.4.0 \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory 40GB \
