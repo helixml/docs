@@ -68,7 +68,7 @@ description: From language models to image models and more, Helix brings the bes
 
 Try our hosted [Helix Cloud](https://app.tryhelix.ai) today to see what it can do, then come back here to learn how to deploy it yourself.
 
-[Deploy the control plane](/docs/control-plane/) and then attach runners for a fully private deployment on any infrastructure.
+[Deploy the control plane](/docs/controlplane/) and then attach runners for a fully private deployment on any infrastructure.
 
 [Docs](/docs/) {% .primary %}
 
