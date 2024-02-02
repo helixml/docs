@@ -65,8 +65,8 @@ sudo docker run --privileged --gpus all --shm-size=10g \
 
 Notes:
 
-* Update `memory` to correspond to how much GPU memory you have, e.g. "80GB" or "24GB"
-* You can add `-e CUDA_VISIBLE_DEVICES=1` before the image name to target a specific GPU on the system. If you want to use multiple GPUs on a node, you'll need to run multiple runner containers (in that case, remember to give them different names)
+* Update `<GPU_MEMORY>` to correspond to how much GPU memory you have, e.g. "80GB" or "24GB"
+* You can add `--gpus 1` before the image name to target a specific GPU on the system (starting at 0). If you want to use multiple GPUs on a node, you'll need to run multiple runner containers (in that case, remember to give them different names)
 * Make sure to run the container with `--restart always` or equivalent in your container runtime, since the runner will exit if it detects an unrecoverable error and should be restarted automatically
 * If you want to run the runner on the same machine as the controlplane, either: (a) set `--network host` and set `--api-host http://localhost` so that the runner can connect on localhost via the exposed port, or (b) use `--api-host http://172.17.0.1` so that the runner can connect to the API server via the docker bridge IP
 
