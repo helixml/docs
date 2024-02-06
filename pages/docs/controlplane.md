@@ -16,7 +16,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 ```
 git clone https://github.com/helixml/helix
 cd helix
-git checkout 0.4.10
+git checkout 0.5.5
 cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
@@ -34,7 +34,7 @@ Check configuration:
 ```
 cd helix
 git pull
-git checkout 0.4.10
+git checkout 0.5.5
 ```
 Open `.env.example-prod` and compare it to your current `.env` to check whether there are any new or changed configuration requirements.
 
@@ -56,7 +56,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
-    europe-docker.pkg.dev/helixml/helix/runner:0.4.10 \
+    europe-docker.pkg.dev/helixml/helix/runner:0.5.5 \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory <GPU_MEMORY>GB \
