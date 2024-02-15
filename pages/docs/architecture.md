@@ -25,7 +25,7 @@ The code is available at [github.com/helixml/helix](https://github.com/helixml/h
 * [Postgres schema and migrations](https://github.com/helixml/helix/tree/main/api/pkg/store/migrations) are handled by the API server
 * The router is simply an nginx proxy container, ready to be replaced by Kubernetes ingress
 
-See also: [docker-compose.yaml](https://github.com/helixml/helix/blob/main/docker-compose.yamldocker-compose.yaml).
+See also: [docker-compose.yaml](https://github.com/helixml/helix/blob/main/docker-compose.yaml).
 
 ### Runners
 
