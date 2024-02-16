@@ -3,7 +3,7 @@
   "name": "@markdoc/docs",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",

@@ -25,3 +25,10 @@ module.exports = withMarkdoc({ mode: 'static' })({
     ];
   }
 });
+
+const nextConfig = {
+  /* config options here */
+  output: 'export',
+}
+ 
+module.exports = nextConfig
