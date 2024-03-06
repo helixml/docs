@@ -1,13 +1,10 @@
-node_modules
-.DS_Store
-.next
-*.log
-yarn.lock
-out/
-.vscode
-.env
-.vercel
-dist/
-# next-sitemap
-sitemap*.xml
-robots.txt
+# npm
+node_modules/
+
+# Hugo output
+public/
+resources/
+.hugo_build.lock
+
+# Editor
+.vscode/
