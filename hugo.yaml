@@ -5,6 +5,7 @@ enableRobotsTXT: true
 enableGitInfo: true
 # enableEmoji: false
 hasCJKLanguage: true
+canonifyURLs: true
 
 # services:
 #   googleAnalytics:
