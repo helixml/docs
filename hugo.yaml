@@ -1,0 +1,147 @@
+# Configuration
+baseURL: "https://docs.helix.ml/"
+
+enableRobotsTXT: true
+enableGitInfo: true
+# enableEmoji: false
+hasCJKLanguage: true
+canonifyURLs: true
+
+# services:
+#   googleAnalytics:
+#     ID: G-MEASUREMENT_ID
+
+outputs:
+  home: [HTML]
+  page: [HTML]
+  section: [HTML, RSS]
+
+defaultContentLanguage: en
+languages:
+  en:
+    languageName: English
+    weight: 1
+    title: Helix Docs
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.112.0"
+  imports:
+    - path: github.com/imfing/hextra
+  mounts:
+    - source: "assets"
+      target: "assets"
+    - source: "fonts"
+      target: "static/fonts"
+    - source: "hugo_stats.json"
+      target: "assets/watching/hugo_stats.json"
+
+build:
+  writeStats: true
+  cachebusters:
+    - source: "assets/watching/hugo_stats\\.json"
+      target: "styles\\.css"
+    - source: "(postcss|tailwind)\\.config\\.js"
+      target: "css"
+    - source: "assets/.*\\.(js|ts|jsx|tsx)"
+      target: "js"
+    - source: "assets/.*\\.(.*)$"
+      target: "$1"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+enableInlineShortcodes: true
+
+menu:
+  main:
+    - name: Home
+      url: https://tryhelix.ai/
+      weight: 1
+    - name: GitHub
+      weight: 4
+      url: "https://github.com/helixml/docs"
+      params:
+        icon: github
+    - name: Twitter
+      weight: 5
+      url: "https://twitter.com/helixml"
+      params:
+        icon: twitter
+    - name: Search
+      weight: 6
+      params:
+        type: search
+
+
+params:
+  description: Modern, responsive, batteries-included Hugo theme for creating beautiful static websites.
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: /logo.svg
+      dark: /logo.svg
+      link: /
+      width: 20
+      height: 10
+    width: wide
+
+  page:
+    # full (100%), wide (90rem), normal (1280px)
+    width: normal
+
+  theme:
+    # light | dark | system
+    default: system
+    displayToggle: true
+
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false
+    width: normal
+
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+  # Search
+  # flexsearch is enabled by default
+  search:
+    enable: true
+    type: flexsearch
+
+    flexsearch:
+      # index page by: content | summary | heading | title
+      index: content
+
+  editURL:
+    enable: true
+    base: "https://github.com/helixml/docs/edit/main/exampleSite/content"
+
+  blog:
+    list:
+      displayTags: true
+
+  comments:
+    enable: false
+    type: giscus
+
+    # https://giscus.app/
+    giscus:
+      repo: imfing/hextra
+      repoId: R_kgDOJ9fJag
+      category: General
+      categoryId: DIC_kwDOJ9fJas4CY7gW
+      # mapping: pathname
+      # strict: 0
+      # reactionsEnabled: 1
+      # emitMetadata: 0
+      # inputPosition: top
+      # lang: en

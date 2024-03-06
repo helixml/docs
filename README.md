@@ -1,30 +1,32 @@
-yarn dev
+# Helix Docs
 
-# Markdoc docs
+## Quick Start
 
-[Markdoc](https://markdoc.dev) is a [Markdown](https://commonmark.org)-based syntax and toolchain for creating custom documentation sites and experiences.
-We designed Markdoc to power [Stripe's public docs](http://stripe.com/docs), our largest and most complex content site.
+Pre-requisites: [Hugo](https://gohugo.io/installation/), [Go](https://golang.org/doc/install), [Git](https://git-scm.com) and [Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
-## Contributing
+Launch the live server:
 
-Contributions and feedback are welcomed and encouraged. Feel free to open PRs here, or open issues in the [Markdoc core repo](https://github.com/markdoc/markdoc).
+```shell
+hugo serve
+```
 
-## Installation
+### Update theme
 
-1. [Fork](https://help.github.com/articles/fork-a-repo) and [clone](https://help.github.com/articles/cloning-a-repository) this repository to your local environment.
+```shell
+hugo mod get -u
+hugo mod tidy
+```
 
-2. Create a new branch with `git checkout -b <BRANCH_NAME>`
+See [Update modules](https://gohugo.io/hugo-modules/use-modules/#update-modules) for more details.
 
-3. Install the dependencies by running `npm install`
+## Deployment
 
-4. Start the development server on [http://localhost:3000](http://localhost:3000) by running `npm run dev`
+### GitHub Pages
 
-5. Try editing `pages/index.md`
+A GitHub Actions workflow is provided in [`.github/workflows/pages.yaml`](./.github/workflows/pages.yaml) to [publish to GitHub Pages](https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/) for free. 
 
-## Code of conduct
+## Other Notes
 
-This project has adopted the Stripe [Code of conduct](https://github.com/markdoc/markdoc/blob/main/.github/CODE_OF_CONDUCT.md).
+### Base Template
 
-## License
-
-This project uses the [MIT license](LICENSE).
+This website is based upon [Hextra](https://github.com/imfing/hextra).
