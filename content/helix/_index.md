@@ -1,6 +1,6 @@
 ---
 title: Introduction to Helix
-linkTitle: Documentation
+linkTitle: Helix Documentation
 cascade:
   type: docs
 next: /helix/getting-started
