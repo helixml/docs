@@ -4,7 +4,7 @@ name: Deploy Hugo site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    # branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,6 +38,15 @@ jobs:
         with:
           fetch-depth: 0  # fetch all history for .GitInfo and .Lastmod
           submodules: recursive
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+      - name: Instal npm dependencies
+        run: npm install
+      - name: Install in project directory
+        run: npm install postcss-cli @fullhuman/postcss-purgecss
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
