@@ -1,0 +1,9 @@
+{{/* CSS */}}
+{{ $options := dict "inlineImports" true "config" "./assets/css/postcss.config.js" }}
+{{ $styles := resources.Get "css/styles.css" }}
+{{ $styles = $styles | resources.PostCSS $options }}
+{{ if not .Site.IsServer }}
+{{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
+{{ end }}
+<link href="{{ $styles.RelPermalink | relURL }}" rel="stylesheet" integrity="{{ $styles.Data.integrity }}" />
+{{/* /CSS */}}
