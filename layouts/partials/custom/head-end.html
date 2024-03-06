@@ -5,5 +5,5 @@
 {{ if not hugo.IsServer }}
 {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
 {{ end }}
-<link href="{{ $styles.RelPermalink }}" rel="stylesheet" integrity="{{ $styles.Data.integrity }}" />
+<link href="{{ $styles.RelPermalink | relURL }}" rel="stylesheet" integrity="{{ $styles.Data.integrity }}" />
 {{/* /CSS */}}
