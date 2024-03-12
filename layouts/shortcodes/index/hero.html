@@ -8,10 +8,10 @@
   <div class="py-24 sm:py-32 lg:pb-40">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-100">
+        <h1 class="text-4xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent hx-bg-gradient-to-r hx-from-gray-900 hx-to-gray-600 dark:hx-from-gray-100 dark:hx-to-gray-400">
           {{ .Get "title" | default .Page.Title }}
         </h1>
-        <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">{{ .Get "subtitle" }}</p>
+        <p class="mt-6 text-lg leading-8 hx-text-gray-600 dark:hx-text-gray-400">{{ .Get "subtitle" }}</p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a href='{{ .Get "ref" | ref .Page }}' class="text-sm font-semibold leading-6 text-gray-900">View Docs <span
               aria-hidden="true">→</span></a>
