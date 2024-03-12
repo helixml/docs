@@ -2,6 +2,8 @@
 title: How Fine Tuning Works in Helix
 description:
 weight: 3
+aliases:
+  - /docs/finetuning
 ---
 
 Coming soon.

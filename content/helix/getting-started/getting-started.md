@@ -2,6 +2,8 @@
 title: Get started with Helix
 description: How to get started with Helix
 weight: 1
+aliases:
+  - /docs/getting-started
 ---
 
 These instructions show a user how to log into [Helix Cloud](https://app.tryhelix.ai/) and use it. For deploying to your own infrastructure, see [Deploying Control Plane](/docs/controlplane).

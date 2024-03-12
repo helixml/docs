@@ -2,6 +2,8 @@
 title: Real Estate Demo
 description:
 weight: 2
+aliases:
+  - /docs/for-sale-signs
 ---
 
 Coming soon.

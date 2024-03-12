@@ -3,6 +3,8 @@ title: Understand Which Content Your Customers Find Engaging and Generate Conten
 linkTitle: Engaging Customer Content
 description:
 weight: 2
+aliases:
+  - /docs/engaging-content
 ---
 
 {{< youtube "SKJfyj2ROfY" >}}

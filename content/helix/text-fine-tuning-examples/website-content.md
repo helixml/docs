@@ -3,6 +3,8 @@ title: Analyze Website Content
 linkTitle: Website Content
 description:
 weight: 4
+aliases:
+  - /docs/website-content
 ---
 
 {{< youtube "lca52jWU0Ac" >}}

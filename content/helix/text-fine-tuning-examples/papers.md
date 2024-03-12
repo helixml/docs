@@ -3,6 +3,8 @@ title: Gain Insights from Recent Published Papers
 linkTitle: Paper Analysis
 description:
 weight: 1
+aliases:
+  - /docs/papers
 ---
 
 {{< youtube "xQHYMzo_KS0" >}}

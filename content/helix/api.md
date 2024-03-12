@@ -2,6 +2,8 @@
 title: API Reference
 weight: 8
 prev: /helix/private-deployment/_index.md
+aliases:
+  - /docs/api
 ---
 
 ## Easy to use API

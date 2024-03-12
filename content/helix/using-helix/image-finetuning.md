@@ -2,6 +2,8 @@
 title: Image Fine-Tuning
 description:
 weight: 4
+aliases:
+  - /docs/image-finetuning
 ---
 
 Helix uses the [Mistral](https://mistral.ai/) series of large language models to provide high quality responses with relatively small memory GPU footprint, including fine-tuning teach the model new information or styles of reasoning and presenting information.

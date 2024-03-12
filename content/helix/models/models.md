@@ -2,6 +2,8 @@
 title: AI Models Helix Uses
 description:
 weight: 1
+aliases:
+  - /docs/models
 ---
 
 ## Text Models

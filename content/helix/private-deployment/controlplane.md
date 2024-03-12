@@ -2,6 +2,8 @@
 title: Deploying the Helix Controlplane
 description:
 weight: 1
+aliases:
+  - /docs/controlplane
 ---
 
 ## Architecture
