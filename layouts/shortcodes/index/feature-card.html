@@ -1,9 +1,9 @@
 <div class="flex flex-col">
-    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
+    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 hx-text-gray-900 dark:hx-text-gray-100">
         {{ partial "utils/icon.html" (dict "name" (.Get "icon" | default "github" ) "attributes" "height=24") }}
         {{ .Get "title" }}
     </dt>
-    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 hx-text-gray-600 dark:hx-text-gray-300">
         <p class="flex-auto prose">{{ .Inner }}</p>
     </dd>
 </div>

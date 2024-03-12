@@ -19,6 +19,20 @@ hugo mod tidy
 
 See [Update modules](https://gohugo.io/hugo-modules/use-modules/#update-modules) for more details.
 
+### CSS Notes
+
+**TL;DR; prefix all your colour-related tailwind classes with `hx-`.**
+
+The theme has a light-dark toggle, which is some custom javascript to tell all the theme's colour classes to switch to the dark.
+
+Because I've also added raw tailwind to do custom tailwind stuff, it means that these classes don't get updated.
+
+The net result is if you have a system preference of "dark", then set the manual toggle to "light", then the normal tailwind colours will be inverted.
+
+The simplest workaround for now is to just prefix all tailwind colour classes with `hx-` which will then use the themes classes (which do work).
+
+If you're wanting to use colours that don't exist in the theme, then you might have to add some javascript.
+
 ## Deployment
 
 The website is hosted by Cloudflare pages under [the docs worker in the tools@combinator.ml account](https://dash.cloudflare.com/f0150e619c6dc08f55aea6d2248b1c6c/pages/view/docs).
