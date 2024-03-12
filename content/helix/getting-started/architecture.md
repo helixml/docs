@@ -1,6 +1,8 @@
 ---
 title: Helix Architecture
 weight: 3
+aliases:
+  - /docs/architecture
 ---
 
 The Helix architecture is an uncomplicated stack of high quality components.

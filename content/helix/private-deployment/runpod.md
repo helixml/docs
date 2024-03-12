@@ -2,6 +2,8 @@
 title: Deploying a Runpod Runner
 description:
 weight: 4
+aliases:
+  - /docs/runpod
 ---
 
 Create a runpod pod thusly:

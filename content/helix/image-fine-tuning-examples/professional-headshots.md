@@ -2,6 +2,8 @@
 title: Professional Headshots 
 description:
 weight: 1
+aliases:
+  - /docs/professional-headshots
 ---
 
 {{< youtube "v6XZT8u6khI" >}}

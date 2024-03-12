@@ -9,6 +9,8 @@ menu:
     weight: 2
 next: /helix/getting-started
 weight: 2
+aliases:
+  - /docs
 ---
 
 👋 Hello! Welcome to the Helix documentation!

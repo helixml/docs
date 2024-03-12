@@ -2,6 +2,8 @@
 title: How Runners Work
 description:
 weight: 2
+aliases:
+  - /docs/runners
 ---
 
 * See [Architecture]({{< ref "/helix/getting-started/architecture.md" >}}) for how runners fit in to the architecture

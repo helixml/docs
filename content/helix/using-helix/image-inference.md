@@ -2,6 +2,8 @@
 title: Image Inference
 description:
 weight: 2
+aliases:
+  - /docs/image-inference
 ---
 
 Helix uses the [Stable Diffusion XL](https://stability.ai/stable-diffusion) image diffusion models to provide high quality images with relatively small memory GPU footprint, including fine-tuning teach the model new people, styles or concepts to represent visually.

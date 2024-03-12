@@ -2,6 +2,8 @@
 title: Deploying a Docker Runner
 description:
 weight: 3
+aliases:
+  - /docs/docker
 ---
 
 * See [Architecture]({{< ref "/helix/getting-started/architecture.md" >}}) for how runners fit in to the architecture

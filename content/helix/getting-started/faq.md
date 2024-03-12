@@ -1,6 +1,8 @@
 ---
 title: Frequently asked questions
 weight: 2
+aliases:
+  - /docs/faq
 ---
 
 ## What makes Helix different?

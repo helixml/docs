@@ -3,6 +3,8 @@ title: Gather insights on private data
 linkTitle: Private Data Insight
 description:
 weight: 3
+aliases:
+  - /docs/insights-data
 ---
 
 {{< youtube "gC-fSxseAJQ" >}}
