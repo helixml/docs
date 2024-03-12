@@ -7,13 +7,12 @@
     {{- $title := .Title -}}
     {{- $icon := "document" -}}
 
-    {{- $external := strings.HasPrefix $link "http" -}}
     {{- $href := cond (strings.HasPrefix $link "/") ($link | relURL) $link -}}
 
-    <a class="hextra-card group flex flex-col justify-start overflow-hidden rounded-lg border border-gray-200 text-current no-underline dark:shadow-none hover:shadow-gray-100 dark:hover:shadow-none shadow-gray-100 active:shadow-sm active:shadow-gray-200 transition-all duration-200 hover:border-gray-300 bg-transparent shadow-sm dark:border-neutral-800 hover:bg-slate-50 hover:shadow-md dark:hover:border-neutral-700 dark:hover:bg-neutral-900"
-        {{- if $link -}} href="{{ $href }}" {{ with $external }}target="_blank" rel="noreferrer" {{ end -}} {{- end -}}>
+    <a class="hextra-card group flex flex-col justify-start overflow-hidden rounded-lg border hx-border-gray-200 text-current no-underline dark:hx-shadow-none hover:hx-shadow-gray-100 dark:hover:hx-shadow-none hx-shadow-gray-100 active:shadow-sm active:hx-shadow-gray-200 transition-all duration-200 hover:hx-border-gray-300 bg-transparent shadow-sm dark:hx-border-neutral-800 hover:hx-bg-slate-50 hover:shadow-md dark:hover:hx-border-neutral-700 dark:hover:hx-bg-neutral-900"
+        {{- if $link -}} href="{{ $href }}" {{- end -}}>
         <span
-            class="flex font-semibold items-start gap-2 p-4 text-gray-700 hover:text-gray-900 dark:text-neutral-200 dark:hover:text-neutral-50">
+            class="flex font-semibold items-start gap-2 p-4 hx-text-gray-700 hover:hx-text-gray-900 dark:hx-text-neutral-200 dark:hover:hx-text-neutral-50">
             {{- with $icon }}{{ partial "utils/icon.html" (dict "name" $icon) -}}{{- end -}}
             {{- $title -}}
         </span>
