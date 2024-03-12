@@ -21,9 +21,11 @@ See [Update modules](https://gohugo.io/hugo-modules/use-modules/#update-modules)
 
 ## Deployment
 
-### GitHub Pages
+The website is hosted by Cloudflare pages under [the docs worker in the tools@combinator.ml account](https://dash.cloudflare.com/f0150e619c6dc08f55aea6d2248b1c6c/pages/view/docs).
 
-A GitHub Actions workflow is provided in [`.github/workflows/pages.yaml`](./.github/workflows/pages.yaml) to [publish to GitHub Pages](https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/) for free. 
+All non-main branches will be deployed to `<branch-name>.docs-8df.pages.dev`, where branch name has been lowercased and non-alphanumeric characters are replaced with a hyphen. If you have a PR open, cloudflare will print this to the PR timeline.
+
+The main branch is deployed to the custom domain [setup for that pages worker](https://dash.cloudflare.com/f0150e619c6dc08f55aea6d2248b1c6c/pages/view/docs/domains). As of now, https://docs.helix.ml.
 
 ## Other Notes
 
