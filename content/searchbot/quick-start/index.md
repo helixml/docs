@@ -1,6 +1,7 @@
 ---
 title: Quick Start
 weight: 2
+next: /searchbot/concepts/_index.md
 ---
 
 This document explains how to quickly get started with SearchBot. You should probably follow these steps first, unless you have used SearchBot in the past. For more in-depth explanations, please see the rest of the documentation.
@@ -13,7 +14,7 @@ Go to [https://SearchBot.tryhelix.ai](https://searchbot.tryhelix.ai)
 
 ## 2. Add a website
 
-Add a website that you want to use with SearchBot. SearchBot will use all of the content on your website as sources of information.
+Navigate to the [Websites page]({{< param "searchbot.urls.websites" >}}) and add a Website that you want to use with SearchBot. SearchBot will use all of the content on your Website as sources of information.
 
 ![](add-website.png)
 
@@ -22,6 +23,10 @@ Add a website that you want to use with SearchBot. SearchBot will use all of the
 Please wait until your website has finished scanning. Click on the `Bots` tab.
 
 ![](scraping-finished.png)
+
+{{% tip %}}
+More information about Websites can be found in the [Website documentation]({{< relref "/searchbot/concepts/websites/index.md" >}}).
+{{% /tip %}}
 
 ## 3. Add a bot
 
