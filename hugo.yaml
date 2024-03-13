@@ -144,3 +144,7 @@ params:
       # emitMetadata: 0
       # inputPosition: top
       # lang: en
+
+  searchbot:
+    urls:
+      websites: https://searchbot.tryhelix.ai/
