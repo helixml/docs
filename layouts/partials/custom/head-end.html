@@ -9,3 +9,11 @@
 <link href="{{ $styles.Permalink }}" rel="stylesheet" />
 {{ end }}
 {{/* /CSS */}}
+
+{{/* Remove old light/dark toggle from local storage */}}
+<script>
+    if (localStorage.getItem("color-theme")) {
+        localStorage.removeItem("color-theme");
+        setDarkTheme();
+    }
+</script>
