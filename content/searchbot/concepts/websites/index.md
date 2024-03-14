@@ -1,6 +1,6 @@
 ---
 title: Websites
-weight: 3
+weight: 1
 ---
 
 This page introduces Websites in SearchBot, explains what they are and discusses their use.

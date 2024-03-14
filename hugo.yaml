@@ -148,3 +148,4 @@ params:
   searchbot:
     urls:
       websites: https://searchbot.tryhelix.ai/
+      bots: https://searchbot.tryhelix.ai/bots
