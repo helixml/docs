@@ -12,7 +12,7 @@ Create a runpod pod thusly:
 
 Container image:
 ```
-europe-docker.pkg.dev/helixml/helix/runner:v0.2.9
+europe-docker.pkg.dev/helixml/helix/runner:v0.5.5
 ```
 
 Docker Command:
