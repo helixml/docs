@@ -11,6 +11,7 @@ next: /helix/getting-started
 weight: 2
 aliases:
   - /docs
+  - /docs/overview
 ---
 
 👋 Hello! Welcome to the Helix documentation!
