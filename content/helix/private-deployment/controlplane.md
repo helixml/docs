@@ -17,7 +17,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 ```
 git clone https://github.com/helixml/helix
 cd helix
-git checkout 0.5.5
+git checkout 0.6.1
 cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
@@ -35,7 +35,7 @@ Check configuration:
 ```
 cd helix
 git pull
-git checkout 0.5.5
+git checkout 0.6.1
 ```
 Open `.env.example-prod` and compare it to your current `.env` to check whether there are any new or changed configuration requirements.
 
@@ -44,6 +44,10 @@ Deploy the upgrade:
 docker-compose pull
 docker-compose up -d
 ```
+
+### Version-specific upgrade notes
+
+* Upgrading from < 0.6 to >= 0.6 - [Keycloak upgrade requires a manual user database export / import](https://github.com/helixml/helix/blob/main/UPGRADING.md#from-helix--060-to-helix--060)
 
 ## Attaching a runner
 
@@ -57,7 +61,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
-    europe-docker.pkg.dev/helixml/helix/runner:0.5.5 \
+    europe-docker.pkg.dev/helixml/helix/runner:0.6.1 \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory <GPU_MEMORY>GB \
