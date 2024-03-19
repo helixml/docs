@@ -65,7 +65,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory <GPU_MEMORY>GB \
-    --allow-multiple-copies --timeout-seconds 120
+    --allow-multiple-copies
 ```
 
 Notes:
