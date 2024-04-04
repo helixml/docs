@@ -17,7 +17,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 ```
 git clone https://github.com/helixml/helix
 cd helix
-git checkout 0.6.2
+git checkout 0.6.9
 cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
@@ -35,7 +35,7 @@ Check configuration:
 ```
 cd helix
 git pull
-git checkout 0.6.2
+git checkout 0.6.9
 ```
 Open `.env.example-prod` and compare it to your current `.env` to check whether there are any new or changed configuration requirements.
 
