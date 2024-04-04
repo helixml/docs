@@ -12,7 +12,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 
 ## Deployment on Docker Compose
 
-**Requires:** x86_64 architecture
+**Requires:** x86_64 architecture, [docker](https://docs.docker.com/engine/install/)
 
 ```
 git clone https://github.com/helixml/helix
@@ -22,7 +22,7 @@ cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 You'll want to point a DNS hostname at the IP address of your server.
@@ -41,8 +41,8 @@ Open `.env.example-prod` and compare it to your current `.env` to check whether 
 
 Deploy the upgrade:
 ```
-docker-compose pull
-docker-compose up -d --remove-orphans
+docker compose pull
+docker compose up -d --remove-orphans
 ```
 
 ### Version-specific upgrade notes
