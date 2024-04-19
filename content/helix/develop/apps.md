@@ -4,7 +4,7 @@ description:
 weight: 2
 ---
 
-Helix supports [GPTScript](https://gptscript.ai) to allow you to write simple "scripted" natural language powered APIs by prompting.
+Helix supports [GPTScript](https://gptscript.ai) to allow you to write simple "scripted" natural language powered apps by just writing prompts.
 
 We support a development workflow where you run the Helix GPTScript Dev Server locally, and a production workflow where you deploy updates to GPTScript powered apps via `git push`.
 
