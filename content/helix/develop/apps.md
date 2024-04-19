@@ -111,13 +111,13 @@ Click the play button. Click Connect Repo.
 
 This will set up a deploy key and webhooks so that Helix can read the contents of the repo (even if it's private) and be notified when you push to the git repo so that Helix can automatically deploy changes to the gptscripts.
 
-## Step 3: Deploy the frontend app somewhere
+### Step 3: Deploy the frontend app somewhere
 
 Now deploy the frontend app to a web server of your choice, for example Netlify, Vercel, or your own internal web application platform.
 
 You can skip this step if you just want to test local development for now.
 
-## Step 4: Local Development
+### Step 4: Local Development
 
 Clone the repo locally and then run:
 
@@ -152,7 +152,7 @@ If you watch the helix dev server, you'll be able to see gptscript doing its thi
 
 ![](apps-08.png)
 
-## Step 5: Deploy to Production
+### Step 5: Deploy to Production
 
 Now you should have the github repo (your fork) hooked up to an external hosting service like Netlify or Vercel (step 3) and also hooked up to Helix Cloud, where Helix can receive the webhooks and immediately deploy updates to the gptscripts.
 
@@ -165,7 +165,7 @@ git push
 
 Now Helix will receive the webhook from GitHub and instantly future requests for that gptscript will use the updated version.
 
-## Step 6: Customize the app for your own use case
+### Step 6: Customize the app for your own use case
 
 You've seen how you can develop a sophisticated, AI powered app just with Javascript and natural language (and a bit of sqlite).
 Start customizing the app for your own use cases. We'd love to see what you build!
@@ -175,7 +175,7 @@ Start customizing the app for your own use cases. We'd love to see what you buil
 Come join us in [Discord](https://discord.gg/VJftd844GE) to give us feedback on this and talk about your use case!
 We'd love to see what you build.
 
-## GPTScript tip
+## GPTScript tips
 
 One tip when writing gptscript, is to make the LLM spend as much time outputting things that are natural language, and not to spend time transferring data from one place to another. That's why in this example, we tell sqlite to write its result as a csv file using the `.output` command:
 ```
