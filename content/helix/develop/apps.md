@@ -11,7 +11,7 @@ We support a development workflow where you run the Helix GPTScript Dev Server l
 ![](apps-01.png)
 
 
-We provide a simple Javascript library (and API) to call into GPTScript you push to a git repo and run it securely in a microVM so you don't need to worry about the user convincing the LLM to run malicous commands – it all runs in a throwaway VM anyway.
+We provide a simple Javascript library (and API) to call into GPTScript you push to a git repo and run it securely in a microVM so you don't need to worry about the user convincing the LLM to run malicious commands – it all runs in a throwaway VM anyway.
 
 ## Example Javascript Code
 
@@ -71,9 +71,9 @@ Output the exact image url from the CSV file, do not invent one. Output format:
 
 [{
   "recipe.name": "name",
-  "recipe.summary": "summary", 
+  "recipe.summary": "summary",
   "recipe.imageurl": "imageurl"
-}]  
+}]
 ```
 
 <!-- TODO: write docs for apps/gptscript API -->
@@ -119,7 +119,7 @@ You can skip this step if you just want to test local development for now.
 
 ### Step 4: Local Development
 
-Clone the repo locally and then run:
+Clone the repo locally, [get an API key from OpenAI](https://github.com/gptscript-ai/gptscript?tab=readme-ov-file#2-get-an-api-key-from-openai) and then run:
 
 Run:
 ```bash
@@ -131,6 +131,7 @@ The `apps-client` JS library will automatically try to connect to the gptscript 
 
 Now start the server:
 ```bash
+yarn install
 yarn start
 ```
 
