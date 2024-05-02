@@ -8,8 +8,8 @@ aliases:
 
 Helix offers a variety of large language models tailored for different needs, all designed to provide high-quality responses with a relatively small GPU memory footprint. These include:
 - **Helix 3.5**: Utilizes Llama3-8B for fast and efficient performance, ideal for everyday tasks.
-- **Helix 4**: Powered by Llama370B, this model offers deeper insights and although a bit slower, it's smarter for complex queries.
-- **Helix Code**: Features CodeLlama70B from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
+- **Helix 4**: Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries.
+- **Helix Code**: Features CodeLlama-70B from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
 - **Helix JSON**: Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
 
 ## Try chatting to the chatbot
