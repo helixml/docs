@@ -14,6 +14,8 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 
 **Requires:** x86_64 architecture, [docker](https://docs.docker.com/engine/install/)
 
+### Clone repo and set up env file
+
 ```
 git clone https://github.com/helixml/helix
 cd helix
@@ -21,20 +23,32 @@ cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
 
+### Update realm settings
+
 Ensure keycloak realm settings are up to date with your .env file:
 ```
 ./update-realm-settings.sh
 ```
 Do this **before** starting the stack for the first time.
 
+### Start the stack
+
 Start the stack:
 ```
 docker compose up -d
 ```
 
+### Testing on localhost
+
+If you set `YOUR_DOMAIN.com` to `localhost` in `.env`, you can now load `http://localhost` in your browser.
+
+### Using a real hostname name with TLS termination
+
 If you're using a non-localhost domain, you'll need to point a DNS hostname (A record) at the IP address of your server and set up TLS termination.
 
-Set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`, assuming you set `API_PORT=8080` in `.env`:
+To do this, set the app to run on a different port to port 80 by setting `API_PORT=8080` in `.env` and running `docker compose up -d` to update the running stack.
+
+Then set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`:
 ```
 <YOUR_CONTROLPLANE_HOSTNAME>
 
@@ -44,7 +58,7 @@ reverse_proxy :8080
 caddy start
 ```
 
-Then load `https://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser.
+Then load `https://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser. Caddy will automatically provision TLS certificates.
 
 ### Upgrades
 
