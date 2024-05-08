@@ -74,7 +74,6 @@ Check configuration:
 ```
 cd helix
 git pull
-git checkout 0.6.9
 ```
 Open `.env.example-prod` and compare it to your current `.env` to check whether there are any new or changed configuration requirements.
 
@@ -83,6 +82,11 @@ Deploy the upgrade:
 docker compose pull
 docker compose up -d --remove-orphans
 ```
+
+You can also `git checkout` a specific release tag, but beware that the `docker-compose.yaml` file uses `:latest` tag - update these tags if you want to run an older or pinned version.
+
+On Kubernetes, and for a deployment with pinned versions, check out the [/helix/private-deployment/helix-controlplane-helm-chart/](Helm charts on Kubernetes).
+
 
 ### Version-specific upgrade notes
 
@@ -94,13 +98,15 @@ docker compose up -d --remove-orphans
 
 Ensure you have the [NVIDIA docker toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) installed.
 
+Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`.
+
 ```
 sudo docker run --privileged --gpus all --shm-size=10g \
     --restart=always -d \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
-    europe-docker.pkg.dev/helixml/helix/runner:0.6.9 \
+    europe-docker.pkg.dev/helixml/helix/runner:<LATEST_TAG> \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory <GPU_MEMORY>GB \
@@ -120,7 +126,7 @@ Notes:
 docker rm -f helix-runner
 ```
 
-Then run the command above.
+Then run the command above, updating `<LATEST_TAG>` accordingly.
 
 ## Questions? Bugs?
 
