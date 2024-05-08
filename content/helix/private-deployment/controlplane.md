@@ -30,11 +30,12 @@ SERVER_URL=http://localhost
 ```
 Otherwise, set them to:
 ```
-KEYCLOAK_FRONTEND_URL=https://YOUR_DOMAIN.com/auth/
-SERVER_URL=https://YOUR_DOMAIN.com
+KEYCLOAK_FRONTEND_URL=https://<YOUR_CONTROLPLANE_HOSTNAME>/auth/
+SERVER_URL=https://<YOUR_CONTROLPLANE_HOSTNAME>
 API_PORT=8080
 ```
-In the latter case, we'll set up easy TLS termination shortly.
+Where `<YOUR_CONTROLPLANE_HOSTNAME>` is a DNS A record that points to the IP address of your server. Ensure ports 443 and 80 are not firewalled.
+In this case, we'll set up easy TLS termination shortly.
 
 ### Update realm settings
 
@@ -53,7 +54,7 @@ docker compose up -d
 
 ### Testing on localhost
 
-If you set `YOUR_DOMAIN.com` to `localhost` in `.env`, you can now load `http://localhost` in your browser.
+If you are using `SERVER_URL=http://localhost` and `KEYCLOAK_FRONTEND_URL=http://localhost/auth/` in your `.env` file, you can now load `http://localhost` in your browser.
 
 ### Using a real hostname name with TLS termination
 
