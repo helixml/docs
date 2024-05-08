@@ -17,17 +17,34 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 ```
 git clone https://github.com/helixml/helix
 cd helix
-git checkout 0.6.9
 cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
+
+Ensure keycloak realm settings are up to date with your .env file:
+```
+./update-realm-settings.sh
+```
+Do this **before** starting the stack for the first time.
+
+Start the stack:
 ```
 docker compose up -d
 ```
 
-You'll want to point a DNS hostname at the IP address of your server.
+If you're using a non-localhost domain, you'll need to point a DNS hostname (A record) at the IP address of your server and set up TLS termination.
 
-Then load `http://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser (the app runs on port 80).
+Set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`, assuming you set `API_PORT=8080` in `.env`:
+```
+<YOUR_CONTROLPLANE_HOSTNAME>
+
+reverse_proxy :8080
+```
+```
+caddy start
+```
+
+Then load `https://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser.
 
 ### Upgrades
 
