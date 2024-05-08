@@ -76,7 +76,7 @@ Then set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian)
 reverse_proxy :8080
 ```
 ```
-caddy start
+sudo caddy stop ; sudo caddy start
 ```
 
 Then load `https://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser. Caddy will automatically provision TLS certificates.
