@@ -6,7 +6,7 @@ aliases:
   - /docs/runpod
 ---
 
-Create a runpod pod template like this:
+Create a runpod GPU pod template like this:
 
 ![](runpod.png)
 
