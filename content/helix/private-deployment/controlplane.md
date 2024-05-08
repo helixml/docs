@@ -48,7 +48,7 @@ If you set `YOUR_DOMAIN.com` to `localhost` in `.env`, you can now load `http://
 
 If you're using a non-localhost domain, you'll need to point a DNS hostname (A record) at the IP address of your server and set up TLS termination.
 
-To do this, set the app to run on a different port to port 80 by setting `API_PORT=8080` in `.env` and running `docker compose up -d` to update the running stack.
+To enable TLS, first set the app to run on a different port to port 80 by setting `API_PORT=8080` in `.env` and running `docker compose up -d` to update the running stack.
 
 Then set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`:
 ```
