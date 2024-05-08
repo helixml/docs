@@ -14,8 +14,10 @@ Create a runpod pod thusly:
 
 Container image:
 ```
-europe-docker.pkg.dev/helixml/helix/runner:v0.6.9
+europe-docker.pkg.dev/helixml/helix/runner:<LATEST_TAG>
 ```
+
+Where `<LATEST_TAG>` is the tag of the latest release in the form `X.Y.Z` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases)
 
 Docker Command:
 ```
