@@ -23,7 +23,7 @@ cp .env.example-prod .env
 ```
 Now edit `.env` with the editor of your choice.
 
-If you just want to test locally, you can set `KEYCLOAK_FRONTEND_URL=http://localhost/auth` and `SERVER_URL=http://localhost`. Otherwise, set them to `KEYCLOAK_FRONTEND_URL=https://YOUR_DOMAIN.com/auth` and `SERVER_URL=https://YOUR_DOMAIN.com`. In the latter case, we'll set up easy TLS termination shortly.
+If you just want to test locally, you can set `KEYCLOAK_FRONTEND_URL=http://localhost/auth/` and `SERVER_URL=http://localhost`. Otherwise, set them to `KEYCLOAK_FRONTEND_URL=https://YOUR_DOMAIN.com/auth/` and `SERVER_URL=https://YOUR_DOMAIN.com`. In the latter case, we'll set up easy TLS termination shortly.
 
 ### Update realm settings
 
