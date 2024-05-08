@@ -28,7 +28,7 @@ If you just want to test locally, you can set:
 KEYCLOAK_FRONTEND_URL=http://localhost/auth/
 SERVER_URL=http://localhost
 ```
-Otherwise, set them to:
+If you're using a real DNS hostname for your deployment, set:
 ```
 KEYCLOAK_FRONTEND_URL=https://<YOUR_CONTROLPLANE_HOSTNAME>/auth/
 SERVER_URL=https://<YOUR_CONTROLPLANE_HOSTNAME>
