@@ -56,7 +56,7 @@ docker compose up -d
 
 If you are using `SERVER_URL=http://localhost` and `KEYCLOAK_FRONTEND_URL=http://localhost/auth/` in your `.env` file, you can now load `http://localhost` in your browser.
 
-### Using a real hostname name with TLS termination
+### Using a real DNS hostname with TLS termination
 
 If you're using a non-localhost domain, you'll need to point a DNS hostname (A record) at the IP address of your server and set up TLS termination.
 
