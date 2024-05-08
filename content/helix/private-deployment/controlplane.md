@@ -29,7 +29,7 @@ Ensure keycloak realm settings are up to date with your .env file:
 ```
 ./update-realm-settings.sh
 ```
-Do this **before** starting the stack for the first time. If you change the `KEYCLOAK_FRONTEND_URL` and/or `SERVER_URL` settings later, you'll have to manually update them in Keycloak in the client settings (see [Locking down the stack](/helix/private-deployment/controlplane/#locking-down-the-stack) for how to log in).
+Do this **before** starting the stack for the first time. If you change the `KEYCLOAK_FRONTEND_URL` and/or `SERVER_URL` settings later, you'll have to manually update them in Keycloak in the client settings (see [Locking down the stack](#locking-down-the-stack) for how to log in).
 
 ### Start the stack
 
