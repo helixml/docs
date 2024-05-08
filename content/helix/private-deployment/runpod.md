@@ -21,5 +21,7 @@ Where `<LATEST_TAG>` is the tag of the latest release in the form `X.Y.Z` from [
 
 Docker Command:
 ```
---api-host https://app.tryhelix.ai --api-token <RUNNER_TOKEN_FROM_ENV> --runner-id runpod-a100-cu12-001 --memory 80GB --allow-multiple-copies
+--api-host https://<YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> --runner-id runpod-a100-cu12-001 --memory <GPU_MEMORY>GB --allow-multiple-copies
 ```
+
+Replace `<RUNNER_TOKEN_FROM_ENV>` and `<GPU_MEMORY>` accordingly.
