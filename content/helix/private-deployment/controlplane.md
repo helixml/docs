@@ -12,7 +12,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 
 ## Deployment on Docker Compose
 
-**Requires:** x86_64 architecture, [docker](https://docs.docker.com/engine/install/)
+**Requires:** x86_64 architecture, [docker](https://docs.docker.com/engine/install/). On Windows, [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ### Clone repo and set up env file
 
