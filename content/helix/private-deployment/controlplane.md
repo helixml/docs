@@ -52,7 +52,7 @@ Start the stack:
 docker compose up -d
 ```
 
-The stack might take a minute to boot up. Check `docker logs -f helix-api-1` and `docker logs -f helix-keycloak-1` for progress. It's normal for the API to retry connecting to keycloak until keycloak comes up. When the API logs.
+The stack might take a minute to boot up. Check `docker logs -f helix-api-1` and `docker logs -f helix-keycloak-1` for progress. It's normal for the API to retry connecting to keycloak until keycloak comes up. When the API logs:
 ```
 2024-05-08T06:26:28Z INF app/api/cmd/helix/serve.go:288 > Helix server listening on 0.0.0.0:80
 ```
