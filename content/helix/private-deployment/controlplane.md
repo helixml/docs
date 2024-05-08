@@ -99,7 +99,7 @@ docker compose up -d --remove-orphans
 
 You can also `git checkout` a specific release tag, but beware that the `docker-compose.yaml` file uses `:latest` tag - update these tags if you want to run an older or pinned version.
 
-On Kubernetes, and for a deployment with pinned versions, check out the [/helix/private-deployment/helix-controlplane-helm-chart/](Helm charts on Kubernetes).
+On Kubernetes, and for a deployment with pinned versions, check out the [Helm charts on Kubernetes](/helix/private-deployment/helix-controlplane-helm-chart/).
 
 
 ### Version-specific upgrade notes
