@@ -55,7 +55,23 @@ Type a query into the form on the share page and see how well SearchBot performs
 ![](share.png)
 
 ## 5. Add SearchBot to your website
+ 
+Add SearchBot to your website by copying and pasting the code in the Bot detail page.
 
-{{% info title="Coming Soon!" %}}
-This feature isn't quite ready yet. Please email founders@helix.ml or join us on [Discord](https://discord.gg/VJftd844GE).
-{{% /info %}}
+![](bot-add-to-website.png)
+
+The instructions will look like this, with your settings templated in:
+
+```js
+<script 
+    src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed@0.3.2" 
+    integrity="sha384-8/N8VED70naygSrRj1BYT5JlMwVLit5cPnT3HkKsLJ74L9fm+oNDVM9HFIOz5f8a" 
+    crossorigin="anonymous" >
+</script>
+<script>
+ChatWidget({
+    url: "https://searchbot.tryhelix.ai/v1/chat/completions", 
+    model: "YOUR_BOT_ID_HERE" })
+})
+</script>
+```
