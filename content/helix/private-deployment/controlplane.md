@@ -161,7 +161,7 @@ To enable this you need to provide some extra configuration and create a Github 
 
 2. Create an informative name and set the homepage URL to your domain. Finally set the `Authorization callback URL` to: `https://YOUR_DOMAIN/api/v1/github/callback`. This url must be publically accessible from Github's servers.
 
-You can test if it is publically accessible with: `curl https://bayesprice.helix.ml/api/v1/github/callback -i`. You should see a 401 error. If it produces a DNS error, a time out, or a 404, then your control plane has not been setup correctly.
+    You can test if it is publically accessible with: `curl https://bayesprice.helix.ml/api/v1/github/callback -i`. You should see a 401 error. If it produces a DNS error, a time out, or a 404, then your control plane has not been setup correctly.
 
 3. Now that the app has been created, click on the `Create a new client secret` button. Make a note of the `Client ID` and `Client secret`.
 
