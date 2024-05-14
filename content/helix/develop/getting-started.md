@@ -46,7 +46,7 @@ This will be improved soon.
 2. Run a curl request using this key as the bearer token. This will trigger your app.
 
 ```bash
-curl -i -H "Authorization: Bearer YOUR_API_KEY" https://app.tryhelix.ml/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}],"stream":false}'
+curl -i -H "Authorization: Bearer YOUR_API_KEY" https://app.tryhelix.ai/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}],"stream":false}'
 ```
 
 You should see a response that looks something like:
