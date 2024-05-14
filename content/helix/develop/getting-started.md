@@ -38,9 +38,9 @@ From now on, Helix will stay in sync via a Github webhook. Any commit to `main` 
 
 ### 3. Test Your App
 
-{{ info }}
+{{< tip >}}
 This will be improved soon.
-{{ /info }}
+{{< /tip >}}
 
 1. Click on your `App` and scroll to the bottom right. Copy the `key` under `API Keys`.
 2. Run a curl request using this key as the bearer token. This will trigger your app.
