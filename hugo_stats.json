@@ -575,9 +575,11 @@
       "check-on-the-status-of-a-fine-tune-session",
       "clone-repo-and-set-up-env-file",
       "come-talk-to-us",
+      "components",
       "connecting-runners",
       "control-plane",
       "control-plane-configuration",
+      "control-plane-interaction",
       "create-a-text-fine-tuning-session",
       "creating-a-bot",
       "creating-a-website",
@@ -595,6 +597,9 @@
       "good-prompts-to-try-for-mistral-7b-chatgpt-alternative",
       "good-prompts-to-try-for-sdxl-stable-diffusion-xl",
       "gptscript-tips",
+      "gpu-runner",
+      "helix-api-tools-architecture",
+      "helix-control-plane",
       "how-api-tools-work",
       "how-hard-is-it-to-get-started",
       "how-helix-works",
@@ -615,9 +620,11 @@
       "now-lets-fine-tune-a-text-model",
       "now-lets-fine-tune-an-image-model",
       "preview",
+      "prompt-execution",
       "question-answering",
       "questions-bugs",
       "reach-out",
+      "result-summarization",
       "runner-configuration",
       "runner-upgrades",
       "runners",
@@ -634,6 +641,7 @@
       "step-5-deploy-to-production",
       "step-6-customize-the-app-for-your-own-use-case",
       "steps",
+      "summary",
       "swagger-openapi-schema",
       "testing-on-localhost",
       "text-models",
@@ -655,7 +663,8 @@
       "what-is-helix",
       "what-is-helix-searchbot",
       "what-makes-helix-different",
-      "why-are-api-tools-useful"
+      "why-are-api-tools-useful",
+      "workflow"
     ]
   }
 }
