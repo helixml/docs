@@ -8,7 +8,7 @@ aliases:
 
 This page describes how to set up and manage a Helix API Tool within the Helix platform.
 
-To create an API Tool in Helix, you need to provide an OpenAPI (Swagger) schema that describes the API's functionality. This schema defines the endpoints, parameters, responses, and data structures that your API Tool will interact with. Here is an example of an OpenAPI schema for a Job Vacancies API:
+To create an API Tool in Helix, you need to provide the API Endpoint and an OpenAPI (Swagger) schema that describes the API's functionality. This schema defines the endpoints, parameters, responses, and data structures that your API Tool will interact with.
 
 ## Creating the API Tool in Helix
 
