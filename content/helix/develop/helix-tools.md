@@ -25,11 +25,6 @@ This page describes Helix API Tools and how to set up and manage tools within th
 
 - **Function**: Executes specific AI tasks using high-performance GPUs
 - **Role**: Processes prompts through different AI tools and models
-- **Integrated Models**:
-  - **Helix 3.5**: Utilizes Llama3-8B for fast and efficient performance, ideal for everyday tasks.
-  - **Helix 4**: Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries.
-  - **Helix Code**: Features CodeLlama-70B from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
-  - **Helix JSON**: Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
 - **Key Processes**:
   - Tools Classifier: Classifies the necessary tools required for the task
   - API Call Builder: Constructs API call requests based on the classified tools
@@ -60,16 +55,16 @@ This architecture ensures efficient task management and execution by leveraging 
 
 ## What is an API Tool?
 
-An API (Application Programming Interface) tool in the context of the Helix platform is a powerful feature that allows you to:
+An API (Application Programming Interface) tool in the context of the Helix platform is a feature that allows you to:
 
 - Augment and enhance the capabilities of your AI models 
 - Integrate external data and functionality
 
 ## Why are API Tools Useful?
 
-API tools are incredibly useful for several reasons:
+API tools are useful for several reasons:
 
-1. **Expanded Knowledge**: By connecting to external APIs, your AI can access vast amounts of up-to-date information that may not be present in its training data. This allows the AI to provide more accurate, relevant, and timely responses to user queries.
+1. **Expanded Knowledge**: By connecting to external APIs, your AI can access up-to-date information that may not be present in its training data. This allows the AI to provide more accurate, relevant, and timely responses to user queries.
 
 2. **Specialized Functionality**: APIs often provide specialized functionality that can be leveraged by your AI. For example:
    - Integrating a weather API allows your AI to provide current weather information
@@ -158,4 +153,3 @@ At the bottom of the screen, you have the following options:
 
 - **Cancel**: Click the "Cancel" button to cancel any changes and navigate back to the tools list.
 - **Save**: Click the "Save" button to save your API tool configuration. If there are any validation errors, they will be displayed, and you will need to fix them before saving.
-
