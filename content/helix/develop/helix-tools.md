@@ -10,7 +10,7 @@ This page describes Helix API Tools and how to set up and manage tools within th
 
 ## Helix API Tools Architecture
 
-![](helix-controlplace-and-runner.png)
+![](helix-controlplane-and-runner.png)
 
 ### Components
 
