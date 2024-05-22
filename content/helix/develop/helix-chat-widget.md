@@ -42,7 +42,7 @@ Initialize the Chat Widget by calling the global `ChatWidget` function with your
 ```js
 ChatWidget({
     url: 'https://app.tryhelix.ai/v1/chat/completions',
-    model: 'mistral:7b-instruct',
+    model: 'llama3:instruct',
     bearerToken: 'your_bearer_token_here',
 })
 ```
