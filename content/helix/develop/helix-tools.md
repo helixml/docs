@@ -51,7 +51,7 @@ Although not shown in the diagram, the Large Language Model (LLM) also plays a c
 
 This architecture ensures efficient task management and execution by leveraging specialized models and tools, thereby enabling Helix AI to provide accurate and quick responses to user queries.
 
-<br><br>
+<br>
 
 ## What is an API Tool?
 
@@ -59,6 +59,8 @@ An API (Application Programming Interface) tool in the context of the Helix plat
 
 - Augment and enhance the capabilities of your AI models 
 - Integrate external data and functionality
+
+<br>
 
 ## Why are API Tools Useful?
 
@@ -73,6 +75,8 @@ API tools are useful for several reasons:
 3. **Dynamic Responses**: With API tools, your AI can generate dynamic responses based on real-time data. This makes the AI more engaging and useful, as it can provide information that is tailored to the user's specific context and needs.
 
 4. **Efficiency**: Instead of trying to encode all possible information and functionality into your AI model, API tools allow you to efficiently access external resources as needed. This keeps your AI model lean and focused, while still being able to handle a wide range of queries.
+
+<br>
 
 ## How API Tools Work
 
@@ -92,13 +96,13 @@ In essence, API tools allow you to create "API augmented generation" capabilitie
 
 By leveraging the power of APIs, you can create AI experiences that are more knowledgeable, capable, and engaging.
 
-
 <br><br>
-
 
 # API Tool Configuration
 
 The API Tool Configuration screen allows you to set up and manage your API tools within the Helix platform. This guide will walk you through the various sections and options available on this screen.
+
+<br>
 
 ## Basic Information
 
@@ -108,7 +112,9 @@ In the basic information section, you can provide the following details about yo
 
 - **Name**: Enter a name for your API tool. This is a required field.
 - **Description**: Provide a description of your API tool. This is also a required field.
-- **Global**: If you are an admin or the tool is global, you can check the "Global" checkbox to make the tool accessible to all users.
+- **Global**: If you are an a
+
+<br>
 
 ## API Specification
 
@@ -119,6 +125,8 @@ If your tool is configured to use an API, you will see the API Specification sec
 - **Endpoint URL**: Enter the URL of your API endpoint. This should be in the format `https://api.example.com/v1/endpoint`. This is a required field if your tool uses an API.
 - **OpenAPI (Swagger) Schema**: Paste your API's OpenAPI (Swagger) schema here. You can click the "Expand" link to open a larger window for editing the schema. This is a required field if your tool uses an API.
 
+<br>
+
 ## Authentication
 
 ![](tools-authentication.png)
@@ -128,11 +136,15 @@ In the Authentication section, you can specify the headers and query parameters 
 - **Headers**: Add any necessary headers for your API requests. Click the "Add header" button to add a new header field.
 - **Query Params**: Add any required query parameters for your API requests. Click the "Add query param" button to add a new query parameter field.
 
+<br>
+
 ## Actions
 
 ![](tools-actions.png)
 
 This section displays a grid of the available actions for your API tool.
+
+<br>
 
 ## Preview
 
@@ -146,6 +158,8 @@ The Preview section allows you to test your API tool by sending a message and se
 
 1. Enter a message in the "Message Helix" text field.
 2. Click the "Send" button to send the message and see the AI's response based on the tool's action descriptions.
+
+<br>
 
 ## Saving and Canceling
 
