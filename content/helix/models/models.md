@@ -8,11 +8,20 @@ aliases:
 
 ## Text Models
 
-* [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1)
-  * [Inference](/docs/text-inference)
-  * [Fine-tuning](/docs/text-finetuning)
+* [Helix 3.5](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)
+  * Utilizes Llama3-8B for fast and efficient performance, ideal for everyday tasks.
+* [Helix 4](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct)
+  * Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries.
+* [Helix Code](https://huggingface.co/meta-llama/CodeLlama-70b-hf)
+  * Features CodeLlama-70B from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
+* [Helix JSON](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B)
+  * Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
+* [Helix Small](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct)
+  * A smaller model based on Phi-3 Mini 3.8B, fast and memory efficent.
+* [Helix Text Fine Tuning](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1)
+  * Utilizes Mistral-7B-Instruct via Axolotl [Fine-tuning](/docs/text-finetuning)
 
-Text models use [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
+Text models use [Ollama](https://ollama.com/) or [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
 
 See [this](https://github.com/lukemarsden/axolotl/blob/new-long-running/helix-mistral-instruct-v1.yml) for the fine-tuning configuration we use.
 
