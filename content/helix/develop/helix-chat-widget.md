@@ -102,7 +102,7 @@ function App() {
   return (
     <div className="App">
       <Widget
-        url="https://myopenaiendpoint.com"
+        url="https://app.tryhelix.ai/v1/chat/completions"
         model="my_model_name"
         windowTheme={{ /* Optional window theme overrides */ }}
         searchTheme={{ /* Optional search theme overrides */ }}
