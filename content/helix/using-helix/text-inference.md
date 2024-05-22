@@ -11,6 +11,7 @@ Helix offers a variety of large language models tailored for different needs, al
 - **Helix 4**: Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries.
 - **Helix Code**: Features CodeLlama-70B from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
 - **Helix JSON**: Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
+- **Helix Small**: A smaller model based on Phi-3 Mini 3.8B, fast and memory efficent.
 
 ## Try chatting to the chatbot
 
