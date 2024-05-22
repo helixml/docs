@@ -27,6 +27,7 @@ We use Model Aliases for different use cases. We update the underlying model to 
 
 #### Helix Text Fine Tuning
   * Utilizes [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for [Fine-tuning](/docs/text-finetuning)
+<br>
 
 Text models use [Ollama](https://ollama.com/) and [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for fine-tuning.
 
