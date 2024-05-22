@@ -10,23 +10,23 @@ aliases:
 
 We use Model Aliases for different use cases. We update the underlying model to the most performant and efficient model available for that role.
 
-[Helix 3.5](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)
-  * Utilizes Llama3-8B for fast and efficient performance, ideal for everyday tasks.
+#### Helix 3.5
+  * Utilizes [Llama3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) for fast and efficient performance, ideal for everyday tasks.
 
-[Helix 4](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct)
-  * Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries.
+#### Helix 4
+  * Powered by [Llama3-70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct), this model offers deeper insights and although a bit slower, it's smarter for complex queries.
 
-[Helix Code](https://huggingface.co/meta-llama/CodeLlama-70b-hf)
-  * Features CodeLlama-70B from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
+#### Helix Code
+  * Features [CodeLlama-70B](https://huggingface.co/meta-llama/CodeLlama-70b-hf) from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
 
-[Helix JSON](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B)
-  * Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
+#### Helix JSON
+  * Operates on [Nous Hermes 2 Pro 7B](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B), specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
 
-[Helix Small](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct)
-  * A smaller model based on Phi-3 Mini 3.8B, fast and memory efficent.
-  
-[Helix Text Fine Tuning](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1)
-  * Utilizes Mistral-7B-Instruct via Axolotl [Fine-tuning](/docs/text-finetuning)
+#### Helix Small
+  * A smaller model based on [Phi-3 Mini 3.8B](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct), fast and memory efficent.
+
+#### Helix Text Fine Tuning
+  * Utilizes [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for [Fine-tuning](/docs/text-finetuning)
 
 Text models use [Ollama](https://ollama.com/) and [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for fine-tuning.
 
