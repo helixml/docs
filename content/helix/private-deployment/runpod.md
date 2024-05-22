@@ -14,7 +14,7 @@ Create a runpod GPU pod template like this:
 
 Container image:
 ```
-europe-docker.pkg.dev/helixml/helix/runner:<LATEST_TAG>
+registry.helix.ml/helix/runner:<LATEST_TAG>
 ```
 
 Where `<LATEST_TAG>` is the tag of the latest release in the form `X.Y.Z` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases)
