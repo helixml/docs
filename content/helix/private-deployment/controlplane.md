@@ -127,7 +127,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
-    europe-docker.pkg.dev/helixml/helix/runner:<LATEST_TAG> \
+    registry.helix.ml/helix/runner:<LATEST_TAG> \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory <GPU_MEMORY>GB \
