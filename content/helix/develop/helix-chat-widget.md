@@ -12,44 +12,47 @@ The Helix Chat Widget is a UI component that makes it easy to expose Helix model
 
 To embed the Helix Chat Widget in your web page:
 
-1. Load the library from a CDN by including the script tag in the `<head>` section of your HTML file:
+Load the library from a CDN by including the script tag in the `<head>` section of your HTML file:
 
-   ```html
-   <script src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed"></script>
-   ```
+```html
+<script src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed"></script>
+```
+<br>
 
-2. You can find the full list of versions on [jsdelivr](https://www.jsdelivr.com/package/npm/@helixml/chat-embed). You can use https://www.srihash.org/ to calculate the integrity hash, just enter the full version URL and they will give you the hash. For using the widget in production you must specify the version number and integrity as below.
+You can find the full list of versions on [jsdelivr](https://www.jsdelivr.com/package/npm/@helixml/chat-embed). You can use [srihash.org](https://www.srihash.org/) to calculate the integrity hash, just enter the full version URL and they will give you the hash. For using the widget in production you must specify the version number and integrity as below.
 
-    ```html
-    <script
-        src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed@0.3.2"
-        integrity="sha384-8/N8VED70naygSrRj1BYT5JlMwVLit5cPnT3HkKsLJ74L9fm+oNDVM9HFIOz5f8a"
-        crossorigin="anonymous"
-    >
-    </script>
-    ```
+```html
+<script
+    src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed@0.3.2"
+    integrity="sha384-8/N8VED70naygSrRj1BYT5JlMwVLit5cPnT3HkKsLJ74L9fm+oNDVM9HFIOz5f8a"
+    crossorigin="anonymous"
+>
+</script>
+```
+<br>
+Add a div element with the id `chat-widget` where you want the widget to appear:
 
-3. Add a `<div>` element with the id `chat-widget` where you want the widget to appear:
+```html
+<div id="chat-widget"></div>
+```
+<br>
 
-   ```html
-   <div id="chat-widget"></div>
-   ```
+Initialize the Chat Widget by calling the global `ChatWidget` function with your configuration:
 
-4. Initialize the Chat Widget by calling the global `ChatWidget` function with your configuration:
+```js
+ChatWidget({
+    url: 'https://app.tryhelix.ai/v1/chat/completions',
+    model: 'mistral:7b-instruct',
+    bearerToken: 'your_bearer_token_here',
+})
+```
+<br>
 
-   ```js
-   ChatWidget({
-     url: 'https://app.tryhelix.ai/v1/chat/completions',
-     model: 'mistral:7b-instruct',
-     bearerToken: 'your_bearer_token_here',
-   })
-   ```
-
-   Replace `'your_bearer_token_here'` with your actual bearer token. You will find your bearer token in the Helix Console under My Account.
+Replace `'your_bearer_token_here'` with your actual bearer token. You will find your bearer token in the Helix Console under My Account.
 
 ![](helix-account.png)
 
-### Examples
+### Example
 
 When the rendered search widget is clicked.
 
@@ -63,6 +66,56 @@ The widget will then display the response from the Helix model.
 
 ![](helix-chat-widget-answer.png)
 
+<br>
+
+## Embedding the Helix Chat Widget in Your React App
+
+### React Component Usage
+
+The `@helixml/chat-widget` is a highly customizable React component designed to provide interactive chat functionality within your application. It features a minimalist design that opens a modal window upon interaction, where users can submit questions and receive answers from a specified openAI compatible endpoint.
+
+#### Installation
+
+To use the `@helixml/chat-widget` in your project, install it via npm:
+
+```bash
+npm install @helixml/chat-widget
+```
+<br>
+
+or using yarn:
+
+```bash
+yarn add @helixml/chat-widget
+```
+<br>
+
+### Usage
+
+Import and use the `Widget` component in your React application:
+
+```jsx
+import React from 'react';
+import Widget from '@helixml/chat-widget';
+
+function App() {
+  return (
+    <div className="App">
+      <Widget
+        url="https://myopenaiendpoint.com"
+        model="my_model_name"
+        windowTheme={{ /* Optional window theme overrides */ }}
+        searchTheme={{ /* Optional search theme overrides */ }}
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+<br>
+
+## Customising the Helix Chat Widget
 
 You can customize the appearance and behavior of the Chat Widget by passing additional options to the `ChatWidget` function. This includes theme options to style the chat window and search input:
 
@@ -119,47 +172,3 @@ Customize the appearance of the chat widget and its components using the `window
 - `textPadding`: Padding inside the search input for text.
 - `textSize`: Font size of the text inside the search input.
 - `fontFamily`: Font family of the search input text.
-
-## Embedding the Helix Chat Widget in Your React App
-
-### React Component Usage
-
-The `@helixml/chat-widget` is a highly customizable React component designed to provide interactive chat functionality within your application. It features a minimalist design that opens a modal window upon interaction, where users can submit questions and receive answers from a specified openAI compatible endpoint.
-
-#### Installation
-
-To use the `@helixml/chat-widget` in your project, install it via npm:
-
-```bash
-npm install @helixml/chat-widget
-```
-
-or using yarn:
-
-```bash
-yarn add @helixml/chat-widget
-```
-
-### Usage
-
-Import and use the `Widget` component in your React application:
-
-```jsx
-import React from 'react';
-import Widget from '@helixml/chat-widget';
-
-function App() {
-  return (
-    <div className="App">
-      <Widget
-        url="https://myopenaiendpoint.com"
-        model="my_model_name"
-        windowTheme={{ /* Optional window theme overrides */ }}
-        searchTheme={{ /* Optional search theme overrides */ }}
-      />
-    </div>
-  );
-}
-
-export default App;
-```
