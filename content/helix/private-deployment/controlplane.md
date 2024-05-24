@@ -37,14 +37,6 @@ API_PORT=8080
 Where `<YOUR_CONTROLPLANE_HOSTNAME>` is a DNS A record that points to the IP address of your server. Ensure ports 443 and 80 are not firewalled.
 In this case, we'll set up easy TLS termination shortly.
 
-### Update realm settings
-
-Ensure keycloak realm settings are up to date with your .env file:
-```
-./update-realm-settings.sh
-```
-Do this **before** starting the stack for the first time. If you change the `KEYCLOAK_FRONTEND_URL` and/or `SERVER_URL` settings later, you'll have to manually update them in Keycloak in the client settings (see [Locking down the stack](#locking-down-the-stack) for how to log in).
-
 ### Start the stack
 
 Start the stack:
