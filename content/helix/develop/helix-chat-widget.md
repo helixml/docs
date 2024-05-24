@@ -54,8 +54,10 @@ Replace `'your_bearer_token_here'` with your actual bearer token. You will find 
 
 ### Example
 
-When the rendered search widget is clicked.
+<!-- Explain what you are going to code before giving the code solution -->
+This example shows the Helix Chat Widget integrated with the <a href="https://docs.helix.ml/helix/develop/helix-tools-example/" target="_self">Helix API</a> to provide a seamless chat experience.
 
+When the rendered search widget is clicked.
 ![](helix-chat-widget-search.png)
 
 The Helix Chat widget opens and the user can input their query.
