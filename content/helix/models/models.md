@@ -8,7 +8,7 @@ aliases:
 
 ## Text Models
 
-We use Model Aliases for different use cases. We update the underlying model to the most performant and efficient model available for that role.
+We use Model aliases for different use cases. We update the underlying model to the most performant and efficient model available for that role.
 
 #### Helix 3.5
   * Utilizes [Llama3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) for fast and efficient performance, ideal for everyday tasks.
@@ -29,7 +29,7 @@ We use Model Aliases for different use cases. We update the underlying model to 
   * Utilizes [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for [Fine-tuning](/docs/text-finetuning)
 <br>
 
-Text models use [Ollama](https://ollama.com/) and [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for fine-tuning.
+Text models use [Ollama](https://ollama.com/) for inference and [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for fine-tuning (and inference on a fine-tune).
 
 See [this](https://github.com/lukemarsden/axolotl/blob/new-long-running/helix-mistral-instruct-v1.yml) for the fine-tuning configuration we use.
 

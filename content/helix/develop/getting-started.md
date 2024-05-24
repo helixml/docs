@@ -12,6 +12,10 @@ This page describes how to create a basic "App" in Helix.
 
 A Helix App is a way of packaging tools, scripts, user interfaces and configuration to produce an LLM-powered solution. Apps are stored in version control and are tracked by Helix.
 
+{{< tip >}}
+If you are self hosting the control plane, you will need to [setup a Github App first]({{< ref "/helix/private-deployment/controlplane.md#enabling-helix-apps" >}}) before the following will work.
+{{< /tip >}}
+
 ## How to Create a Basic App
 
 ### 1. Create the App Code
