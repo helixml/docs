@@ -89,6 +89,8 @@ After creating your own accounts, you can choose to disable new registrations. G
 
 To lock down admin users to a specific set of users, go to Users and find the users you want to be admins. Copy their IDs into `.env` as a comma-separated list under `ADMIN_USER_IDS` variable. Run `docker compose up -d` to update the stack.
 
+You may also wish to review all available configuration options in [Environment Variables](/docs/content/helix/private-deployment/environment-variables).
+
 ### Upgrades
 
 Check configuration:
