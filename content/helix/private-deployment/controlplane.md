@@ -25,8 +25,8 @@ Now edit `.env` with the editor of your choice.
 
 If you just want to test locally, you can set:
 ```
-KEYCLOAK_FRONTEND_URL=http://localhost/auth/
-SERVER_URL=http://localhost
+KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth/
+SERVER_URL=http://localhost:8080
 ```
 If you're using a real DNS hostname for your deployment, set:
 ```
@@ -61,15 +61,13 @@ You will be ready to proceed to the next step.
 
 #### Testing on localhost
 
-If you are using `SERVER_URL=http://localhost` and `KEYCLOAK_FRONTEND_URL=http://localhost/auth/` in your `.env` file, you can now load `http://localhost` in your browser.
+If you are using `SERVER_URL=http://localhost:8080` and `KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth/` in your `.env` file, you can now load `http://localhost:8080` in your browser.
 
 #### Using a real DNS hostname with TLS termination
 
 If you're using a non-localhost domain, you'll need to point a DNS hostname (A record) at the IP address of your server and set up TLS termination.
 
-To enable TLS, first set the app to run on a different port to port 80 by setting `API_PORT=8080` in `.env` and running `docker compose up -d` to update the running stack.
-
-Then set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`:
+Set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`:
 ```
 <YOUR_CONTROLPLANE_HOSTNAME>
 
