@@ -112,7 +112,7 @@ On Kubernetes, and for a deployment with pinned versions, check out the [Helm ch
 
 Ensure you have the [NVIDIA docker toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) installed.
 
-Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`.
+Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`. You can also use `X.Y.Z-small` to use an image with llama3:8b and phi3 pre-baked, or `X.Y.Z-large` for one with all our supported models pre-baked. Warning: the `large` image is large (over 100GB), but it saves you re-downloading the weights every time the container restarts!
 
 ```
 sudo docker run --privileged --gpus all --shm-size=10g \
