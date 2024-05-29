@@ -10,20 +10,27 @@ aliases:
 
 We use Model aliases for different use cases. We update the underlying model to the most performant and efficient model available for that role.
 
+You can specify the 
+
 #### Helix 3.5
-  * Utilizes [Llama3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) for fast and efficient performance, ideal for everyday tasks.
+  * Utilizes [Llama3-8B](https://ollama.com/library/llama3) for fast and efficient performance, ideal for everyday tasks.
+  * Ollama tag `llama3:instruct`
 
 #### Helix 4
-  * Powered by [Llama3-70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct), this model offers deeper insights and although a bit slower, it's smarter for complex queries.
+  * Powered by [Llama3-70B](https://ollama.com/library/llama3:70b), this model offers deeper insights and although a bit slower, it's smarter for complex queries.
+  * Ollama tag `llama3:70b`
 
-#### Helix Code
-  * Features [CodeLlama-70B](https://huggingface.co/meta-llama/CodeLlama-70b-hf) from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
+#### Helix Mixtral
+  * Features [CodeLlama-70B](https://ollama.com/library/mixtral) from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
+  * Ollama tag `mixtral:instruct`
 
 #### Helix JSON
-  * Operates on [Nous Hermes 2 Pro 7B](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B), specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
+  * Operates on [Nous Hermes 2 Theta Llama3 7B](https://ollama.com/adrienbrault/nous-hermes2theta-llama3-8b:q8_0), specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
+  * Ollama tag `adrienbrault/nous-hermes2theta-llama3-8b:q8_0`
 
 #### Helix Small
-  * A smaller model based on [Phi-3 Mini 3.8B](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct), fast and memory efficent.
+  * A smaller model based on [Phi-3 Mini 3.8B](https://ollama.com/library/phi3), fast and memory efficent.
+  * Ollama tag `phi3:instruct`
 
 #### Helix Text Fine Tuning
   * Utilizes [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for [Fine-tuning](/docs/text-finetuning)
