@@ -130,6 +130,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
 
 Notes:
 
+* You can update `RUNTIME_OLLAMA_WARMUP_MODELS` to match the specific Ollama models you want to enable for your Helix install, see [available values](https://docs.helix.ml/helix/models/models/). Remove it to use the default, which is all available models. This will take a long time to download!
 * Update `<GPU_MEMORY>` to correspond to how much GPU memory you have, e.g. "80GB" or "24GB"
 * You can add `--gpus 1` before the image name to target a specific GPU on the system (starting at 0). If you want to use multiple GPUs on a node, you'll need to run multiple runner containers (in that case, remember to give them different names)
 * Make sure to run the container with `--restart always` or equivalent in your container runtime, since the runner will exit if it detects an unrecoverable error and should be restarted automatically
