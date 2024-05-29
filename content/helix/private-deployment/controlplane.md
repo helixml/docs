@@ -112,7 +112,7 @@ On Kubernetes, and for a deployment with pinned versions, check out the [Helm ch
 
 Ensure you have the [NVIDIA docker toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) installed.
 
-Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`. You can also use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,mixtral:instruct`), or `X.Y.Z-large` for one with all our supported models pre-baked. Warning: the `large` image is large (over 100GB), but it saves you re-downloading the weights every time the container restarts! We recommend using `X.Y.Z-small` and setting the `RUNTIME_OLLAMA_WARMUP_MODELS` value to `llama3:instruct,mixtral:instruct` to get started, so the download isn't too big. If you want to use other models in the interface, delete this `-e RUNTIME_OLLAMA_WARMUP_MODELS` line from below, and it will use the defaults (all models).
+Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`. You can also use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,phi3:instruct`), or `X.Y.Z-large` for one with all our supported models pre-baked. Warning: the `large` image is large (over 100GB), but it saves you re-downloading the weights every time the container restarts! We recommend using `X.Y.Z-small` and setting the `RUNTIME_OLLAMA_WARMUP_MODELS` value to `llama3:instruct,phi3:instruct` to get started, so the download isn't too big. If you want to use other models in the interface, delete this `-e RUNTIME_OLLAMA_WARMUP_MODELS` line from below, and it will use the defaults (all models).
 
 ```
 sudo docker run --privileged --gpus all --shm-size=10g \
@@ -120,7 +120,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
-    -e RUNTIME_OLLAMA_WARMUP_MODELS=llama3:instruct,mixtral:instruct \
+    -e RUNTIME_OLLAMA_WARMUP_MODELS=llama3:instruct,phi3:instruct \
     registry.helix.ml/helix/runner:<LATEST_TAG> \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
