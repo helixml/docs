@@ -30,9 +30,9 @@ The main environment variables for configuring the Helix control plane can be fo
 Key environment variables for the Helix runner are defined in [`runner_config.go`](https://github.com/helixml/helix/blob/main/runner/runner_config.go):
 
 - `RUNTIME_AXOLOTL_ENABLED`: Enable/disable fine-tuning and inference for Mistral-7B and SDXL models (default `true`)
-- `RUNTIME_AXOLOTL_WARMUP_MODELS`: Comma-separated list of Mistral-7B and SDXL models to pre-warm, e.g. `mistral-ai/mistral-7b-instruct,mistral-ai/sdxl-7b-instruct`
+- `RUNTIME_AXOLOTL_WARMUP_MODELS`: Comma-separated list of Mistral-7B and SDXL models to pre-warm, e.g. `mistralai/Mistral-7B-Instruct-v0.1,stabilityai/stable-diffusion-xl-base-1.0`
 - `RUNTIME_OLLAMA_ENABLED`: Enable/disable LLM inference with Ollama backend (default `true`) 
-- `RUNTIME_OLLAMA_WARMUP_MODELS`: Comma-separated list of LLM models to enable and pre-download for inference, e.g. `llama3:instruct,llama3:chat`
+- `RUNTIME_OLLAMA_WARMUP_MODELS`: Comma-separated list of LLM models to enable and pre-download for inference, e.g. `llama3:instruct,mixtral:instruct`
 
 ### Important notes
 
