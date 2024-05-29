@@ -36,7 +36,6 @@ Key environment variables for the Helix runner are defined in [`runner_config.go
 
 ### Important notes
 
-- The LLM models specified in `RUNTIME_OLLAMA_WARMUP_MODELS` must be included in the Helix Docker image you are using. See the [models documentation](https://docs.helix.ml/helix/models) for available models.
 - If using Helix on Kubernetes, the Helm chart values like `runner.models` map to the `RUNTIME_OLLAMA_WARMUP_MODELS` env var.
 
 The full list of available environment variables can be found for the Control Plane [`config.go`](https://github.com/helixml/helix/blob/main/config.go) and for the Runner [`runner_config.go`](https://github.com/helixml/helix/blob/main/runner/runner_config.go).
