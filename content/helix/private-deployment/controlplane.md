@@ -137,6 +137,7 @@ Notes:
 * You can add `--gpus 1` before the image name to target a specific GPU on the system (starting at 0). If you want to use multiple GPUs on a node, you'll need to run multiple runner containers (in that case, remember to give them different names)
 * Make sure to run the container with `--restart always` or equivalent in your container runtime, since the runner will exit if it detects an unrecoverable error and should be restarted automatically
 * If you want to run the runner on the same machine as the controlplane, either: (a) set `--network host` and set `--api-host http://localhost` so that the runner can connect on localhost via the exposed port, or (b) use `--api-host http://172.17.0.1` so that the runner can connect to the API server via the docker bridge IP
+* Helix will currently also download and run SDXL and Mistral-7B weights used for fine-tuning at startup. These weights are not currently pre-baked anywhere. This can be disabled with `RUNTIME_AXOLOTL_ENABLED=false` if desired. If running in a low-memory environment, this may cause CUDA OOM errors at startup, which can be ignored (at startup) since the scheduler will only fit models into available memory after the startup phase.
 
 ### Runner upgrades
 
