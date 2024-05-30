@@ -112,9 +112,7 @@ On Kubernetes, and for a deployment with pinned versions, check out the [Helm ch
 
 Ensure you have the [NVIDIA docker toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) installed.
 
-Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`. You can also use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,phi3:instruct`), or `X.Y.Z-large` for one with [all our supported Ollama models](https://docs.helix.ml/helix/models/models/) pre-baked. Note: Helix will download the weights for models specified in `RUNTIME_OLLAMA_WARMUP_MODELS` whether or not they are baked into the image.
-
-Warning: the `large` image is large (over 100GB), but it saves you re-downloading the weights every time the container restarts! We recommend using `X.Y.Z-small` and setting the `RUNTIME_OLLAMA_WARMUP_MODELS` value to `llama3:instruct,phi3:instruct` to get started, so the download isn't too big. If you want to use other models in the interface, delete this `-e RUNTIME_OLLAMA_WARMUP_MODELS` line from below, and it will use the defaults (all models).
+Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`. You can also use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,phi3:instruct`), or `X.Y.Z-large` for one with [all our supported Ollama models](https://docs.helix.ml/helix/models/models/) pre-baked.
 
 ```
 sudo docker run --privileged --gpus all --shm-size=10g \
@@ -132,7 +130,9 @@ sudo docker run --privileged --gpus all --shm-size=10g \
 
 Notes:
 
-* You can update `RUNTIME_OLLAMA_WARMUP_MODELS` to match the specific Ollama models you want to enable for your Helix install, see [available values](https://docs.helix.ml/helix/models/models/). Remove it to use the default, which is all available models. This will take a long time to download!
+* You can update `RUNTIME_OLLAMA_WARMUP_MODELS` to match the specific Ollama models you want to enable for your Helix install, see [available values](https://docs.helix.ml/helix/models/models/).
+* Helix will download the weights for models specified in `RUNTIME_OLLAMA_WARMUP_MODELS` whether or not they are baked into the image.
+* Warning: the `-large` image is large (over 100GB), but it saves you re-downloading the weights every time the container restarts! We recommend using `X.Y.Z-small` and setting the `RUNTIME_OLLAMA_WARMUP_MODELS` value to `llama3:instruct,phi3:instruct` to get started, so the download isn't too big. If you want to use other models in the Helix UI and API, delete this `-e RUNTIME_OLLAMA_WARMUP_MODELS` line from below, and it will use the defaults (all models). The default models will take a long time to download!
 * Update `<GPU_MEMORY>` to correspond to how much GPU memory you have, e.g. "80GB" or "24GB"
 * You can add `--gpus 1` before the image name to target a specific GPU on the system (starting at 0). If you want to use multiple GPUs on a node, you'll need to run multiple runner containers (in that case, remember to give them different names)
 * Make sure to run the container with `--restart always` or equivalent in your container runtime, since the runner will exit if it detects an unrecoverable error and should be restarted automatically
