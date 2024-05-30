@@ -26,6 +26,20 @@ The simplest way to get started is to use our basic app templates. Click on one 
 
 Create a new repository using this template. You can make it private if you like, since you will give Helix permission to access all your repos later.
 
+Add your OpenAPI Specification (OAS) to the repo and update `helix.yaml` to use your OAS.
+
+```
+name: Name of your Helix app
+description: A human readable description for your app
+assistants:
+- name: Nme
+  apis:
+    - name: Name of API
+      description: API Description
+      url: API Server URL
+      schema: Relative path to OAS.yaml
+```
+
 ### 2. Connect Your Repository
 
 Now it's time to connect your repository to Helix.
@@ -47,10 +61,10 @@ This will be improved soon.
 {{< /tip >}}
 
 1. Click on your `App` and scroll to the bottom right. Copy the `key` under `API Keys`.
-2. Run a curl request using this key as the bearer token. This will trigger your app.
+2. Run a curl request using this key as the bearer token. This will trigger your app. This example uses model llama3:instruct but any [Helix supported AI Model](https://docs.helix.ml/helix/models/models/) can be used.
 
 ```bash
-curl -i -H "Authorization: Bearer YOUR_API_KEY" https://app.tryhelix.ai/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}],"stream":false}'
+curl -i -H "Authorization: Bearer YOUR_API_KEY" https://app.tryhelix.ai/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}], "model":"llama3:instruct", "stream":false}'
 ```
 
 You should see a response that looks something like:
@@ -59,7 +73,7 @@ You should see a response that looks something like:
 {"created":1715691428,"object":"chat.completion","id":"51aaec1f-0ed4-4a06-815a-23171f69aa0c","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","content":"**The live Bitcoin price in GBP is £49,074.38.**"}}],"usage":{"prompt_tokens":0,"completion_tokens":0,"total_tokens":0}}
 ```
 
-## Control Plane Configuration
+## Control Plane Configuration for Private Deployments:
 
 The following environmental variables are used to configure how the control plane runs Apps.
 
@@ -76,11 +90,11 @@ TOOLS_MODEL=llama3:instruct # Which model to use with tools
 Note that the model used for Apps is hardcoded in the control plane config. It is not user-selectable.
 {{< /tip >}}
 
-## Runner Configuration
+## Runner Configuration for Private Deployments
 
 The following environmental variables are used to configure how the runner runs Apps.
 
 ```bash
 # https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go#L36
-RUNTIME_OLLAMA_WARMUP_MODELS=llama3:70b,llama3:instruct # Which models are available on this runner. 
+RUNTIME_OLLAMA_WARMUP_MODELS=llama3:70b,llama3:instruct # Which models are available on this runner.
 ```
