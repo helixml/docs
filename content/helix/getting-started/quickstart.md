@@ -6,7 +6,7 @@ aliases:
   - /docs/quickstart
 ---
 
-These instructions show a user how to log into [Helix Cloud](https://app.tryhelix.ai/) and use it.
+These instructions show you how to log into [Helix Cloud](https://app.tryhelix.ai/) and use it.
 
 For deploying to your own infrastructure, see [Deploying Control Plane](/docs/controlplane).
 
@@ -16,13 +16,11 @@ Here's a quick overview of how to get started:
 
 1. [Sign up](https://app.tryhelix.ai/) for a Helix account or [log in](https://app.tryhelix.ai/) if you already have one.
 
-2. Explore the [Helix app](https://app.tryhelix.ai) and try out some of the [example prompts](https://app.tryhelix.ai/new) to get a feel for what's possible.
+2. Explore the [Helix app](https://app.tryhelix.ai) and try out some of the example prompts to get a feel for what's possible.
 
-3. [Fine-tune a model](/docs/getting-started/fine-tuning) to adapt it to your specific use case and data.
+3. [Fine-tune a model](#fine-tuning-a-text-model) to adapt it to your specific use case and data.
 
-4. [Deploy your fine-tuned model](/docs/getting-started/deployment) and start generating text, images, or other outputs.
-
-5. Dive deeper into the [Helix architecture](/docs/architecture) to understand how it all works under the hood.
+4. Dive deeper into the [Helix architecture](/docs/architecture) to understand how it all works under the hood.
 
 If you have any questions along the way, check out our [FAQ](#frequently-asked-questions) or reach out to our support team.
 

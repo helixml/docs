@@ -14,12 +14,13 @@ Helix offers a variety of powerful features for working with large language mode
 
 Helix provides several large language models optimized for different use cases:
 
-
 - **Helix 3.5**: Uses Llama3-8B, fast and good for everyday tasks.
 - **Helix 4**: Powered by Llama3 70B, smarter but a bit slower.
 - **Helix Mixtral**: Uses Mistral 8x7B MoE, we rely on this for some use cases.
 - **Helix JSON**: Based on Nous-Hermes 2 Theta, for function calling & JSON output.
 - **Helix Small**: Uses Phi-3 Mini 3.8B, fast and memory efficient.
+
+<br>
 
 ### Chat to a model
 
@@ -47,14 +48,55 @@ Share your results with your friends with the "Share" button or on our [Discord]
 
 ![](share.png)
 
+### Prompt Examples
+<br>
+<details>
+<summary>Marketing Prompts</summary>
+
+- Can you provide me with some ideas for blog posts about [topic of your choice]?
+- Write a minute-long script for an advertisement about [product or service or company]
+- Write a product description for my [product or service or company]
+- Suggest inexpensive ways I can promote my [company] with/without using [Media channel]
+- How can I obtain high-quality backlinks to raise the SEO of [Website name]
+- Make 5 distinct CTA messages and buttons for [Your product]
+- Create a [social media] campaign plan for launching an [your product], aimed at [Your target audience]
+- Analyze these below metrics to improve email open rates for a fashion brand <paste metrics>
+- Write follow-up emails to people who attended my [webinar topic] webinar
+- Structure a weekly [newsletter topic] newsletter
+- Make a post showcasing the benefits of using our product [product name] for [specific problem/issue]
+- Generate 5 creative ways to use Instagram Reels for [your product or service or company]
+- Create a social media post that targets [the specific audience] and explains how our product [product name] can help them
+- Create a personalized email greeting for a VIP customer
+- Write a list of 5 YouTube video ideas for [your product or company]
+- Write a 100-character meta description for my blog post about <topic>
+
+</details>
+<br>
+<details>
+<summary>Product Prompts</summary>
+
+- Analyze the current state of [industry] and its trends, challenges, and opportunities, including relevant data and statistics. Provide a list of key players and a short and long-term industry forecast, and explain any potential impact of current events or future developments
+- Offer a detailed review of a <specific software or tool>  for <describe your business>
+- Offer an in-depth analysis of the current state of small business legislation and regulations and their impact on entrepreneurship
+- Offer a comprehensive guide to small business financing options, including loans, grants, and equity financing
+- Provide a guide on managing finances for a small business, including budgeting, cash flow management, and tax considerations
+- Provide a guide on networking and building partnerships as a small business owner
+- I want to create an agenda for a meeting about <Meeting info> with my team. Can you give me some examples of what should be included?
+- I need to write an email to a client regarding a change in the project timeline. Can you give me some guidance on how to phrase it?
+- Write an in-depth analysis of the current state of a specific industry and its potential for small business opportunities
+- I need to prepare a presentation for a potential investor on <presentation topic>. Can you give me some guidance on what to include?
+
+</details>
+
 <br>
 
 ## Image Inference 
 
 Helix uses the [Stable Diffusion XL](https://stability.ai/stable-diffusion) image diffusion models to provide high quality images with relatively small memory GPU footprint, including fine-tuning teach the model new people, styles or concepts to represent visually.
 
+<br>
 
-## Try creating images
+### Try creating images
 
 Click "New Session", then the dropdown next to "Create Text" and select "Images". Now, prompt the image model with prompts like "interior design of a luxurious master bedroom, gold and marble furniture, luxury, intricate, breathtaking"
 
@@ -94,6 +136,8 @@ Click "New Session", then the dropdown next to "Create Text" and select "Images"
 
 Helix uses the [Mistral](https://mistral.ai/) series of large language models to provide high quality responses with relatively small memory GPU footprint, including fine-tuning teach the model new information or styles of reasoning and presenting information.
 
+<br>
+
 ### Preparing the model to Learn
 
 1. Click "Learn" and select "Text".
@@ -106,17 +150,57 @@ Helix uses the [Mistral](https://mistral.ai/) series of large language models to
 
 <br>
 
+### Data Best Practices
+
+* Your data must answer the question
+* More data is better
+* Only include data that is relevant to your problem
+
+### Use Case Best Practices
+
+#### Question Answering
+
+* Format training data as question-answer pairs
+* Ensure your training data includes questions similar to downstream tasks
+* Ensure question answer pairs have good "coverage" of your problem domain
+
+#### Inference Best Practices
+
+* Imagine yourself performing the task or answering the question
+* If you need to ask questions, then you haven't provided enough context
+* If you are asking questions about a thing, indicate what the thing is
+
+<br>
+
 ## Image Fine-Tuning
 
 ![](helix-image-learn.png)
-
-<br>
 
 1. Click "Learn" and select "Image".
 2. Now drag and drop some images and label them, for example selfies of yourself or any object or style you want to generate an image model that can copy. You should provide at least 5 examples.
 3. Use the prompt "A photo of &lt;s0&gt;&lt;s1&gt;", you can add additional text after that prompt as well, but the "<s0><s1>" bit tells it to reference the concepts in the uploaded images.
 
 ![](gsg-06.png)
+
+<br>
+
+### Image Fine-Tuning Demo
+
+{{< youtube "v6XZT8u6khI" >}}
+
+In this demo we feed selfies into Helix and ask it to give us professional headshots. Give it a try and give us feedback on Discord!
+
+## Demo Steps
+
+1. [Start a finetune session on Helix](https://app.tryhelix.ai/?mode=finetune&type=image)
+   * Upload some selfies, at least five
+2. Run the fine tuning
+   * Prompt the finetuned image model with "A photo of <s0><s1>", you can add additional text after that prompt as well, but the "<s0><s1>" bit tells it to reference the concepts in the uploaded images
+
+## Example Sessions
+* [https://app.tryhelix.ai/session/e0006f91-c685-4788-ae20-cdc558377033](https://app.tryhelix.ai/session/e0006f91-c685-4788-ae20-cdc558377033)
+
+<br>
 
 Share your results with your friends with the "Share" button or on our [Discord](https://discord.gg/VJftd844GE)!
 
