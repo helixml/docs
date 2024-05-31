@@ -25,8 +25,8 @@ Now edit `.env` with the editor of your choice.
 
 If you just want to test locally, you can set:
 ```
-KEYCLOAK_FRONTEND_URL=http://localhost/auth/
-SERVER_URL=http://localhost
+KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth/
+SERVER_URL=http://localhost:8080
 ```
 If you're using a real DNS hostname for your deployment, set:
 ```
@@ -36,14 +36,6 @@ API_PORT=8080
 ```
 Where `<YOUR_CONTROLPLANE_HOSTNAME>` is a DNS A record that points to the IP address of your server. Ensure ports 443 and 80 are not firewalled.
 In this case, we'll set up easy TLS termination shortly.
-
-### Update realm settings
-
-Ensure keycloak realm settings are up to date with your .env file:
-```
-./update-realm-settings.sh
-```
-Do this **before** starting the stack for the first time. If you change the `KEYCLOAK_FRONTEND_URL` and/or `SERVER_URL` settings later, you'll have to manually update them in Keycloak in the client settings (see [Locking down the stack](#locking-down-the-stack) for how to log in).
 
 ### Start the stack
 
@@ -61,15 +53,13 @@ You will be ready to proceed to the next step.
 
 #### Testing on localhost
 
-If you are using `SERVER_URL=http://localhost` and `KEYCLOAK_FRONTEND_URL=http://localhost/auth/` in your `.env` file, you can now load `http://localhost` in your browser.
+If you are using `SERVER_URL=http://localhost:8080` and `KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth/` in your `.env` file, you can now load `http://localhost:8080` in your browser.
 
 #### Using a real DNS hostname with TLS termination
 
 If you're using a non-localhost domain, you'll need to point a DNS hostname (A record) at the IP address of your server and set up TLS termination.
 
-To enable TLS, first set the app to run on a different port to port 80 by setting `API_PORT=8080` in `.env` and running `docker compose up -d` to update the running stack.
-
-Then set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`:
+Set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or another TLS-terminating proxy of your choice. Here is an example `Caddyfile`:
 ```
 <YOUR_CONTROLPLANE_HOSTNAME>
 
@@ -122,7 +112,7 @@ On Kubernetes, and for a deployment with pinned versions, check out the [Helm ch
 
 Ensure you have the [NVIDIA docker toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) installed.
 
-Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`.
+Select which container image you will use. Get `<LATEST_TAG>` from [https://github.com/helixml/helix/releases](https://github.com/helixml/helix/releases). The tag is in the form `X.Y.Z`. Then add a `-small` or `-large` suffix to the image name to get pre-baked models. You use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,phi3:instruct`), or `X.Y.Z-large` for one with [all our supported Ollama models](https://docs.helix.ml/helix/models/models/) pre-baked.
 
 ```
 sudo docker run --privileged --gpus all --shm-size=10g \
@@ -130,6 +120,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --name helix-runner --ipc=host --ulimit memlock=-1 \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
+    -e RUNTIME_OLLAMA_WARMUP_MODELS=llama3:instruct,phi3:instruct \
     registry.helix.ml/helix/runner:<LATEST_TAG> \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
@@ -139,10 +130,14 @@ sudo docker run --privileged --gpus all --shm-size=10g \
 
 Notes:
 
+* You can update `RUNTIME_OLLAMA_WARMUP_MODELS` to match the specific Ollama models you want to enable for your Helix install, see [available values](https://docs.helix.ml/helix/models/models/).
+* Helix will download the weights for models specified in `RUNTIME_OLLAMA_WARMUP_MODELS` at startup if they are not baked into the image. This can be slow, especially if it runs in parallel across many runners, and can easily saturate your network connection. This is why using the images with pre-baked weights (`-small` and `-large` variants) is recommended.
+* Warning: the `-large` image is large (over 100GB), but it saves you re-downloading the weights every time the container restarts! We recommend using `X.Y.Z-small` and setting the `RUNTIME_OLLAMA_WARMUP_MODELS` value to `llama3:instruct,phi3:instruct` to get started, so the download isn't too big. If you want to use other models in the Helix UI and API, delete this `-e RUNTIME_OLLAMA_WARMUP_MODELS` line from below, and it will use the defaults (all models). The default models will take a long time to download!
 * Update `<GPU_MEMORY>` to correspond to how much GPU memory you have, e.g. "80GB" or "24GB"
 * You can add `--gpus 1` before the image name to target a specific GPU on the system (starting at 0). If you want to use multiple GPUs on a node, you'll need to run multiple runner containers (in that case, remember to give them different names)
 * Make sure to run the container with `--restart always` or equivalent in your container runtime, since the runner will exit if it detects an unrecoverable error and should be restarted automatically
-* If you want to run the runner on the same machine as the controlplane, either: (a) set `--network host` and set `--api-host http://localhost` so that the runner can connect on localhost via the exposed port, or (b) use `--api-host http://172.17.0.1` so that the runner can connect to the API server via the docker bridge IP
+* If you want to run the runner on the same machine as the controlplane, either: (a) set `--network host` and set `--api-host http://localhost` so that the runner can connect on localhost via the exposed port, or (b) use `--api-host http://172.17.0.1` so that the runner can connect to the API server via the docker bridge IP. On Windows or Mac, you can use `--api-host http://host.docker.internal`
+* Helix will currently also download and run SDXL and Mistral-7B weights used for fine-tuning at startup. These weights are not currently pre-baked anywhere. This can be disabled with `RUNTIME_AXOLOTL_ENABLED=false` if desired. If running in a low-memory environment, this may cause CUDA OOM errors at startup, which can be ignored (at startup) since the scheduler will only fit models into available memory after the startup phase.
 
 ### Runner upgrades
 
