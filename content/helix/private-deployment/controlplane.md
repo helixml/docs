@@ -18,6 +18,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 * Min 8GB GPU for small models (Llama3-8B, Phi3-Mini), 24GB for Mixtral/SDXL, 40GB for Llama3-70B
 * Min 24GB GPU for fine-tuning (text or image)
 * Recommend 2x24GB GPUs for e.g. text & image inference in parallel
+* NVIDIA 3090s, A6000s are typically good price/performance
 
 ### Clone repo and set up env file
 
