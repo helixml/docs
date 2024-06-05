@@ -35,11 +35,7 @@ If you're wanting to use colours that don't exist in the theme, then you might h
 
 ## Deployment
 
-The website is hosted by Cloudflare pages under [the docs worker in the tools@combinator.ml account](https://dash.cloudflare.com/f0150e619c6dc08f55aea6d2248b1c6c/pages/view/docs).
-
-All non-main branches will be deployed to `<branch-name>.docs-8df.pages.dev`, where branch name has been lowercased and non-alphanumeric characters are replaced with a hyphen. If you have a PR open, cloudflare will print this to the PR timeline.
-
-The main branch is deployed to the custom domain [setup for that pages worker](https://dash.cloudflare.com/f0150e619c6dc08f55aea6d2248b1c6c/pages/view/docs/domains). As of now, https://docs.helix.ml.
+The website is hosted by [Netlify](https://app.netlify.com/sites/helixml-docs/deploys).
 
 ## Other Notes
 
