@@ -167,3 +167,27 @@ At the bottom of the screen, you have the following options:
 
 - **Cancel**: Click the "Cancel" button to cancel any changes and navigate back to the tools list.
 - **Save**: Click the "Save" button to save your API tool configuration. If there are any validation errors, they will be displayed, and you will need to fix them before saving.
+
+## Helix Tool Guidelines and Best Practices
+
+This section describes how tools work and how best to use them.
+
+### How does Helix decide when to use a tool?
+
+When tools are available to a session (e.g. via a global tool or via an app) Helix uses an LLM to classify whether and which tool should be used. How it does this depends on what type of tool it is:
+
+- **API tool**: If it is an API tool, it uses the OpenAPI `operationId` and `description` fields for each entry in the OpenAPI specification.
+- **GPTScript tool**: If it is a GPTScript tool, it uses the name and description from the `helix.yaml` for each assistant.
+
+Based upon these fields, Helix will prompt the LLM to find out whether any of these tools can satisfy the current user query. If yes, it is called.
+
+### Tool Description Best Practices
+
+Since tool usage is solely defined by the name and description fields, it is vital that the description provides all the context required to make a decision. Here is a list of handy tips to make tool selection more stable:
+
+- **Be strict**. If the tool must be used, use the word "must" in your description.
+- **Be verbose**. Tools work best when you spell out every possible use for it. For example, if the API is to be used when users prompt something like "classify the data into...", add something like "This API must be used with requests to summarize, categorize, or classify XXXX data."
+- **Use American English**. LLMs tend to prefer to operate in American English, even when prompting in UK English. We have seen tools ignore the word "summarise" in a description because the LLM interpreted the user query as "summarize".
+- **Use domain specific and technical terminology**. If your users prompt using technical terms, like "API" or "genealogy data", make sure you include those exact words in the description.
+
+In summary, gather or imagine all the prompts your users might request, and then make sure those key identifying terms or actions are included in the description.
