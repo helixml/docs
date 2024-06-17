@@ -27,7 +27,7 @@ The main environment variables for configuring the Helix control plane can be fo
 
 ## Runner Environment Variables
 
-Key environment variables for the Helix runner are defined in [`runner_config.go`](https://github.com/helixml/helix/blob/main/runner/runner_config.go):
+Key environment variables for the Helix runner are defined in [`runner_config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go):
 
 - `RUNTIME_AXOLOTL_ENABLED`: Enable/disable fine-tuning and inference for Mistral-7B and SDXL models (default `true`)
 - `RUNTIME_AXOLOTL_WARMUP_MODELS`: Comma-separated list of Mistral-7B and SDXL models to pre-warm, e.g. `mistralai/Mistral-7B-Instruct-v0.1,stabilityai/stable-diffusion-xl-base-1.0`
@@ -38,4 +38,4 @@ Key environment variables for the Helix runner are defined in [`runner_config.go
 
 - If using Helix on Kubernetes, the Helm chart values like `runner.models` map to the `RUNTIME_OLLAMA_WARMUP_MODELS` env var.
 
-The full list of available environment variables can be found for the Control Plane [`config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/config.go#L4) and for the Runner [`runner_config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go#L4).
+The full list of available environment variables can be found for the Control Plane [`config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/config.go) and for the Runner [`runner_config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go).
