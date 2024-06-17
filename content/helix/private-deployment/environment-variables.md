@@ -33,7 +33,7 @@ Key environment variables for the Helix runner are defined in [`runner_config.go
 - `RUNTIME_AXOLOTL_WARMUP_MODELS`: Comma-separated list of Mistral-7B and SDXL models to pre-warm, e.g. `mistralai/Mistral-7B-Instruct-v0.1,stabilityai/stable-diffusion-xl-base-1.0`
 - `RUNTIME_OLLAMA_ENABLED`: Enable/disable LLM inference with Ollama backend (default `true`) 
 - `RUNTIME_OLLAMA_WARMUP_MODELS`: Comma-separated list of LLM models to enable and pre-download for inference, e.g. `llama3:instruct,mixtral:instruct`
-- `HF_TOKEN`: for text fine tuning which uses Mistral-7B model weights, you now need to accept sharing your contact information with Mistral [here](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) and then fetch an access token from [here](https://huggingface.co/settings/tokens)
+- `HF_TOKEN`: for text fine tuning which uses Mistral-7B model weights, you now need to accept sharing your contact information with Mistral [here](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) and then fetch an access token from [here](https://huggingface.co/settings/tokens) and then specify it in this environment variable
 
 ### Important notes
 
