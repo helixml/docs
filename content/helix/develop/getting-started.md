@@ -128,3 +128,13 @@ If you need to pass query parameters to your backend service at query time, then
   ```bash
   curl -H "Authorization: Bearer hl-xxx-your-app-token" https://helix-control-plane.host/v1/chat/completions?page%3D5%26filter%3Dhi%20there --data-raw '{"model": "llama3:instruct", "messages":[{"role":"user","content":"Hi please use the API I have provided to get data"}]}'
   ```
+
+## Troubleshooting
+
+- **When I submit a request that uses an App, it hangs. Why?**
+
+  Check the API logs.
+
+- **The logs show: `No tools api client has been configured`**
+
+  This means that you haven't configured Helix to use Apps correctly. See the section about [Helix control plane configuration for private deployments](#control-plane-configuration-for-private-deployments).
