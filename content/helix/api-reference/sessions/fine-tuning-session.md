@@ -1,30 +1,13 @@
 ---
-title: API Reference
-weight: 8
-prev: /helix/private-deployment/_index.md
+title: Fine Tuning Session
+weight: 1
+prev: /helix/api-reference/sessions/chat-sessions.md
 aliases:
-  - /docs/api
+  - /docs/fine-tuning-session
 ---
 
-## Easy to use API
 
-Create a new chat session:
-
-```shell
-curl https://app.tryhelix.ai/api/v1/sessions \
-  -H 'Authorization: Bearer <YOUR_API_KEY>'
-  -d "input=yo&mode=inference&type=text"
-```
-
-Generate an image:
-
-```shell
-curl https://app.tryhelix.ai/api/v1/sessions \
-  -H 'Authorization: Bearer <YOUR_API_KEY>'
-  -d "input=flying fish&mode=inference&type=image"
-```
-
-### Create a Text Fine-Tuning Session
+## Create a Text Fine-Tuning Session
 
 First create a file that will be used to upload the text data. It should be in [`multipart/form-data` format](https://www.rfc-editor.org/rfc/rfc7578). The form data keys `mode` and `type` are required to distinguish that this is a text fine-tuning session.
 
@@ -55,14 +38,14 @@ EOL
 Now `POST` that file to Helix to create a new fine-tuning session.
 
 ```shell
-curl 'https://app.tryhelix.ai/api/v1/sessions' \
+curl 'https://app.tryhelix.ai/api/v1/sessions/learn' \
   -H 'Authorization: Bearer <YOUR_API_KEY>' \
   -H 'Content-Type: multipart/form-data; boundary=---BOUNDARY' \
   --data-binary @session-data.form \
   --compressed
 ```
-
-#### Check on the Status of a Fine-Tune Session
+.
+## Check on the Status of a Fine-Tune Session
 
 First grab the ID of your session from the `id` field of the output of the create session API. Then run:
 
@@ -75,11 +58,3 @@ curl 'https://app.tryhelix.ai/api/v1/sessions/<SESSION_ID>' \
 The response will show all of the generated QA pairs for the fine-tune session as well as the status of the session.
 
 Look at the `interactions` key to find the current state.
-
-## More Information
-
-Get your API key from [Account](https://app.tryhelix.ai/account) page in the app.
-
-For the rest of the endpoints, see the [code](https://github.com/helixml/helix/blob/main/api/pkg/server/server.go#L81-L215).
-
-Please encourage us to write more on this on [Discord](https://discord.gg/VJftd844GE)!
