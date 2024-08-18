@@ -38,7 +38,6 @@ If you're using a real DNS hostname for your deployment, set:
 ```
 KEYCLOAK_FRONTEND_URL=https://<YOUR_CONTROLPLANE_HOSTNAME>/auth/
 SERVER_URL=https://<YOUR_CONTROLPLANE_HOSTNAME>
-API_PORT=8080
 ```
 Where `<YOUR_CONTROLPLANE_HOSTNAME>` is a DNS A record that points to the IP address of your server. Ensure ports 443 and 80 are not firewalled.
 In this case, we'll set up easy TLS termination shortly.
@@ -72,10 +71,12 @@ Set up [caddy](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) or a
 reverse_proxy :8080
 ```
 ```
-sudo caddy stop ; sudo caddy start
+sudo caddy reload
 ```
 
 Then load `https://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser. Caddy will automatically provision TLS certificates.
+
+Ensure you are using `https` URLs for `KEYCLOAK_FRONTEND_URL` and `SERVER_URL` in your controlplane `.env` file.
 
 ### Locking down the stack
 
