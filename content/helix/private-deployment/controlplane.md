@@ -14,6 +14,8 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 
 **Requires:** x86_64 architecture, [docker](https://docs.docker.com/engine/install/). On Windows, [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
 
+* 4 CPUs, 8GB RAM and 512GB disk on control plane
+* As much system memory as you have GPU memory on runners
 * Min 256GB disk space (recommended 512GB+) on control plane and runners
 * Min 8GB GPU for small models (Llama3-8B, Phi3-Mini), 24GB for Mixtral/SDXL, 40GB for Llama3-70B
 * Min 24GB GPU for fine-tuning (text or image)
@@ -112,6 +114,20 @@ On Kubernetes, and for a deployment with pinned versions, check out the [Helm ch
 ### Version-specific upgrade notes
 
 * Upgrading from < 0.6 to >= 0.6 - [Keycloak upgrade requires a manual user database export / import](https://github.com/helixml/helix/blob/main/UPGRADING.md#from-helix--060-to-helix--060)
+
+## Using an external LLM provider
+
+If you don't want to attach your own GPUs to run models locally, you can specify an external OpenAI-compatible LLM provider. On the controlplane `.env` simply add:
+
+```
+INFERENCE_PROVIDER=openai
+OPENAI_API_KEY=sk-...
+OPENAI_BASE_URL=<any OpenAI compatible API>
+```
+
+The frontend will automatically list models available on the LLM provider. You can also specify any model name in a [helix app yaml](/helix/develop/getting-started/).
+
+Alternatively, you can attach a GPU runner as described in the following section.
 
 ## Attaching a runner
 
