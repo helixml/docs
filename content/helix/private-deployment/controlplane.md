@@ -14,7 +14,7 @@ See [Architecture](/docs/architecture) to understand how the control plane fits 
 
 **Requires:** x86_64 architecture, [docker](https://docs.docker.com/engine/install/). On Windows, [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
 
-* 4 CPUs, 32GB RAM and 512GB disk on control plane
+* 4 CPUs, 8GB RAM and 512GB disk on control plane
 * As much system memory as you have GPU memory on runners
 * Min 256GB disk space (recommended 512GB+) on control plane and runners
 * Min 8GB GPU for small models (Llama3-8B, Phi3-Mini), 24GB for Mixtral/SDXL, 40GB for Llama3-70B
