@@ -13,9 +13,19 @@ An *inference session* is when a trained machine learning model is used to make 
 ##### Example Request and Response
 
 ```shell
-curl https://app.tryhelix.ai/api/v1/sessions \
-  -H 'Authorization: Bearer <YOUR_API_KEY>'
-  -d "input=yo&mode=inference&type=text"
+curl --location 'https://app.tryhelix.ai/api/v1/sessions/chat' \
+--header 'Authorization: Bearer <YOUR-API-TOKEN' \
+--header 'Content-Type: application/json' \
+--data '{
+  "session_id": "",
+  "system": "you are an intelligent assistant that helps with geography",
+  "messages": [
+    {
+      "role": "user",
+      "content": { "content_type": "text", "parts": ["where are the Faroe islands located?"] }
+    }
+  ]
+}'
 ```
 
 will respond with
@@ -24,7 +34,7 @@ will respond with
 {
     "created": 1723155364,
     "object": "chat.completion",
-    "id": "ses_01a4t10cysc825d3k037tyh7ap",
+    "id": "ses_01a4t10c132825d3k037tyh7ap",
     "model": "llama3:instruct",
     "choices": [
         {
@@ -50,7 +60,7 @@ will respond with
 POST https://app.tryhelix.ai/api/v1/sessions/chat
 ```
 
-##### Parameters
+##### HTTP Request Body
 Request body with the message and model to start chat completion.
 
 ```json
@@ -91,3 +101,29 @@ Request body with the message and model to start chat completion.
 
 Switching over the `"type":"image"` will start a session with model `stabilityai/stable-diffusion-xl-base-1.0` that generates an image.
 
+##### HTTP Response
+```json
+{
+  "choices": [],
+  "created": 0,
+  "data": [
+    {
+      "b64_json": "string",
+      "embedding": [
+        0
+      ],
+      "index": 0,
+      "object": "string",
+      "url": "string"
+    }
+  ],
+  "id": "string",
+  "model": "string",
+  "object": "string",
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}
+```

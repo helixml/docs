@@ -43,3 +43,7 @@ The response will show all of details of a session.
 ```
 
 The [Helix Open API Spec](https://github.com/helixml/helix/blob/main/api/pkg/server/swagger.yaml) details the session request and response objects.
+
+The API Specs to query and interact with Sessions in Helix are detailed in the sections below
+
+{{< default-section-cards-list >}}
