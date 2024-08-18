@@ -14,7 +14,7 @@ An *inference session* is when a trained machine learning model is used to make 
 
 ```shell
 curl --location 'https://app.tryhelix.ai/api/v1/sessions/chat' \
---header 'Authorization: Bearer <YOUR-API-TOKEN' \
+--header 'Authorization: Bearer <YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
   "session_id": "",
