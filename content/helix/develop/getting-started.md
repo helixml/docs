@@ -111,7 +111,7 @@ assistants:
   apis:
     - name: API Adaptor Service  # UI use only
       description: Adaptor for API  # UI use only
-      url: http://some-valid-url # Must be accessible from the Helix control plane 
+      url: http://some-valid-url # Must be accessible from the Helix control plane
       schema: ./api/openapi.yaml # Must point to the OpenAPI specification
       query: # A list of query parameters to use as defaults and/or be overridden in the request
         page: "1"
@@ -126,7 +126,7 @@ If you need to pass query parameters to your backend service at query time, then
 2. Then request the OpenAI API as normal but append your query parameters. Note that they should be encoded. For example:
 
   ```bash
-  curl -H "Authorization: Bearer hl-xxx-your-app-token" https://helix-control-plane.host/v1/chat/completions?page%3D5%26filter%3Dhi%20there --data-raw '{"model": "llama3:instruct", "messages":[{"role":"user","content":"Hi please use the API I have provided to get data"}]}'
+  curl -H "Authorization: Bearer YOUR_API_KEY" https://helix-control-plane.host/v1/chat/completions?page%3D5%26filter%3Dhi%20there --data-raw '{"model": "llama3:instruct", "messages":[{"role":"user","content":"Hi please use the API I have provided to get data"}]}'
   ```
 
 ## Troubleshooting
