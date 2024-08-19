@@ -46,6 +46,6 @@ curl https://app.tryhelix.ai/api/v1/sessions \
 
 Get your API key from [Account](https://app.tryhelix.ai/account) page in the app.
 
-[Full API reference]({{< ref "/helix/api.md" >}})
+[Full API reference]({{< ref "/helix/api-reference/_index.md" >}})
 {{% /index/cta-right %}}
 {{< /index/cta >}}
