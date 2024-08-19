@@ -23,8 +23,7 @@ You can find the full list of versions on [jsdelivr](https://www.jsdelivr.com/pa
 
 ```html
 <script
-    src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed@0.3.2"
-    integrity="sha384-8/N8VED70naygSrRj1BYT5JlMwVLit5cPnT3HkKsLJ74L9fm+oNDVM9HFIOz5f8a"
+    src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed@0.3.4"
     crossorigin="anonymous"
 >
 </script>
