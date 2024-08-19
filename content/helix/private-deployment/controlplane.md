@@ -86,9 +86,8 @@ By default, new registrations are enabled to make it easy for you to create an a
 
 After creating your own accounts, you can choose to disable new registrations. Go to `http(s)://<YOUR_CONTROLPLANE_HOSTNAME>/auth` and click "Administration Console". Log in with `admin` and `KEYCLOAK_ADMIN_PASSWORD` from your `.env` file. Click the "master" dropdown and switch to the helix realm. Under "Realm settings" -> "Login", you can untick "User registration". You can also set up OAuth, email validation etc here.
 
-To lock down admin users to a specific set of users, go to Users and find the users you want to be admins. Copy their IDs into `.env` as a comma-separated list under `ADMIN_USER_IDS` variable. Run `docker compose up -d` to update the stack.
+To lock down admin users to a specific set of users, go to Users in Keycloak and find the users you want to be admins. Copy their IDs into `.env` as a comma-separated list under `ADMIN_USER_IDS` variable. Run `docker compose up -d` to update the stack.
 
-<!-- Explain what you are going to code before giving the code solution -->
 You may also wish to review all available configuration options in <a href="https://docs.helix.ml/helix/private-deployment/environment-variables/" target="_self">Environment Variables</a>.
 
 ### Upgrades
@@ -163,6 +162,7 @@ Notes:
 * Make sure to run the container with `--restart always` or equivalent in your container runtime, since the runner will exit if it detects an unrecoverable error and should be restarted automatically
 * If you want to run the runner on the same machine as the controlplane, either: (a) set `--network host` and set `--api-host http://localhost:8080` so that the runner can connect on localhost via the exposed port, or (b) use `--api-host http://172.17.0.1:8080` so that the runner can connect to the API server via the docker bridge IP. On Windows or Mac, you can use `--api-host http://host.docker.internal:8080`
 * Helix will currently also download and run SDXL and Mistral-7B weights used for fine-tuning at startup. These weights are not currently pre-baked anywhere. This can be disabled with `RUNTIME_AXOLOTL_ENABLED=false` if desired. If running in a low-memory environment, this may cause CUDA OOM errors at startup, which can be ignored (at startup) since the scheduler will only fit models into available memory after the startup phase.
+* If you want to use text fine-tuning, you need to set the environment variable `HF_TOKEN` to a valid Huggingface token, then you now need to accept sharing your contact information with Mistral [here](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) and then fetch an access token from [here](https://huggingface.co/settings/tokens) and then specify it in this environment variable.
 
 ### Runner upgrades
 
