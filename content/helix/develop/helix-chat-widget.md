@@ -24,6 +24,7 @@ You can find the full list of versions on [jsdelivr](https://www.jsdelivr.com/pa
 ```html
 <script
     src="https://cdn.jsdelivr.net/npm/@helixml/chat-embed@0.3.4"
+    integrity="sha384-882TSV27WpFcIqxIAm0QjkgREhy6XdN9L2HRB2z+FtbIyuUBrEkJ8QJgtnvx1bZT"
     crossorigin="anonymous"
 >
 </script>
