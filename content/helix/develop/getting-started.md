@@ -135,6 +135,10 @@ If you need to pass query parameters to your backend service at query time, then
 
   Check the API logs.
 
-- **The logs show: `No tools api client has been configured`**
+- **Why do the logs show: `No tools api client has been configured`?**
 
   This means that you haven't configured Helix to use Apps correctly. See the section about [Helix control plane configuration for private deployments](#control-plane-configuration-for-private-deployments).
+
+- **Why do the logs show: `unable to look up model xxxxx, possible programming error in adding model to models map ...`?**
+
+  This means you haven't specified the `TOOLS_MODEL` correctly. Please use a valid model name.
