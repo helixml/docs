@@ -136,6 +136,32 @@ assistants:
           enabled: true
 ```
 
+#### Custom website crawler
+
+Sometimes you may want to use a 3rd party website crawler. Helix allows you to specify a custom crawler by specifying the driver options:
+
+```yaml
+knowledge:
+- name: meteron-docs
+  source:
+    web:      
+      urls:
+        - https://example.ai/        
+      crawler:
+        enabled: true
+        # Firecrawl ref: https://github.com/mendableai/firecrawl
+        firecrawl:
+          api_key: "fc-xxx"
+```
+
+If you wish to use a different crawler, either submit a [Github issue](https://github.com/helixml/helix/issues) or better yet, submit a PR to add your crawler to the list of supported crawlers. Example crawler interface:
+
+```go
+func (f *CustomCrawler) Crawl(ctx context.Context) ([]*types.CrawledDocument, error) {
+   // Crawls the website and returns a list of crawled documents
+}
+```
+
 ### Basic single file
 
 Basic knowledge is great when you have a small amount of content you want to include that will fit into the context. This doesn't require chunking or splitting and can be useful when you want to have a single source of truth for your app.
