@@ -26,7 +26,7 @@ languages:
 module:
   hugoVersion:
     extended: true
-    min: "0.112.0"
+    min: "0.124.0"
   imports:
     - path: github.com/imfing/hextra
   mounts:
