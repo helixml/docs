@@ -119,12 +119,54 @@ Helix provides a multi-source support for knowledge. You can use a combination o
 
 ### Web
 
+Web source allows you to specify a list of URLs to crawl and use as knowledge. Helix will crawl (if enabled) and then chunk the content of each page and store it.
+
+```yaml
+name: website-knowledge
+assistants:
+- name: Helix
+  description: Knows about the website  
+  knowledge:
+  - name: my-website
+    source:
+      web:      
+        urls:
+         - https://example.com
+        crawler:
+          enabled: true
+```
+
+
 ### Local files
 
+*Coming soon...*
+
 ### Basic single file
+
+Basic knowledge is great when you have a small amount of content you want to include that will fit into the context. This doesn't require chunking or splitting and can be useful when you want to have a single source of truth for your app.
+
+```yaml
+name: basic-knowledge
+description: |
+  A simple app that demonstrates how to provide knowledge to a Helix app
+assistants:
+- name: Helix
+  description: Know
+  knowledge:
+  - name: cars
+    source:
+      content: |        
+        Karolis has a green car
+        Luke has a blue car
+        Kai has a red car
+```
 
 ## Versioning
 
 Whenever you update your knowledge, Helix will create a new version of the knowledge. Version format is `YYYY-MM-DD_HH-MM-SS`. Each re-indexing will create a new version so the data will not clash and will not be duplicated when Helix fetches the background knowledge for the LLM call.
 
 At the moment available versions are not exposed to the user but we will be adding this feature in the future.
+
+## Periodic Refreshing
+
+*Coming soon...*
