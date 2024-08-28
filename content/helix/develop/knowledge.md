@@ -107,7 +107,7 @@ knowledge:
   source:      
     web:        
       urls:
-      - https://synpse.com        
+      - https://example.com        
       crawler:
         enabled: true
 ```
@@ -136,11 +136,6 @@ assistants:
           enabled: true
 ```
 
-
-### Local files
-
-*Coming soon...*
-
 ### Basic single file
 
 Basic knowledge is great when you have a small amount of content you want to include that will fit into the context. This doesn't require chunking or splitting and can be useful when you want to have a single source of truth for your app.
@@ -160,6 +155,18 @@ assistants:
         Luke has a blue car
         Kai has a red car
 ```
+
+### Local files
+
+*Coming soon...*
+
+### AWS S3
+
+*Coming soon...*
+
+### Google Cloud Storage (GCS)
+
+*Coming soon...*
 
 ## Versioning
 
