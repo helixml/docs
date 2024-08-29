@@ -1,7 +1,7 @@
 ---
 title: Image Inference
 description:
-weight: 2
+weight: 10
 aliases:
   - /docs/image-inference
 ---

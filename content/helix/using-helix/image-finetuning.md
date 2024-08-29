@@ -1,7 +1,7 @@
 ---
 title: Image Fine-Tuning
 description:
-weight: 4
+weight: 11
 aliases:
   - /docs/image-finetuning
 ---
