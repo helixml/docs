@@ -4,7 +4,7 @@ toc: false
 description: Helix is a private GenAI platform that helps bring on-premise LLMs, StableDiffusion, and more to your business.
 ---
 
-{{< index/hero title="Helix is Open AI in a box. Your box. Use chat or API. Deploy anywhere." subtitle="Looking for a private GenAI platform? From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing the tradeoff between GPU memory and latency." link="/helix/_index.md" image="dashboard.png" >}}
+{{< index/hero title="Helix is Open AI in a box. Your box. Use chat or API. Deploy anywhere." subtitle="Looking for a private GenAI platform? From language models to image models and more, Helix brings the best of open source AI to your business in an ergonomic, scalable way, while optimizing the tradeoff between GPU memory and latency." ref="/helix/_index.md" image="dashboard.png" >}}
 
 {{< index/features >}}
 {{% index/feature-card title="Open weights" icon="cube" %}}
