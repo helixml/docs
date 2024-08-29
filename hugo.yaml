@@ -1,6 +1,6 @@
 # Configuration
 baseURL: "https://docs.helix.ml/"
-
+timeout: "2m"
 enableRobotsTXT: true
 enableGitInfo: true
 # enableEmoji: false
