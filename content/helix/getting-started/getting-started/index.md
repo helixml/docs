@@ -35,7 +35,7 @@ Click "New Session", then next to the text box at the bottom click the "Text" bu
 
 ![](new-image-session.png)
 
- Now, prompt the image model with prompts like: `interior design of a luxurious master bedroom, gold and marble furniture, luxury, intricate, breathtaking`
+Now, prompt the image model with prompts like: `interior design of a luxurious master bedroom, gold and marble furniture, luxury, intricate, breathtaking`
 
 ![](gsg-04.png)
 
