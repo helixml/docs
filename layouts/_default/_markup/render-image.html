@@ -1,0 +1,41 @@
+{{- if not .Destination -}}
+{{ errorf "Destination field is not set in page \"%s\" with params:\n %#v\n" .Page.Title .Params }}
+{{- end -}}
+{{ $resource := .Page.Resources.GetMatch (printf "*%s*" .Destination) }}
+{{- if eq $resource nil }}
+{{ $resource = resources.GetMatch .Destination }}
+{{- end -}}
+{{- if eq $resource nil }}
+{{ $resource = resources.Get .Destination }}
+{{- end -}}
+{{- if and (eq $resource nil) (strings.HasPrefix .Destination "http") -}}
+{{ $resource = resources.GetRemote .Destination }}
+{{- end -}}
+{{- if eq $resource nil }}
+{{ warnf "No resource found for %#v %#v" .Destination .Page.Title }}
+<img src="../{{ .Destination }}" alt="{{ $.Text }}">
+{{- else -}}
+<figure class="{{ if .IsBlock}}{{ .Attributes.class }}{{ end }}">
+    {{- with $resource -}}
+    {{- if in .MediaType "svg" -}}
+    <img class="w-full h-full object-contain" src='{{ .Permalink }}' alt="{{ $.Text }}">
+    {{- else if in .MediaType "gif" -}}
+    <img srcset='{{ .Permalink }}' width="{{ .Width }}px" height="{{ .Height }}px">
+    {{- else if or (or (in .MediaType "png") (in .MediaType "jpeg")) (in .MediaType "webp") -}}
+    <picture>
+        <source type="image/webp" {{ if lt .Width 768 }}src='{{ .Permalink }}' {{ else }}
+            srcset='{{ (.Resize "480x webp" ).Permalink }} 480w {{ if ge .Width 768 }},{{ (.Resize "768x webp" ).Permalink }} 768w {{ end }} {{ if ge .Width 1200 }},{{ (.Resize "1200x webp" ).Permalink }} 1200w {{ end }}'
+            {{ end }} width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Text }}">
+        <img class="w-full h-full object-contain" {{ if lt .Width 768 }}src='{{ .Permalink }}' {{ else }}
+            srcset='{{ (.Resize "480x" ).Permalink }} 480w {{ if ge .Width 768 }},{{ (.Resize "768x" ).Permalink }} 768w {{ end }} {{ if ge .Width 1200 }},{{ (.Resize "1200x" ).Permalink }} 1200w {{ end }}'
+            {{ end }} width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Text }}">
+    </picture>
+    {{- else -}}
+    {{ errorf "filetype not supported %#v" .MediaType }}
+    {{- end -}}
+    {{- end -}}
+    {{- if .Title }}
+    <figcaption>{{ .Title | markdownify }}</figcaption>
+    {{- end -}}
+</figure>
+{{- end -}}
