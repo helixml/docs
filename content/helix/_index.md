@@ -14,23 +14,20 @@ aliases:
   - /docs/overview
 ---
 
-👋 Hello! Welcome to the Helix documentation!
+👋 Hello! Welcome to the Helix documentation! Browse this site using the navigation links on the left (desktop) or navigation menu (mobile). You can also use the links at the bottom of each page to browse to the next logical location in the documentation.
 
 ## What is Helix?
 
-Helix is a generative AI platform that you can run on our cloud or deploy in your own data center or cloud account.  It provides an easy-to-use interface to using open source AI that's accessible to everyone.
+Helix is a enterprise generative AI platform that can be deployed on your own infrastructure. Deploy to your private cloud account, on-premise, or test it out quickly on our SaaS, [Helix Cloud](https://app.tryhelix.ai/). To find out more about the features of helix please read through the rest of this documentation.
 
 {{< youtube "v6XZT8u6khI" >}}
 
-## How Helix works
+## How Helix Works
 
-Under the hood, it uses the best open source models and includes a GPU scheduler that can fit model instances into GPU memory to optimally trade off user facing latency with GPU memory utilization.
+Helix comes packaged with a distributed GPU scheduler capable of bin-packing AI models into GPU memory to optimise for latency and utilization.
+
+On top of that, Helix exposes easy to use industry-standard APIs to interact with enterprise-ready open source AI models. Helix also adds simple abstractions to help users of Helix quickly build generative AI applications.
 
 Helix's Runner architecture means you can deploy a single control plane and then connect GPUs to it – from your enterprise, a cloud provider or a specialist provider like Runpod or Lambda labs, and they'll all be brought together into an easy to use environment.
 
 It integrates with Keycloak for authentication so can be integrated into any enterprise ActiveDirectory/LDAP/OAuth environment.
-
-## Next steps
-
-- [Getting Started Guide](/docs/getting-started)
-- [Try it out online](https://app.tryhelix.ai)
