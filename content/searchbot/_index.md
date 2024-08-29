@@ -3,10 +3,10 @@ title: Helix SearchBot Documentation
 linkTitle: SearchBot Documentation
 cascade:
   type: docs
-menu:
-  main:
-    name: SearchBot Docs
-    weight: 3
+# menu:
+#   main:
+#     name: SearchBot Docs
+#     weight: 3
 weight: 3
 next: /searchbot/quick-start
 ---
