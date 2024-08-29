@@ -1,0 +1,17 @@
+<a
+    {{ if strings.HasSuffix .Destination ".md" -}}
+    href="{{ (.Page.GetPage .Destination).RelPermalink | safeURL }}"
+    {{- else -}}
+    href="{{ .Destination | safeURL }}"
+    {{- end -}}
+    {{- with .Title }}
+    title="{{ . }}"
+    {{ end -}}
+    {{- if and (not (strings.Contains .Destination "winder.ai")) (not (strings.Contains .Destination "localhost")) (not (strings.HasPrefix .Destination "/")) }}
+    rel="external nofollow noopener"
+    target="_blank"
+    {{ end -}}
+>
+    {{- with .Text | safeHTML }}{{ . }}{{ end -}}
+</a>
+{{- /* chomp trailing newline */ -}}
