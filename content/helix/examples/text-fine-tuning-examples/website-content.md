@@ -5,6 +5,7 @@ description:
 weight: 4
 aliases:
   - /docs/website-content
+  - /helix/text-fine-tuning-examples/website-content/
 ---
 
 {{< youtube "lca52jWU0Ac" >}}
