@@ -1,8 +1,9 @@
 ---
 title: Text Fine-Tuning Examples
-weight: 3
-prev: /helix/using-helix/_index.md
-next: /helix/text-fine-tuning-examples/papers.md
+linkTitle: Text Fine-Tuning
+weight: 1
+aliases:
+- /helix/text-fine-tuning-examples/
 ---
 
 Explore the following sections to discover text fine-tuning examples:
