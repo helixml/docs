@@ -1,5 +1,6 @@
 ---
-title: Image Fine-Tuning Examples
+title: Text Fine-Tuning Examples
+linkTitle: Image Fine-Tuning
 weight: 2
 aliases:
 - /helix/image-fine-tuning-examples/
