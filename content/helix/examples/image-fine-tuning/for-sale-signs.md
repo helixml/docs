@@ -4,6 +4,7 @@ description:
 weight: 2
 aliases:
   - /docs/for-sale-signs
+  - /helix/image-fine-tuning-examples/for-sale-signs/
 ---
 
 Coming soon.
