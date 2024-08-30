@@ -4,6 +4,7 @@ description:
 weight: 1
 aliases:
   - /docs/professional-headshots
+  - /helix/image-fine-tuning-examples/professional-headshots/
 ---
 
 {{< youtube "v6XZT8u6khI" >}}
