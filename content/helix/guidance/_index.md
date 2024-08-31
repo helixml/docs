@@ -1,6 +1,6 @@
 ---
 title: Guidance
-weight: 5
+weight: 6
 prev: /helix/image-fine-tuning-examples/_index.md
 next: /helix/guidance/text-prompts.md
 ---
