@@ -2,8 +2,6 @@
 title: Text RAG
 description: Easy retrieval augmented generation (RAG) with Helix.
 weight: 2
-aliases:
-  - /docs/image-inference
 ---
 
 The default "Learn" mode for text is to use retrieval augmented generation (RAG). This method ingests data into a database for quick retrieval. At inference time, the language model includes relevant information in the context.
