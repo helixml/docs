@@ -1,7 +1,7 @@
 ---
 title: Helix App Examples
 linkTitle: Apps
-weight: 3
+weight: 20
 ---
 
 Explore the following Helix app examples:

@@ -1,7 +1,7 @@
 ---
 title: Text Fine-Tuning Examples
 linkTitle: Text Fine-Tuning
-weight: 1
+weight: 2
 aliases:
 - /helix/text-fine-tuning-examples/
 ---
