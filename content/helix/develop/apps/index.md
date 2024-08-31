@@ -1,7 +1,10 @@
 ---
-title: Getting Started
+title: Developing Helix Apps
+linkTitle: Apps
 description: Learn how to create AI-powered Apps in Helix.
 weight: 1
+aliases:
+- /helix/develop/getting-started/
 ---
 
 This page describes how to create a basic "App" in Helix.
