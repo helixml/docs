@@ -1,5 +1,5 @@
 ---
-title: Developing AI Apps
+title: Developing With Helix
 weight: 3
 next: /helix/develop/getting-started.md
 ---

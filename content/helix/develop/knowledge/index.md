@@ -1,7 +1,7 @@
 ---
 title: Knowledge
 description: Knowledge provides a context for your LLM apps. Helix can scrape websites, ingest files from AWS S3, GCS, or your local filesystem.
-weight: 4
+weight: 3
 ---
 
 Knowledge provides a context for your LLM apps. Helix can scrape websites, ingest files from AWS S3, GCS, or your local filesystem.
