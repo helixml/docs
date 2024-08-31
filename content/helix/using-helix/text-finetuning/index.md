@@ -4,6 +4,8 @@ description:
 weight: 3
 aliases:
   - /docs/text-finetuning
+  - /docs/text-fine-tune-guidance
+  - /helix/guidance/text-fine-tune-guidance/
 ---
 
 Helix uses the [Mistral](https://mistral.ai/) series of large language models for fine-tuning.
@@ -31,3 +33,17 @@ The first step in fine-tuning is generation of the training data. If you pass qu
 If you pass text, a document, or a link, Helix will run a series of steps to automatically generate question-answer (QA) pairs on your behalf. You can view these pairs once QA generation is complete.
 
 In the next step, Helix uses low-rank adaptors (LORA) to customise the behaviour of a large language model. These are small, simple custom models that mutate the internal computation of the language model. These changes cause the model to produce outputs that are similar to the QA pairs.
+
+## Fine-Tuning Data Best Practices
+
+* Your data must relevant to the problem (e.g. answer the question)
+* More data is better
+* Only include data that is relevant to your problem
+
+## Use Case Best Practices
+
+### Question Answering
+
+* Format training data as question-answer pairs
+* Ensure your training data includes questions similar to downstream tasks
+* Ensure question answer pairs have good "coverage" of your problem domain
