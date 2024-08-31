@@ -4,14 +4,16 @@ description:
 weight: 1
 aliases:
   - /docs/text-inference
+  - /helix/models/models/
 ---
 
 Helix offers a variety of large language models tailored for different needs, all designed to provide high-quality responses with a relatively small GPU memory footprint. These include:
-- **Helix 3.5**: Utilizes Llama3-8B for fast and efficient performance, ideal for everyday tasks.
-- **Helix 4**: Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries.
-- **Helix Code**: Features CodeLlama-70B from Meta, which excels in programming and coding tasks, surpassing the capabilities of GPT-4 in software development contexts.
-- **Helix JSON**: Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks.
-- **Helix Small**: A smaller model based on Phi-3 Mini 3.8B, fast and memory efficent.
+
+- **Helix 3.5**: Utilizes Llama3-8B for fast and efficient performance, ideal for everyday tasks. Ollama tag `llama3:instruct`.
+- **Helix 4**: Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries. Ollama tag `llama3:70b`.
+- **Helix Mixtral**: Features Mistral's mixture of experts, that outperforms OpenAI at many tasks. Ollama tag `mixtral:instruct`.
+- **Helix JSON**: Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks. Ollama tag `adrienbrault/nous-hermes2theta-llama3-8b:q8_0`.
+- **Helix Small**: A smaller model based on Phi-3 Mini 3.8B, fast and memory efficent. Ollama tag `phi3:instruct`.
 
 ## Try chatting to the chatbot
 
