@@ -1,6 +1,6 @@
 ---
 title: Private Deployment
-weight: 7
+weight: 5
 prev: /helix/models/_index.md
 next: /helix/private-deployment/controlplane.md
 ---
