@@ -34,3 +34,9 @@ Share your results with your friends with the "Share" button or on our [Discord]
 ![](share.png)
 
 If you find yourself stuck in the queue for a long time, you can upgrade to a [paid account](https://app.tryhelix.ai/account) to jump the queue, or [deploy Helix on your own infrastructure](/docs/controlplane).
+
+## Inference Best Practices
+
+* Imagine yourself performing the task or answering the question
+* If you need to ask questions, then you haven't provided enough context
+* If you are asking questions about a thing, indicate what the thing is
