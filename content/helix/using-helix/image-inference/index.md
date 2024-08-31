@@ -8,6 +8,9 @@ aliases:
 
 Helix uses the [Stable Diffusion XL](https://stability.ai/stable-diffusion) image diffusion models to provide high quality images with relatively small memory GPU footprint, including fine-tuning teach the model new people, styles or concepts to represent visually.
 
+Specifically, [Stable Diffusion XL](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) is used via [cog](https://github.com/replicate/cog) (in particular [cog-sdxl](https://github.com/replicate/cog-sdxl)).
+
+See [this](https://github.com/helixml/helix/blob/main/cog/helix_cog_wrapper.py) for the settings we use.
 
 ## Try creating images
 
