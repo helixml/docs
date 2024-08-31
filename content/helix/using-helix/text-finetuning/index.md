@@ -6,6 +6,7 @@ aliases:
   - /docs/text-finetuning
   - /docs/text-fine-tune-guidance
   - /helix/guidance/text-fine-tune-guidance/
+  - /helix/models/finetuning/
 ---
 
 Helix uses [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for text fine tuning.
