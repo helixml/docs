@@ -1,7 +1,8 @@
 ---
-title: Helix API Tools
+title: (Depreciated) Helix API Tools
+linkTitle: (DEPRECIATED) Tools
 description:  Learn about Helix API Tools and how to set up and manage tools within the Helix platform.
-weight: 3
+weight: 999
 aliases:
 - /helix/develop/tools/
 ---

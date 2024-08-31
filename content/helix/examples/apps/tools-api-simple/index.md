@@ -1,8 +1,8 @@
 ---
-title: Helix API Tools
-linkTitle: Connecting an API
+title: (Depreciated) Helix API Tools
+linkTitle: (DEPRECIATED) Connecting an API
 description:  Learn how to set up and manage a Helix API Tool within the Helix platform.
-weight: 3
+weight: 999
 aliases:
 - /helix/develop/tools-example/
 - /helix/develop/helix-tools-example/
