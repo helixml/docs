@@ -8,7 +8,7 @@ aliases:
   - /helix/guidance/text-fine-tune-guidance/
 ---
 
-Helix uses the [Mistral](https://mistral.ai/) series of large language models for fine-tuning.
+Helix uses [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for text fine tuning.
 
 ## How to Fine-Tune a Language Model on a Document
 
