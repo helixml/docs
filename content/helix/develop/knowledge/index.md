@@ -218,7 +218,7 @@ assistants:
     # Turn on periodic refreshing
     refresh_enabled: true
     # Refresh every 24 hours
-    refresh_schedule: "0 0 * * *"
+    refresh_schedule: "@midnight"
     rag_settings:
       results_count: 8
       chunk_size: 2048
@@ -241,3 +241,61 @@ To view previous versions:
 ```bash
 helix knowledge versions helix-docs
 ```
+
+> Knowledge cannot be refreshed more often than once every 10 minutes.
+
+### Simple schedules
+
+To begin with, you can use predefined schedules like `@midnight` or `@weekly`. These are easy to read and understand.
+
+Entry                  | Description                                | Equivalent To
+-----                  | -----------                                | -------------
+@yearly (or @annually) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *
+@monthly               | Run once a month, midnight, first of month | 0 0 0 1 * *
+@weekly                | Run once a week, midnight between Sat/Sun  | 0 0 0 * * 0
+@daily (or @midnight)  | Run once a day, midnight                   | 0 0 0 * * *
+@hourly                | Run once an hour, beginning of hour        | 0 0 * * * *
+
+
+### Duration based schedules
+
+To perform knowledge refresh at specific intervals can also use `@every <duration>` to specify a custom schedule. 
+For example, `@every 1h30m` will run the refresh every 1 hour and 30 minutes.
+
+```yaml
+knowledge:
+- name: helix-docs
+  refresh_schedule: "@every 1h30m"
+```
+
+### Using cron syntax
+
+You can also use cron syntax to specify a custom schedule. For example, `0 0 * * *` will run the refresh every day at midnight.
+
+```yaml
+knowledge:
+- name: helix-docs
+  refresh_schedule: "0 0 * * *"
+```
+
+Check out https://crontab.guru/ to learn more about cron syntax.
+
+### Specifying timezones
+
+You can specify a timezone for the refresh schedule by adding a `TZ=<timezone>` field to the schedule. For example, `TZ=America/New_York` will run the refresh every day at midnight in New York.
+
+```yaml
+knowledge:
+- name: helix-docs
+  refresh_schedule: "TZ=America/New_York 0 0 * * *"
+```
+
+Or `UTC` timezone:
+
+```yaml
+knowledge:
+- name: helix-docs
+  refresh_schedule: "TZ=UTC 0 0 * * *"
+```
+
+Check out https://pkg.go.dev/time#LoadLocation to learn more about timezones.
