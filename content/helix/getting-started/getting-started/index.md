@@ -63,7 +63,7 @@ Share your results with your friends with the "Share" button!
 
 2. Now drag and drop some images and label them, for example selfies of yourself or any object or style you want to generate an image model that can copy. You should provide at least 5 examples. Be sure to follow the instructions to label the photos.
 3. Click "Train" and wait until it is complete. It will take a while.
-4. Use the prompt "A photo of <s0><s1>", you can add additional text after that prompt as well, but the "<s0><s1>" bit tells it to reference the concepts in the uploaded images.
+4. Use the prompt "A photo of &lt;s0&gt;&lt;s1&gt;", you can add additional text after that prompt as well, but the "&lt;s0&gt;&lt;s1&gt;" bit tells it to reference the concept/object in the uploaded images.
 5. Feel free to share your session so that others can use your fine-tuned model!
 
 ![](gsg-06.png)
