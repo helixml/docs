@@ -202,4 +202,42 @@ At the moment available versions are not exposed to the user but we will be addi
 
 ## Periodic Refreshing
 
-*Coming soon...*
+Helix can periodically refresh knowledge. This is useful when data is changing, for example your website documentation is updated and you want to make sure the knowledge is up to date.
+
+Here's an example how to setup periodic refreshing:
+
+```yaml
+name: helix-docs
+description: |
+  A simple app that demonstrates how to setup Helix with knowledge from the Helix docs
+assistants:
+- name: Helix 
+  model: helix-3.5
+  knowledge:
+  - name: helix-docs
+    # Turn on periodic refreshing
+    refresh_enabled: true
+    # Refresh every 24 hours
+    refresh_schedule: "0 0 * * *"
+    rag_settings:
+      results_count: 8
+      chunk_size: 2048
+    source:      
+      web:        
+        urls:
+        - https://docs.helix.ml/helix/
+        crawler:
+          enabled: true
+```
+
+You can view the current refresh status of the knowledge with `--refresh-knowledge` flag:
+
+```bash
+helix apply -f helix_docs.yaml --refresh-knowledge
+```
+
+To view previous versions:
+
+```bash
+helix knowledge versions helix-docs
+```
