@@ -7,7 +7,7 @@ aliases:
 
 The Helix architecture is an uncomplicated stack of high quality components.
 
-![](architecture.png)
+![](architecture.jpg)
 
 The code is available at [github.com/helixml/helix](https://github.com/helixml/helix).
 
