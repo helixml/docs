@@ -18,7 +18,7 @@ aliases:
 
 ## What is Helix?
 
-Helix is a enterprise generative AI platform that can be deployed on your own infrastructure. Deploy to your private cloud account, on-premise, or test it out quickly on our SaaS, [Helix Cloud](https://app.tryhelix.ai/). To find out more about the features of helix please read through the rest of this documentation.
+Helix is an enterprise generative AI platform that can be deployed on your own infrastructure. Deploy to your private cloud account, on-premise, or test it out quickly on our SaaS, [Helix Cloud](https://app.tryhelix.ai/). To find out more about the features of helix please read through the rest of this documentation.
 
 {{< youtube "v6XZT8u6khI" >}}
 
@@ -28,6 +28,6 @@ Helix comes packaged with a distributed GPU scheduler capable of bin-packing AI 
 
 On top of that, Helix exposes easy to use industry-standard APIs to interact with enterprise-ready open source AI models. Helix also adds simple abstractions to help users of Helix quickly build generative AI applications.
 
-Helix's Runner architecture means you can deploy a single control plane and then connect GPUs to it – from your enterprise, a cloud provider or a specialist provider like Runpod or Lambda labs, and they'll all be brought together into an easy to use environment.
+Helix's Runner architecture means you can deploy a single control plane and then connect GPUs to it – from your enterprise, a cloud provider or a specialist provider like RunPod or Lambda Labs, and they'll all be brought together into an easy to use environment.
 
 It integrates with Keycloak for authentication so can be integrated into any enterprise ActiveDirectory/LDAP/OAuth environment.
