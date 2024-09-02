@@ -56,6 +56,14 @@ You can also run `./install-helix.sh --help` to see what options are available.
 
 ## Examples
 
+### Just install the CLI
+
+```
+./install-helix.sh --cli
+```
+
+This will just install the CLI on its own. Useful if you want to connect to a Helix deployment from another machine.
+
 ### Local Helix on Linux or Windows (WSL2) with a GPU
 
 This will set up the CLI, the controlplane and a runner on localhost if a GPU is available:
@@ -71,16 +79,6 @@ This will create `/opt/HelixML` with the following files:
 * `runner.sh` - script to start the runner assuming a local GPU
 
 It will print out instructions on how to start everything.
-
-
-### Just install the CLI
-
-```
-./install-helix.sh --cli
-```
-
-This will just install the CLI on its own. Useful if you want to connect to a Helix deployment from another machine.
-
 
 ### Install alongside Ollama on macOS, Linux or Windows
 
