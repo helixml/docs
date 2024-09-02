@@ -19,4 +19,11 @@ if [ "$CF_PAGES_BRANCH" == "main" ]; then
   OPTIONS="--gc --minify"
 fi
 
-npm install && hugo $OPTIONS --baseURL $BASE_URL --environment $ENVIRONMENT --destination public
+# Install any npm deps
+npm install
+
+# Build once to rebuild the hugo_stats.json file if it doesn't exist
+hugo
+
+# Final build
+hugo $OPTIONS --baseURL $BASE_URL --environment $ENVIRONMENT --destination public
