@@ -1,5 +1,5 @@
 ---
-title: Helix cli
+title: Helix CLI
 weight: 1
 ---
 
