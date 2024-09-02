@@ -1,8 +1,6 @@
 ---
 title: Helix cli
 weight: 1
-aliases:
-  - /docs/cli
 ---
 
 
