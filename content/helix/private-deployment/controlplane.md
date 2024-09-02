@@ -51,6 +51,8 @@ sudo ./install-helix.sh
 
 Now run the installer and follow the instructions. You will be prompted before any changes are made to your system.
 
+You can also run `./install-helix.sh --help` to see what options are available.
+
 ## Examples
 
 ### Local Helix on Linux or Windows (WSL2) with a GPU
