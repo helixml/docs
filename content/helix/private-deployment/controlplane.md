@@ -11,7 +11,7 @@ aliases:
 
 ## tl;dr
 
-macOS | Linux | Windows (WSL2)
+Linux | macOS | Windows (WSL2)
 
 ```
 curl -sL -O https://get.helix.ml/install-helix.sh && bash install-helix.sh
