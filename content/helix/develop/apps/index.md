@@ -5,6 +5,7 @@ description: Learn how to create AI-powered Apps in Helix.
 weight: 1
 aliases:
 - /helix/develop/getting-started/
+- /helix/develop/helix-tools/
 ---
 
 This page describes how to create a basic "App" in Helix.
