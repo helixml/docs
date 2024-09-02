@@ -57,7 +57,7 @@ You can also run `./install-helix.sh --help` to see what options are available.
 
 ### Local Helix on Linux or Windows (WSL2) with a GPU
 
-This will set up the CLI, the controlplane and a runner on localhost if a GPU is available (auto mode):
+This will set up the CLI, the controlplane and a runner on localhost if a GPU is available:
 ```
 sudo ./install-helix.sh
 ```
