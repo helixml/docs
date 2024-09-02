@@ -34,4 +34,4 @@ A runner is a "fat" container image which contains both the runner golang servic
 
 It includes in the polling a set of filters which allow it to restrict jobs it accepts to ones which will fit in the amount of GPU memory it could hypothetically free if it were to stop all "stale" model instances.
 
-Model instances are Python processes that connect to the runner's internal API and fetch the latest job to be run. They then spawn inference or fine tuning code via [cog](https://github.com/replicate/cog) or [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
+Model instances are Python processes that connect to the runner's internal API and fetch the latest job to be run. They then spawn inference or fine tuning code via [ollama](https://ollama.com), [cog](https://github.com/replicate/cog) or [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
