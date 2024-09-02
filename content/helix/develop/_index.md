@@ -1,5 +1,6 @@
 ---
-title: AI Apps with Helix
+title: Developing RAG and API Chatbots with Helix
+linkTitle: Developing AI Apps
 weight: 3
 next: /helix/develop/getting-started.md
 ---
