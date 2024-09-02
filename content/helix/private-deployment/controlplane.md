@@ -139,3 +139,7 @@ This won't work with image inference or text/image fine-tuning. Connect a full G
 ## Upgrading
 
 Just run the installer again. It will reuse secrets in your `.env` file and back it up in case you need to copy over any changes.
+
+## Security
+
+After deploying Helix, be sure to [lock it down](/helix/private-deployment/manual-install/#locking-down-the-stack).
