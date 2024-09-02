@@ -34,7 +34,7 @@ Follow the instructions. Installer will prompt you before making any changes.
 * **Inference Provider** requires one of:
   * An NVIDIA GPU to use with Helix Runners ([example](/helix/private-deployment/controlplane/#local-helix-on-linux-or-windows-wsl2-with-a-gpu)), or
   * [Ollama](https://ollama.com) running locally on macOS, Linux or Windows ([example](/helix/private-deployment/controlplane/#install-alongside-ollama)), or
-  * An OpenAI-compatible API provider, such as [TogetherAI](https://together.ai) ([example](/helix/private-deployment/controlplane/#install-control-plane-pointing-at-togetherai)) - we like TogetherAI because you can run the same open source models via their API that you can run locally using Helix GPU Runners, but you can use any OpenAI-compatible API.
+  * An OpenAI-compatible API provider, such as [TogetherAI](https://together.ai) ([example](/helix/private-deployment/controlplane/#install-control-plane-pointing-at-togetherai)) - we like TogetherAI because you can run the same open source models via their API that you can run locally using Helix GPU Runners, but you can use any OpenAI-compatible API (e.g. vLLM, etc)
 * 50GB+ disk space for control plane, 100GB+ of disk space for runner
 * A fast internet connection (llamaindex container is about 11GB, small runner image is 23GB)
 
