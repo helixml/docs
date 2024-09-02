@@ -81,7 +81,7 @@ It will print out instructions on how to start everything.
 This will just install the CLI on its own. Useful if you want to connect to a Helix deployment from another machine.
 
 
-### Install alongside Ollama
+### Install alongside Ollama on macOS, Linux or Windows
 
 Install locally alongside Ollama already running:
 ```
