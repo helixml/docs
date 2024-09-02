@@ -14,7 +14,7 @@ aliases:
 macOS | Linux | Windows (WSL2)
 
 ```
-curl -Ls https://get.helix.ml | bash
+curl -sL -O https://get.helix.ml/install-helix.sh && bash install-helix.sh
 ```
 Follow the instructions. Installer will prompt you before making any changes.
 
