@@ -75,7 +75,7 @@ If you have an older GPU (e.g. NVIDIA 1060, 1080 series), specify `--older-gpu`.
 
 This will create `/opt/HelixML` with the following files:
 * `docker-compose.yaml` - the compose file for the control plane
-* `.env` - appropriately configured secrets
+* `.env` - appropriately configured secrets and configuration for the control plane
 * `runner.sh` - script to start the runner assuming a local GPU
 
 It will print out instructions on how to start everything.
