@@ -19,7 +19,7 @@ chmod +x install-helix.sh
 
 Install the Helix client with
 ```bash
-./install.sh --cli
+./install-helix.sh --cli
 ```
 
 
