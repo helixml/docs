@@ -18,7 +18,7 @@ curl -sL -O https://get.helix.ml/install-helix.sh && bash install-helix.sh
 ```
 Follow the instructions. Installer will prompt you before making any changes.
 
-[View source](https://get.helix.ml) | [Manual instructions](/helix/private-deployment/manual-install/)
+[View source](https://get.helix.ml) | [Manual instructions](/helix/private-deployment/manual-install/) | [Kubernetes](/helix/private-deployment/helix-controlplane-helm-chart/)
 
 <br/>
 <br/>
