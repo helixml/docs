@@ -57,7 +57,7 @@ You can also run `./install-helix.sh --help` to see what options are available.
 
 ### Local Helix on Linux or Windows (WSL2) with a GPU
 
-Install the CLI, the controlplane and a runner if a GPU is available (auto mode):
+This will set up the CLI, the controlplane and a runner on localhost if a GPU is available (auto mode):
 ```
 sudo ./install-helix.sh
 ```
@@ -83,7 +83,7 @@ This will just install the CLI on its own. Useful if you want to connect to a He
 
 ### Install alongside Ollama
 
-Install alongside Ollama already running:
+Install locally alongside Ollama already running:
 ```
 ./install-helix.sh --openai-api-key ollama --openai-base-url http://host.docker.internal:11434/v1
 ```
@@ -96,6 +96,7 @@ These models will then show up in the Helix UI.
 
 This won't work with image inference or text/image fine-tuning. Connect a full GPU to enable those features.
 
+
 ### Install Control Plane pointing at TogetherAI
 
 Install CLI and controlplane with external [TogetherAI](https://together.ai) API key:
@@ -105,7 +106,9 @@ Install CLI and controlplane with external [TogetherAI](https://together.ai) API
 
 ### Set up Control Plane with a DNS name
 
-Install CLI and controlplane (to install runner separately), specifying a DNS name, automatically setting up TLS with [Caddy](https://caddyserver.com/):
+If you want to make your Helix deployment available to other people, you should get a domain name or subdomain and set up an A record pointing to the IP address of your Control Plane server.
+
+Then, you can install the CLI and Control Plane on the server, specifying the DNS name, and the installer will automatically set up TLS with [Caddy](https://caddyserver.com/):
 ```
 ./install-helix.sh --cli --controlplane --api-host https://helix.mycompany.com
 ```
@@ -123,7 +126,7 @@ Install just the runner, pointing to a controlplane with a DNS name (find runner
 
 ### Install Control Plane pointing at any OpenAI-compatible API
 
-Install CLI and controlplane with OpenAI-compatible API key and base URL:
+Install the CLI and controlplane with OpenAI-compatible API key and base URL:
 
 ```
 ./install-helix.sh --cli --controlplane --openai-api-key YOUR_OPENAI_API_KEY --openai-base-url YOUR_OPENAI_BASE_URL
