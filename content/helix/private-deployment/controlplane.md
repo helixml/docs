@@ -79,28 +79,38 @@ It will print out instructions on how to start everything.
 This will just install the CLI on its own. Useful if you want to connect to a Helix deployment from another machine.
 
 
-### Install alongside Ollama on macOS, Linux or Windows
+### Install alongside Ollama
 
 Install alongside Ollama already running:
 ```
 ./install-helix.sh --openai-api-key ollama --openai-base-url http://host.docker.internal:11434/v1
 ```
 
-This won't work with image inference or text/image fine-tuning. Connect a full GPU for those cases.
+This assumes you have downloaded some models with Ollama, for example by running:
+```
+ollama pull llama3:instruct
+```
+These models will then show up in the Helix UI.
 
-### Install Control Plane pointing at Together.ai
+This won't work with image inference or text/image fine-tuning. Connect a full GPU to enable those features.
 
-Install CLI and controlplane with external TogetherAI token:
+### Install Control Plane pointing at TogetherAI
+
+Install CLI and controlplane with external [TogetherAI](https://together.ai) API key:
 ```
 ./install-helix.sh --cli --controlplane --together-api-key YOUR_TOGETHER_API_KEY
 ```
 
 ### Set up Control Plane with a DNS name
 
-Install CLI and controlplane (to install runner separately), specifying a DNS name, automatically setting up TLS:
+Install CLI and controlplane (to install runner separately), specifying a DNS name, automatically setting up TLS with [Caddy](https://caddyserver.com/):
 ```
 ./install-helix.sh --cli --controlplane --api-host https://helix.mycompany.com
 ```
+
+The automatic Caddy installation currently only works on Ubuntu.
+See [Manual Install](/helix/private-deployment/manual-install/) for full instructions on other platforms.
+
 
 ### Attach a Runner to an existing Control Plane
 
