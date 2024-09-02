@@ -142,3 +142,7 @@ Just run the installer again. It will reuse secrets in your `.env` file and back
 ## Security
 
 After deploying Helix, be sure to [lock it down](/helix/private-deployment/manual-install/#locking-down-the-stack).
+
+## More Configuration
+
+For further configuration options you can put in your `.env` file, such as connecting GitHub for easy `git push` deployment of [Helix Apps](/helix/develop/apps/). check the [manual install docs](/helix/private-deployment/manual-install/).
