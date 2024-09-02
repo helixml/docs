@@ -60,7 +60,7 @@ Install the CLI, the controlplane and a runner if a GPU is available (auto mode)
 sudo ./install-helix.sh
 ```
 
-If you have an old GPU (e.g. NVIDIA 1060, 1080 series), specify `--old-gpu`. This will disable image inference and text/image fine-tuning, which only works on newer GPUs (e.g. 3090 onwards).
+If you have an older GPU (e.g. NVIDIA 1060, 1080 series), specify `--older-gpu`. This will disable image inference and text/image fine-tuning, which only works on newer GPUs (e.g. 3090 onwards).
 
 This will create `/opt/HelixML` with the following files:
 * `docker-compose.yaml` - the compose file for the control plane
