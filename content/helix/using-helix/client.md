@@ -25,11 +25,11 @@ Install the Helix client with
 
 ## Getting Started
 
-Once installed, you can start using the Helix cli by first logging into your Helix account and getting your API Keys setup
+Once installed, you can start using the Helix CLI by first logging into your Helix account and getting your API Keys setup
 
 ```bash
 export HELIX_API_KEY=your-API-key
-export HELIX_URL=your-helix-control-plane-URL //defaults to https://app.tryhelix.ai/
+export HELIX_URL=your-helix-control-plane-URL # defaults to https://app.tryhelix.ai/
 ```
 
 ## Commands
