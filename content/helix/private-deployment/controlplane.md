@@ -99,7 +99,7 @@ This won't work with image inference or text/image fine-tuning. Connect a full G
 
 ### Install Control Plane pointing at TogetherAI
 
-Install CLI and controlplane with external [TogetherAI](https://together.ai) API key:
+Install CLI and controlplane locally with external [TogetherAI](https://together.ai) API key:
 ```
 ./install-helix.sh --cli --controlplane --together-api-key YOUR_TOGETHER_API_KEY
 ```
@@ -126,7 +126,7 @@ Install just the runner, pointing to a controlplane with a DNS name (find runner
 
 ### Install Control Plane pointing at any OpenAI-compatible API
 
-Install the CLI and controlplane with OpenAI-compatible API key and base URL:
+Install the CLI and controlplane locally with OpenAI-compatible API key and base URL:
 
 ```
 ./install-helix.sh --cli --controlplane --openai-api-key YOUR_OPENAI_API_KEY --openai-base-url YOUR_OPENAI_BASE_URL
