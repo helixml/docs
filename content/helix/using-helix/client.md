@@ -10,15 +10,15 @@ The Helix client is a tool designed to make it easy to interact with the Helix p
 
 ## Installation
 
-To install the Helix client, get the Helix installation script from the [Helix Github repo](https://github.com/helixml/helix)
+To install the Helix client, get the Helix installation script:
 
 ```bash
-git clone git@github.com:helixml/helix.git
+curl -Ls -o install-helix.sh https://get.helix.ml
+chmod +x install-helix.sh
 ```
 
 Install the Helix client with
 ```bash
-cd helix
 ./install.sh --cli
 ```
 
