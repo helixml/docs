@@ -26,15 +26,7 @@ Follow the instructions to install Helix on your local machine. Installer will p
 
 ## Requirements
 
-* **Control Plane** is the Helix API, web interface, and postgres database and requires:
-  * Linux, macOS or Windows
-  * [Docker](https://docs.docker.com/get-started/get-docker/)
-* **Inference Provider** requires one of:
-  * An NVIDIA GPU to use with Helix Runners ([example](/helix/private-deployment/controlplane.md#local-helix-on-linux-or-windows-wsl2-with-a-gpu)), or
-  * [Ollama](https://ollama.com) running locally on macOS, Linux or Windows ([example](/helix/private-deployment/controlplane.md#install-alongside-ollama)), or
-  * An OpenAI-compatible API provider, such as [TogetherAI](https://together.ai) ([example](/helix/private-deployment/controlplane.md#install-control-plane-pointing-at-togetherai)) - we like TogetherAI because you can run the same open source models via their API that you can run locally using Helix GPU Runners, but you can use any OpenAI-compatible API (e.g. vLLM, Azure OpenAI, [Gemini](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/call-vertex-using-openai-library) etc)
-* 50GB+ disk space for control plane, 100GB+ of disk space for runner
-* A fast internet connection (llamaindex container is about 11GB, small runner image is 23GB)
+{{< include "requirements.md" >}}
 
 For Kubernetes, see [Control Plane on K8s](/helix/private-deployment/helix-controlplane-helm-chart.md) and [Runners on K8s](/helix/private-deployment/helix-runner-helm-chart.md). See also: [Architecture](/helix/getting-started/architecture.md).
 
