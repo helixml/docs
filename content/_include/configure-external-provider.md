@@ -6,7 +6,7 @@ OPENAI_API_KEY=sk-...
 OPENAI_BASE_URL=<any OpenAI compatible API>
 ```
 
-The frontend will automatically list models available on the LLM provider. You can also specify any model name supported by the provider in a [helix app yaml](/helix/develop/getting-started/) with the `model` field on an assistant.
+The frontend will automatically list models available on the LLM provider. You can also specify any model name supported by the provider in a [helix app yaml](/helix/getting-started/_index.md) with the `model` field on an assistant.
 
 Alternatively, you can attach a GPU runner as described in the following section.
 

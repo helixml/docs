@@ -30,7 +30,7 @@ See also: [docker-compose.yaml](https://github.com/helixml/helix/blob/main/docke
 
 [Runners](https://github.com/helixml/helix/tree/main/api/pkg/runner) connect to the control plane via API/websocket to provide GPUs running model instances. Since they only make outbound connections they can run behind NAT. Each runner knows how much GPU memory it has and polls the API server for new work to do.
 
-A runner is a "fat" container image which contains both the runner golang service and the python virtualenvs that correspond to the [supported models](/docs/models).
+A runner is a "fat" container image which contains both the runner golang service and the python virtualenvs that correspond to the [supported models](/helix/using-helix/text-inference/index.md).
 
 It includes in the polling a set of filters which allow it to restrict jobs it accepts to ones which will fit in the amount of GPU memory it could hypothetically free if it were to stop all "stale" model instances.
 
