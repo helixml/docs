@@ -1,9 +1,11 @@
 ---
 title: Deploying a Runpod Runner
+linkTitle: Runpod
 description:
-weight: 4
+weight: 2
 aliases:
   - /docs/runpod
+  - /helix/private-deployment/runpod/
 ---
 
 Create a runpod GPU pod template like this:
@@ -29,3 +31,7 @@ Docker Command:
 Replace `<RUNNER_TOKEN_FROM_ENV>` and `<GPU_MEMORY>` accordingly. You might want to update the `runner-id` with a more descriptive name, and make sure it's unique. That ID will show up in the helix dashboard at `https://<YOUR_CONTROLPLANE_HOSTNAME>/dashboard` for admin users.
 
 Then start runners from your template, customizing the docker command accordingly.
+
+## Configuring a Runner
+
+{{< include "configure-runner.md" >}}

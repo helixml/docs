@@ -4,6 +4,8 @@ linkTitle: Manual Install
 weight: 2
 aliases:
 - /docs/runners
+- /docs/lambdalabs
+- /helix/private-deployment/lambdalabs/
 ---
 
 The following sections provide detailed instructions on how to install Helix manually on a variety of infrastructure:
