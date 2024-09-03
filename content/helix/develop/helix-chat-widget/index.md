@@ -43,12 +43,14 @@ Initialize the Chat Widget by calling the global `ChatWidget` function with your
 ChatWidget({
     url: 'https://app.tryhelix.ai/v1/chat/completions',
     model: 'llama3:instruct',
-    bearerToken: 'your_bearer_token_here',
+    bearerToken: 'YOUR_APP_API_KEY',
 })
 ```
 <br>
 
-Replace `'your_bearer_token_here'` with your actual bearer token. You will find your bearer token in the Helix Console under My Account.
+Obtain your app scoped API Key by clicking on the `Apps` section in Helix, and scroll to your app. Click 'Add API Key' to generate a new App scoped API Key.
+
+Replace `YOUR_APP_API_KEY` with your actual App scoped API token.
 
 ![](helix-account.png)
 
