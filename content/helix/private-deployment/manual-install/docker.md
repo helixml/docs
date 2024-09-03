@@ -25,7 +25,6 @@ Clone the Helix repository and checkout the most recent tag.
 ```
 git clone https://github.com/helixml/helix
 cd helix
-git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
 ```
 
 ### 2. Configure the `.env` File
@@ -78,7 +77,6 @@ Check configuration:
 ```
 cd helix
 git pull
-git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
 ```
 
 Open `.env.example-prod` and compare it to your current `.env` to check whether there are any new or changed configuration requirements.
