@@ -69,22 +69,6 @@ helm upgrade --install my-helix-controlplane helix/helix-controlplane \
 
 Use port-forward to access the service.
 
-### (Optional) Using an external LLM provider
-
-{{< include "configure-external-provider.md" >}}
-
-### (Optional) Using a real DNS hostname with TLS termination
-
-{{< include "configure-caddy.md" >}}
-
-### (Optional) Enabling Helix Apps
-
-{{< include "configure-apps.md" >}}
-
-### (Optional) Securing Helix
-
-{{< include "configure-security.md" >}}
-
 ## Deploying a Runner
 
 This section describes how to install a Helix runner on Kubernetes.
