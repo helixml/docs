@@ -12,10 +12,6 @@ This page describes how to create a basic "App" in Helix.
 
 ## Introduction
 
-Take a look at this 10 Minute Live-coding Demo of Building a Helix App with RAG and Website Embed
-
-{{< youtube IKJC-R3ru-k>}}
-
 ### What is a Helix App?
 
 A Helix App is a way of packaging tools, scripts, user interfaces and configuration to produce an LLM-powered solution. Apps are stored in version control and are tracked by Helix.
