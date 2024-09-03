@@ -55,6 +55,22 @@ You will be ready to proceed to the next step.
 
 If you are using `SERVER_URL=http://localhost:8080` and `KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth/` in your `.env` file, you can now load `http://localhost:8080` in your browser. View the [user documentation](/helix/using-helix/_index.md) to learn how to use the Helix UI.
 
+### (Optional) Using an external LLM provider
+
+{{< include "configure-external-provider.md" >}}
+
+### (Optional) Using a real DNS hostname with TLS termination
+
+{{< include "configure-caddy.md" >}}
+
+### (Optional) Enabling Helix Apps
+
+{{< include "configure-apps.md" >}}
+
+### (Optional) Securing Helix
+
+{{< include "configure-security.md" >}}
+
 ### Upgrading the Control Plane
 
 Check configuration:
@@ -76,22 +92,6 @@ docker compose up -d --remove-orphans
 
 You can also `git checkout` a specific release tag, but beware that the `docker-compose.yaml` file uses `:latest` tag - update these tags if you want to run an older or pinned version.
 
-### (Optional) Using an external LLM provider
-
-{{< include "configure-external-provider.md" >}}
-
-### (Optional) Using a real DNS hostname with TLS termination
-
-{{< include "configure-caddy.md" >}}
-
-### (Optional) Enabling Helix Apps
-
-{{< include "configure-apps.md" >}}
-
-### (Optional) Securing Helix
-
-{{< include "configure-security.md" >}}
-
 ## Deploying a Runner
 
 This section describes how to install a Helix runner on Docker.
@@ -112,6 +112,10 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --allow-multiple-copies
 ```
 
+### Configuring a Runner
+
+{{< include "configure-runner.md" >}}
+
 ### Upgrading the Runner
 
 ```
@@ -119,7 +123,3 @@ docker rm -f helix-runner
 ```
 
 Then run the command above, updating `<LATEST_TAG>` accordingly.
-
-### Configuring a Runner
-
-{{< include "configure-runner.md" >}}
