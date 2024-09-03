@@ -26,7 +26,8 @@ In this demo I want to demonstrate gathering insights from your own private data
    * Generate article titles for 3 of the most interesting discussoins in the MLOps Community Discussion slack channel.
    * What should I tweet about to have a fun discussion with the people in the MLOps community?
 
+<!--
 ## Example Sessions
-* [https://app.tryhelix.ai/session/acf17619-ff06-4fce-9e1a-19ccecf4c1b1](https://app.tryhelix.ai/session/acf17619-ff06-4fce-9e1a-19ccecf4c1b1)
+* [https://app.tryhelix.ai/session/acf17619-ff06-4fce-9e1a-19ccecf4c1b1](https://app.tryhelix.ai/session/acf17619-ff06-4fce-9e1a-19ccecf4c1b1) -->
 
 Share your results with your friends with the "Share" button or on our [Discord](https://discord.gg/VJftd844GE)!

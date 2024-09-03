@@ -34,6 +34,8 @@ In this demo I will use Helix to help me analyse my ideal customer personas. Thi
    * What one thing does Phil Winder care about most?
    * What is Phil Winder working on at the moment?
    * You have been fine-tuned upon articles that have been shared by Phil Winder. Please write 3 new titles for content that Phil is likely to create.
-
+<!--
 ## Example Sessions
-* [https://app.tryhelix.ai/session/af003c5b-c7ba-46ab-9a25-260beb0e932d](https://app.tryhelix.ai/session/af003c5b-c7ba-46ab-9a25-260beb0e932d)
+* [https://app.tryhelix.ai/session/af003c5b-c7ba-46ab-9a25-260beb0e932d](https://app.tryhelix.ai/session/af003c5b-c7ba-46ab-9a25-260beb0e932d) -->
+
+Share your results with your friends with the "Share" button or on our [Discord](https://discord.gg/VJftd844GE)!
