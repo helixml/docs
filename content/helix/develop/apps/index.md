@@ -74,7 +74,7 @@ This will now clone the repo and add it as an app. The next window shows a summa
 
 From now on, Helix will stay in sync via a Github webhook. Any commit to `main` will result in Helix updating itself.
 
-### 3. Test Your App
+#### 3. Test Your App
 
 {{< tip >}}
 This will be improved soon.
@@ -130,7 +130,7 @@ assistants:
         filter: "hello world"
 ```
 
-### Overriding Query Parameters
+## Overriding Query Parameters
 
 If you need to pass query parameters to your backend service at query time, then you can pass through query parameters using the OpenAI API.
 
