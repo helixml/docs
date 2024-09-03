@@ -72,7 +72,7 @@ sudo ./install.sh
 ```
 
 * If you have an older GPU (e.g. NVIDIA 1060, 1080 series), specify `--older-gpu`. This will disable image inference and text/image fine-tuning, which only works on newer GPUs (e.g. 3090 onwards).
-* If you want to use text fine-tuning, you need to set `--hf-token` to a valid Huggingface token, then you now need to accept sharing your contact information with Mistral [here](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) and then fetch an access token from [here](https://huggingface.co/settings/tokens) and then specify it in this parameter.
+* If you want to use text fine-tuning, as well as needing a newer GPU (e.g. 3090 onwards) you also need to set `--hf-token <YOUR_TOKEN>` to a valid Huggingface token, then you now need to accept sharing your contact information with Mistral [here](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) and then fetch an access token from [here](https://huggingface.co/settings/tokens) and then specify it in this parameter.
 
 This will create `/opt/HelixML` with the following files:
 * `docker-compose.yaml` - the compose file for the control plane
