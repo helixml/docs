@@ -16,25 +16,35 @@ name: helix-docs
 description: |
   A simple app that demonstrates how to setup Helix with knowledge from the Helix docs
 assistants:
-- name: Helix 
+- name: Helix
   model: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
   system_prompt: |
     You are an expert at answering questions about the website https://docs.helix.ml/ and how to
-    run the Helix platform. Make sure your answers are detailed but concise. Use 
-    as much background knowledge as possible to answer the question and provide creative ways 
+    run the Helix platform. Make sure your answers are detailed but concise. Use
+    as much background knowledge as possible to answer the question and provide creative ways
     to resolve the question.
   knowledge:
   - name: helix-docs
     rag_settings:
       results_count: 8
       chunk_size: 2048
-    source:      
-      web:        
+    source:
+      web:
         urls:
         - https://docs.helix.ml/helix/
         crawler:
           enabled: true
 ```
+
+Install the Helix CLI with:
+
+```
+curl -Ls -o install-helix.sh https://get.helix.ml
+chmod +x install-helix.sh
+./install-helix.sh --cli
+```
+
+Read the docs on [Helix CLI](/helix/using-helix/client.md) for more detailed usage instructions.
 
 To create the app, run:
 
@@ -44,7 +54,7 @@ helix apply -f helix_docs.yaml
 
 ## Using the Knowledge
 
-Once knowledge is defined for the application, it will automatically be used by Helix when interacting with the Helix app. No additional setup or configuration is required. 
+Once knowledge is defined for the application, it will automatically be used by Helix when interacting with the Helix app. No additional setup or configuration is required.
 
 ## Managing Knowledge
 
@@ -104,10 +114,10 @@ knowledge:
     text_splitter: markdown # Or text (default is markdown)
     prompt_template: |
       <customize here, default is here https://github.com/helixml/helix/blob/main/api/pkg/prompts/templates/knowledge.tmpl>
-  source:      
-    web:        
+  source:
+    web:
       urls:
-      - https://example.com        
+      - https://example.com
       crawler:
         enabled: true
 ```
@@ -115,7 +125,7 @@ knowledge:
 
 ## Sources
 
-Helix provides a multi-source support for knowledge. You can use a combination of web, S3, GCS, and local file sources. 
+Helix provides a multi-source support for knowledge. You can use a combination of web, S3, GCS, and local file sources.
 
 ### Web
 
@@ -125,11 +135,11 @@ Web source allows you to specify a list of URLs to crawl and use as knowledge. H
 name: website-knowledge
 assistants:
 - name: Helix
-  description: Knows about the website  
+  description: Knows about the website
   knowledge:
   - name: my-website
     source:
-      web:      
+      web:
         urls:
          - https://example.com
         crawler:
@@ -144,9 +154,9 @@ Sometimes you may want to use a 3rd party website crawler. Helix allows you to s
 knowledge:
 - name: meteron-docs
   source:
-    web:      
+    web:
       urls:
-        - https://example.ai/        
+        - https://example.ai/
       crawler:
         enabled: true
         # Firecrawl ref: https://github.com/mendableai/firecrawl
@@ -176,7 +186,7 @@ assistants:
   knowledge:
   - name: cars
     source:
-      content: |        
+      content: |
         Karolis has a green car
         Luke has a blue car
         Kai has a red car
@@ -211,7 +221,7 @@ name: helix-docs
 description: |
   A simple app that demonstrates how to setup Helix with knowledge from the Helix docs
 assistants:
-- name: Helix 
+- name: Helix
   model: helix-3.5
   knowledge:
   - name: helix-docs
@@ -222,8 +232,8 @@ assistants:
     rag_settings:
       results_count: 8
       chunk_size: 2048
-    source:      
-      web:        
+    source:
+      web:
         urls:
         - https://docs.helix.ml/helix/
         crawler:
@@ -259,7 +269,7 @@ Entry                  | Description                                | Equivalent
 
 ### Duration based schedules
 
-To perform knowledge refresh at specific intervals can also use `@every <duration>` to specify a custom schedule. 
+To perform knowledge refresh at specific intervals can also use `@every <duration>` to specify a custom schedule.
 For example, `@every 1h30m` will run the refresh every 1 hour and 30 minutes.
 
 ```yaml

@@ -1,5 +1,5 @@
 ---
-title: Text Prompt Examples 
+title: Text Prompt Examples
 description:
 weight: 1
 aliases:
@@ -7,7 +7,7 @@ aliases:
   - /helix/guidance/text-prompts/
 ---
 
-Helix uses the [Mistral](https://mistral.ai/) series of large language models to provide high quality responses with relatively small memory GPU footprint, including fine-tuning teach the model new information or styles of reasoning and presenting information.
+Helix uses the [Llama](https://ollama.com/library/llama3:8b) family of models to provide high quality responses with relatively small memory GPU footprint, including fine-tuning teach the model new information or styles of reasoning and presenting information.
 
 
 ## Log in
