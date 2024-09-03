@@ -17,7 +17,7 @@ curl -sL -O https://get.helix.ml/install.sh && bash install.sh
 
 Follow the instructions to install Helix on your local machine. Installer will prompt you before making any changes.
 
-[View source](https://get.helix.ml) | [Manual instructions](/helix/private-deployment/manual-install.md) | [Kubernetes](/helix/private-deployment/helix-controlplane-helm-chart.md) | [Discord](https://discord.gg/VJftd844GE)
+[View source](https://get.helix.ml) | [Manual instructions](/helix/private-deployment/manual-install.md) | [Kubernetes](/helix/private-deployment/manual-install/kubernetes.md) | [Discord](https://discord.gg/VJftd844GE)
 
 <br/>
 <br/>
@@ -27,8 +27,6 @@ Follow the instructions to install Helix on your local machine. Installer will p
 ## Requirements
 
 {{< include "requirements.md" >}}
-
-For Kubernetes, see [Control Plane on K8s](/helix/private-deployment/helix-controlplane-helm-chart.md) and [Runners on K8s](/helix/private-deployment/helix-runner-helm-chart.md). See also: [Architecture](/helix/getting-started/architecture.md).
 
 ## Download the Helix Installer
 
