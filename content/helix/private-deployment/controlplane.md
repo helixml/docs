@@ -1,13 +1,11 @@
 ---
-title: "Quickstart: Install Helix"
-description:
+title: Installing Helix
+linkTitle: "Install Helix"
+description: Learn how to install Helix on your own infrastructure.
 weight: 1
 aliases:
   - /docs/controlplane
 ---
-
-<br/>
-<br/>
 
 ## tl;dr
 
@@ -17,9 +15,9 @@ Linux | macOS | Windows (WSL2)
 curl -sL -O https://get.helix.ml/install.sh && bash install.sh
 ```
 
-Follow the instructions. Installer will prompt you before making any changes.
+Follow the instructions to install Helix on your local machine. Installer will prompt you before making any changes.
 
-[View source](https://get.helix.ml) | [Manual instructions](/helix/private-deployment/manual-install/) | [Kubernetes](/helix/private-deployment/helix-controlplane-helm-chart/) | [Discord](https://discord.gg/VJftd844GE)
+[View source](https://get.helix.ml) | [Manual instructions](/helix/private-deployment/manual-install.md) | [Kubernetes](/helix/private-deployment/helix-controlplane-helm-chart.md) | [Discord](https://discord.gg/VJftd844GE)
 
 <br/>
 <br/>
@@ -32,17 +30,17 @@ Follow the instructions. Installer will prompt you before making any changes.
   * Linux, macOS or Windows
   * [Docker](https://docs.docker.com/get-started/get-docker/)
 * **Inference Provider** requires one of:
-  * An NVIDIA GPU to use with Helix Runners ([example](/helix/private-deployment/controlplane/#local-helix-on-linux-or-windows-wsl2-with-a-gpu)), or
-  * [Ollama](https://ollama.com) running locally on macOS, Linux or Windows ([example](/helix/private-deployment/controlplane/#install-alongside-ollama)), or
-  * An OpenAI-compatible API provider, such as [TogetherAI](https://together.ai) ([example](/helix/private-deployment/controlplane/#install-control-plane-pointing-at-togetherai)) - we like TogetherAI because you can run the same open source models via their API that you can run locally using Helix GPU Runners, but you can use any OpenAI-compatible API (e.g. vLLM, Azure OpenAI, [Gemini](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/call-vertex-using-openai-library) etc)
+  * An NVIDIA GPU to use with Helix Runners ([example](/helix/private-deployment/controlplane.md#local-helix-on-linux-or-windows-wsl2-with-a-gpu)), or
+  * [Ollama](https://ollama.com) running locally on macOS, Linux or Windows ([example](/helix/private-deployment/controlplane.md#install-alongside-ollama)), or
+  * An OpenAI-compatible API provider, such as [TogetherAI](https://together.ai) ([example](/helix/private-deployment/controlplane.md#install-control-plane-pointing-at-togetherai)) - we like TogetherAI because you can run the same open source models via their API that you can run locally using Helix GPU Runners, but you can use any OpenAI-compatible API (e.g. vLLM, Azure OpenAI, [Gemini](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/call-vertex-using-openai-library) etc)
 * 50GB+ disk space for control plane, 100GB+ of disk space for runner
 * A fast internet connection (llamaindex container is about 11GB, small runner image is 23GB)
 
-For Kubernetes, see [Control Plane on K8s](/helix/private-deployment/helix-controlplane-helm-chart/) and [Runners on K8s](/helix/private-deployment/helix-runner-helm-chart/).  See also: [Architecture](/helix/getting-started/architecture).
+For Kubernetes, see [Control Plane on K8s](/helix/private-deployment/helix-controlplane-helm-chart.md) and [Runners on K8s](/helix/private-deployment/helix-runner-helm-chart.md). See also: [Architecture](/helix/getting-started/architecture.md).
 
 ## Download the Helix Installer
 
-To quickly get started with Helix, you can use our installer script. Run the following commands to download and make the installer executable:
+Use the installer script to get started with Helix quickly. Run the following commands to download and make the installer executable:
 
 ```bash
 curl -sL -O https://get.helix.ml/install.sh
@@ -54,7 +52,7 @@ Now run the installer and follow the instructions. You will be prompted before a
 
 You can also run `./install.sh --help` to see what options are available.
 
-## Examples
+## Installer Examples
 
 ### Just install the CLI
 
@@ -74,7 +72,7 @@ sudo ./install.sh
 * If you have an older GPU (e.g. NVIDIA 1060, 1080 series), specify `--older-gpu`. This will disable image inference and text/image fine-tuning, which only works on newer GPUs (e.g. 3090 onwards).
 * If you want to use text fine-tuning, as well as needing a newer GPU (e.g. 3090 onwards) you also need to set `--hf-token <YOUR_TOKEN>` to a valid Huggingface token, then you now need to accept sharing your contact information with Mistral [here](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) and then fetch an access token from [here](https://huggingface.co/settings/tokens) and then specify it in this parameter.
 
-This will create `/opt/HelixML` with the following files:
+This will create a `HelixML` directory with the following files:
 * `docker-compose.yaml` - the compose file for the control plane
 * `.env` - appropriately configured secrets and configuration for the control plane
 * `runner.sh` - script to start the runner assuming a local GPU
@@ -100,6 +98,7 @@ This won't work with image inference or text/image fine-tuning. Connect a full G
 ### Install Control Plane pointing at TogetherAI
 
 Install CLI and controlplane locally with external [TogetherAI](https://together.ai) API key:
+
 ```
 ./install.sh --cli --controlplane --together-api-key YOUR_TOGETHER_API_KEY
 ```
@@ -116,12 +115,14 @@ Then, you can install the CLI and Control Plane on the server, specifying the DN
 ```
 
 The automatic Caddy installation currently only works on Ubuntu.
-See [Manual Install](/helix/private-deployment/manual-install/) for full instructions on other platforms.
+
+See [Manual Install](/helix/private-deployment/manual-install.md) for full instructions on other platforms.
 
 
 ### Attach a Runner to an existing Control Plane
 
 Install just the runner, pointing to a controlplane with a DNS name (find runner token in `/opt/HelixML/.env` on the control plane node):
+
 ```
 ./install.sh --runner --api-host https://helix.mycompany.com --runner-token YOUR_RUNNER_TOKEN
 ```
@@ -142,8 +143,8 @@ Just run the installer again. It will reuse secrets in your `.env` file and back
 
 ## Security
 
-After deploying Helix, be sure to [lock it down](/helix/private-deployment/manual-install/#locking-down-the-stack).
+After deploying Helix, be sure to [lock it down](/helix/private-deployment/manual-install.md#locking-down-the-stack).
 
 ## More Configuration
 
-For further configuration options you can put in your `.env` file, such as connecting GitHub for easy `git push` deployment of [Helix Apps](/helix/develop/apps/), check the [manual install docs](/helix/private-deployment/manual-install/).
+For further configuration options you can put in your `.env` file, such as connecting GitHub for easy `git push` deployment of [Helix Apps](/helix/develop/apps.md), check the [manual install docs](/helix/private-deployment/manual-install.md).
