@@ -131,10 +131,14 @@ This won't work with image inference or text/image fine-tuning. Connect a full G
 
 Just run the installer again. It will reuse secrets in your `.env` file and back it up in case you need to copy over any changes.
 
-## Security
+## (Optional) Enabling Helix Apps
 
-After deploying Helix, be sure to [lock it down](/helix/private-deployment/manual-install.md#locking-down-the-stack).
+{{< include "configure-apps.md" >}}
+
+## (Optional) Securing Helix
+
+{{< include "configure-security.md" >}}
 
 ## More Configuration
 
-For further configuration options you can put in your `.env` file, such as connecting GitHub for easy `git push` deployment of [Helix Apps](/helix/develop/apps.md), check the [manual install docs](/helix/private-deployment/manual-install.md).
+For further configuration options you can put in your `.env` file, such as connecting GitHub for easy `git push` deployment of [Helix Apps](/helix/develop/apps.md), check the [manual install docs](/helix/private-deployment/_index.md).
