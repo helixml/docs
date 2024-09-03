@@ -45,7 +45,7 @@ For Kubernetes, see [Control Plane on K8s](/helix/private-deployment/helix-contr
 To quickly get started with Helix, you can use our installer script. Run the following commands to download and make the installer executable:
 
 ```bash
-curl -Ls -o install.sh https://get.helix.ml
+curl -sL -O https://get.helix.ml/install.sh
 chmod +x install.sh
 sudo ./install.sh
 ```
