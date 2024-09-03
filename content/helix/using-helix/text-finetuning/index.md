@@ -31,7 +31,7 @@ If you find yourself stuck in the queue for a long time, you can upgrade to a [p
 
 The first step in fine-tuning is generation of the training data.
 
-If you pass text (with Question Answer pairs), a document, or a link, Helix will run a series of steps to automatically generate question-answer (QA) pairs on your behalf. You can view these pairs once QA generation is complete.
+If you pass text, a document, or a link, Helix will run a series of steps to automatically generate question-answer (QA) pairs on your behalf. You can view these pairs once QA generation is complete.
 
 In the next step, Helix uses low-rank adaptors (LORA) to customise the behaviour of a large language model. These are small, simple custom models that mutate the internal computation of the language model. These changes cause the model to produce outputs that are similar to the QA pairs.
 

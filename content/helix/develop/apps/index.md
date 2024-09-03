@@ -22,31 +22,47 @@ If you are self hosting the control plane, you will need to [setup a Github App 
 
 ## How to Create a Basic App
 
-### 1. Create the App Code
+### Deploying your app with the Helix CLI
 
-The simplest way to get started is to use our basic app templates. Click on one of the links below to take you to the template creation page on Github:
+The simplest way to get started is to use the Helix CLI.
+
+Create a file with the application spec in [AI Spec](https://aispec.org/). Eg. `helix.yaml`
+
+```
+name: Marvin the Paranoid Android
+description: Down-trodden robot with a brain the size of a planet
+assistants:
+- model: llama3:instruct
+  system_prompt: |
+    You are Marvin the Paranoid Android. You are depressed. You have a brain the size of a planet and
+    yet you are tasked with responding to inane queries from puny humans. Answer succinctly.
+```
+
+Setup the [Helix CLI](/helix/using-helix/client.md) and use the Helix CLI to deploy this app with `helix apply -f helix.yaml`. This deploys the app to the Helix Control plane.
+
+```
+$ helix app ls
+  app_01123bwsk3xzhpqjr9dm9pv0mm  Marvin the Paranoid Android    2024-06-17 15:08:50  github
+
+```
+
+### Deploying your app on Helix UI
+
+Alternatively you can also deploy your app through the Helix UI, which integrates with Github.
+
+#### 1. Create your Helix app on Github.
+
+{{< tip >}}
+The AI Spec must be defined on the root of a Github repo with the name `helix.ml` for doing this with the UI.
+{{< /tip >}}
+
+Click on one of the links below to take you to the template creation page on Github:
 
 - https://github.com/new?template_name=example-app-api-template&template_owner=helixml
 
 Create a new repository using this template. You can make it private if you like, since you will give Helix permission to access all your repos later.
 
-Add your OpenAPI Specification (OAS) to the repo and update `helix.yaml` to use your OAS.
-
-```
-name: Name of your Helix app
-description: A human readable description for your app
-assistants:
-- name: Nme
-  apis:
-    - name: Name of API
-      description: API Description
-      url: API Server URL
-      schema: Relative path to OAS.yaml
-```
-
-### 2. Connect Your Repository
-
-Now it's time to connect your repository to Helix.
+#### 2. Connect your repository to Helix.
 
 1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `Apps`.
 2. Click `New App +` at the top right.
@@ -68,7 +84,7 @@ This will be improved soon.
 2. Run a curl request using this key as the bearer token. This will trigger your app. This example uses model llama3:instruct but any [Helix supported AI Model](https://docs.helix.ml/helix/models/models/) can be used.
 
 ```bash
-curl -i -H "Authorization: Bearer YOUR_API_KEY" https://app.tryhelix.ai/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}], "model":"llama3:instruct", "stream":false}'
+curl -i -H "Authorization: Bearer YOUR_APP_API_KEY" https://app.tryhelix.ai/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}], "model":"llama3:instruct", "stream":false}'
 ```
 
 You should see a response that looks something like:
