@@ -1,6 +1,6 @@
 ---
-title: Installing Helix
-linkTitle: "Install Helix"
+title: Installing Helix Quick Start
+linkTitle: "Install Quick Start"
 description: Learn how to install Helix on your own infrastructure.
 weight: 1
 aliases:
