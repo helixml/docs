@@ -1,15 +1,24 @@
 <a
-    {{ if strings.HasSuffix .Destination ".md" -}}
-    href="{{ (.Page.GetPage .Destination).RelPermalink | safeURL }}"
-    {{- else -}}
-    href="{{ .Destination | safeURL }}"
-    {{- end -}}
+    {{- $u := urls.Parse .Destination }}
+    {{- if $u.IsAbs }}
+        href="{{ .Destination | safeURL }}"
+    {{- else }}
+        {{ if strings.HasSuffix $u.Path ".md" -}}
+            {{ with .Page.GetPage $u.Path }}
+                href="{{ .RelPermalink | safeURL }}{{ with $u.Fragment }}#{{ . }}{{ end }}"
+            {{ else }}
+                {{- errorf "Page does not exist: %s on page content/%s.md" $u.Path .Page.Path }}
+            {{ end }}
+        {{- else -}}
+            {{ warnf "Please use a path to a .md file to check link exists (%s on page content%s.md)" .Destination .Page.Path }}
+        {{- end -}}
+    {{- end }}
     {{- with .Title }}
-    title="{{ . }}"
+        title="{{ . }}"
     {{ end -}}
-    {{- if and (not (strings.Contains .Destination "winder.ai")) (not (strings.Contains .Destination "localhost")) (not (strings.HasPrefix .Destination "/")) }}
-    rel="external nofollow noopener"
-    target="_blank"
+    {{- if and (not (strings.Contains .Destination "helix.ml")) (not (strings.Contains .Destination "localhost")) (not (strings.HasPrefix .Destination "/")) }}
+        rel="external nofollow noopener"
+        target="_blank"
     {{ end -}}
 >
     {{- with .Text | safeHTML }}{{ . }}{{ end -}}
