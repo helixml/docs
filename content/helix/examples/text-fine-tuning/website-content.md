@@ -24,6 +24,8 @@ In this demo I will use helix to analyse what I have written in the past year on
    * As of December 2023, which LLM has the largest context window size according to the table?
    * Where does RL find its most effective applications?
    * What are the main topics that have been discussed in the document in 2023?
-
+<!--
 ## Example Sessions
-* [https://app.tryhelix.ai/session/9912e0b9-4276-4730-a94a-14b77853758f](https://app.tryhelix.ai/session/9912e0b9-4276-4730-a94a-14b77853758f)
+* [https://app.tryhelix.ai/session/9912e0b9-4276-4730-a94a-14b77853758f](https://app.tryhelix.ai/session/9912e0b9-4276-4730-a94a-14b77853758f) -->
+
+Share your results with your friends with the "Share" button or on our [Discord](https://discord.gg/VJftd844GE)!

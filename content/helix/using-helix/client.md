@@ -117,7 +117,7 @@ $ helix app ls
 
 ## Knowledge
 
-This lists Helix [knowledge](https://docs.helix.ml/helix/develop/knowledge/) contexts that have been setup by the user.
+This lists Helix [knowledge](helix/develop/knowledge/index.md) contexts that have been setup by the user.
 
 ```bash
 $ helix knowledge ls
