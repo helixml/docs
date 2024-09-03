@@ -40,4 +40,4 @@ Here are some more prompts to try:
 Share your results with your friends with the "Share" button or on our [Discord](https://discord.gg/VJftd844GE)!
 
 
-If you find yourself stuck in the queue for a long time, you can upgrade to a [paid account](https://app.tryhelix.ai/account) to jump the queue, or [deploy Helix on your own infrastructure](/docs/controlplane).
+If you find yourself stuck in the queue for a long time, you can upgrade to a [paid account](https://app.tryhelix.ai/account) to jump the queue, or [deploy Helix on your own infrastructure](/helix/private-deployment/_index.md).

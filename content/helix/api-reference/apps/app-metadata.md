@@ -10,7 +10,7 @@ See the Helix [OpenAPI Spec](https://github.com/helixml/helix/blob/main/api/pkg/
 
 ## Get the app metadata for a single app
 
-First get the ID of the app you're interested in from the [Helix apps list](/helix/api-reference/apps/apps-list)
+First get the ID of the app you're interested in from the [Helix apps list](/helix/api-reference/apps/app-list.md)
 
 ```
 curl -X 'GET' \
