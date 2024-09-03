@@ -1,0 +1,8 @@
+{{- $includes_dir := .Site.Params.includes_dir | default "_include" -}}
+{{- $include_file := printf "%s/%s" $includes_dir (.Get 0) -}}
+
+{{- with .Site.GetPage $include_file -}}
+  {{- .Content -}}
+{{ else }}
+  {{ errorf "Include file not found: %s" $include_file }}
+{{- end -}}
