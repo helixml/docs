@@ -92,7 +92,3 @@ helm upgrade --install my-helix-runner helix/helix-runner \
   --set replicaCount=4 \
   --set nodeSelector."nvidia\.com/gpu\.product"="NVIDIA-GeForce-RTX-3090-Ti"
 ```
-
-### Configuring a Runner
-
-{{< include "configure-runner.md" >}}
