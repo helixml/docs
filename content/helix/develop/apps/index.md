@@ -12,6 +12,10 @@ This page describes how to create a basic "App" in Helix.
 
 ## Introduction
 
+Take a look at this 10 Minute Live-coding Demo of Building a Helix App with RAG and Website Embed
+
+{{< youtube IKJC-R3ru-k>}}
+
 ### What is a Helix App?
 
 A Helix App is a way of packaging tools, scripts, user interfaces and configuration to produce an LLM-powered solution. Apps are stored in version control and are tracked by Helix.
@@ -85,23 +89,15 @@ The following environmental variables are used to configure how the control plan
 # https://github.com/helixml/helix/blob/main/api/pkg/config/config.go#L68
 TOOLS_ENABLED=true # Enables tool usage
 # https://github.com/helixml/helix/blob/main/api/pkg/config/config.go#L69
-TOOLS_PROVIDER=helix # Which provider to use with tools
+INFERENCE_PROVIDER=togetherai # Which provider to use for inference
 # https://github.com/helixml/helix/blob/main/api/pkg/config/config.go#L75
-TOOLS_MODEL=llama3:instruct # Which model to use with tools
+TOOLS_MODEL=llama3:instruct # Which model to use
 ```
 
 {{< tip >}}
 Note that the model used for Apps is hardcoded in the control plane config. It is not user-selectable.
 {{< /tip >}}
 
-## Runner Configuration for Private Deployments
-
-The following environmental variables are used to configure how the runner runs Apps.
-
-```bash
-# https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go#L36
-RUNTIME_OLLAMA_WARMUP_MODELS=llama3:70b,llama3:instruct # Which models are available on this runner.
-```
 
 ## App Configuration
 

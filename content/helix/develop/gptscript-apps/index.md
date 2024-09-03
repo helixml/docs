@@ -10,7 +10,7 @@ We support a development workflow where you run the Helix GPTScript Dev Server l
 
 ![](apps-01.png)
 
-We provide a simple Javascript library (and API) to call into GPTScript you push to a git repo and run it securely in a microVM so you don't need to worry about the user convincing the LLM to run malicious commands – it all runs in a throwaway VM anyway.
+We provide a simple Javascript library (and API) to call into GPTScript you push to a git repo and run it securely in a container so you don't need to worry about the user convincing the LLM to run malicious commands – it all runs in a throwaway VM anyway.
 
 ## Example Javascript Code
 
