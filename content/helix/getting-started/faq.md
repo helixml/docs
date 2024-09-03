@@ -23,4 +23,4 @@ This is where Helix really shines – because the models are open source, you ar
 
 Yes, we expose industry-standard OpenAI compatible APIs. Please see the [API documentation](/helix/api-reference/_index.md).
 
-We also provide "App" primitives to make it even easier for you to [create AI-powered applications](/helix/develop/getting-started.md).
+We also provide "App" primitives to make it even easier for you to [create AI-powered applications](/helix/develop/_index.md).
