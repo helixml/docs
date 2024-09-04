@@ -35,12 +35,11 @@ Use the installer script to get started with Helix quickly. Run the following co
 ```bash
 curl -sL -O https://get.helix.ml/install.sh
 chmod +x install.sh
-sudo ./install.sh
 ```
 
-Now run the installer and follow the instructions. You will be prompted before any changes are made to your system.
+Now run the installer and follow the instructions with `sudo ./install.sh`. You will be prompted before any changes are made to your system.
 
-You can also run `./install.sh --help` to see what options are available.
+You can also run `./install.sh --help` to see what options are available, or read on for common configuration options.
 
 ## Installer Examples
 
