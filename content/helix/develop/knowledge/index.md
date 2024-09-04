@@ -44,7 +44,7 @@ chmod +x install-helix.sh
 ./install-helix.sh --cli
 ```
 
-Read the docs on [Helix CLI](/helix/using-helix/client.md) for more detailed usage instructions.
+Read the docs on [Helix CLI](/helix/using-helix/client/_index.md) for more detailed usage instructions.
 
 To create the app, run:
 

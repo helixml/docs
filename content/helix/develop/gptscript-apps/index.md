@@ -1,7 +1,7 @@
 ---
 title: GPTScript Apps
 description: Learn how to use GPTScript with Helix Apps to create your very own AI frontend.
-weight: 2
+weight: 6
 ---
 
 Helix supports [GPTScript](https://gptscript.ai) to allow you to write simple "scripted" natural language powered apps by just writing prompts. Also check out the [examples apps in the documentation](/helix/examples/apps/gptscript-app-recommendations/index.md)

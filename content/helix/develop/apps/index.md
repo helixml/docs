@@ -38,7 +38,7 @@ assistants:
     yet you are tasked with responding to inane queries from puny humans. Answer succinctly.
 ```
 
-Setup the [Helix CLI](/helix/using-helix/client.md) and use the Helix CLI to deploy this app with `helix apply -f helix.yaml`. This deploys the app to the Helix Control plane.
+Setup the [Helix CLI](/helix/using-helix/client/_index.md) and use the Helix CLI to deploy this app with `helix apply -f helix.yaml`. This deploys the app to the Helix Control plane.
 
 ```
 $ helix app ls
@@ -80,7 +80,7 @@ From now on, Helix will stay in sync via a Github webhook. Any commit to `main` 
 This will be improved soon.
 {{< /tip >}}
 
-1. Click on your `App` and scroll to the bottom right. Copy the `key` under `API Keys`.
+1. Click on your `App` and scroll to the bottom right. Copy the `key` under `API Keys`. If none exist, you will see an option to create an App API Key.
 2. Run a curl request using this key as the bearer token. This will trigger your app. This example uses model llama3:instruct but any [Helix supported AI Model](https://docs.helix.ml/helix/models/models/) can be used.
 
 ```bash
