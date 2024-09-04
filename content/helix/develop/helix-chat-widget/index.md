@@ -1,7 +1,7 @@
 ---
 title: Helix Chat Widget
 description:  Learn about Helix Chat Widget and how to easily embed it into your web applications.
-weight: 5
+weight: 9
 aliases:
 - /helix/develop/chat-widget/
 ---
