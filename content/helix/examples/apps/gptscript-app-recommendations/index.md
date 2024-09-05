@@ -3,6 +3,8 @@ title: GPTScript Food Recommendations
 linkTile: GPTScript Recommendations
 description: Use Helix with GPTScript to build a recommendations app with a frontend.
 weight: 1
+tags:
+- gptscript
 ---
 
 You can use this sample React app as a starting point for your own AI powered apps.
