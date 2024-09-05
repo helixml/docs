@@ -12,11 +12,11 @@ tags:
 - quick-start
 ---
 
-Helix Apps make it quick and easy to build an AI-powered application. In a nutshell, an App is a collection of configuration telling Helix what model to use, how to use it, what data to leverage, and so on.
+Helix makes it quick and easy to build an AI-powered applications. In a nutshell, an App configures Helix by telling it what model to use, how to use it, what data to leverage, and so on.
 
 You can deploy Apps in three different ways: via the UI, using the CLI, or via a connection to a [GitHub repository](/helix/develop/github-apps/index.md).
 
-This page shows you how to create and configure an App.
+This page explains how to create and configure an App.
 
 ## Creating an App
 
@@ -24,19 +24,19 @@ This section focuses on deploying Helix Apps via the UI or the CLI. To learn mor
 
 Learn how to create an App, then keep reading to learn how to configure it.
 
-### Creating an App in the UI
+### Creating an App Using the UI
 
-To create an app in the UI browse to `https://${YOUR_DOMAIN}/app/new` ([SaaS link](https://app.tryhelix.ai/app/new)):
+To create an app using the UI browse to `https://${YOUR_DOMAIN}/app/new` ([SaaS link](https://app.tryhelix.ai/app/new)):
 
 1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `Your Apps`.
 2. Click `New App +` at the top right.
 
-### Creating an App Via the CLI
+### Creating an App Using the CLI
 
-You can also deploy via the Helix CLI by applying a `yaml` formatted configuration file.
+You can also deploy via the Helix CLI by applying a [AI Spec](https://aispec.org/) formatted configuration YAML file.
 
 1. Install the CLI by following the [installation instructions](/helix/private-deployment/controlplane.md) or downloading directly from the [GitHub releases page](https://github.com/helixml/helix/releases/latest).
-2. Deploy an App with: `helix apply -f your.yaml`
+2. Deploy an App with `helix apply -f your.yaml`
 
 ## Configuring an App
 
@@ -48,7 +48,7 @@ Now you know how to deploy an App to Helix, let's learn how to configure it to d
 
 In the basic settings screen you can specify things like the name, the instructions the AI should follow (the system prompt) and settings for avatars and images.
 
-The checkboxes at the bottom define whether you want to a) share your AI with the public, and b) whether it should be globally available in the "App Store."
+The checkboxes at the bottom define whether you want to: a) share your AI with the public, and b) make it globally available in the App Store.
 
 The equivalent yaml configuration would be:
 
@@ -65,13 +65,13 @@ assistants:
 
 ### Knowledge
 
-"Knowledge" is a new feature of Apps that allow you to incorporate sources of knowledge. Initially we support scraping websites but the intention is to allow users to connect all of their knowledge sources (e.g. document repositories, S3 buckets, Google Drives, etc).
+"Knowledge" is a new feature of Helix Apps that allows you to incorporate sources of knowledge. Initially we support scraping websites but the intention is to allow users to connect all of their knowledge sources (e.g. document repositories, S3 buckets, Google Drives, etc).
 
 ![Adding knowledge to your Helix App](knowledge.png)
 
 To get started, add a website and a scrape interval.
 
-An equivalent `yaml` might look like:
+An equivalent YAML might look like:
 
 ```yaml
 # helix_docs.yaml
@@ -109,11 +109,11 @@ See the [dedicated knowledge documentation](/helix/develop/knowledge/index.md) f
 
 API integrations rely on an OpenAPI (a.k.a. Swagger) schema. You need to create one for your API so that Helix knows what to call and when. Be descriptive with your descriptions to make it easier for the language model to decide when to call it. Make sure each operation has a unique `operationID`.
 
-The schema can be specified as a URL, a path to a file, or a raw `yaml` string.
+The schema can be specified as a URL, a path to a file, or a raw YAML string.
 
-Some times you might need to pass custom headers to query parameters, for authentication, for example. Add these at the bottom.
+Sometimes you might need to pass custom headers to query parameters, for authentication, for example. Add these at the bottom.
 
-An equivalent `yaml` configuration might be:
+An equivalent YAML configuration might be:
 
 ```yaml
 name: My test API
@@ -155,11 +155,11 @@ API keys give external apps, widgets, and users access to your App. You can crea
 
 If you are hosting your App on your own website, using the chat widget, for example, you may need to whitelist your domain (to avoid cross-origin hacks). You can do this at the bottom.
 
-API keys are not set via the yaml specification.
+API keys are not set via the YAML specification.
 
 ### Developer Information
 
-The final tab shows the final yaml specification of your app so that you can copy and store for future use. It also provides instructions on how to access the App via the CLI.
+The last tab displays the final [AI Spec](https://aispec.org/) YAML specification of your app so that you can copy and store for future use. It also provides instructions on how to access the App via the CLI.
 
 ![Develop information](develop.png)
 
@@ -186,7 +186,7 @@ Rather than browsing via the `App Store`, you can link to the App directly. The 
 
 ### Integrating Apps Into Your Website
 
-Helix makes it super easy to integrate an App into your website. You can copy the `Embed` code directly from `Your Apps` -> `Embed`.
+Helix makes it very easy to integrate an App into your website. You can copy the `Embed` code directly from `Your Apps` -> `Embed`.
 
 You can also read the [dedicated chat-widget documentation](/helix/develop/helix-chat-widget/index.md).
 
