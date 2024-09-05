@@ -4,6 +4,10 @@ description: Quickly test out Helix's features by experimenting with Helix Cloud
 weight: 1
 aliases:
   - /docs/getting-started
+tags:
+- quick-start
+- text-inference
+- image-inference
 ---
 
 These instructions show how you can experiment with [Helix Cloud](https://app.tryhelix.ai/). If you want to deploy to your own infrastucture, see the section on [Private Deployment](/helix/private-deployment/_index.md).

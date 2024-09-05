@@ -4,6 +4,8 @@ description:  Learn about Helix Chat Widget and how to easily embed it into your
 weight: 9
 aliases:
 - /helix/develop/chat-widget/
+tags:
+- ui
 ---
 
 The Helix Chat Widget is a UI component that makes it easy to expose Helix models in your apps and on your website. It is packaged both as a React component and a browser-side library.

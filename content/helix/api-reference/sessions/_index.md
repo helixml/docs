@@ -4,6 +4,8 @@ weight: 1
 prev: /helix/api-reference/_index.md
 aliases:
   - /docs/sessions
+tags:
+- sessions
 ---
 
 An Helix session object is a structured data entity used to represent and manage the state, context, and interactions during a conversation between a user and an the Helix system. This object typically contains information necessary to maintain the continuity of the dialogue, track user inputs, and store any relevant context or variables that might influence the responses. All sessions are identified by a unique session ID.

@@ -6,6 +6,9 @@ weight: 1
 aliases:
 - /helix/develop/getting-started/
 - /helix/develop/helix-tools/
+tags:
+- apps
+- quick-start
 ---
 
 This page describes how to create a basic "App" in Helix.

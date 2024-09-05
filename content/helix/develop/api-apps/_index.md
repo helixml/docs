@@ -3,6 +3,9 @@ title: Apps with API tooling
 linkTitle: Apps with API tooling
 description: Learn how to connect a Helix app to an API.
 weight: 5
+tags:
+- apps
+- api
 ---
 
 To develop a Helix app that connects to an API using the OpenAPI specification, follow these steps:

@@ -6,6 +6,8 @@ weight: 3
 aliases:
   - /docs/insights-data
   - /helix/text-fine-tuning-examples/insights-data/
+tags:
+- text-fine-tune
 ---
 
 {{< youtube "gC-fSxseAJQ" >}}

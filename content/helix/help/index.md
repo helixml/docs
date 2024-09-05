@@ -6,6 +6,8 @@ menu:
     name: Contact
     weight: 3
 weight: 99
+tags:
+- help
 ---
 
 This page provides details of where you can find more help. We'd love to help you get Helix working for you. So no matter how trivial, drop us a line and let us know how we can help!

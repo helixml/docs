@@ -5,6 +5,8 @@ weight: 2
 aliases:
   - /docs/for-sale-signs
   - /helix/image-fine-tuning-examples/for-sale-signs/
+tags:
+- image-fine-tune
 ---
 
 Coming soon.
