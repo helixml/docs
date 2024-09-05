@@ -9,14 +9,6 @@ tags:
 - install
 ---
 
-{{< youtube "6QcOXq3VFpc" >}}
-
-Install Helix to get:
-
-* Helix Apps, version controlled configuration for LLM-based applications
-* Knowledge, continuously updated RAG from a URL
-* API integrations so your app can call an API to get up to date information when needed
-* New Helix App Editor UI
 
 
 ## tl;dr
@@ -35,6 +27,17 @@ Follow the instructions to install Helix on your local machine. Installer will p
 <br/>
 <br/>
 <br/>
+
+
+{{< youtube "6QcOXq3VFpc" >}}
+
+Install Helix to get:
+
+* Helix Apps, version controlled configuration for LLM-based applications
+* Knowledge, continuously updated RAG from a URL
+* API integrations so your app can call an API to get up to date information when needed
+* New Helix App Editor UI
+
 
 ## Requirements
 
