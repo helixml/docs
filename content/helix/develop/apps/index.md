@@ -12,7 +12,7 @@ tags:
 - quick-start
 ---
 
-Helix makes it quick and easy to build an AI-powered applications. In a nutshell, an App configures Helix by telling it what model to use, how to use it, what data to leverage, and so on.
+Helix makes it quick and easy to build AI-powered applications in what we call Helix Apps. In a nutshell, an App configures Helix by telling it what model to use, how to use it, what data to leverage, and so on.
 
 You can deploy Apps in three different ways: via the UI, using the CLI, or via a connection to a [GitHub repository](/helix/develop/github-apps/index.md).
 
