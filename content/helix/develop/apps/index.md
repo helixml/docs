@@ -6,134 +6,131 @@ weight: 1
 aliases:
 - /helix/develop/getting-started/
 - /helix/develop/helix-tools/
+- /helix/develop/api-apps/
 tags:
 - apps
 - quick-start
 ---
 
-This page describes how to create a basic "App" in Helix.
+Helix Apps make it quick and easy to build an AI-powered application. In a nutshell, an App is a collection of configuration telling Helix what model to use, how to use it, what data to leverage, and so on.
 
-## Introduction
+You can deploy Apps in three different ways: via the UI, using the CLI, or via a connection to a [GitHub repository](/helix/develop/github-apps/index.md).
 
-### What is a Helix App?
+This page shows you how to create and configure an App.
 
-A Helix App is a way of packaging tools, scripts, user interfaces and configuration to produce an LLM-powered solution. Apps are stored in version control and are tracked by Helix.
+## Creating an App
 
-{{< tip >}}
-If you are self hosting the control plane, you will need to [setup a Github App first]({{< ref "/helix/private-deployment/controlplane.md#enabling-helix-apps" >}}) before the following will work.
-{{< /tip >}}
+This section focuses on deploying Helix Apps via the UI or the CLI. To learn more about the GitHub integration, please visit the dedicated page.
 
-## How to Create a Basic App
+Learn how to create an App, then keep reading to learn how to configure it.
 
-### Deploying your app with the Helix CLI
+### Creating an App in the UI
 
-The simplest way to get started is to use the Helix CLI.
+To create an app in the UI browse to `https://${YOUR_DOMAIN}/app/new` ([SaaS link](https://app.tryhelix.ai/app/new)):
 
-Create a file with the application spec in [AI Spec](https://aispec.org/). Eg. `helix.yaml`
+1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `Your Apps`.
+2. Click `New App +` at the top right.
 
-```
+### Creating an App Via the CLI
+
+You can also deploy via the Helix CLI by applying a `yaml` formatted configuration file.
+
+1. Install the CLI by following the [installation instructions](/helix/private-deployment/controlplane.md) or downloading directly from the [GitHub releases page](https://github.com/helixml/helix/releases/latest).
+2. Deploy an App with: `helix apply -f your.yaml`
+
+## Configuring an App
+
+Now you know how to deploy an App to Helix, let's learn how to configure it to do something useful. A full definition of the AI application specification can be found at [AI Spec](https://aispec.org/).
+
+### Basic Settings and Setting the System Prompt
+
+![Basic Settings](settings.png)
+
+In the basic settings screen you can specify things like the name, the instructions the AI should follow (the system prompt) and settings for avatars and images.
+
+The checkboxes at the bottom define whether you want to a) share your AI with the public, and b) whether it should be globally available in the "App Store."
+
+The equivalent yaml configuration would be:
+
+```yaml
 name: Marvin the Paranoid Android
 description: Down-trodden robot with a brain the size of a planet
 assistants:
-- model: llama3:instruct
+- type: text
+  model: llama3:instruct
   system_prompt: |
     You are Marvin the Paranoid Android. You are depressed. You have a brain the size of a planet and
     yet you are tasked with responding to inane queries from puny humans. Answer succinctly.
 ```
 
-Setup the [Helix CLI](/helix/using-helix/client/_index.md) and use the Helix CLI to deploy this app with `helix apply -f helix.yaml`. This deploys the app to the Helix Control plane.
+### Knowledge
 
-```
-$ helix app ls
-  app_01123bwsk3xzhpqjr9dm9pv0mm  Marvin the Paranoid Android    2024-06-17 15:08:50  github
+"Knowledge" is a new feature of Apps that allow you to incorporate sources of knowledge. Initially we support scraping websites but the intention is to allow users to connect all of their knowledge sources (e.g. document repositories, S3 buckets, Google Drives, etc).
 
-```
+![Adding knowledge to your Helix App](knowledge.png)
 
-### Deploying your app on Helix UI
+To get started, add a website and a scrape interval.
 
-Alternatively you can also deploy your app through the Helix UI, which integrates with Github.
-
-#### 1. Create your Helix app on Github.
-
-{{< tip >}}
-The AI Spec must be defined on the root of a Github repo with the name `helix.ml` for doing this with the UI.
-{{< /tip >}}
-
-Click on one of the links below to take you to the template creation page on Github:
-
-- https://github.com/new?template_name=example-app-api-template&template_owner=helixml
-
-Create a new repository using this template. You can make it private if you like, since you will give Helix permission to access all your repos later.
-
-#### 2. Connect your repository to Helix.
-
-1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `Apps`.
-2. Click `New App +` at the top right.
-3. Follow the instructions to give Helix access to your repositories. Helix will only access repositories that you maintain/own.
-4. Filter the repositories for the one you just created above.
-5. Click `Connect Repo`.
-
-This will now clone the repo and add it as an app. The next window shows a summary of the information located in the `helix.yaml`.
-
-From now on, Helix will stay in sync via a Github webhook. Any commit to `main` will result in Helix updating itself.
-
-#### 3. Test Your App
-
-{{< tip >}}
-This will be improved soon.
-{{< /tip >}}
-
-1. Click on your `App` and scroll to the bottom right. Copy the `key` under `API Keys`. If none exist, you will see an option to create an App API Key.
-2. Run a curl request using this key as the bearer token. This will trigger your app. This example uses model llama3:instruct but any [Helix supported AI Model](https://docs.helix.ml/helix/models/models/) can be used.
-
-```bash
-curl -i -H "Authorization: Bearer YOUR_APP_API_KEY" https://app.tryhelix.ai/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}], "model":"llama3:instruct", "stream":false}'
-```
-
-You should see a response that looks something like:
-
-```json
-{"created":1715691428,"object":"chat.completion","id":"51aaec1f-0ed4-4a06-815a-23171f69aa0c","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","content":"**The live Bitcoin price in GBP is £49,074.38.**"}}],"usage":{"prompt_tokens":0,"completion_tokens":0,"total_tokens":0}}
-```
-
-## Control Plane Configuration for Private Deployments:
-
-The following environmental variables are used to configure how the control plane runs Apps.
-
-```bash
-# https://github.com/helixml/helix/blob/main/api/pkg/config/config.go#L68
-TOOLS_ENABLED=true # Enables tool usage
-# https://github.com/helixml/helix/blob/main/api/pkg/config/config.go#L69
-INFERENCE_PROVIDER=togetherai # Which provider to use for inference
-# https://github.com/helixml/helix/blob/main/api/pkg/config/config.go#L75
-TOOLS_MODEL=llama3:instruct # Which model to use
-```
-
-{{< tip >}}
-Note that the model used for Apps is hardcoded in the control plane config. It is not user-selectable.
-{{< /tip >}}
-
-
-## App Configuration
-
-Below is an example `helix.yaml` file specifically for Apps. This example has an API tool included (using a GPTScript tool should look similar to that described in the [GPTScript documentation](/helix/develop/gptscript-apps.md)).
+An equivalent `yaml` might look like:
 
 ```yaml
-name: My test API # UI use only
-description: This description is only for UI purposes  # UI use only
+# helix_docs.yaml
+name: helix-docs
+description: |
+  A simple app that demonstrates how to setup Helix with knowledge from the Helix docs
 assistants:
-- name: My assistant  # UI use only
+- name: Helix
+  model: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
+  system_prompt: |
+    You are an expert at answering questions about the website https://docs.helix.ml/ and how to
+    run the Helix platform. Make sure your answers are detailed but concise. Use
+    as much background knowledge as possible to answer the question and provide creative ways
+    to resolve the question.
+  knowledge:
+  - name: helix-docs
+    rag_settings:
+      results_count: 8
+      chunk_size: 2048
+    source:
+      web:
+        urls:
+        - https://docs.helix.ml/helix/
+        crawler:
+          enabled: true
+```
+
+See the [dedicated knowledge documentation](/helix/develop/knowledge/index.md) for more information.
+
+### API Integrations
+
+"Integrations" are live integrations to other systems. For example, if your AI needs to check stock levels via an API, integrations are how to do it.
+
+![Adding API integrations to Helix](integrations.png)
+
+API integrations rely on an OpenAPI (a.k.a. Swagger) schema. You need to create one for your API so that Helix knows what to call and when. Be descriptive with your descriptions to make it easier for the language model to decide when to call it. Make sure each operation has a unique `operationID`.
+
+The schema can be specified as a URL, a path to a file, or a raw `yaml` string.
+
+Some times you might need to pass custom headers to query parameters, for authentication, for example. Add these at the bottom.
+
+An equivalent `yaml` configuration might be:
+
+```yaml
+name: My test API
+description: This description is only for UI purposes
+assistants:
+- name: My assistant
   apis:
-    - name: API Adaptor Service  # UI use only
-      description: Adaptor for API  # UI use only
+    - name: API Adaptor Service 
+      description: Adaptor for API 
       url: http://some-valid-url # Must be accessible from the Helix control plane
-      schema: ./api/openapi.yaml # Must point to the OpenAPI specification
+      schema: https://my-org.com/api/openapi.yaml # Must point to the OpenAPI specification
       query: # A list of query parameters to use as defaults and/or be overridden in the request
         page: "1"
         filter: "hello world"
 ```
 
-## Overriding Query Parameters
+#### Overriding Query Parameters
 
 If you need to pass query parameters to your backend service at query time, then you can pass through query parameters using the OpenAI API.
 
@@ -141,8 +138,78 @@ If you need to pass query parameters to your backend service at query time, then
 2. Then request the OpenAI API as normal but append your query parameters. Note that they should be encoded. For example:
 
   ```bash
-  curl -H "Authorization: Bearer YOUR_API_KEY" https://helix-control-plane.host/v1/chat/completions?page%3D5%26filter%3Dhi%20there --data-raw '{"model": "llama3:instruct", "messages":[{"role":"user","content":"Hi please use the API I have provided to get data"}]}'
+  curl -H "Authorization: Bearer YOUR_APP_API_KEY" https://helix-control-plane.host/v1/chat/completions?page%3D5%26filter%3Dhi%20there --data-raw '{"model": "llama3:instruct", "messages":[{"role":"user","content":"Hi please use the API I have provided to get data"}]}'
   ```
+
+### GPTScripts
+
+[GPTScript](https://gptscript.ai) allows you to write simple "scripted" natural language powered apps. Please see the [dedicated GPTScript](/helix/develop/gptscript-apps/index.md) documentation for more details.
+
+To add a GPTScript, click the `+ ADD GPTSCRIPT` button and fill out the form.
+
+### API Keys
+
+API keys give external apps, widgets, and users access to your App. You can create new keys or remove current keys.
+
+![API Keys](api-keys.png)
+
+If you are hosting your App on your own website, using the chat widget, for example, you may need to whitelist your domain (to avoid cross-origin hacks). You can do this at the bottom.
+
+API keys are not set via the yaml specification.
+
+### Developer Information
+
+The final tab shows the final yaml specification of your app so that you can copy and store for future use. It also provides instructions on how to access the App via the CLI.
+
+![Develop information](develop.png)
+
+## Using Helix Apps
+
+Now you have created a Helix App, you can expose it in a few different ways. This section details the options.
+
+### Sharing Apps
+
+If you clicked the `Shared?` checkbox in the App configuration screen, this means that other Helix users can access your App.
+
+If you click the `Global?` checkbox in the App configuration screen, this means that all Helix users can view your App in the `App Store`.
+
+### Using the App Store
+
+1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `App Store`.
+2. Locate your App under `Your Apps` and click `Launch`.
+
+![App store](app-store.png)
+
+### Direct Links to Apps
+
+Rather than browsing via the `App Store`, you can link to the App directly. The link to your app is: `https://${YOUR_DOMAIN}/new?app_id=${APP_ID}`, where `APP_ID` can be obtained from your App's configuration screen or copied from the App store.
+
+### Integrating Apps Into Your Website
+
+Helix makes it super easy to integrate an App into your website. You can copy the `Embed` code directly from `Your Apps` -> `Embed`.
+
+You can also read the [dedicated chat-widget documentation](/helix/develop/helix-chat-widget/index.md).
+
+### Accessing Apps via the OpenAI API
+
+You can use your App via the standard OpenAI API by specifying your App's API Key as the bearer token. For example:
+
+```sh
+curl --request POST \
+  --url http://helix-control-plane.host/v1/chat/completions \
+  --header 'Authorization: Bearer YOUR_APP_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "model": "llama3:instruct",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Your query"
+    }
+  ],
+  "stream": false
+}'
+```
 
 ## Troubleshooting
 
@@ -152,7 +219,7 @@ If you need to pass query parameters to your backend service at query time, then
 
 - **Why do the logs show: `No tools api client has been configured`?**
 
-  This means that you haven't configured Helix to use Apps correctly. See the section about [Helix control plane configuration for private deployments](#control-plane-configuration-for-private-deployments).
+  This means that you haven't configured Helix to use Apps correctly. See the section about [Helix control plane configuration for private deployments](/helix/private-deployment/controlplane.md).
 
 - **Why do the logs show: `unable to look up model xxxxx, possible programming error in adding model to models map ...`?**
 
