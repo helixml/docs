@@ -2,6 +2,8 @@
 title: Helix Environment Variables
 description: Learn about the environment variables used to configure Helix.
 weight: 6
+tags:
+- config
 ---
 
 When deploying Helix with Docker Compose, you can configure various settings using environment variables defined in the `.env` file. This page describes the key environment variables used to configure the Helix control plane and runner.

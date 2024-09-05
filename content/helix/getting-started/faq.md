@@ -3,6 +3,8 @@ title: Frequently asked questions
 weight: 2
 aliases:
   - /docs/faq
+tags:
+- help
 ---
 
 ## What makes Helix different?

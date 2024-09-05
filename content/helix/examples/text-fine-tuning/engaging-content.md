@@ -6,6 +6,8 @@ weight: 2
 aliases:
   - /docs/engaging-content
   - /helix/text-fine-tuning-examples/engaging-content/
+tags:
+- text-fine-tune
 ---
 
 {{< youtube "SKJfyj2ROfY" >}}

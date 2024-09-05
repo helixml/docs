@@ -5,6 +5,8 @@ description: Learn how to install Helix on your own infrastructure.
 weight: 1
 aliases:
   - /docs/controlplane
+tags:
+- install
 ---
 
 ## tl;dr

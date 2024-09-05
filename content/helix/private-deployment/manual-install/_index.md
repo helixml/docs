@@ -6,6 +6,8 @@ aliases:
 - /docs/runners
 - /docs/lambdalabs
 - /helix/private-deployment/lambdalabs/
+tags:
+- install
 ---
 
 The following sections provide detailed instructions on how to install Helix manually on a variety of infrastructure:

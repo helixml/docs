@@ -6,6 +6,8 @@ weight: 1
 aliases:
   - /docs/papers
   - /helix/text-fine-tuning-examples/papers/
+tags:
+- text-fine-tune
 ---
 
 {{< youtube "xQHYMzo_KS0" >}}

@@ -5,6 +5,8 @@ weight: 1
 aliases:
   - /docs/text-prompts
   - /helix/guidance/text-prompts/
+tags:
+- text-inference
 ---
 
 Helix uses the [Llama](https://ollama.com/library/llama3:8b) family of models to provide high quality responses with relatively small memory GPU footprint, including fine-tuning teach the model new information or styles of reasoning and presenting information.

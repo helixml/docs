@@ -4,6 +4,8 @@ weight: 8
 prev: /helix/private-deployment/_index.md
 aliases:
   - /docs/api
+tags:
+- api
 ---
 
 The REST API is the fundamental fabric of Helix. All operations and communications between components, and external user commands are REST API calls that the Control Plane handles. For general background information, get familiar with the [Helix architecture](https://docs.helix.ml/helix/getting-started/architecture/) and the components involved.
