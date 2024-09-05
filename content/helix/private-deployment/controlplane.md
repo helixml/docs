@@ -29,6 +29,8 @@ Follow the instructions to install Helix on your local machine. Installer will p
 <br/>
 
 
+## Why install Helix?
+
 {{< youtube "6QcOXq3VFpc" >}}
 
 Install Helix to get:
