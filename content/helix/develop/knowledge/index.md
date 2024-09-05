@@ -197,7 +197,36 @@ assistants:
 
 ### Local files
 
-*Coming soon...*
+You can upload local files to Helix by using the web UI at https://app.tryhelix.ai/files or using the Helix CLI:
+
+```bash
+helix fs upload ~/Downloads/my-documents my-documents
+```
+
+Then you can use the knowledge in your Helix app:
+
+```yaml
+# my_assistant.yaml
+name: my-documents-assistant
+assistants:
+- name: Helix
+  description: Knows about the local files
+  model: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
+  knowledge:
+  - name: My private files
+    source:
+      filestore:
+        path: my-documents/
+```
+
+Once you create the application, it will index the files and you will be able to use the knowledge in your Helix app. 
+
+If you have uploaded more files or updated existing ones, you can refresh the knowledge with:
+
+```bash
+helix apply -f my_assistant.yaml --refresh-knowledge
+```
+
 
 ### AWS S3
 
