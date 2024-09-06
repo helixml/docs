@@ -15,7 +15,7 @@ Follow the instructions below to get started with GitHub Helix Apps.
 #### 1. Create your Helix app on Github
 
 {{< tip >}}
-The AI Spec must be defined on the root of a Github repo with the name `helix.ml` for doing this with the UI.
+The AI Spec must be defined on the root of a Github repo with the name `helix.yaml` for doing this with the UI.
 {{< /tip >}}
 
 Click on one of the links below to take you to the template creation page on Github:
