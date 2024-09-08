@@ -18,9 +18,9 @@ aliases:
 
 ## What is Helix?
 
-Helix is an enterprise generative AI platform that can be deployed on your own infrastructure. Deploy to your private cloud account, on-premise, or test it out quickly on our SaaS, [Helix Cloud](https://app.tryhelix.ai/). To find out more about the features of helix please read through the rest of this documentation.
+Helix is a generative AI stack that can be deployed on your own infrastructure. Run locally, deploy to your private cloud account, on-premise, or test it out quickly on our SaaS, [Helix Cloud](https://app.tryhelix.ai/). To find out more about the features of helix please read through the rest of this documentation.
 
-{{< youtube "v6XZT8u6khI" >}}
+{{< youtube "6QcOXq3VFpc" >}}
 
 ## How Helix Works
 
