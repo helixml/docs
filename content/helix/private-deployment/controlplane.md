@@ -96,9 +96,9 @@ This assumes you have downloaded some models with Ollama, for example by running
 ```
 ollama pull llama3:instruct
 ```
-These models will then show up in the Helix UI.
+These models will then show up in the Helix UI. You can reference them, e.g. `model: llama3:instruct` in the [assistant `model`](https://docs.helix.ml/helix/develop/apps/#basic-settings-and-setting-the-system-prompt) field in your `helix.yaml`.
 
-This won't work with image inference or text/image fine-tuning. Connect a full GPU to enable those features.
+Using an external LLM won't work with image inference or text/image fine-tuning. Connect a full GPU to enable those features.
 
 
 ### Install Control Plane pointing at TogetherAI
