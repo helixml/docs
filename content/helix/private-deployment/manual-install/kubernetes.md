@@ -62,9 +62,11 @@ helm repo update
 Copy the values-example.yaml to values-your-env.yaml and update the values as needed. Then run the following command (just with your own file):
 
 ```bash
+export LATEST_RELEASE=$(curl -s https://get.helix.ml/repos/helixml/helix/releases/latest | sed -n 's/.*"tag_name": "\(.*\)".*/\1/p')
 helm upgrade --install my-helix-controlplane helix/helix-controlplane \
   -f helix-controlplane/values.yaml \
-  -f helix-controlplane/values-example.yaml
+  -f helix-controlplane/values-example.yaml \
+  --set image.tag="${LATEST_RELEASE}"
 ```
 
 Use port-forward to access the service.
