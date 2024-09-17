@@ -35,7 +35,7 @@ To create an app using the UI browse to `https://${YOUR_DOMAIN}/app/new` ([SaaS 
 
 You can also deploy via the Helix CLI by applying a [AI Spec](https://aispec.org/) formatted configuration YAML file.
 
-1. Install the CLI by following the [installation instructions](/helix/private-deployment/controlplane.md) or downloading directly from the [GitHub releases page](https://github.com/helixml/helix/releases/latest).
+1. Install the CLI by following the [installation instructions](/helix/private-deployment/controlplane.md) or downloading directly from the [GitHub releases page](https://get.helix.ml/helixml/helix/releases/latest).
 2. Deploy an App with `helix apply -f your.yaml`
 
 ## Configuring an App
