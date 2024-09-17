@@ -62,7 +62,7 @@ helm repo update
 Copy the values-example.yaml to values-your-env.yaml and update the values as needed. Then run the following command (just with your own file):
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helix.ml/repos/helixml/helix/releases/latest | sed -n 's/.*"tag_name": "\(.*\)".*/\1/p')
+export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
 helm upgrade --install my-helix-controlplane helix/helix-controlplane \
   -f helix-controlplane/values.yaml \
   -f helix-controlplane/values-example.yaml \
@@ -87,10 +87,12 @@ helm repo update
 Then, install the runner:
 
 ```bash
+export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
 helm upgrade --install my-helix-runner helix/helix-runner \
   --set runner.host="<host>" \
   --set runner.token="<token>" \
   --set runner.memory=24GB \
   --set replicaCount=4 \
-  --set nodeSelector."nvidia\.com/gpu\.product"="NVIDIA-GeForce-RTX-3090-Ti"
+  --set nodeSelector."nvidia\.com/gpu\.product"="NVIDIA-GeForce-RTX-3090-Ti" \
+  --set image.tag="${LATEST_RELEASE}"
 ```
