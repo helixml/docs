@@ -16,9 +16,15 @@ This page describes how to install Helix on Kubernetes.
 
 {{< include "requirements.md" >}}
 
+{{< warn >}}
+The Helm chart does NOT work on [Docker Desktop Kubernetes](https://docs.docker.com/desktop/kubernetes/). Please use [kind](https://kind.sigs.k8s.io/), [minikube](https://minikube.sigs.k8s.io/docs/) or an official Kubernetes cluster.
+{{< /warn >}}
+
 ## Deploying the Control Plane
 
 This section details how to install the Helix control plane.
+
+There is an [example script in the repository](https://github.com/helixml/helix/blob/main/scripts/kind_helm_install.sh) that shows you an example of deploying the control plane to a kind cluster.
 
 ### 1. Install Keycloak
 
@@ -59,17 +65,28 @@ helm repo update
 
 ## 3. Apply the Chart
 
-Copy the values-example.yaml to values-your-env.yaml and update the values as needed. Then run the following command (just with your own file):
+Copy the [values-example.yaml from the repository](https://github.com/helixml/helix/blob/main/charts/helix-controlplane/values-example.yaml) to configure the Helix control plane. You can look at the [configuration documentation](/helix/private-deployment/environment-variables.md) to learn more about what they do.
+
+```bash
+curl -o values-example.yaml https://raw.githubusercontent.com/helixml/helix/main/charts/helix-controlplane/values-example.yaml
+```
+
+You **must** edit the provider configuration in this file so that Helix can run. Specifying a remote provider (e.g. `openai` or `togetherai`) is the easiest, but you must provide API keys to do that. A `helix` provider ensures local operation but then you must also add a runner.
+
+Now you're ready to install the control plane helm chart with the latest images.
 
 ```bash
 export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
 helm upgrade --install my-helix-controlplane helix/helix-controlplane \
-  -f helix-controlplane/values.yaml \
-  -f helix-controlplane/values-example.yaml \
+  -f $DIR/values-example.yaml \
   --set image.tag="${LATEST_RELEASE}"
 ```
 
-Use port-forward to access the service.
+Ensure all the pods start. If they do not inspect the logs.
+
+Once they are all running, access the control plane via port-forwarding (default) or according to your configuration.
+
+You can configure the Kubernetes deployment by [overriding the settings in the values.yaml](https://github.com/helixml/helix/blob/main/charts/helix-controlplane/values.yaml).
 
 ## Deploying a Runner
 
@@ -96,3 +113,11 @@ helm upgrade --install my-helix-runner helix/helix-runner \
   --set nodeSelector."nvidia\.com/gpu\.product"="NVIDIA-GeForce-RTX-3090-Ti" \
   --set image.tag="${LATEST_RELEASE}"
 ```
+
+## More Help
+
+If you get stuck, [please get in touch](/helix/help/index.md). But here's some extra links to help you get deployed:
+
+- [Example kind installation bash script](https://github.com/helixml/helix/blob/main/scripts/kind_helm_install.sh)
+- [Control plane Helm configuration](https://github.com/helixml/helix/blob/main/charts/helix-controlplane/values.yaml)
+- [Helix configuration](https://github.com/helixml/helix/blob/main/charts/helix-controlplane/values-example.yaml)
