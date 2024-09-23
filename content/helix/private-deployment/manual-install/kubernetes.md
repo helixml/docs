@@ -36,7 +36,8 @@ For example:
 helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
   --set auth.adminUser=admin \
   --set auth.adminPassword=oh-hallo-insecure-password \
-  --set httpRelativePath="/auth/"
+  --set httpRelativePath="/auth/" \
+  --set image.tag="23"
 ```
 
 By default it only has ClusterIP service, in order to expose it, you can either port-forward or create a load balancer to access it if you are on k3s or minikube:
@@ -63,7 +64,7 @@ helm repo add helix https://charts.helix.ml
 helm repo update
 ```
 
-## 3. Apply the Chart
+### 3. Apply the Chart
 
 Copy the [values-example.yaml from the repository](https://github.com/helixml/helix/blob/main/charts/helix-controlplane/values-example.yaml) to configure the Helix control plane. You can look at the [configuration documentation](/helix/private-deployment/environment-variables.md) to learn more about what they do.
 
@@ -78,7 +79,7 @@ Now you're ready to install the control plane helm chart with the latest images.
 ```bash
 export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
 helm upgrade --install my-helix-controlplane helix/helix-controlplane \
-  -f $DIR/values-example.yaml \
+  -f values-example.yaml \
   --set image.tag="${LATEST_RELEASE}"
 ```
 
@@ -106,11 +107,10 @@ Then, install the runner:
 ```bash
 export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
 helm upgrade --install my-helix-runner helix/helix-runner \
-  --set runner.host="<host>" \
-  --set runner.token="<token>" \
+  --set runner.host="my-helix-controlplane" \
+  --set runner.token="oh-hallo-insecure-token" \
   --set runner.memory=24GB \
-  --set replicaCount=4 \
-  --set nodeSelector."nvidia\.com/gpu\.product"="NVIDIA-GeForce-RTX-3090-Ti" \
+  --set replicaCount=1 \
   --set image.tag="${LATEST_RELEASE}"
 ```
 
