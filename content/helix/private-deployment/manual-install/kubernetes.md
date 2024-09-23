@@ -111,7 +111,7 @@ helm upgrade --install my-helix-runner helix/helix-runner \
   --set runner.token="oh-hallo-insecure-token" \
   --set runner.memory=24GB \
   --set replicaCount=1 \
-  --set image.tag="${LATEST_RELEASE}"
+  --set image.tag="${LATEST_RELEASE}-small"
 ```
 
 ## More Help
