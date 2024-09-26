@@ -14,6 +14,5 @@
   * Min 24GB GPU for fine-tuning (text or image)
   * Recommend 2x24GB GPUs for e.g. text & image inference in parallel
   * NVIDIA 3090s, A6000s are typically good price/performance
-  * 100GB+ of free disk space
-
-* A fast internet connection (llamaindex container is about 11GB, small runner image is 23GB)
+  * 150GB+ of free disk space
+  * A fast internet connection (small runner image is 23GB)
