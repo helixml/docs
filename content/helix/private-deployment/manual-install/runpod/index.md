@@ -30,6 +30,8 @@ Docker Command:
 
 Replace `<RUNNER_TOKEN_FROM_ENV>` and `<GPU_MEMORY>` (e.g. `24GB`) accordingly. You might want to update the `runner-id` with a more descriptive name, and make sure it's unique. That ID will show up in the helix dashboard at `https://<YOUR_CONTROLPLANE_HOSTNAME>/dashboard` for admin users.
 
+Set Container Disk to 500.
+
 Then start pods from your template, customizing the docker command accordingly.
 
 ## Configuring a Runner
