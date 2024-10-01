@@ -121,7 +121,7 @@ This won't work with image inference or text/image fine-tuning. Connect a full G
 
 ### Set up Control Plane with a DNS name
 
-If you want to make your Helix deployment available to other people, you should get a domain name or subdomain and set up an A record pointing to the IP address of your Control Plane server.
+If you want to make your Helix deployment available to other people, **you should get a domain name or subdomain and set up an A record pointing to the IP address of your Control Plane server**.
 
 Then, you can install the CLI and Control Plane on the server, specifying the DNS name, and the installer will automatically set up TLS with [Caddy](https://caddyserver.com/):
 ```
