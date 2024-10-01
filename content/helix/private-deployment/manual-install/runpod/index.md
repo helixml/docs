@@ -28,7 +28,7 @@ Docker Command:
 --api-host https://<YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> --runner-id runpod-001 --memory <GPU_MEMORY>GB --allow-multiple-copies
 ```
 
-Replace `<RUNNER_TOKEN_FROM_ENV>` and `<GPU_MEMORY>` accordingly. You might want to update the `runner-id` with a more descriptive name, and make sure it's unique. That ID will show up in the helix dashboard at `https://<YOUR_CONTROLPLANE_HOSTNAME>/dashboard` for admin users.
+Replace `<RUNNER_TOKEN_FROM_ENV>` and `<GPU_MEMORY>` (e.g. `24GB`) accordingly. You might want to update the `runner-id` with a more descriptive name, and make sure it's unique. That ID will show up in the helix dashboard at `https://<YOUR_CONTROLPLANE_HOSTNAME>/dashboard` for admin users.
 
 Then start runners from your template, customizing the docker command accordingly.
 
