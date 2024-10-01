@@ -63,6 +63,8 @@ You can also run `./install.sh --help` to see what options are available, or rea
 ### Just install the CLI
 
 ```
+curl -sL -O https://get.helix.ml/install.sh
+chmod +x install.sh
 ./install.sh --cli
 ```
 
@@ -72,6 +74,8 @@ This will just install the CLI on its own. Useful if you want to connect to a He
 
 This will set up the CLI, the controlplane and a runner on localhost if a GPU is available:
 ```
+curl -sL -O https://get.helix.ml/install.sh
+chmod +x install.sh
 sudo ./install.sh
 ```
 
@@ -89,6 +93,8 @@ It will print out instructions on how to start everything.
 
 Install locally alongside Ollama already running:
 ```
+curl -sL -O https://get.helix.ml/install.sh
+chmod +x install.sh
 ./install.sh --openai-api-key ollama --openai-base-url http://host.docker.internal:11434/v1
 ```
 
@@ -106,6 +112,8 @@ Using an external LLM won't work with image inference or text/image fine-tuning.
 Install CLI and controlplane locally with external [TogetherAI](https://together.ai) API key:
 
 ```
+curl -sL -O https://get.helix.ml/install.sh
+chmod +x install.sh
 ./install.sh --cli --controlplane --together-api-key YOUR_TOGETHER_API_KEY
 ```
 
@@ -117,6 +125,8 @@ If you want to make your Helix deployment available to other people, you should 
 
 Then, you can install the CLI and Control Plane on the server, specifying the DNS name, and the installer will automatically set up TLS with [Caddy](https://caddyserver.com/):
 ```
+curl -sL -O https://get.helix.ml/install.sh
+chmod +x install.sh
 ./install.sh --cli --controlplane --api-host https://helix.mycompany.com
 ```
 
@@ -130,6 +140,8 @@ See [Manual Install](/helix/private-deployment/manual-install.md) for full instr
 Install just the runner, pointing to a controlplane with a DNS name (find runner token in `/opt/HelixML/.env` on the control plane node):
 
 ```
+curl -sL -O https://get.helix.ml/install.sh
+chmod +x install.sh
 ./install.sh --runner --api-host https://helix.mycompany.com --runner-token YOUR_RUNNER_TOKEN
 ```
 
@@ -138,6 +150,8 @@ Install just the runner, pointing to a controlplane with a DNS name (find runner
 Install the CLI and controlplane locally with OpenAI-compatible API key and base URL:
 
 ```
+curl -sL -O https://get.helix.ml/install.sh
+chmod +x install.sh
 ./install.sh --cli --controlplane --openai-api-key YOUR_OPENAI_API_KEY --openai-base-url YOUR_OPENAI_BASE_URL
 ```
 
