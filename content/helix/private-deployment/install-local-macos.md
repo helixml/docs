@@ -15,6 +15,9 @@ ollama pull llama3:instruct
 1. Confirm that the model exists - values proceeding name of the model may differ
 ```shell
 ollama ls | grep "llama3:instruct"
+```
+> You should get a confirmation similar to this:
+```shell
 llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
 ```
 
