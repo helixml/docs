@@ -34,7 +34,8 @@ curl -sL -O https://get.helix.ml/install.sh && bash install.sh
 ```shell
 cd /Users/"<yourLocalUser>"/HelixML
 ```
-2. Launch Docker Containers
+2. Launch Docker Desktop on your computer
+3. Launch Docker Containers
 ```shell
 docker compose up -d --remove-orphans
 ```
