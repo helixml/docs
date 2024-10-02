@@ -10,18 +10,18 @@ NOTE: [Make sure that you're signed on to your Docker account](https://docs.dock
     [Brew Install Ollama](https://formulae.brew.sh/formula/ollama)
 2. Download Ollama Model
 ```shell
-> ollama pull llama3:instruct
+ollama pull llama3:instruct
 ```
 1. Confirm that the model exists - values proceeding name of the model may differ
 ```shell
-> ollama ls | grep "llama3:instruct"
+ollama ls | grep "llama3:instruct"
 llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
 ```
 
 ## Install Helix
 ### Run installation script
 ```shell
-> curl -sL -O https://get.helix.ml/install.sh && bash install.sh
+curl -sL -O https://get.helix.ml/install.sh && bash install.sh
 ```
 ![Install Helix Screenshot](install_helix_screenshot.png)
 ### Successful completion of the installation
@@ -29,11 +29,11 @@ llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
 ### Spin up Helix Docker Instances
 1. Change directory to location of HelixML payload is downloaded
 ```shell
- > cd /Users/"<yourLocalUser>"/HelixML
+cd /Users/"<yourLocalUser>"/HelixML
 ```
 2. Launch Docker Containers
 ```shell
-> docker compose up -d --remove-orphans
+docker compose up -d --remove-orphans
 ```
 ![launching_helix_docker_containers_screenshot](launching_helix_docker_containers_screenshot.png)
 3. Confirm that all container are running and show a healthy status
