@@ -70,9 +70,9 @@ chmod +x install.sh
 
 This will just install the CLI on its own. Useful if you want to connect to a Helix deployment from another machine.
 
-### Local Helix on Linux or Windows (WSL2) with a GPU
+### Local Helix on Linux or Windows (WSL2) with an NVIDIA GPU
 
-This will set up the CLI, the controlplane and a runner on localhost if a GPU is available:
+This will set up the CLI, the controlplane and a runner on localhost if an NVIDIA GPU is available:
 ```
 curl -sL -O https://get.helix.ml/install.sh
 chmod +x install.sh
