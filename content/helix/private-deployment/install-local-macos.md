@@ -14,6 +14,9 @@ brew install docker
 NOTE: [Make sure that you're signed on to your Docker account](https://docs.docker.com/desktop/get-started/)
 1. Install Ollama Server
     [Brew Install Ollama](https://formulae.brew.sh/formula/ollama)
+```shell
+brew install ollama
+```
 2. Download Ollama Model
 ```shell
 ollama pull llama3:instruct
