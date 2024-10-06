@@ -99,6 +99,12 @@ helm upgrade --install my-helix-runner helix/helix-runner \
   --set image.tag="${LATEST_RELEASE}-small"
 ```
 
+If you want to schedule the runner to run on certain nodes, then please set the `nodeSelector`. Change the label to match the value shown in the output of `kubectl describe node`.
+
+```bash
+  --set nodeSelector."nvidia\.com/gpu\.product"="NVIDIA-A100-SXM4-40GB"
+```
+
 ## Access Helix
 
 The default kubernetes installation is locked down. You can access Helix via port-forwarding from your machine.
