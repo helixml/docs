@@ -6,8 +6,6 @@ tags:
 - config
 ---
 
-# Local Install of Helix on MacOS
-
 ## Requirements
 **_Created on MacOS 15 - YMMV_**
 1. Following instructions assume that you have [Brew Package Installer](https://brew.sh/) installed
