@@ -1,4 +1,12 @@
-# Local Install of HELIX on MacOS
+---
+title: Local Install of Helix on macOS
+description: An end-to-end guide showing how to run Helix fully locally on macOS with Ollama.
+weight: 2
+tags:
+- config
+---
+
+# Local Install of Helix on MacOS
 
 ## Requirements
 **_Created on MacOS 15 - YMMV_**
