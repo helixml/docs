@@ -27,6 +27,17 @@ Helix uses [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Ins
 
 If you find yourself stuck in the queue for a long time, you can upgrade to a [paid account](https://app.tryhelix.ai/account) to jump the queue, or [deploy Helix on your own infrastructure](/helix/private-deployment/_index.md).
 
+## Uploading Your Own Fine-Tuning Data
+
+You can also directly upload a sharegpt-style jsonl file to train on directly. But it MUST be called `finetune_dataset.jsonl` and it must have the following format:
+
+```jsonl
+{"conversations":[{"from":"human","value":"test test"},{"from":"gpt","value":"yes this is a test"}]}
+{"conversations": ...
+```
+
+Then use the "Files" upload UI to upload the file. Helix will skip any data preparation phase and train upon this file directly.
+
 ## How Fine-Tuning Works
 
 The first step in fine-tuning is generation of the training data.
