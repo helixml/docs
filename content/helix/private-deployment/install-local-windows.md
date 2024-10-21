@@ -12,11 +12,14 @@ tags:
    1. Open PowerShell or Windows Command Prompt in administrator mode by right-clicking and selecting "Run as administrator"
 ```shell
 wsl --install```
+
 2. Install Docker Desktop
-    [Install Docker](https://docs.docker.com/desktop/install/windows-install/))
+    [Install Docker](https://docs.docker.com/desktop/install/windows-install/)
 NOTE: [Make sure that you're signed on to your Docker account](https://docs.docker.com/desktop/get-started/)
+
 1. Install Ollama 
     [Install Ollama](https://ollama.com/download/windows)
+
 2. Download Ollama Model
 ```shell
 ollama pull llama3:instruct
