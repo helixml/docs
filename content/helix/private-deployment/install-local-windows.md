@@ -9,9 +9,10 @@ tags:
 ## Requirements
 **_Created on Windows (WSL2)_**
 1. Following instructions assume that you have WSL installed
-   1. Open PowerShell or Windows Command Prompt in administrator mode by right-clicking and selecting "Run as administrator"
+   1. Open PowerShell or Windows Command Prompt in administrator mode by right-clicking and selecting Run as administrator
 ```shell
-wsl --install```
+wsl --install
+```
 
 2. Install Docker Desktop
     [Install Docker](https://docs.docker.com/desktop/install/windows-install/)
