@@ -52,10 +52,6 @@ cd /opt/HelixML
 sudo docker compose up -d --remove-orphans
 ```
 
-![launching_helix_docker_containers_screenshot](launching_helix_docker_containers_screenshot.png)
-3. Confirm that all container are running and show a healthy status
-![helix_containers_healthy_screenshot](helix_containers_healthy_screenshot.png)
-
 ## Login to Helix UI
 1. In a web browser go to: http://localhost:8080/
 ![helix_login_page_screenshot](helix_login_page_screenshot.png)
