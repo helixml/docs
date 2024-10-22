@@ -43,8 +43,7 @@ chmod +x install.sh
 ```
 ![Install Helix Screenshot](install_helix_screenshot.png)
 ### Successful completion of the installation
-![Successful Helix Installation Screenshot](successful_helix_installation_<img width="669" alt="Screenshot 2024-10-21 at 5 52 31 PM" src="https://github.com/user-attachments/assets/4df3d3b8-5ef3-4a74-ae9f-17356d5b365d">
-screenshot.png)
+![Successful Helix Installation Screenshot](<img width="669" alt="Screenshot 2024-10-21 at 5 52 31 PM" src="https://github.com/user-attachments/assets/4df3d3b8-5ef3-4a74-ae9f-17356d5b365d">)
 ### Spin up Helix Docker Instances
 1. Change directory to location of HelixML payload is downloaded
 ```shell
