@@ -18,8 +18,20 @@ wsl --install
     [Install Docker](https://docs.docker.com/desktop/install/windows-install/)
 NOTE: [Make sure that you're signed on to your Docker account](https://docs.docker.com/desktop/get-started/)
 
-1. Install Ollama 
+3. Install Ollama 
     [Install Ollama](https://ollama.com/download/windows)
+4. Download Ollama Model
+```shell   
+ollama pull llama3:instruct
+```
+Confirm that the model exists - values proceeding name of the model may differ
+ollama ls | grep "llama3:instruct"
+
+You should get a confirmation similar to this:
+
+llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
+
+
 
 ## Install Helix Windows (WSL2) with an NVIDIA GPU 
 ### This will set up the CLI, the controlplane and a runner on localhost if an NVIDIA GPU is available:
@@ -31,7 +43,8 @@ chmod +x install.sh
 ```
 ![Install Helix Screenshot](install_helix_screenshot.png)
 ### Successful completion of the installation
-![Successful Helix Installation Screenshot](successful_helix_installation_screenshot.png)
+![Successful Helix Installation Screenshot](successful_helix_installation_<img width="669" alt="Screenshot 2024-10-21 at 5 52 31 PM" src="https://github.com/user-attachments/assets/4df3d3b8-5ef3-4a74-ae9f-17356d5b365d">
+screenshot.png)
 ### Spin up Helix Docker Instances
 1. Change directory to location of HelixML payload is downloaded
 ```shell
