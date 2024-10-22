@@ -46,9 +46,10 @@ chmod +x install.sh
 ![Successful completion of the installation](https://github-production-user-asset-6210df.s3.amazonaws.com/54367958/378640342-39166ca0-d9d9-494d-a241-9e797140fe30.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241022%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241022T005947Z&X-Amz-Expires=300&X-Amz-Signature=8e2445ba4558142476731d4227d8329d16c08027826e4bfffe52cf2c3f59b5c3&X-Amz-SignedHeaders=host)
 
 ### Spin up Helix Docker Instances
-1. Change directory to location of HelixML payload is downloaded
+1. Start Helix Services
 ```shell
-cd /Users/"<yourLocalUser>"/HelixML
+cd /opt/HelixML
+sudo docker compose up -d --remove-orphans
 ```
 2. Launch Docker Desktop on your computer
 3. Launch Docker Containers
