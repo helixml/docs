@@ -51,11 +51,7 @@ chmod +x install.sh
 cd /opt/HelixML
 sudo docker compose up -d --remove-orphans
 ```
-2. Launch Docker Desktop on your computer
-3. Launch Docker Containers
-```shell
-docker compose up -d --remove-orphans
-```
+
 ![launching_helix_docker_containers_screenshot](launching_helix_docker_containers_screenshot.png)
 3. Confirm that all container are running and show a healthy status
 ![helix_containers_healthy_screenshot](helix_containers_healthy_screenshot.png)
