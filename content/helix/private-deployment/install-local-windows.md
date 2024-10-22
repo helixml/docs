@@ -44,14 +44,12 @@ chmod +x install.sh
 ![Install Helix Screenshot](https://github-production-user-asset-6210df.s3.amazonaws.com/54367958/378641066-3a98e0e8-f60e-4410-a2b9-c3868021a67b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241022%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241022T010202Z&X-Amz-Expires=300&X-Amz-Signature=549fbeb76dcd784565f6482f66bbac96ef9a0fb0f6fabd05c170e5c67dea1dd8&X-Amz-SignedHeaders=host)
 ### Successful completion of the installation
 ![Successful completion of the installation](https://github-production-user-asset-6210df.s3.amazonaws.com/54367958/378640342-39166ca0-d9d9-494d-a241-9e797140fe30.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241022%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241022T005947Z&X-Amz-Expires=300&X-Amz-Signature=8e2445ba4558142476731d4227d8329d16c08027826e4bfffe52cf2c3f59b5c3&X-Amz-SignedHeaders=host)
-
 ### Spin up Helix Docker Instances
 1. Start Helix Services
 ```shell
 cd /opt/HelixML
 sudo docker compose up -d --remove-orphans
 ```
-
 ## Login to Helix UI
 1. In a web browser go to: http://localhost:8080/
 ![helix_login_page_screenshot](helix_login_page_screenshot.png)
