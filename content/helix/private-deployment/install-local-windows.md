@@ -27,7 +27,7 @@ NOTE: [Make sure that you're signed on to your Docker account](https://docs.dock
 ```shell
 curl -sL -O https://get.helix.ml/install.sh
 chmod +x install.sh
-sudo ./install.sh
+./install.sh --openai-api-key ollama --openai-base-url http://host.docker.internal:11434/v1
 ```
 ![Install Helix Screenshot](install_helix_screenshot.png)
 ### Successful completion of the installation
