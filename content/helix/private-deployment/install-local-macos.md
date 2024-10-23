@@ -7,23 +7,16 @@ tags:
 ---
 
 ## Requirements
-**_Created on MacOS 15 - YMMV_**
-1. Following instructions assume that you have [Brew Package Installer](https://brew.sh/) installed
-```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-2. Install Docker Desktop
-    [Brew Install Docker](https://formulae.brew.sh/formula/docker)
-```shell
-brew install docker
-```
-NOTE: [Make sure that you're signed on to your Docker account](https://docs.docker.com/desktop/get-started/)
-1. Install Ollama Server
-    [Brew Install Ollama](https://formulae.brew.sh/formula/ollama)
-```shell
-brew install ollama
-```
-2. Download Ollama Model
+
+### Docker
+
+1. Install Docker Desktop by visiting the [installer page](https://docs.docker.com/desktop/install/mac-install/)
+2. Make sure that you're signed on to your Docker account ([guide](https://docs.docker.com/desktop/get-started/))
+
+### Ollama
+
+1. Install Ollama by visitng the [installer page](https://ollama.com/download/mac)
+2. Download Ollama Model (note - from here you need to open the terminal)
 ```shell
 ollama pull llama3:instruct
 ```
