@@ -14,7 +14,7 @@ tags:
 
 ### Ollama
 
-1. Install Ollama by visitng the [installer page](https://ollama.com/download/mac)
+1. Install Ollama by visiting the [installer page](https://ollama.com/download/mac)
 2. Download Ollama Model (note - from here you need to open the terminal)
 ```shell
 ollama pull llama3:instruct
