@@ -33,8 +33,8 @@ llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
 
 
 
-## Install Helix Windows (WSL2) with an NVIDIA GPU 
-### This will set up the CLI, the controlplane and a runner on localhost if an NVIDIA GPU is available:
+## Install Helix Windows (WSL2)
+### This will set up the CLI, the controlplane talking to ollama locally
 
 ```shell
 curl -sL -O https://get.helix.ml/install.sh
