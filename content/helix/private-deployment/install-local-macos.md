@@ -33,13 +33,18 @@ llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
 ```shell
 curl -sL -O https://get.helix.ml/install.sh && bash install.sh
 ```
-![Install Helix Screenshot](install_helix_screenshot.png)
+
+<img width="641" alt="Screenshot 2024-10-25 at 08 11 46" src="https://github.com/user-attachments/assets/7bb53101-151d-4732-8458-3e9146dfda24">
+
 ### Successful completion of the installation
-![Successful Helix Installation Screenshot](successful_helix_installation_screenshot.png)
+
+<img width="814" alt="Screenshot 2024-10-25 at 08 13 05" src="https://github.com/user-attachments/assets/a54c475c-9906-49e7-a1e9-b4d68f2e56fe">
+
+
 ### Spin up Helix Docker Instances
 1. Change directory to location of HelixML payload is downloaded
 ```shell
-cd /Users/"<yourLocalUser>"/HelixML
+cd ~/HelixML
 ```
 2. Launch Docker Desktop on your computer
 3. Launch Docker Containers
