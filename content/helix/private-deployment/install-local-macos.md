@@ -11,7 +11,6 @@ tags:
 ### Docker
 
 1. Install Docker Desktop by visiting the [installer page](https://docs.docker.com/desktop/install/mac-install/)
-2. Make sure that you're signed on to your Docker account ([guide](https://docs.docker.com/desktop/get-started/))
 
 ### Ollama
 
