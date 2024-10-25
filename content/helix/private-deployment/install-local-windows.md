@@ -16,7 +16,6 @@ wsl --install
 
 2. Install Docker Desktop
     [Install Docker](https://docs.docker.com/desktop/install/windows-install/)
-NOTE: [Make sure that you're signed on to your Docker account](https://docs.docker.com/desktop/get-started/)
 
 3. Install Ollama 
     [Install Ollama](https://ollama.com/download/windows)
