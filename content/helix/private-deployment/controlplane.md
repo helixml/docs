@@ -165,6 +165,14 @@ Just run the installer again. It will reuse secrets in your `.env` file and back
 
 {{< include "configure-apps.md" >}}
 
+## (Optional) Enabling GPTScript Apps
+
+In order to run [GPTScript Apps](/helix/develop/gptscript-apps) you must provide the Helix GPTScript runner a Helix API key.
+
+You must expose the Helix API key to the GPTScript Helix runner via `HELIX_API_KEY` environment variable. The best way to do that is via the secret in your `.env` file.
+
+You should be able to use the same value as the one used in the `RUNNER_TOKEN` or you can generate a dedicated API key.
+
 ## (Optional) Securing Helix
 
 {{< include "configure-security.md" >}}
