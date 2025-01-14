@@ -34,6 +34,8 @@ Alternatively, if you run on k3s:
 
 ```
 helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
+  --version "24.3.1" \
+  --set image.tag="23.0.7" \
   --set auth.adminUser=admin \
   --set auth.adminPassword=oh-hallo-insecure-password \
   --set httpRelativePath="/auth/" \

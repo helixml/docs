@@ -4,11 +4,14 @@ For example:
 
 ```bash
 helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
+  --version "24.3.1" \
+  --set image.tag="23.0.7" \
   --set auth.adminUser=admin \
   --set auth.adminPassword=oh-hallo-insecure-password \
-  --set httpRelativePath="/auth/" \
-  --set image.tag="23"
+  --set httpRelativePath="/auth/"
 ```
+
+Note the pinned version of the chart and the image tag. These are versions that we have tested and are known to work. Newer versions may work, but we have not tested them. [Raise an issue if you have any issues.](https://github.com/helixml/helix/issues)
 
 By default it only has ClusterIP service, in order to expose it, you can either port-forward or create a load balancer to access it if you are on k3s or minikube:
 
