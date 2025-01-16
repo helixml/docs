@@ -10,7 +10,7 @@ tags:
 
 ### Docker
 
-1. Install Docker Desktop by visiting the [installer page](https://docs.docker.com/desktop/install/mac-install/)
+1. Install Docker Desktop by visiting the [installer page](https://docs.docker.com/desktop/install/mac-install/) and if this is your first time installing Docker Desktop, you may want to restart your computer after installation. Otherwise, Helix may not be able to find it in the later steps below.
 
 ### Ollama
 
