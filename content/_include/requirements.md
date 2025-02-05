@@ -4,8 +4,8 @@
   * 4 CPUs, 8GB RAM and 50GB+ free disk space
 
 * **Inference Provider** requires **ONE OF**:
-  * An NVIDIA GPU if you want to use private Helix Runners ([example](/helix/private-deployment/controlplane.md#local-helix-on-linux-or-windows-wsl2-with-a-gpu)), or
-  * [Ollama](https://ollama.com) running locally on macOS, Linux or Windows ([example](/helix/private-deployment/controlplane.md#install-alongside-ollama)), or
+  * An NVIDIA GPU if you want to use private Helix Runners ([example](/helix/private-deployment/controlplane.md#local-helix-on-linux-or-windows-wsl2-with-an-nvidia-gpu)), or
+  * [Ollama](https://ollama.com) running locally on macOS, Linux or Windows ([example](/helix/private-deployment/controlplane.md#install-alongside-ollama-on-macos-linux-or-windows)), or
   * An OpenAI-compatible API provider, such as [TogetherAI](https://together.ai) ([example](/helix/private-deployment/controlplane.md#install-control-plane-pointing-at-togetherai)) - we like TogetherAI because you can run the same open source models via their API that you can run locally using Helix GPU Runners, but you can use any OpenAI-compatible API (e.g. vLLM, Azure OpenAI, [Gemini](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/call-vertex-using-openai-library) etc)
 
 * **Private Helix Runners** require:
