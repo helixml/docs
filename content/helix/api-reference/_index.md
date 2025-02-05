@@ -25,6 +25,10 @@ Authorization: Bearer Helix_API_KEY
 3. **Handling Responses**: The API will return responses in JSON format, containing the results of your request, status codes, and any relevant error messages. Properly handle these responses in your application to ensure smooth operation.
 
 
+## API Reference
+
+You can access up-to-date API documentation in your helix deployment at `/api-reference`. For example, for our SaaS you can view [https://app.tryhelix.ai/api-reference](https://app.tryhelix.ai/api-reference).
+
 ## More Information
 
 Get your API key from [Account](https://app.tryhelix.ai/account) page in the app.
