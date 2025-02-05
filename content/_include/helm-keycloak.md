@@ -13,8 +13,4 @@ helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloa
 
 Note the pinned version of the chart and the image tag. These are versions that we have tested and are known to work. Newer versions may work, but we have not tested them. [Raise an issue if you have any issues.](https://github.com/helixml/helix/issues)
 
-By default it only has ClusterIP service, in order to expose it, you can either port-forward or create a load balancer to access it if you are on k3s or minikube:
-
-```
-kubectl expose pod keycloak-0 --port 8888 --target-port 8080 --name keycloak-ext --type=LoadBalancer
-```
+You do not need to expose a service to access Keycloak from outside the cluster - it is used as an internal implementation detail of Helix (and Helix manages the `helix` Keycloak realm via admin access).
