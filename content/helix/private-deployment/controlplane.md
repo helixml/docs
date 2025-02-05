@@ -148,7 +148,7 @@ chmod +x install.sh
 ### Install Control Plane pointing at any OpenAI-compatible API
 
 Install the CLI and controlplane locally with OpenAI-compatible API key and base URL:
-
+GR requirements
 ```
 curl -sL -O https://get.helix.ml/install.sh
 chmod +x install.sh
@@ -161,11 +161,7 @@ This won't work with image inference or text/image fine-tuning. Connect a full G
 
 Just run the installer again. It will reuse secrets in your `.env` file and back it up in case you need to copy over any changes.
 
-## (Optional) Enabling Helix Apps
-
-{{< include "configure-apps.md" >}}
-
-## (Optional) Securing Helix
+## Securing Helix
 
 {{< include "configure-security.md" >}}
 
