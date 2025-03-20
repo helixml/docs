@@ -1,6 +1,6 @@
-# Installing Helix on Kubernetes with Rancher and RKE2
+# Installing Helix on Kubernetes with SUSE Rancher and RKE2
 
-This guide describes how to install Helix on Kubernetes using Rancher and RKE2.
+This guide describes how to install Helix on Kubernetes using SUSE Rancher and RKE2.
 
 ## Requirements
 
@@ -29,10 +29,12 @@ The Helix Control Plane provides the API, web interface, and postgres database a
 
 ## Prerequisites
 
-- [Rancher](https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster) installed and configured
-- RKE2 Kubernetes cluster deployed via Rancher (follow the [official Rancher documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/rke2-for-rancher) to set up an RKE2 cluster)
+- [SUSE Rancher](https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster) installed and configured
+- RKE2 Kubernetes cluster deployed via SUSE Rancher (follow the [official SUSE Rancher documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/rke2-for-rancher) to set up an RKE2 cluster)
 - Helm CLI installed on your workstation
 - `kubectl` configured to access your RKE2 cluster
+
+> **Note:** This guide has been validated with SUSE Rancher v2.7.5+ and RKE2 v1.25.x+. Using earlier versions may result in unexpected behavior.
 
 ## Deploying the Control Plane
 
@@ -96,7 +98,7 @@ helm upgrade --install my-helix-controlplane helix/helix-controlplane \
   --set image.tag="${LATEST_RELEASE}"
 ```
 
-### 5. Configure Ingress with Rancher
+### 5. Configure Ingress with SUSE Rancher
 
 RKE2 includes Traefik as the default ingress controller. To expose the Helix Control Plane using Traefik:
 
@@ -119,9 +121,9 @@ ingress:
         - helix.your-domain.com
 ```
 
-Alternatively, you can use the Rancher UI to configure the ingress:
+Alternatively, you can use the SUSE Rancher UI to configure the ingress:
 
-1. Navigate to your cluster in the Rancher UI
+1. Navigate to your cluster in the SUSE Rancher UI
 2. Go to **Service Discovery** > **Ingresses**
 3. Click **Create**
 4. Configure the ingress pointing to the `my-helix-controlplane` service on port 80
@@ -160,14 +162,14 @@ Check the runner logs to ensure it connects to the control plane:
 kubectl logs -l app.kubernetes.io/name=helix-runner
 ```
 
-## Monitoring with Rancher
+## Monitoring with SUSE Rancher
 
-Rancher provides built-in monitoring tools that can be enabled for your RKE2 cluster:
+SUSE Rancher provides built-in monitoring tools that can be enabled for your RKE2 cluster:
 
-1. In the Rancher UI, navigate to your cluster
-2. Go to **Apps & Marketplace**
+1. In the SUSE Rancher UI, navigate to your cluster
+2. Go to **Apps**
 3. Install the **Monitoring** app
-4. Once installed, you can access Grafana and Prometheus dashboards from the Rancher UI
+4. Once installed, you can access Grafana and Prometheus dashboards from the SUSE Rancher UI
 
 ## Troubleshooting
 
