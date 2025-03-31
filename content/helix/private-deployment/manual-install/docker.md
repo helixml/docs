@@ -94,7 +94,7 @@ You can also `git checkout` a specific release tag, but beware that the `docker-
 
 This section describes how to install a Helix runner on Docker.
 
-Select which container image you will use. Get `<LATEST_TAG>` from [https://get.helix.ml/latest.txt](https://get.helix.ml/latest.txt). The tag is in the form `X.Y.Z`. Then add a `-small` or `-large` suffix to the image name to get pre-baked models. You use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,phi3:instruct`), or `X.Y.Z-large` for one with [all our supported Ollama models](/helix/models/models/) pre-baked.
+Select which container image you will use. Get `<LATEST_TAG>` from [https://get.helixml.tech/latest.txt](https://get.helixml.tech/latest.txt). The tag is in the form `X.Y.Z`. Then add a `-small` or `-large` suffix to the image name to get pre-baked models. You use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,phi3:instruct`), or `X.Y.Z-large` for one with [all our supported Ollama models](/helix/models/models/) pre-baked.
 
 ```
 sudo docker run --privileged --gpus all --shm-size=10g \
@@ -103,7 +103,7 @@ sudo docker run --privileged --gpus all --shm-size=10g \
     --ulimit stack=67108864 \
     -v ${HOME}/.cache/huggingface:/root/.cache/huggingface \
     -e RUNTIME_OLLAMA_WARMUP_MODELS=llama3:instruct,phi3:instruct \
-    registry.helix.ml/helix/runner:<LATEST_TAG> \
+    registry.helixml.tech/helix/runner:<LATEST_TAG> \
     --api-host <http(s)://YOUR_CONTROLPLANE_HOSTNAME> --api-token <RUNNER_TOKEN_FROM_ENV> \
     --runner-id $(hostname) \
     --memory <GPU_MEMORY>GB \

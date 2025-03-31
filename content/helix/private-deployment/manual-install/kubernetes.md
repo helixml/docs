@@ -51,7 +51,7 @@ This section describes how to install a Helix runner on Kubernetes.
 Then, install the runner:
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
+export LATEST_RELEASE=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install my-helix-runner helix/helix-runner \
   --set runner.host="my-helix-controlplane" \
   --set runner.token="oh-hallo-insecure-token" \

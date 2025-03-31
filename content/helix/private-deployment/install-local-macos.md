@@ -31,7 +31,7 @@ llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
 ## Install Helix
 ### Run installation script
 ```shell
-curl -sL -O https://get.helix.ml/install.sh && bash install.sh
+curl -sL -O https://get.helixml.tech/install.sh && bash install.sh
 ```
 
 <img width="641" alt="Screenshot 2024-10-25 at 08 11 46" src="https://github.com/user-attachments/assets/7bb53101-151d-4732-8458-3e9146dfda24">

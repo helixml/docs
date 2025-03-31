@@ -16,12 +16,12 @@ tags:
 Linux | macOS | Windows (WSL2)
 
 ```
-curl -sL -O https://get.helix.ml/install.sh && bash install.sh
+curl -sL -O https://get.helixml.tech/install.sh && bash install.sh
 ```
 
 Follow the instructions to install Helix on your local machine. Installer will prompt you before making any changes.
 
-[View source](https://get.helix.ml) | [Manual instructions](/helix/private-deployment/manual-install.md) | [Kubernetes](/helix/private-deployment/manual-install/kubernetes.md) | [Discord](https://discord.gg/VJftd844GE)
+[View source](https://get.helixml.tech) | [Manual instructions](/helix/private-deployment/manual-install.md) | [Kubernetes](/helix/private-deployment/manual-install/kubernetes.md) | [Discord](https://discord.gg/VJftd844GE)
 
 <br/>
 <br/>
@@ -50,7 +50,7 @@ Install Helix to get:
 Use the installer script to get started with Helix quickly. Run the following commands to download and make the installer executable:
 
 ```bash
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ```
 
@@ -63,7 +63,7 @@ You can also run `./install.sh --help` to see what options are available, or rea
 ### Just install the CLI
 
 ```
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --cli
 ```
@@ -74,7 +74,7 @@ This will just install the CLI on its own. Useful if you want to connect to a He
 
 This will set up the CLI, the controlplane and a runner on localhost if an NVIDIA GPU is available:
 ```
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 sudo ./install.sh
 ```
@@ -93,7 +93,7 @@ It will print out instructions on how to start everything.
 
 Install locally alongside Ollama already running:
 ```
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --openai-api-key ollama --openai-base-url http://host.docker.internal:11434/v1
 ```
@@ -112,7 +112,7 @@ Using an external LLM won't work with image inference or text/image fine-tuning.
 Install CLI and controlplane locally with external [TogetherAI](https://together.ai) API key:
 
 ```
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --cli --controlplane --together-api-key YOUR_TOGETHER_API_KEY
 ```
@@ -125,7 +125,7 @@ If you want to make your Helix deployment available to other people, **you shoul
 
 Then, you can install the CLI and Control Plane on the server, specifying the DNS name, and the installer will automatically set up TLS with [Caddy](https://caddyserver.com/):
 ```
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --cli --controlplane --api-host https://helix.mycompany.com
 ```
@@ -140,7 +140,7 @@ See [Manual Install](/helix/private-deployment/manual-install.md) for full instr
 Install just the runner, pointing to a controlplane with a DNS name (find runner token in `/opt/HelixML/.env` on the control plane node):
 
 ```
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --runner --api-host https://helix.mycompany.com --runner-token YOUR_RUNNER_TOKEN
 ```
@@ -150,7 +150,7 @@ chmod +x install.sh
 Install the CLI and controlplane locally with OpenAI-compatible API key and base URL:
 GR requirements
 ```
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --cli --controlplane --openai-api-key YOUR_OPENAI_API_KEY --openai-base-url YOUR_OPENAI_BASE_URL
 ```
