@@ -46,15 +46,13 @@ We've validated Vision RAG with the following configurations:
 - **Embeddings**
 
   ```bash
-  vllm serve --model MrLight/dse-qwen2-2b-mrl-v1 --task embed --max-model-len 8192 \
-             --trust-remote-code --chat-template examples/template_dse_qwen2_vl.jinja
+  vllm serve MrLight/dse-qwen2-2b-mrl-v1 --task embed --max-model-len 8192 --trust-remote-code --chat-template examples/template_dse_qwen2_vl.jinja
   ```
 
 - **Chat**
 
   ```bash
-  vllm serve --model Qwen/Qwen2.5-VL-3B-Instruct --max-model-len 16384 \
-             --gpu-memory-utilization 0.65 --trust-remote-code --limit-mm-per-prompt image=10
+  vllm serve Qwen/Qwen2.5-VL-3B-Instruct --max-model-len 16384 --trust-remote-code --limit-mm-per-prompt image=10
   ```
 
 #### OpenAI
