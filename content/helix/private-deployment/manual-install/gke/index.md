@@ -115,7 +115,7 @@ kubectl port-forward svc/my-helix-controlplane 8080:80
 
 And visit: [http://localhost:8080/](http://localhost:8080/)
 
-Take a look at the [user documentation](https://docs.helix.ml/helix/getting-started/getting-started/) to learn how to use Helix.
+Take a look at the [user documentation](/helix/getting-started/getting-started/) to learn how to use Helix.
 
 ## Delete the Cluster
 
