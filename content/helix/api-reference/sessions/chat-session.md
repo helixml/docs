@@ -8,7 +8,7 @@ aliases:
 
 ## Create an inference session
 
-An *inference session* is when a trained machine learning model is used to make predictions or decisions based on new data. Unlike training, which involves learning from data, inference applies the learned model to real-world inputs to produce outputs. Helix offers various [AI models](https://docs.helix.ml/helix/models/models/) which can be used for inference.
+An *inference session* is when a trained machine learning model is used to make predictions or decisions based on new data. Unlike training, which involves learning from data, inference applies the learned model to real-world inputs to produce outputs. Helix offers various [AI models](/helix/models/models/) which can be used for inference.
 
 ##### Example Request and Response
 
