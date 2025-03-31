@@ -13,7 +13,7 @@ The Helix client is a tool designed to make it easy to interact with the Helix p
 To install the Helix client, get the Helix installation script:
 
 ```bash
-curl -Ls -o install-helix.sh https://get.helix.ml
+curl -Ls -o install-helix.sh https://get.helixml.tech
 chmod +x install-helix.sh
 ```
 

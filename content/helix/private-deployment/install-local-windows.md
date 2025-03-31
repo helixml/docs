@@ -36,7 +36,7 @@ llama3:instruct               365c0bd3c000    4.7 GB    43 hours ago
 ### This will set up the CLI, the controlplane talking to ollama locally
 
 ```shell
-curl -sL -O https://get.helix.ml/install.sh
+curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --openai-api-key ollama --openai-base-url http://host.docker.internal:11434/v1
 ```

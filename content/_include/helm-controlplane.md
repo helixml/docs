@@ -9,7 +9,7 @@ You **must** edit the provider configuration in this file so that Helix can run.
 Now you're ready to install the control plane helm chart with the latest images.
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
+export LATEST_RELEASE=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install my-helix-controlplane helix/helix-controlplane \
   -f values-example.yaml \
   --set image.tag="${LATEST_RELEASE}"

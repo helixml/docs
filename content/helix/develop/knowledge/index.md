@@ -42,7 +42,7 @@ assistants:
 Install the Helix CLI with:
 
 ```
-curl -Ls -o install-helix.sh https://get.helix.ml
+curl -Ls -o install-helix.sh https://get.helixml.tech
 chmod +x install-helix.sh
 ./install-helix.sh --cli
 ```

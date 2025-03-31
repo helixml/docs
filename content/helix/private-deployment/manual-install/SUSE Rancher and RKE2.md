@@ -75,7 +75,7 @@ helm install --wait --generate-name \
 ### 3. Install the Helix Helm Repository
 
 ```bash
-helm repo add helix https://charts.helix.ml
+helm repo add helix https://charts.helixml.tech
 helm repo update
 ```
 
@@ -92,7 +92,7 @@ Edit the `values-example.yaml` file to configure providers and other settings fo
 Now install the control plane Helm chart with the latest images:
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
+export LATEST_RELEASE=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install my-helix-controlplane helix/helix-controlplane \
   -f values-example.yaml \
   --set image.tag="${LATEST_RELEASE}"
@@ -144,7 +144,7 @@ kubectl label nodes <your-gpu-node> accelerator=nvidia
 ### 2. Install the Helix Runner Chart
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
+export LATEST_RELEASE=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install my-helix-runner helix/helix-runner \
   --set runner.host="my-helix-controlplane" \
   --set runner.token="oh-hallo-insecure-token" \

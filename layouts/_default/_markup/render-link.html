@@ -16,7 +16,7 @@
     {{- with .Title }}
         title="{{ . }}"
     {{ end -}}
-    {{- if and (not (strings.Contains .Destination "helix.ml")) (not (strings.Contains .Destination "localhost")) (not (strings.HasPrefix .Destination "/")) }}
+    {{- if and (not (strings.Contains .Destination "helixml.tech")) (not (strings.Contains .Destination "localhost")) (not (strings.HasPrefix .Destination "/")) }}
         rel="external nofollow noopener"
         target="_blank"
     {{ end -}}

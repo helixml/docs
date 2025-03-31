@@ -19,8 +19,8 @@ If you have a bug or feature request for Helix, then please submit an [issue on 
 ## Contact Details
 
 - [Discord](https://discord.gg/VJftd844GE) is the easiest place to find help, since there's lots of other friendly users there and we can do support via video calls
-- For anything else, please email us at [founders@helix.ml](mailto:founders@helix.ml)
+- For anything else, please email us at [founders@helixml.tech](mailto:founders@helixml.tech)
 
 ## Commercial Support
 
-If you're using Helix in your business, we offer commercial support and licensing options. Please email us at [founders@helix.ml](mailto:founders@helix.ml) to find out more.
+If you're using Helix in your business, we offer commercial support and licensing options. Please email us at [founders@helixml.tech](mailto:founders@helixml.tech) to find out more.

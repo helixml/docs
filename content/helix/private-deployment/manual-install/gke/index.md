@@ -89,7 +89,7 @@ Here is some useful information when you configure the runner:
 For example:
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helix.ml/latest.txt)
+export LATEST_RELEASE=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install my-helix-runner helix/helix-runner \
   --set runner.host="http://my-helix-controlplane" \
   --set runner.token="oh-hallo-insecure-token" \
