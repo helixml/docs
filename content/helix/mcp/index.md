@@ -24,7 +24,7 @@ Then, click on the Integrations tab and select "Exchange Rates" example. This wi
 
 ![](example-load.png)
 
-
+You can try chatting with the app directly, ask for things like "what is the exchange rate for USD to EUR?"
 
 ## Claude Desktop
 
