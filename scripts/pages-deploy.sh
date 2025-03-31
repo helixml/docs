@@ -7,14 +7,14 @@
 #   CF_PAGES_BRANCH to determine if the deployment is for staging or production.
 #   CF_PAGES_URL to determine the base URL for staging deployments.
 #
-# The production baseURL is hardcoded to https://docs.helix.ml
+# The production baseURL is hardcoded to https://docs.helixml.tech
 
 BASE_URL=$CF_PAGES_URL
 ENVIRONMENT=staging
 OPTIONS=""
 
 if [ "$CF_PAGES_BRANCH" == "main" ]; then
-  BASE_URL="https://docs.helix.ml"
+  BASE_URL="https://docs.helixml.tech"
   ENVIRONMENT=production
   OPTIONS="--gc --minify"
 fi

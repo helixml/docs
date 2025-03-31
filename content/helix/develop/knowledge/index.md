@@ -22,7 +22,7 @@ assistants:
 - name: Helix
   model: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
   system_prompt: |
-    You are an expert at answering questions about the website https://docs.helix.ml/ and how to
+    You are an expert at answering questions about the website https://docs.helixml.tech/ and how to
     run the Helix platform. Make sure your answers are detailed but concise. Use
     as much background knowledge as possible to answer the question and provide creative ways
     to resolve the question.
@@ -34,7 +34,7 @@ assistants:
     source:
       web:
         urls:
-        - https://docs.helix.ml/helix/
+        - https://docs.helixml.tech/helix/
         crawler:
           enabled: true
 ```
@@ -267,7 +267,7 @@ assistants:
     source:
       web:
         urls:
-        - https://docs.helix.ml/helix/
+        - https://docs.helixml.tech/helix/
         crawler:
           enabled: true
 ```
