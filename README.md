@@ -36,7 +36,7 @@ If you're wanting to use colours that don't exist in the theme, then you might h
 
 ## Deployment
 
-The website is hosted by [Netlify](https://app.netlify.com/sites/helixml-docs/deploys).
+The website is hosted by [Cloudflare](https://dash.cloudflare.com/f0150e619c6dc08f55aea6d2248b1c6c/pages/view/docs). The cloudflare build runs the `scripts/pages-deploy.sh`.
 
 ## Other Notes
 
