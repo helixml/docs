@@ -19,11 +19,11 @@ if [ "$CF_PAGES_BRANCH" == "main" ]; then
   OPTIONS="--gc --minify"
 fi
 
-# Checkout https://github.com/helixml/coda and copy over the docs folder to the content folder
-echo "Checking out the coda docs"
-git clone https://github.com/helixml/coda.git
-cp -r coda/docs/* content/coda/
-echo "Finished checking out the coda docs"
+# Checkout https://github.com/helixml/kodit and copy over the docs folder to the content folder
+echo "Checking out the kodit docs"
+git clone https://github.com/helixml/kodit.git
+cp -r kodit/docs/* content/kodit/
+echo "Finished checking out the kodit docs"
 
 # Install any npm deps
 npm install
