@@ -2,6 +2,7 @@
   * Linux, macOS or Windows
   * [Docker](https://docs.docker.com/get-started/get-docker/)
   * 4 CPUs, 8GB RAM and 50GB+ free disk space
+  * License key from [https://deploy.helix.ml/licenses](https://deploy.helix.ml/licenses)
 
 * **Inference Provider** requires **ONE OF**:
   * An NVIDIA GPU if you want to use private Helix Runners ([example](/helix/private-deployment/controlplane.md#local-helix-on-linux-or-windows-wsl2-with-an-nvidia-gpu)), or
