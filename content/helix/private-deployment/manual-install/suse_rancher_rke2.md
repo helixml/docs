@@ -19,6 +19,7 @@ The Helix Control Plane provides the API, web interface, and postgres database a
 - Linux, macOS or Windows
 - Docker
 - 4 CPUs, 8GB RAM and 50GB+ free disk space
+- License key from [https://deploy.helix.ml/licenses](https://deploy.helix.ml/licenses)
 
 ### Inference Provider requires ONE OF:
 
@@ -96,7 +97,9 @@ Download the example values file to configure the Helix control plane:
 curl -o values-example.yaml https://raw.githubusercontent.com/helixml/helix/main/charts/helix-controlplane/values-example.yaml
 ```
 
-Edit the `values-example.yaml` file to configure providers and other settings for your RKE2 environment. At minimum, you must edit the provider configuration so that Helix can run.
+Edit the `values-example.yaml` file to configure providers and other settings for your RKE2 environment. At minimum, you must edit:
+- the provider configuration so that Helix can run.
+- the license key (from [https://deploy.helix.ml/licenses](https://deploy.helix.ml/licenses)).
 
 Now install the control plane Helm chart with the latest images:
 
