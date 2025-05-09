@@ -1,3 +1,12 @@
+---
+title: SUSE Rancher and RKE2
+linkTitle: SUSE Rancher and RKE2
+description:
+weight: 3
+aliases:
+  - /helix/private-deployment/manual-install/suse-rancher-and-rke2/
+---
+
 # Installing Helix on Kubernetes with SUSE Rancher and RKE2
 
 This guide describes how to install Helix on Kubernetes using SUSE Rancher and RKE2.
