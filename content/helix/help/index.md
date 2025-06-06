@@ -4,7 +4,7 @@ linkTitle: Help and Support
 menu:
   main:
     name: Contact
-    weight: 3
+    weight: 9
 weight: 99
 tags:
 - help
