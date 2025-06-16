@@ -7,7 +7,8 @@ HELIX_VERSION=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
   --version "24.3.1" \
   --set global.security.allowInsecureImages=true \
-  --set image.repository="registry.helixml.tech/helix/keycloak" \
+  --set image.registry=registry.helixml.tech \
+  --set image.repository=helix/keycloak \
   --set image.tag="${HELIX_VERSION}" \
   --set auth.adminUser=admin \
   --set auth.adminPassword=oh-hallo-insecure-password \
