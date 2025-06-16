@@ -1,11 +1,14 @@
-Helix uses Keycloak for authentication. If you have one already, you can skip this step. Otherwise, to install one through Helm ([chart info](https://bitnami.com/stack/keycloak/helm), [repo](https://github.com/bitnami/charts/tree/main/bitnami/keycloak/#installing-the-chart)).
+Helix uses Keycloak for authentication. If you have one already, you can skip this step. Otherwise, to install one through Helm ([chart info](https://bitnami.com/stack/keycloak/helm), [repo](https://github.com/bitnami/charts/tree/main/bitnami/keycloak/#installing-the-chart)). This step installs our Keycloak image with the Helix theme installed.
 
 For example:
 
 ```bash
+HELIX_VERSION=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
   --version "24.3.1" \
-  --set image.tag="23.0.7" \
+  --set global.security.allowInsecureImages=true \
+  --set image.repository="registry.helixml.tech/helix/keycloak" \
+  --set image.tag="${HELIX_VERSION}" \
   --set auth.adminUser=admin \
   --set auth.adminPassword=oh-hallo-insecure-password \
   --set httpRelativePath="/auth/"
