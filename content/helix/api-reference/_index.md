@@ -8,7 +8,7 @@ tags:
 - api
 ---
 
-The REST API is the fundamental fabric of Helix. All operations and communications between components, and external user commands are REST API calls that the Control Plane handles. For general background information, get familiar with the [Helix architecture](/helix/getting-started/architecture/) and the components involved.
+The REST API is the fundamental fabric of Helix. All operations and communications between components, and external user commands are REST API calls that the Control Plane handles. For general background information, get familiar with the [Helix architecture](/helix/getting-started/architecture/index.md) and the components involved.
 
 With Helix's API, you can access a wide range of features, including natural language processing, machine learning models, data analysis, and more. Here's how to get started:
 
