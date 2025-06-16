@@ -1,0 +1,4 @@
+{{ $file := .Get "file" | .Page.Resources.Get }}
+{{ $lang := .Get "lang" | default (path.Ext $file) }}
+{{ $opts := dict "wrapperClass" "highlight not-prose hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code" }}
+{{ highlight $file.Content $lang $opts }}
