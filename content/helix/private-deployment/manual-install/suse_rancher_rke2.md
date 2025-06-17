@@ -55,9 +55,13 @@ This section details how to install the Helix control plane on an RKE2 cluster.
 Helix uses Keycloak for authentication. If you have one already, you can skip this step. Otherwise, install one through Helm:
 
 ```bash
+HELIX_VERSION=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
   --version "24.3.1" \
-  --set image.tag="23.0.7" \
+  --set global.security.allowInsecureImages=true \
+  --set image.registry=registry.helixml.tech \
+  --set image.repository=helix/keycloak-bitnami \
+  --set image.tag="${HELIX_VERSION}" \
   --set auth.adminUser=admin \
   --set auth.adminPassword=oh-hallo-insecure-password \
   --set httpRelativePath="/auth/"
