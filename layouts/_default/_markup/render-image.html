@@ -1,3 +1,5 @@
+{{- $href := .Attributes.href | safeURL -}}
+{{- $class := .Attributes.class -}}
 {{- if not .Destination -}}
 {{ errorf "Destination field is not set in page \"%s\" with params:\n %#v\n" .Page.Title .Params }}
 {{- end -}}
@@ -15,7 +17,10 @@
 {{ warnf "No resource found for %#v %#v" .Destination .Page.Title }}
 <img src="../{{ .Destination }}" alt="{{ $.Text }}">
 {{- else -}}
-<figure class="{{ if .IsBlock}}{{ .Attributes.class }}{{ end }}">
+{{- if $href -}}
+    <a href="{{ $href }}" target="_blank" rel="external nofollow noopener">
+{{- end -}}
+<figure class="{{ $class }}">
     {{- with $resource -}}
     {{- if in .MediaType "svg" -}}
     <img class="w-full h-full object-contain" src='{{ .Permalink }}' alt="{{ $.Text }}">
@@ -38,4 +43,7 @@
     <figcaption>{{ .Title | markdownify }}</figcaption>
     {{- end -}}
 </figure>
+{{- if $href -}}
+    </a>
+{{- end -}}
 {{- end -}}
