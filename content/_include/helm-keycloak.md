@@ -15,6 +15,35 @@ helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloa
   --set httpRelativePath="/auth/"
 ```
 
+**Note:** Helix includes a custom Keycloak image with the Helix theme pre-installed. Helix will also work with a standard Keycloak install.
+
 Note the pinned version of the chart and the image tag. These are versions that we have tested and are known to work. Newer versions may work, but we have not tested them. [Raise an issue if you have any issues.](https://github.com/helixml/helix/issues)
 
 You do not need to expose a service to access Keycloak from outside the cluster - it is used as an internal implementation detail of Helix (and Helix manages the `helix` Keycloak realm via admin access).
+
+Wait until the Keycloak is running:
+
+```
+kubectl get pods
+NAME                    READY   STATUS    RESTARTS   AGE
+keycloak-0              0/1     Running   0          61s
+keycloak-postgresql-0   1/1     Running   0          61s
+```
+
+Both pods should turn 1/1 running.
+
+#### Using an External PostgreSQL Database
+
+Keycloak uses PostgreSQL to persist state. If you want to reuse a pre-existing PostgreSQL cluster, please add the following settings:
+
+```sh
+  --set postgresql.enabled=false \
+  --set externalDatabase.existingSecret=helix-external-postgres-app \
+  --set externalDatabase.existingSecretHostKey=host \
+  --set externalDatabase.existingSecretPortKey=port \
+  --set externalDatabase.existingSecretUserKey=user \
+  --set externalDatabase.existingSecretDatabaseKey=dbname \
+  --set externalDatabase.existingSecretPasswordKey=password \
+```
+
+This assumes that the `helix-external-postgres-app` exists with the expected secrets.
