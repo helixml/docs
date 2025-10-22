@@ -20,8 +20,7 @@ This section describes how to install the control plane using Docker.
 
 ### 1. Set up the Installation Directory
 
-Use the automated installer to set up the installation directory and required files:
-
+Install the CLI, the controlplane and a runner if a GPU is available (auto mode).
 ```bash
 curl -sL -O https://get.helixml.tech/install.sh && bash install.sh
 ```
@@ -30,10 +29,11 @@ This will create `/opt/HelixML` with the necessary `docker-compose.yaml` and `.e
 
 ### 2. Configure the `.env` File
 
-Copy the example `.env` file and configure your control plane:
+Check the `.env` file and start the control plane
 
 ```bash
-sudo cp .env.example-prod .env
+cd /opt/HelixML
+less .env
 ```
 
 Now edit `.env` with the editor of your choice.
@@ -43,7 +43,7 @@ Now edit `.env` with the editor of your choice.
 Start the stack from the `/opt/HelixML` directory:
 ```bash
 cd /opt/HelixML
-sudo docker compose up -d
+docker compose up -d --remove-orphans
 ```
 
 The stack might take a minute to boot up. Check `docker logs -f helix-api-1` and `docker logs -f helix-keycloak-1` for progress. It's normal for the API to retry connecting to keycloak until keycloak comes up. When the API logs:
@@ -86,15 +86,23 @@ Alternatively, you can manually pull and restart the containers:
 
 ```bash
 cd /opt/HelixML
-sudo docker compose pull
-sudo docker compose up -d --remove-orphans
+docker compose pull
+docker compose up -d --remove-orphans
 ```
 
 The `docker-compose.yaml` file uses `:latest` tags by default. Update these tags in your local `docker-compose.yaml` if you want to run a specific version.
 
 ## Deploying a Runner
 
-This section describes how to install a Helix runner on Docker.
+To start the runner, run:
+
+```bash
+/opt/HelixML/runner.sh
+```
+
+The script above simply sets some defaults and starts the runner.
+
+To customise a runner, you can modify the script with the settings below.
 
 Select which container image you will use. Get `<LATEST_TAG>` from [https://get.helixml.tech/latest.txt](https://get.helixml.tech/latest.txt). The tag is in the form `X.Y.Z`. Then add a `-small` or `-large` suffix to the image name to get pre-baked models. You use `X.Y.Z-small` to use an image with Llama3-8B and Phi3-Mini pre-baked (`llama3:instruct,phi3:instruct`), or `X.Y.Z-large` for one with [all our supported Ollama models](/helix/using-helix/text-inference/index.md) pre-baked.
 
