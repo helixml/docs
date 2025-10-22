@@ -18,30 +18,32 @@ This page describes how to install Helix on a machine with Docker.
 
 This section describes how to install the control plane using Docker.
 
-### 1. Clone the Repository
+### 1. Set up the Installation Directory
 
-Clone the Helix repository and checkout the most recent tag.
+Use the automated installer to set up the installation directory and required files:
 
+```bash
+curl -sL -O https://get.helixml.tech/install.sh && bash install.sh
 ```
-git clone https://github.com/helixml/helix
-cd helix
-```
+
+This will create `/opt/HelixML` with the necessary `docker-compose.yaml` and `.env` files.
 
 ### 2. Configure the `.env` File
 
-We provide an example `.env` file to configure your control plane.
+Copy the example `.env` file and configure your control plane:
 
-```
-cp .env.example-prod .env
+```bash
+sudo cp .env.example-prod .env
 ```
 
 Now edit `.env` with the editor of your choice.
 
 ### 3. Start the Control Plane
 
-Start the stack:
-```
-docker compose up -d
+Start the stack from the `/opt/HelixML` directory:
+```bash
+cd /opt/HelixML
+sudo docker compose up -d
 ```
 
 The stack might take a minute to boot up. Check `docker logs -f helix-api-1` and `docker logs -f helix-keycloak-1` for progress. It's normal for the API to retry connecting to keycloak until keycloak comes up. When the API logs:
@@ -72,23 +74,23 @@ If you are using `SERVER_URL=http://localhost:8080` and `KEYCLOAK_FRONTEND_URL=h
 
 ### Upgrading the Control Plane
 
-Check configuration:
+To upgrade, simply run the installer again. It will reuse your existing `.env` configuration and back it up:
 
-```
-cd helix
-git pull
-```
-
-Open `.env.example-prod` and compare it to your current `.env` to check whether there are any new or changed configuration requirements.
-
-Deploy the upgrade:
-
-```
-docker compose pull
-docker compose up -d --remove-orphans
+```bash
+curl -sL -O https://get.helixml.tech/install.sh && bash install.sh
 ```
 
-You can also `git checkout` a specific release tag, but beware that the `docker-compose.yaml` file uses `:latest` tag - update these tags if you want to run an older or pinned version.
+The installer will update the `docker-compose.yaml` and other files while preserving your configuration. Review any new configuration options in the backed-up `.env` file if needed.
+
+Alternatively, you can manually pull and restart the containers:
+
+```bash
+cd /opt/HelixML
+sudo docker compose pull
+sudo docker compose up -d --remove-orphans
+```
+
+The `docker-compose.yaml` file uses `:latest` tags by default. Update these tags in your local `docker-compose.yaml` if you want to run a specific version.
 
 ## Deploying a Runner
 
