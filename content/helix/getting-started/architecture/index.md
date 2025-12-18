@@ -134,18 +134,6 @@ Helix is designed for enterprise environments:
 - **Private CA Certificates** - Support for internal TLS certificates
 - **Network Segmentation** - Configurable endpoints for different network zones
 
-## Code Locations
-
-| Component | Location |
-|-----------|----------|
-| API Server | `api/pkg/server/` |
-| Runner | `api/pkg/runner/` |
-| Hydra (Docker isolation) | `api/pkg/hydra/` |
-| Wolf Executor | `api/pkg/external-agent/wolf_executor.go` |
-| Frontend | `frontend/src/` |
-| WebSocket Stream Client | `frontend/src/lib/moonlight-web-ts/` |
-| Desktop Dockerfiles | `Dockerfile.sway-helix`, `Dockerfile.ubuntu-helix` |
-
 ## Related Resources
 
 - [Docker Compose Configuration](https://github.com/helixml/helix/blob/main/docker-compose.yaml)
