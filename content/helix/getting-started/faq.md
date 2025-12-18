@@ -9,7 +9,7 @@ tags:
 
 ## What is Helix?
 
-Helix is an open-source AI platform that lets you run powerful language models on your own infrastructure. Think of it as having your own private ChatGPT that you control completely.
+Helix is an open-source AI platform that lets you run powerful language models on your own infrastructure with complete control over your data and models.
 
 ## What makes Helix different?
 
