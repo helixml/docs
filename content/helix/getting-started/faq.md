@@ -27,11 +27,9 @@ Helix Code lets you run fleets of AI coding agents that work autonomously on sof
 
 Helix Code is ideal for teams that want to accelerate development while keeping proprietary code secure.
 
-## Do I need to be technical to use Helix?
+## Do I need to use the Helix UI to interact with my agents?
 
-**To use Helix:** No! Once deployed, Helix provides a familiar chat interface. You can have conversations, ask questions, and even upload documents to chat with your own data.
-
-**To deploy Helix:** You'll need someone with basic Linux and Docker knowledge. Our installer script handles most of the complexity.
+No. You can interact with Helix agents through any integration connected to our Streaming API. This includes Teams, Slack, Azure DevOps, and many other integrations.
 
 ## How hard is it to get started?
 
