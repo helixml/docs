@@ -52,15 +52,15 @@ The platform supports RAG (Retrieval-Augmented Generation), API calling, vision,
 
 Helix lets you run fleets of background coding agents, each with its own GPU-accelerated Linux desktop. These aren't terminal wrappers or sandboxed environments—they're real desktops you can stream from anywhere with sub-100ms latency.
 
-![Kanban board showing tasks across Backlog and Planning with live desktop preview](/images/ubuntu-agent.png)
+![Kanban board showing tasks across Backlog and Planning with live desktop preview](ubuntu-agent.png)
 
 Agents follow a spec-first workflow: they write design docs before touching code, giving you a chance to review and approve the architecture. Once you sign off, they implement. This catches design issues early instead of after thousands of lines have been written.
 
-![Coding agent working in a real desktop environment with Zed IDE](/images/coding-agent.jpg)
+![Coding agent working in a real desktop environment with Zed IDE](coding-agent.jpg)
 
 A Kanban board shows what every agent is working on, where they're stuck, and what they need from you. When an agent hits a wall, jump into their desktop and pair program. They run your actual development tools—Zed, VS Code, browser DevTools—so debugging feels familiar.
 
-<img src="/images/coding-agent-PR.jpg" alt="Agent completing a bug fix task and creating a pull request" width="400">
+<img src="coding-agent-PR.jpg" alt="Agent completing a bug fix task and creating a pull request" width="400">
 
 ## Skills and Tools
 

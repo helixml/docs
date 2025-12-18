@@ -12,7 +12,7 @@ Helix is built on a modular architecture that separates the control plane from c
 
 ## High-Level Architecture
 
-![Helix Architecture](/images/helix_architecture.svg)
+![Helix Architecture](helix_architecture.svg)
 
 ## Core Components
 
