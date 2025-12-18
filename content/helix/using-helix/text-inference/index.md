@@ -30,7 +30,22 @@ helix model list
 
 Administrators can add any Ollama or vLLM model. For Ollama models, use the standard Ollama tag format (e.g., `llama3:instruct`, `qwen3:32b`, `mixtral:instruct`). For vLLM models, use the HuggingFace model path (e.g., `Qwen/Qwen2.5-VL-7B-Instruct`).
 
-Models are configured in the Helix admin interface or via the Models API. Each model can specify memory requirements, context length, concurrency limits, and whether to prewarm on runners.
+```bash
+curl -X POST https://your-helix-server/api/v1/helix-models \
+  -H "Authorization: Bearer $HELIX_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": "qwen3:14b",
+    "name": "Qwen3 14B",
+    "type": "chat",
+    "runtime": "ollama",
+    "description": "Mid-size Qwen3 model with strong reasoning",
+    "context_length": 40960,
+    "enabled": true
+  }'
+```
+
+Models can also be configured in the Helix admin interface. Each model can specify memory requirements, context length, concurrency limits, and whether to prewarm on runners.
 
 ## Running Inference
 
