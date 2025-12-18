@@ -12,73 +12,7 @@ Helix is built on a modular architecture that separates the control plane from c
 
 ## High-Level Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              BROWSER                                         │
-│                                                                              │
-│  ┌────────────────────────┐     ┌────────────────────────────────────────┐  │
-│  │     React Frontend     │     │     WebSocket Stream Viewer            │  │
-│  │  - Chat interface      │     │  - Desktop streaming via WebSocket     │  │
-│  │  - App management      │     │  - WebCodecs video/audio decoding      │  │
-│  │  - Session management  │     │  - Real-time input forwarding          │  │
-│  └────────────────────────┘     └────────────────────────────────────────┘  │
-│                │                                │                            │
-└────────────────│────────────────────────────────│────────────────────────────┘
-                 │ HTTP/WebSocket                 │ WebSocket (wss://)
-                 ▼                                ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           CONTROL PLANE                                      │
-│                                                                              │
-│  ┌────────────────────┐  ┌────────────────────┐  ┌────────────────────────┐ │
-│  │    API Server      │  │     PostgreSQL     │  │   Auth (Keycloak/OIDC) │ │
-│  │  - REST API        │  │  - Sessions        │  │  - User management     │ │
-│  │  - WebSocket hub   │  │  - Apps            │  │  - Token validation    │ │
-│  │  - Job scheduling  │  │  - Users           │  │                        │ │
-│  └────────────────────┘  └────────────────────┘  └────────────────────────┘ │
-│                │                                                             │
-└────────────────│─────────────────────────────────────────────────────────────┘
-                 │ RevDial (reverse connection)
-                 ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              RUNNERS                                         │
-│                     (GPU workers for inference)                              │
-│                                                                              │
-│  ┌────────────────────────────────────────────────────────────────────────┐ │
-│  │  Runner Process                                                         │ │
-│  │  - Connects to control plane via outbound WebSocket                    │ │
-│  │  - Manages model instances (Ollama, vLLM)                              │ │
-│  │  - Reports GPU memory availability                                      │ │
-│  │  - Executes inference and fine-tuning jobs                             │ │
-│  └────────────────────────────────────────────────────────────────────────┘ │
-│                                                                              │
-└──────────────────────────────────────────────────────────────────────────────┘
-                 │
-                 ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         SANDBOX (External Agents)                            │
-│                   GPU-accelerated desktop streaming                          │
-│                                                                              │
-│  ┌────────────────────────────────────────────────────────────────────────┐ │
-│  │                        Sandbox Container                                │ │
-│  │                                                                         │ │
-│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐   │ │
-│  │  │    Wolf     │  │  Moonlight  │  │    Hydra    │  │   Sandbox   │   │ │
-│  │  │  (stream)   │  │   Web       │  │  (docker²)  │  │  Heartbeat  │   │ │
-│  │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘   │ │
-│  │                                                                         │ │
-│  │  Wolf's Docker Network           Hydra's Per-Session Networks          │ │
-│  │  ┌─────────────────────┐        ┌─────────────────────┐                │ │
-│  │  │ Desktop Container   │◄─veth─►│ User's Containers   │                │ │
-│  │  │ (Sway/Ubuntu/Zorin) │  pair  │ (webapp, postgres)  │                │ │
-│  │  │ - Zed Editor        │        │                     │                │ │
-│  │  │ - Firefox           │        │                     │                │ │
-│  │  │ - Terminal          │        │                     │                │ │
-│  │  └─────────────────────┘        └─────────────────────┘                │ │
-│  │                                                                         │ │
-│  └────────────────────────────────────────────────────────────────────────┘ │
-│                                                                              │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
+![Helix Architecture](/images/helix_architecture.svg)
 
 ## Core Components
 
