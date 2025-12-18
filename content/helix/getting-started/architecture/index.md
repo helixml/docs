@@ -12,7 +12,7 @@ Helix is built on a modular architecture that separates the control plane from c
 
 ## High-Level Architecture
 
-{{< mermaid >}}
+```mermaid
 flowchart TB
     subgraph Browser["Browser"]
         Frontend["React Frontend<br/>Chat, Apps, Sessions"]
@@ -58,7 +58,7 @@ flowchart TB
     Wolf --> Desktop
     Hydra --> UserContainers
     Desktop <-->|"veth bridge"| UserContainers
-{{< /mermaid >}}
+```
 
 ## Core Components
 
@@ -147,7 +147,7 @@ Each desktop includes:
 
 ### Chat/Inference Flow
 
-{{< mermaid >}}
+```mermaid
 sequenceDiagram
     participant Browser
     participant API as API Server
@@ -162,11 +162,11 @@ sequenceDiagram
     Model-->>Runner: Response tokens
     Runner-->>API: Stream response (WebSocket)
     API-->>Browser: Stream response (WebSocket)
-{{< /mermaid >}}
+```
 
 ### Desktop Streaming Flow
 
-{{< mermaid >}}
+```mermaid
 sequenceDiagram
     participant Browser
     participant API as API/Proxy
@@ -182,7 +182,7 @@ sequenceDiagram
     Browser->>API: Input events (keyboard/mouse)
     API->>Sandbox: Forward input
     Sandbox->>Desktop: Inject input
-{{< /mermaid >}}
+```
 
 ## Enterprise Deployment Considerations
 
