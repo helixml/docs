@@ -5,35 +5,53 @@ aliases:
   - /docs/architecture
 tags:
 - design
+- architecture
 ---
 
-The Helix architecture is an uncomplicated stack of high quality components.
+Helix is built on a modular architecture that separates the control plane from compute resources, enabling flexible deployment across different environments.
 
-![](architecture.jpg)
+## High-Level Architecture
 
-The code is available at [github.com/helixml/helix](https://github.com/helixml/helix).
+![Helix Architecture](helix_architecture.svg)
 
-## Architecture components
+## Core Components
 
 ### Control Plane
 
-* The [Control Plane is written in golang](https://github.com/helixml/helix/tree/main/api/pkg) and exposes an API
-  * The Control Plane acts as a reverse proxy for the frontend.
-  * The Control Plane communicates directly with other components.
-* The frontend is [React in Typescript](https://github.com/helixml/helix/tree/main/frontend)
-  * It authenticates to Keycloak
-  * It connects via API and websockets to the API server
-* [Keycloak](https://www.keycloak.org/) provides an authentication server
-* [Postgres schema and migrations](https://github.com/helixml/helix/tree/main/api/pkg/store/migrations) are handled by the API server
+The control plane orchestrates all Helix operations. The **API Server**, written in Go, exposes a RESTful API and maintains WebSocket connections for real-time updates. It handles job scheduling, queue management, and serves as a reverse proxy for frontend assets.
 
-See also: [docker-compose.yaml](https://github.com/helixml/helix/blob/main/docker-compose.yaml).
+The **Frontend** is a React/TypeScript application providing the chat interface for AI interactions, app and session management, and a WebSocket-based desktop streaming viewer.
+
+**PostgreSQL** stores sessions, conversations, app configurations, and user data. Authentication supports both built-in mode and integration with external OIDC providers for enterprise SSO.
 
 ### Runners
 
-[Runners](https://github.com/helixml/helix/tree/main/api/pkg/runner) connect to the control plane via API/websocket to provide GPUs running model instances. Since they only make outbound connections they can run behind NAT. Each runner knows how much GPU memory it has and polls the API server for new work to do.
+Runners provide GPU compute for inference. They connect to the control plane via outbound WebSocket, which means they work behind NAT without exposing ports. Each runner reports available GPU memory and accepts jobs that fit. Models run through [Ollama](https://ollama.com) or [vLLM](https://github.com/vllm-project/vllm), with support for multiple concurrent instances based on available memory.
 
-A runner is a "fat" container image which contains both the runner golang service and the python virtualenvs that correspond to the [supported models](/helix/using-helix/text-inference/index.md).
+### External Agent Sandbox
 
-It includes in the polling a set of filters which allow it to restrict jobs it accepts to ones which will fit in the amount of GPU memory it could hypothetically free if it were to stop all "stale" model instances.
+The sandbox provides isolated environments for AI agents to work autonomously.
 
-Model instances are Python processes that connect to the runner's internal API and fetch the latest job to be run. They then spawn inference or fine tuning code via [ollama](https://ollama.com), [cog](https://github.com/replicate/cog) or [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
+**Wolf** handles GPU-accelerated desktop streaming using NVIDIA hardware encoding (H.264/HEVC/AV1) and the Moonlight protocol for low-latency delivery. It runs in a Docker-in-Docker architecture for container management.
+
+Desktop streaming uses WebSocket-only transport for enterprise compatibility—all traffic flows through standard HTTPS on port 443, with no WebRTC or TURN servers required. The browser decodes video using the WebCodecs API.
+
+**Hydra** provides per-session Docker isolation. Each user gets their own dockerd instance with isolated networks, so sessions cannot see each other's containers. A veth bridge injection allows desktops to reach user containers, and custom DNS resolution ensures container names resolve correctly within sessions. Enterprise DNS servers and private TLDs are fully supported.
+
+Multiple desktop environments are available: Sway (native Wayland, lightweight), Ubuntu (X11 via Xwayland, full GNOME), and Zorin (X11 via Xwayland, user-friendly). Each desktop comes with Zed editor, Firefox, Docker CLI, and Git pre-installed.
+
+## Enterprise Deployment Considerations
+
+Helix is designed for enterprise environments:
+
+- **L7 Load Balancer Compatible** - All traffic over HTTP/HTTPS
+- **Internal DNS Support** - Works with enterprise DNS servers
+- **Proxy Support** - Respects `HTTP_PROXY`/`HTTPS_PROXY`
+- **Private CA Certificates** - Support for internal TLS certificates
+- **Network Segmentation** - Configurable endpoints for different network zones
+
+## Related Resources
+
+- [Docker Compose Configuration](https://github.com/helixml/helix/blob/main/docker-compose.yaml)
+- [Helm Charts](https://github.com/helixml/helix/tree/main/charts)
+- [Private Deployment Guide](/helix/private-deployment/)

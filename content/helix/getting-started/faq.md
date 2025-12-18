@@ -7,26 +7,85 @@ tags:
 - help
 ---
 
+## What is Helix?
+
+Helix is an open-source AI platform that lets you run powerful language models on your own infrastructure with complete control over your data and models.
+
 ## What makes Helix different?
 
-We allow you to safely bring LLMs into your business by running models in your environment. This means you have zero data leakage risk and can develop your own fine-tuned LLM that remains your core IP.
+We allow you to safely bring LLMs into your business by running models in your environment. This means you have zero data leakage risk and complete control over your AI infrastructure.
+
+## What is Helix Code?
+
+Helix Code lets you run fleets of AI coding agents that work autonomously on software development tasks. Key features:
+
+- **GPU-accelerated desktops** - Each agent runs in a real Linux desktop environment with full IDE access
+- **Live streaming** - Watch agents work in real-time through your browser
+- **Spec-first development** - Agents write design documents before code, ensuring thoughtful implementation
+- **Kanban orchestration** - Manage dozens of agents from a single dashboard
+- **Private and secure** - All code stays on your infrastructure, never sent to external services
+
+Helix Code is ideal for teams that want to accelerate development while keeping proprietary code secure.
+
+## Do I need to use the Helix UI to interact with my agents?
+
+No. You can interact with Helix agents through any integration connected to our Streaming API. This includes Teams, Slack, Azure DevOps, and many other integrations.
 
 ## How hard is it to get started?
 
-See [getting started](/helix/getting-started/_index.md)!
+See [getting started](/helix/getting-started/_index.md)! Installation typically takes 15-30 minutes with our automated installer.
 
-You can start chatting with open source language models and generating images with Stable Diffusion XL by [creating a free account](https://app.tryhelix.ai) right now. Fine-tuning your own model on your own text or image data is as simple as drag’n’drop, and takes 3-10 minutes. You can then chat with and generate images from those fine-tuned models straight away, all using a familiar chat interface.
+## Do I need a GPU?
 
-## My data is private, how can I train models on it securely without the data leaving my company’s infrastructure?
+**No, a GPU is optional.** You can use Helix in two ways:
 
-This is where Helix really shines – because the models are open source, you are free to fine-tune them on your own infrastructure, and Helix makes that as easy as half a day with a DevOps Engineer. Try it out on some of our sample data to get a feel for what it’s capable of, and then invite your DevOps Engineer to our [deployment guide](/helix/private-deployment/_index.md), and [shoot us an email](mailto:founders@helixml.tech) at the same time.
+1. **Without a GPU:** Connect to external AI providers (OpenAI, Anthropic, Together) and route your queries through Helix for logging, access control, and app building.
+
+2. **With a GPU:** Run open-source models locally for complete data privacy. NVIDIA GPUs with 24GB+ VRAM are recommended.
 
 ## What open source models can I use with Helix?
 
-Almost any that are available will work with Helix: versions of Llama, Deepseek, Phi, Qwen, Aya, and more will work (as well as Flux for images). If you want to test out options in our SaaS demo of Helix, go to [https://app.tryhelix.ai](https://app.tryhelix.ai) and choose one of these models from the dropdown in the chat box!
+Almost any popular model will work with Helix: versions of Llama, Deepseek, Phi, Qwen, Aya, and more. For image generation, Flux is supported.
 
-## Can I integrate my models with my own apps or business apps once I’ve got it working?
+## Can I integrate my models with my own apps or business apps?
 
 Yes, we expose industry-standard OpenAI compatible APIs. Please see the [API documentation](/helix/api-reference/_index.md).
 
 We also provide "App" primitives to make it even easier for you to [create AI-powered applications](/helix/develop/_index.md).
+
+## What is RAG (Retrieval Augmented Generation)?
+
+RAG lets you "chat with your documents." Upload PDFs, Word docs, or other files, and the AI will answer questions based on their content. This is useful for creating chatbots that know about your company's specific information.
+
+## How much does Helix cost?
+
+Helix is open source and free to self-host. Your main costs will be:
+
+- **Compute:** Server or cloud instance costs
+- **GPU (optional):** If running local models, GPU rental or hardware
+- **AI API costs (optional):** If using external providers like OpenAI
+
+## Is my data safe with Helix?
+
+When self-hosted, your data never leaves your infrastructure. Conversations, uploaded documents, and fine-tuned models all stay on your servers. This is ideal for sensitive business data or compliance requirements.
+
+## What are Helix Apps?
+
+Helix Apps let you create custom AI assistants. You can:
+
+- Define a system prompt (personality/instructions)
+- Connect knowledge bases (documents the AI can reference)
+- Add tools (let the AI take actions like searching the web or calling APIs)
+
+No coding required for basic apps!
+
+## Can I run Helix on Kubernetes?
+
+Yes! We provide Helm charts for Kubernetes deployments. See the [private deployment guide](/helix/private-deployment/_index.md) for details.
+
+## How do I get help?
+
+- Check this FAQ and our [documentation](/helix/)
+- Visit our [GitHub Issues](https://github.com/helixml/helix/issues)
+- Join the [Discord community](https://discord.gg/VJftd844GE)
+- Email us at [founders@helixml.tech](mailto:founders@helixml.tech)

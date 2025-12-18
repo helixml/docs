@@ -1,75 +1,115 @@
 ---
 title: Helix Quick Start
-description: Quickly test out Helix's features by experimenting with Helix Cloud.
+description: Get started with Helix by deploying it on your own infrastructure.
 weight: 1
 aliases:
   - /docs/getting-started
 tags:
 - quick-start
-- text-inference
-- image-inference
+- private-deployment
 ---
 
-These instructions show how you can experiment with [Helix Cloud](https://app.tryhelix.ai/). If you want to deploy to your own infrastucture, see the section on [Private Deployment](/helix/private-deployment/_index.md).
+Helix is designed for private deployment on your own infrastructure. This guide will help you get started quickly using the Helix installer.
 
-## Log In
+## Prerequisites
 
-Browse to [https://app.tryhelix.ai](https://app.tryhelix.ai) and click "LOGIN / REGISTER".
+Before you begin, ensure you have:
 
-![](gsg-01.png)
+- A Linux machine (Ubuntu 20.04+ recommended)
+- **Docker** installed
+- Root or sudo access for installation
+- (Optional) An **NVIDIA GPU** for running local models
 
-## Sign up for an Account
+## Quick Start
 
-You can create a new username and password or log in with Google.
+### 1. Download and Run the Installer
 
-![](gsg-02.png)
+```bash
+curl -sL -O https://get.helixml.tech/install.sh
+chmod +x install.sh
+sudo ./install.sh
+```
 
+The installer will guide you through configuration options and set up all required services.
 
-## Chat with a Chatbot
+### 2. Access Helix
 
-Ask it: `give me 3 ideas for a blog post about an AI powered bicycle`.
+Once installation completes, Helix will be available at:
 
-![](gsg-03.png)
+- **Frontend:** http://localhost:8080
+- **API:** http://localhost:8080/api/v1
 
-Share your results with your friends with the "Share" button!
+### 3. Install the Helix CLI (Optional)
 
-## Generate Images
+Install the CLI to interact with Helix from the command line:
 
-Click "New Session", then next to the text box at the bottom click the "Text" button to switch it to "Image" mode.
+```bash
+sudo ./install.sh --cli
+```
 
-![](new-image-session.png)
+Connect the CLI to your Helix instance:
 
-Now, prompt the image model with prompts like: `interior design of a luxurious master bedroom, gold and marble furniture, luxury, intricate, breathtaking`
+```bash
+export HELIX_URL=http://localhost:8080
+export HELIX_API_KEY=your-api-key
+```
 
-![](gsg-04.png)
+Get your API key from **Account** → **API Keys** in the web UI.
 
-Share your results with your friends with the "Share" button!
+### 4. Connect a GPU Runner (Optional)
 
-## Learn New Knowledge
+If you have an NVIDIA GPU and want to run local models, attach a runner:
 
-1. Click "New Session", slide the toggle to "Learn" and select "Text".
+1. Log into Helix at http://localhost:8080
+2. Go to **Account** → **Runners** to find your runner token
+3. Start the runner with your token:
 
-![](new-learn-session.png)
+```bash
+docker run --gpus all \
+  -e RUNNER_TOKEN=your-token-here \
+  -e API_HOST=http://your-helix-server:8080 \
+  registry.helix.ml/helix/runner:latest
+```
 
-2. Now pick a recent paper from [https://arxiv.org/](https://arxiv.org/) on a subject that's interesting to you (click the "recent" link to find something the base model definitely won't know about).
-3. Paste the PDF link into the "Links" field and click the "+" button. You can also paste in plain text or drag and drop documents (pdf, docx) into the file upload form.
-4. Click "Continue" and Helix will download and ingest the content.
-5. Now chat with the chat bot and ask questions about the paper.
-6. Share this chat bot with your friends by clicking the "Share" button.
+Alternatively, use external LLM providers (OpenAI, Anthropic, Together) without a local GPU. Configure these in **Account** → **AI Providers**.
 
-![](gsg-05.png)
+## What You Can Do with Helix
 
-## Fine Tune an Image Model
+### Chat with AI Models
 
-1. Click "New Session", slide the toggle to "Learn" and select "Images".
+Once deployed, you can interact with AI models through the web interface or API:
 
-![](new-learn-image-session.png)
+- **Text conversations** with models like Llama, Qwen, or external providers
+- **RAG (Retrieval Augmented Generation)** - Upload documents and chat with your data
+- **Fine-tuning** - Train models on your own text data
 
-2. Now drag and drop some images and label them, for example selfies of yourself or any object or style you want to generate an image model that can copy. You should provide at least 5 examples. Be sure to follow the instructions to label the photos.
-3. Click "Train" and wait until it is complete. It will take a while.
-4. Use the prompt "A photo of &lt;s0&gt;&lt;s1&gt;", you can add additional text after that prompt as well, but the "&lt;s0&gt;&lt;s1&gt;" bit tells it to reference the concept/object in the uploaded images.
-5. Feel free to share your session so that others can use your fine-tuned model!
+### Build AI-Powered Apps
 
-![](gsg-06.png)
+Create custom AI applications using:
 
-If you find yourself stuck in the queue for a long time, you can upgrade to a [paid account](https://app.tryhelix.ai/account) to jump the queue, or [deploy Helix on your own infrastructure](/helix/private-deployment/_index.md).
+- **Helix Apps** - Define tools, knowledge bases, and system prompts
+- **GPTScript Integration** - Build complex workflows with GPTScript
+- **API Integration** - Use the OpenAI-compatible API in your applications
+
+### Coding Agents
+
+Run fleets of background coding agents with real GPU-accelerated desktops:
+
+- **Desktop streaming** - Watch AI agents work in real-time via browser
+- **Spec-first development** - Agents write design docs before code
+- **Kanban orchestration** - Manage dozens of agents from one view
+
+## Next Steps
+
+- **[Private Deployment Guide](/helix/private-deployment/)** - Detailed deployment options including Kubernetes
+- **[Architecture Overview](/helix/getting-started/architecture/)** - Understand how Helix works
+- **[Building Apps](/helix/develop/apps/)** - Create custom AI applications
+- **[API Reference](/helix/api-reference/)** - Integrate Helix into your workflows
+
+## Getting Help
+
+If you encounter issues:
+
+- Check the [FAQ](/helix/getting-started/faq/)
+- Visit our [GitHub Issues](https://github.com/helixml/helix/issues)
+- Join the [Discord community](https://discord.gg/VJftd844GE)
