@@ -40,9 +40,7 @@ curl -sL -O https://get.helixml.tech/install.sh
 chmod +x install.sh
 ./install.sh --openai-api-key ollama --openai-base-url http://host.docker.internal:11434/v1
 ```
-![Install Helix Screenshot](install_helix_screenshot.png)
-### Successful completion of the installation
-![Successful Helix Installation Screenshot](successful_helix_installation_screenshot.png)
+
 ### Spin up Helix Docker Instances
 1. Start Helix Services
 ```shell
@@ -51,14 +49,9 @@ sudo docker compose up -d --remove-orphans
 ```
 ## Login to Helix UI
 1. In a web browser go to: http://localhost:8080/
-![helix_login_page_screenshot](helix_login_page_screenshot.png)
 2. Register local user
-   1. Bottom left pane - click on “Login/Register”
-![helix_login_register_link_screenshot](helix_login_register_link_screenshot.png)
-   2. Click on "Register" to begin the user registeration process
-![user_registeration_link_screenshot](user_registeration_link_screenshot.png)
+   1. Bottom left pane - click on "Login/Register"
+   2. Click on "Register" to begin the user registration process
    3. Complete user registration
-![complete_user_registeration_screenshot](complete_user_registeration_screenshot.png)
-2. To access the app, log in to the local HelixML UI with your registered user credentials
-![try_out_helix_ui_screenshot](try_out_helix_ui_screenshot.png)
+3. To access the app, log in to the local HelixML UI with your registered user credentials
 
