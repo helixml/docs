@@ -7,6 +7,8 @@ aliases:
   - /helix/models/models/
 ---
 
+![Helix chat interface showing model selection and conversation](text-inference.jpg)
+
 Helix supports any model available through Ollama or vLLM. The platform dynamically detects model types—if a model name contains a colon (like `qwen3:8b`), it runs through Ollama. Models with a slash prefix (like `Qwen/Qwen2.5-VL-7B-Instruct`) run through vLLM.
 
 ## Listing Available Models
