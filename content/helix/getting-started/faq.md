@@ -13,11 +13,23 @@ Helix is an open-source AI platform that lets you run powerful language models o
 
 ## What makes Helix different?
 
-We allow you to safely bring LLMs into your business by running models in your environment. This means you have zero data leakage risk and can develop your own fine-tuned LLM that remains your core IP.
+We allow you to safely bring LLMs into your business by running models in your environment. This means you have zero data leakage risk and complete control over your AI infrastructure.
+
+## What is Helix Code?
+
+Helix Code lets you run fleets of AI coding agents that work autonomously on software development tasks. Key features:
+
+- **GPU-accelerated desktops** - Each agent runs in a real Linux desktop environment with full IDE access
+- **Live streaming** - Watch agents work in real-time through your browser
+- **Spec-first development** - Agents write design documents before code, ensuring thoughtful implementation
+- **Kanban orchestration** - Manage dozens of agents from a single dashboard
+- **Private and secure** - All code stays on your infrastructure, never sent to external services
+
+Helix Code is ideal for teams that want to accelerate development while keeping proprietary code secure.
 
 ## Do I need to be technical to use Helix?
 
-**To use Helix:** No! Once deployed, Helix provides a familiar chat interface similar to ChatGPT. You can have conversations, ask questions, and even upload documents to chat with your own data.
+**To use Helix:** No! Once deployed, Helix provides a familiar chat interface. You can have conversations, ask questions, and even upload documents to chat with your own data.
 
 **To deploy Helix:** You'll need someone with basic Linux and Docker knowledge. Our installer script handles most of the complexity.
 
