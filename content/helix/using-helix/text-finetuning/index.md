@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Text Fine-Tuning
 description:
 weight: 3
@@ -8,6 +9,7 @@ aliases:
   - /helix/guidance/text-fine-tune-guidance/
   - /helix/models/finetuning/
 ---
+draft: true
 
 Helix uses [Mistral-7B-Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) for text fine tuning.
 
