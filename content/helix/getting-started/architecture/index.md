@@ -38,8 +38,7 @@ The control plane orchestrates all Helix operations:
 
 * **Authentication**
   - Built-in authentication ("regular" mode)
-  - Keycloak integration for enterprise SSO
-  - Generic OIDC provider support
+  - Integration with external OIDC providers for enterprise SSO
 
 ### Runners
 
