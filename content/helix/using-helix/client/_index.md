@@ -6,7 +6,7 @@ weight: 1
 
 ## Helix Client
 
-The Helix client is a tool designed to make it easy to interact with the Helix programmatically without a UI interface. Amongst other things the Helix client can be used to create sessions, deploy apps, and list knowledge contexts.
+The Helix client is a tool designed to make it easy to interact with Helix programmatically without a UI interface. The Helix client can be used to create sessions, deploy agents, and list knowledge contexts.
 
 ## Installation
 
@@ -100,12 +100,12 @@ assistants:
 
 More information on how to create Helix apps can be found in the Apps section.
 
-## Apps
+## Agents
 
-This lists Helix apps that have been created by the user.
+This lists Helix agents that have been created by the user.
 
 ```bash
-$ helix app ls
+$ helix agent ls
   ID                              NAME                           CREATED              SOURCE
   app_01hzm1232trzrcdg01nvmfqz89  Curated Chuck Norris facts     2024-06-05 10:53:19  github
   app_01hz5nd234ysastmnskaj5v82a  UK Bank holiday                2024-05-30 21:10:13  github
