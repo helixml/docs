@@ -12,52 +12,72 @@ Helix is built on a modular architecture that separates the control plane from c
 
 ## High-Level Architecture
 
-```mermaid
-flowchart TB
-    subgraph Browser["Browser"]
-        Frontend["React Frontend<br/>Chat, Apps, Sessions"]
-        StreamViewer["WebSocket Stream Viewer<br/>Desktop Streaming"]
-    end
-
-    subgraph ControlPlane["Control Plane"]
-        API["API Server<br/>REST API, WebSocket Hub,<br/>Job Scheduling"]
-        DB[(PostgreSQL<br/>Sessions, Apps, Users)]
-        Auth["Auth<br/>Keycloak / OIDC"]
-    end
-
-    subgraph Runners["GPU Runners"]
-        Runner["Runner Process<br/>Ollama / vLLM"]
-        GPU["NVIDIA GPU<br/>Inference & Fine-tuning"]
-    end
-
-    subgraph Sandbox["Sandbox (External Agents)"]
-        Wolf["Wolf<br/>Stream Server"]
-        Moonlight["Moonlight Web<br/>Protocol Handler"]
-        Hydra["Hydra<br/>Docker-in-Docker"]
-
-        subgraph Desktop["Desktop Environment"]
-            Sway["Sway / Ubuntu / Zorin"]
-            Zed["Zed Editor"]
-            Firefox["Firefox"]
-        end
-
-        subgraph UserContainers["Per-Session Containers"]
-            WebApp["User's Web App"]
-            UserDB["User's Database"]
-        end
-    end
-
-    Browser -->|"HTTPS / WebSocket"| ControlPlane
-    Frontend --> API
-    StreamViewer -->|"WebSocket (wss://)"| API
-    API --> DB
-    API --> Auth
-    API -->|"RevDial (outbound)"| Runner
-    Runner --> GPU
-    API -->|"RevDial Tunnel"| Sandbox
-    Wolf --> Desktop
-    Hydra --> UserContainers
-    Desktop <-->|"veth bridge"| UserContainers
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              BROWSER                                         │
+│                                                                              │
+│  ┌────────────────────────┐     ┌────────────────────────────────────────┐  │
+│  │     React Frontend     │     │     WebSocket Stream Viewer            │  │
+│  │  - Chat interface      │     │  - Desktop streaming via WebSocket     │  │
+│  │  - App management      │     │  - WebCodecs video/audio decoding      │  │
+│  │  - Session management  │     │  - Real-time input forwarding          │  │
+│  └────────────────────────┘     └────────────────────────────────────────┘  │
+│                │                                │                            │
+└────────────────│────────────────────────────────│────────────────────────────┘
+                 │ HTTP/WebSocket                 │ WebSocket (wss://)
+                 ▼                                ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           CONTROL PLANE                                      │
+│                                                                              │
+│  ┌────────────────────┐  ┌────────────────────┐  ┌────────────────────────┐ │
+│  │    API Server      │  │     PostgreSQL     │  │   Auth (Keycloak/OIDC) │ │
+│  │  - REST API        │  │  - Sessions        │  │  - User management     │ │
+│  │  - WebSocket hub   │  │  - Apps            │  │  - Token validation    │ │
+│  │  - Job scheduling  │  │  - Users           │  │                        │ │
+│  └────────────────────┘  └────────────────────┘  └────────────────────────┘ │
+│                │                                                             │
+└────────────────│─────────────────────────────────────────────────────────────┘
+                 │ RevDial (reverse connection)
+                 ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              RUNNERS                                         │
+│                     (GPU workers for inference)                              │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Runner Process                                                         │ │
+│  │  - Connects to control plane via outbound WebSocket                    │ │
+│  │  - Manages model instances (Ollama, vLLM)                              │ │
+│  │  - Reports GPU memory availability                                      │ │
+│  │  - Executes inference and fine-tuning jobs                             │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         SANDBOX (External Agents)                            │
+│                   GPU-accelerated desktop streaming                          │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                        Sandbox Container                                │ │
+│  │                                                                         │ │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐   │ │
+│  │  │    Wolf     │  │  Moonlight  │  │    Hydra    │  │   Sandbox   │   │ │
+│  │  │  (stream)   │  │   Web       │  │  (docker²)  │  │  Heartbeat  │   │ │
+│  │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘   │ │
+│  │                                                                         │ │
+│  │  Wolf's Docker Network           Hydra's Per-Session Networks          │ │
+│  │  ┌─────────────────────┐        ┌─────────────────────┐                │ │
+│  │  │ Desktop Container   │◄─veth─►│ User's Containers   │                │ │
+│  │  │ (Sway/Ubuntu/Zorin) │  pair  │ (webapp, postgres)  │                │ │
+│  │  │ - Zed Editor        │        │                     │                │ │
+│  │  │ - Firefox           │        │                     │                │ │
+│  │  │ - Terminal          │        │                     │                │ │
+│  │  └─────────────────────┘        └─────────────────────┘                │ │
+│  │                                                                         │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## Core Components
@@ -147,41 +167,28 @@ Each desktop includes:
 
 ### Chat/Inference Flow
 
-```mermaid
-sequenceDiagram
-    participant Browser
-    participant API as API Server
-    participant Queue as Job Queue
-    participant Runner
-    participant Model as Model Instance
-
-    Browser->>API: Send message
-    API->>Queue: Create job
-    Queue->>Runner: Dispatch job
-    Runner->>Model: Run inference
-    Model-->>Runner: Response tokens
-    Runner-->>API: Stream response (WebSocket)
-    API-->>Browser: Stream response (WebSocket)
+```
+Browser → API Server → Job Queue → Runner → Model Instance → Response
+                ↑                                    ↓
+                └────────────── WebSocket ───────────┘
 ```
 
 ### Desktop Streaming Flow
 
-```mermaid
-sequenceDiagram
-    participant Browser
-    participant API as API/Proxy
-    participant Sandbox
-    participant Wolf
-    participant Desktop
-
-    Browser->>API: WebSocket connect
-    Sandbox->>API: RevDial tunnel (outbound)
-    Wolf->>Desktop: Capture frames
-    Wolf-->>API: Encoded video (H.264)
-    API-->>Browser: Video frames (binary)
-    Browser->>API: Input events (keyboard/mouse)
-    API->>Sandbox: Forward input
-    Sandbox->>Desktop: Inject input
+```
+Browser                    API/Proxy              Sandbox
+   │                           │                     │
+   │  WebSocket connect        │                     │
+   ├──────────────────────────►│                     │
+   │                           │  RevDial tunnel    │
+   │                           │◄───────────────────┤
+   │                           │                     │
+   │  Video frames (binary)    │                     │
+   │◄──────────────────────────│◄────────────────────┤ Wolf encodes
+   │                           │                     │
+   │  Input events (binary)    │                     │
+   ├──────────────────────────►├────────────────────►│ Desktop receives
+   │                           │                     │
 ```
 
 ## Enterprise Deployment Considerations
