@@ -43,10 +43,6 @@ See [getting started](/helix/getting-started/_index.md)! Installation typically 
 
 2. **With a GPU:** Run open-source models locally for complete data privacy. NVIDIA GPUs with 24GB+ VRAM are recommended.
 
-## My data is private, how can I train models on it securely without the data leaving my company's infrastructure?
-
-This is where Helix really shines. Because the models are open source, you are free to fine-tune them on your own infrastructure. Try it out to get a feel for what it's capable of, and then check out our [deployment guide](/helix/private-deployment/_index.md). Feel free to [contact us](mailto:founders@helixml.tech) with questions.
-
 ## What open source models can I use with Helix?
 
 Almost any popular model will work with Helix: versions of Llama, Deepseek, Phi, Qwen, Aya, and more. For image generation, Flux is supported.
