@@ -7,38 +7,41 @@ aliases:
   - /helix/models/models/
 ---
 
-Helix offers a variety of large language models tailored for different needs, all designed to provide high-quality responses with a relatively small GPU memory footprint. These include:
+Helix supports any model available through Ollama or vLLM. The platform dynamically detects model types—if a model name contains a colon (like `qwen3:8b`), it runs through Ollama. Models with a slash prefix (like `Qwen/Qwen2.5-VL-7B-Instruct`) run through vLLM.
 
-- **Helix 3.5**: Utilizes Llama3-8B for fast and efficient performance, ideal for everyday tasks. Ollama tag `llama3:instruct`.
-- **Helix 4**: Powered by Llama3-70B, this model offers deeper insights and although a bit slower, it's smarter for complex queries. Ollama tag `llama3:70b`.
-- **Helix Mixtral**: Features Mistral's mixture of experts, that outperforms OpenAI at many tasks. Ollama tag `mixtral:instruct`.
-- **Helix JSON**: Operates on Nous Hermes 2 Pro 7B, specialized for function calling and generating JSON outputs, enhancing automation and integration tasks. Ollama tag `adrienbrault/nous-hermes2theta-llama3-8b:q8_0`.
-- **Helix Small**: A smaller model based on Phi-3 Mini 3.8B, fast and memory efficent. Ollama tag `phi3:instruct`.
+## Listing Available Models
 
-## Try chatting to the chatbot
+Query the Helix API to see which models are configured on your instance:
 
-Log in at [app.tryhelix.ai](https://app.tryhelix.ai).
+```bash
+curl -s https://your-helix-server/v1/models \
+  -H "Authorization: Bearer $HELIX_API_KEY" | jq
+```
 
-Choose the model you would like to chat with using the dropdown in the toolbar. Let's start with Helix 3.5.
+Or using the CLI:
 
-![](models.png)
+```bash
+helix agent ls
+```
 
-Now we'll hit one of the example prompts to get started. "Compose a email regarding project timeline adjustments to a client, explaining the reasons, impacts, and the revised timelines".
+## Adding Models
 
-![](example.png)
+Administrators can add any Ollama or vLLM model. For Ollama models, use the standard Ollama tag format (e.g., `llama3:instruct`, `qwen3:32b`, `mixtral:instruct`). For vLLM models, use the HuggingFace model path (e.g., `Qwen/Qwen2.5-VL-7B-Instruct`).
 
-The model will generate a response based on the prompt provided. You can continue the conversation by adding more prompts or questions.
+Models are configured in the Helix admin interface or via the Models API. Each model can specify memory requirements, context length, concurrency limits, and whether to prewarm on runners.
 
-![](answer.png)
+## Running Inference
 
-Share your results with your friends with the "Share" button or on our [Discord](https://discord.gg/VJftd844GE)!
+Send a chat completion request to the OpenAI-compatible API:
 
-![](share.png)
+```bash
+curl https://your-helix-server/v1/chat/completions \
+  -H "Authorization: Bearer $HELIX_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [{"role": "user", "content": "Explain quantum computing in simple terms"}]
+  }'
+```
 
-If you find yourself stuck in the queue for a long time, you can upgrade to a [paid account](https://app.tryhelix.ai/account) to jump the queue, or [deploy Helix on your own infrastructure](/helix/private-deployment/_index.md).
-
-## Inference Best Practices
-
-* Imagine yourself performing the task or answering the question
-* If you need to ask questions, then you haven't provided enough context
-* If you are asking questions about a thing, indicate what the thing is
+The scheduler automatically routes requests to available runners with sufficient GPU memory for the requested model.
