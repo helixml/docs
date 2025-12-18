@@ -23,7 +23,7 @@ curl -s https://your-helix-server/v1/models \
 Or using the CLI:
 
 ```bash
-helix agent ls
+helix model list
 ```
 
 ## Adding Models
