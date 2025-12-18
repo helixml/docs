@@ -96,34 +96,6 @@ Each desktop includes:
 - **Docker CLI** for container management
 - **Git** for version control
 
-## Data Flow
-
-### Chat/Inference Flow
-
-```
-Browser → API Server → Job Queue → Runner → Model Instance → Response
-                ↑                                    ↓
-                └────────────── WebSocket ───────────┘
-```
-
-### Desktop Streaming Flow
-
-```
-Browser                    API/Proxy              Sandbox
-   │                           │                     │
-   │  WebSocket connect        │                     │
-   ├──────────────────────────►│                     │
-   │                           │  RevDial tunnel    │
-   │                           │◄───────────────────┤
-   │                           │                     │
-   │  Video frames (binary)    │                     │
-   │◄──────────────────────────│◄────────────────────┤ Wolf encodes
-   │                           │                     │
-   │  Input events (binary)    │                     │
-   ├──────────────────────────►├────────────────────►│ Desktop receives
-   │                           │                     │
-```
-
 ## Enterprise Deployment Considerations
 
 Helix is designed for enterprise environments:
