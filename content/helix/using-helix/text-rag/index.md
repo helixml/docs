@@ -1,6 +1,6 @@
 ---
-title: Text RAG
-description: Easy retrieval augmented generation (RAG) with Helix.
+title: RAG (with Vision Language Models)
+description: Retrieval augmented generation with support for text and vision models.
 weight: 2
 ---
 
