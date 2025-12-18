@@ -26,7 +26,7 @@ The **Frontend** is a React/TypeScript application providing the chat interface 
 
 ### Runners
 
-Runners provide GPU compute for inference and fine-tuning. They connect to the control plane via outbound WebSocket, which means they work behind NAT without exposing ports. Each runner reports available GPU memory and accepts jobs that fit. Models run through [Ollama](https://ollama.com) or [vLLM](https://github.com/vllm-project/vllm), with support for multiple concurrent instances based on available memory.
+Runners provide GPU compute for inference. They connect to the control plane via outbound WebSocket, which means they work behind NAT without exposing ports. Each runner reports available GPU memory and accepts jobs that fit. Models run through [Ollama](https://ollama.com) or [vLLM](https://github.com/vllm-project/vllm), with support for multiple concurrent instances based on available memory.
 
 ### External Agent Sandbox
 
