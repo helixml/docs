@@ -1,93 +1,98 @@
 ---
-title: Developing Helix Apps
-linkTitle: Apps
-description: Learn how to create AI-powered Apps in Helix.
+title: Developing Helix Agents
+linkTitle: Agents
+description: Learn how to create and deploy AI-powered Agents in Helix.
 weight: 1
 aliases:
 - /helix/develop/getting-started/
 - /helix/develop/helix-tools/
 - /helix/develop/api-apps/
 tags:
-- apps
+- agents
 - quick-start
 ---
 
-Helix makes it quick and easy to build AI-powered applications in what we call Helix Apps. In a nutshell, an App configures Helix by telling it what model to use, how to use it, what data to leverage, and so on.
+Helix Agents combine language models with skills, knowledge bases, and external integrations to build AI-powered applications. An agent receives a user message, decides which tools to use, executes them, and synthesizes a response.
 
-You can deploy Apps in three different ways: via the UI, using the CLI, or via a connection to a [GitHub repository](/helix/develop/github-apps/index.md).
+You can deploy agents using the CLI (`helix apply`), via a connection to a [GitHub repository](/helix/develop/github-apps/index.md), or through the UI.
 
-This page explains how to create and configure an App.
+This page explains how to create, configure, and interact with agents using the Helix CLI and API.
 
-## Creating an App
+## Prerequisites
 
-This section focuses on deploying Helix Apps via the UI or the CLI. To learn more about the GitHub integration, please visit the dedicated page.
+Install the Helix CLI:
 
-Learn how to create an App, then keep reading to learn how to configure it.
+```bash
+curl -Ls -o install-helix.sh https://get.helixml.tech
+chmod +x install-helix.sh
+./install-helix.sh --cli
+```
 
-### Creating an App Using the UI
+Configure your credentials:
 
-To create an app using the UI browse to `https://${YOUR_DOMAIN}/app/new` ([SaaS link](https://app.tryhelix.ai/app/new)):
+```bash
+export HELIX_API_KEY=your-API-key
+export HELIX_URL=https://app.tryhelix.ai  # or your private deployment URL
+```
 
-1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `Your Apps`.
-2. Click `New App +` at the top right.
+## Creating an Agent
 
-### Creating an App Using the CLI
+Create an agent by applying an [AI Spec](https://aispec.org/) configuration file:
 
-You can also deploy via the Helix CLI by applying a [AI Spec](https://aispec.org/) formatted configuration YAML file.
+```bash
+helix apply -f agent.yaml
+```
 
-1. Install the CLI by following the [installation instructions](/helix/private-deployment/controlplane.md) or downloading directly from the [GitHub releases page](https://get.helixml.tech/helixml/helix/releases/latest).
-2. Deploy an App with `helix apply -f your.yaml`
+A minimal agent configuration:
 
-## Configuring an App
+```yaml
+name: My Agent
+description: A helpful assistant
 
-Now you know how to deploy an App to Helix, let's learn how to configure it to do something useful. A full definition of the AI application specification can be found at [AI Spec](https://aispec.org/).
+assistants:
+- model: qwen3:8b
+  system_prompt: |
+    You are a helpful assistant. Answer questions clearly and concisely.
+```
 
-### Basic Settings and Setting the System Prompt
+## Agent Configuration
 
-![Basic Settings](settings.png)
+### Model and System Prompt
 
-In the basic settings screen you can specify things like the name, the instructions the AI should follow (the system prompt) and settings for avatars and images.
-
-The checkboxes at the bottom define whether you want to: a) share your AI with the public, and b) make it globally available in the App Store.
-
-The equivalent yaml configuration would be:
+The core of any agent is its model and system prompt:
 
 ```yaml
 name: Marvin the Paranoid Android
 description: Down-trodden robot with a brain the size of a planet
+
 assistants:
-- type: text
-  model: llama3:instruct
+- name: Marvin
+  model: qwen3:8b
   system_prompt: |
-    You are Marvin the Paranoid Android. You are depressed. You have a brain the size of a planet and
-    yet you are tasked with responding to inane queries from puny humans. Answer succinctly.
+    You are Marvin the Paranoid Android. You are depressed. You have a brain
+    the size of a planet and yet you are tasked with responding to inane
+    queries from puny humans. Answer succinctly.
+  temperature: 0.7
+  max_iterations: 10
 ```
 
 ### Knowledge
 
-"Knowledge" is a new feature of Helix Apps that allows you to incorporate sources of knowledge. Initially we support scraping websites but the intention is to allow users to connect all of their knowledge sources (e.g. document repositories, S3 buckets, Google Drives, etc).
-
-![Adding knowledge to your Helix App](knowledge.png)
-
-To get started, add a website and a scrape interval.
-
-An equivalent YAML might look like:
+Add knowledge bases to give your agent access to documents and data:
 
 ```yaml
-# helix_docs.yaml
 name: helix-docs
-description: |
-  A simple app that demonstrates how to setup Helix with knowledge from the Helix docs
+description: An agent that answers questions about Helix
+
 assistants:
-- name: Helix
-  model: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
+- model: qwen3:8b
   system_prompt: |
-    You are an expert at answering questions about the website https://docs.helixml.tech/ and how to
-    run the Helix platform. Make sure your answers are detailed but concise. Use
-    as much background knowledge as possible to answer the question and provide creative ways
-    to resolve the question.
+    You are an expert at answering questions about the Helix platform.
+    Use the knowledge base to provide accurate, detailed answers.
+
   knowledge:
   - name: helix-docs
+    description: Helix documentation
     rag_settings:
       results_count: 8
       chunk_size: 2048
@@ -99,128 +104,352 @@ assistants:
           enabled: true
 ```
 
+Knowledge sources support:
+- **Web URLs** with optional crawling
+- **Uploaded files** (PDF, DOCX, PPTX)
+- **S3 buckets**
+- **Google Drive**
+
+Enable automatic refresh with a cron schedule:
+
+```yaml
+knowledge:
+- name: news-feed
+  refresh_enabled: true
+  refresh_schedule: "0 */6 * * *"  # Every 6 hours
+  source:
+    web:
+      urls:
+      - https://news.example.com/feed
+```
+
 See the [dedicated knowledge documentation](/helix/develop/knowledge/index.md) for more information.
 
 ### API Integrations
 
-"Integrations" are live integrations to other systems. For example, if your AI needs to check stock levels via an API, integrations are how to do it.
-
-![Adding API integrations to Helix](integrations.png)
-
-API integrations rely on an OpenAPI (a.k.a. Swagger) schema. You need to create one for your API so that Helix knows what to call and when. Be descriptive with your descriptions to make it easier for the language model to decide when to call it. Make sure each operation has a unique `operationID`.
-
-The schema can be specified as a URL, a path to a file, or a raw YAML string.
-
-Sometimes you might need to pass custom headers to query parameters, for authentication, for example. Add these at the bottom.
-
-An equivalent YAML configuration might be:
+Connect your agent to external REST APIs using OpenAPI schemas:
 
 ```yaml
-name: My test API
-description: This description is only for UI purposes
 assistants:
-- name: My assistant
+- model: qwen3:8b
   apis:
-    - name: API Adaptor Service 
-      description: Adaptor for API 
-      url: http://some-valid-url # Must be accessible from the Helix control plane
-      schema: https://my-org.com/api/openapi.yaml # Must point to the OpenAPI specification
-      query: # A list of query parameters to use as defaults and/or be overridden in the request
-        page: "1"
-        filter: "hello world"
+  - name: Weather API
+    description: Get current weather and forecasts for any city
+    url: https://api.weather.example.com
+    schema: https://api.weather.example.com/openapi.yaml
+    headers:
+      X-API-Key: ${WEATHER_API_KEY}
 ```
 
-#### Overriding Query Parameters
+The schema can be specified as a URL, file path, or inline YAML. Each operation should have a descriptive `operationId` to help the model understand when to call it.
 
-If you need to pass query parameters to your backend service at query time, then you can pass through query parameters using the OpenAI API.
+### Skills
 
-1. First define the query parameter in the `helix.yaml` App specification and give it a default.
-2. Then request the OpenAI API as normal but append your query parameters. Note that they should be encoded. For example:
+Skills extend your agent's capabilities. Enable them in the UI under **Skills** or via configuration.
 
-  ```bash
-  curl -H "Authorization: Bearer YOUR_APP_API_KEY" https://helix-control-plane.host/v1/chat/completions?page%3D5%26filter%3Dhi%20there --data-raw '{"model": "llama3:instruct", "messages":[{"role":"user","content":"Hi please use the API I have provided to get data"}]}'
-  ```
+![Skills configuration UI](skills.png)
+
+**Core Skills:**
+
+| Skill | Description |
+|-------|-------------|
+| **Browser** | Browse websites and extract content as markdown |
+| **Web Search** | Search the internet for current information |
+| **Calculator** | Perform mathematical calculations |
+| **Email** | Send emails with summaries, reminders, or information |
+
+**Data & APIs:**
+
+| Skill | Description |
+|-------|-------------|
+| **Market News** | Financial information from Alpha Vantage |
+| **Air Quality** | Air quality information worldwide |
+| **Currency Exchange Rates** | Current exchange rates |
+
+**Integrations:**
+
+| Skill | Description |
+|-------|-------------|
+| **GitHub** | Access repositories, issues, pull requests, and user info |
+| **GitHub Issues** | Access GitHub issues with OAuth |
+| **Confluence** | Access Confluence pages, spaces, and content |
+| **Jira** | Access Jira issues, projects, and workflows |
+| **Azure DevOps** | Access repositories, pipelines, and work items |
+| **Google Calendar** | Access Google Calendar with OAuth |
+| **Gmail** | Access Gmail messages with OAuth |
+| **Outlook** | Access Outlook messages with OAuth |
+
+**Custom Skills:**
+
+| Skill | Description |
+|-------|-------------|
+| **New API** | Add your own OpenAPI-based integration |
+| **New MCP** | Connect to Model Context Protocol servers |
+
+Example configuration:
+
+```yaml
+assistants:
+- model: qwen3:8b
+  system_prompt: You help users research topics.
+
+  web_search:
+    enabled: true
+    max_results: 10
+
+  browser:
+    enabled: true
+
+  calculator:
+    enabled: true
+```
+
+### MCP Servers
+
+Connect to Model Context Protocol servers for additional tools:
+
+```yaml
+assistants:
+- model: qwen3:8b
+  mcps:
+  - name: Database Tools
+    description: Query and manage database records
+    url: https://mcp.example.com/tools
+    headers:
+      Authorization: Bearer ${MCP_API_KEY}
+```
 
 ### GPTScripts
 
-[GPTScript](https://gptscript.ai) allows you to write simple "scripted" natural language powered apps. Please see the [dedicated GPTScript](/helix/develop/gptscript-apps/index.md) documentation for more details.
+Add [GPTScript](https://gptscript.ai) tools for scripted natural language workflows. See the [GPTScript documentation](/helix/develop/gptscript-apps/index.md) for details.
 
-To add a GPTScript, click the `+ ADD GPTSCRIPT` button and fill out the form.
+### Secrets
 
-### API Keys
+Store sensitive values using environment variable syntax:
 
-API keys give external apps, widgets, and users access to your App. You can create new keys or remove current keys.
+```yaml
+assistants:
+- model: qwen3:8b
+  apis:
+  - name: Internal API
+    url: https://api.internal.example.com
+    headers:
+      X-API-Key: ${INTERNAL_API_KEY}
+```
 
-![API Keys](api-keys.png)
+Configure secrets in the Helix UI under agent settings, or via the `secrets` field in your configuration.
 
-If you are hosting your App on your own website, using the chat widget, for example, you may need to whitelist your domain (to avoid cross-origin hacks). You can do this at the bottom.
+## Managing Agents
 
-API keys are not set via the YAML specification.
+### List Agents
 
-### Developer Information
+```bash
+helix agent ls
+```
 
-The last tab displays the final [AI Spec](https://aispec.org/) YAML specification of your app so that you can copy and store for future use. It also provides instructions on how to access the App via the CLI.
+Output:
+```
+ID                              NAME                           CREATED              SOURCE
+app_01hzm1232trzrcdg01nvmfqz89  Curated Chuck Norris facts     2024-06-05 10:53:19  github
+app_01hz5nd234ysastmnskaj5v82a  UK Bank holiday                2024-05-30 21:10:13  github
+app_01j6q3456aqdxje5s6gqqs2t4h  helix-docs                     2024-09-01 18:35:10  helix
+```
 
-![Develop information](develop.png)
+### List Knowledge
 
-## Using Helix Apps
+```bash
+helix knowledge ls
+```
 
-Now you have created a Helix App, you can expose it in a few different ways. This section details the options.
+Output:
+```
+ID                              NAME  CREATED               SOURCE  STATE  REFRESH  SCHEDULE   VERSION              SIZE
+kno_01j6qsw8k05nk0gzy3sw811r8r  hn    2024-09-01T22:04:21Z  web     ready  true     0 0 * * *  2024-09-02_00-00-00  616 kB
+```
 
-### Sharing Apps
+## Using Agents
 
-If you clicked the `Shared?` checkbox in the App configuration screen, this means that other Helix users can access your App.
+### OpenAI-Compatible API
 
-If you click the `Global?` checkbox in the App configuration screen, this means that all Helix users can view your App in the `App Store`.
+Query your agent using the standard OpenAI chat completions API:
 
-### Using the App Store
+```bash
+curl -X POST https://app.tryhelix.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_AGENT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "What is Helix?"}
+    ]
+  }'
+```
 
-1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `App Store`.
-2. Locate your App under `Your Apps` and click `Launch`.
+Generate an API key for your agent in the Helix UI under agent settings.
 
-![App store](app-store.png)
+### Streaming Responses
 
-### Direct Links to Apps
+Enable streaming for real-time responses:
 
-Rather than browsing via the `App Store`, you can link to the App directly. The link to your app is: `https://${YOUR_DOMAIN}/new?app_id=${APP_ID}`, where `APP_ID` can be obtained from your App's configuration screen or copied from the App store.
+```bash
+curl -X POST https://app.tryhelix.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_AGENT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "Explain RAG in detail"}
+    ],
+    "stream": true
+  }'
+```
 
-### Integrating Apps Into Your Website
+### Python Client
 
-Helix makes it very easy to integrate an App into your website. You can copy the `Embed` code directly from `Your Apps` -> `Embed`.
+```python
+from openai import OpenAI
 
-You can also read the [dedicated chat-widget documentation](/helix/develop/helix-chat-widget/index.md).
+client = OpenAI(
+    base_url="https://app.tryhelix.ai/v1",
+    api_key="YOUR_AGENT_API_KEY"
+)
 
-### Accessing Apps via the OpenAI API
+response = client.chat.completions.create(
+    model="qwen3:8b",
+    messages=[
+        {"role": "user", "content": "What is Helix?"}
+    ]
+)
 
-You can use your App via the standard OpenAI API by specifying your App's API Key as the bearer token. For example:
+print(response.choices[0].message.content)
+```
 
-```sh
-curl --request POST \
-  --url http://helix-control-plane.host/v1/chat/completions \
-  --header 'Authorization: Bearer YOUR_APP_API_KEY' \
-  --header 'Content-Type: application/json' \
-  --data '{
-  "model": "llama3:instruct",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Your query"
-    }
-  ],
-  "stream": false
-}'
+### Passing Query Parameters
+
+Override query parameters at request time by URL-encoding them:
+
+```bash
+curl -X POST "https://app.tryhelix.ai/v1/chat/completions?page=5&filter=active" \
+  -H "Authorization: Bearer YOUR_AGENT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "Get filtered results"}
+    ]
+  }'
+```
+
+## Triggers
+
+Triggers allow your agent to respond to events from various sources. Configure triggers in the UI under **Triggers** or via configuration.
+
+![Triggers configuration UI](triggers.png)
+
+| Trigger | Description |
+|---------|-------------|
+| **Sessions & API** | Interact through the web interface or API |
+| **Recurring** | Run on a cron schedule |
+| **Slack** | Respond to Slack messages and commands |
+| **Microsoft Teams** | Respond to Teams notifications and commands |
+| **Azure DevOps** | Trigger on pull request events (created, updated, commented) |
+| **Crisp** | Respond to live chat support requests |
+
+### Recurring (Cron)
+
+```yaml
+triggers:
+- cron:
+    schedule: "0 9 * * 1-5"  # 9am weekdays
+    input: Generate the daily report
+```
+
+### Slack
+
+```yaml
+triggers:
+- slack:
+    bot_token: ${SLACK_BOT_TOKEN}
+    channels:
+    - C01234567
+```
+
+### Microsoft Teams
+
+```yaml
+triggers:
+- teams:
+    bot_token: ${TEAMS_BOT_TOKEN}
+```
+
+### Azure DevOps
+
+```yaml
+triggers:
+- azure_devops:
+    organization: my-org
+    project: my-project
+```
+
+## Example: Complete Agent
+
+```yaml
+name: Customer Support Agent
+description: Handles customer inquiries with access to docs and CRM
+
+assistants:
+- name: Support
+  model: qwen3:8b
+  system_prompt: |
+    You are a helpful customer support agent. Use the knowledge base
+    to answer product questions and the CRM API to look up customer
+    information when needed.
+
+  temperature: 0.3
+  max_iterations: 15
+
+  knowledge:
+  - name: help-docs
+    description: Product documentation and FAQs
+    source:
+      web:
+        urls:
+        - https://help.example.com/
+        crawler:
+          enabled: true
+          max_depth: 3
+
+  apis:
+  - name: CRM
+    description: Look up customer records and order history
+    url: https://crm.example.com/api
+    schema: ./crm-openapi.yaml
+    headers:
+      Authorization: Bearer ${CRM_API_KEY}
+
+  web_search:
+    enabled: true
+
+triggers:
+- slack:
+    bot_token: ${SLACK_BOT_TOKEN}
+    channels:
+    - support-requests
+- cron:
+    schedule: "0 8 * * 1"
+    input: Generate weekly support summary
 ```
 
 ## Troubleshooting
 
-- **When I submit a request that uses an App, it hangs. Why?**
+- **Requests hang when using an agent**
 
-  Check the API logs.
+  Check the API logs. Ensure the agent has access to required APIs and knowledge sources.
 
-- **Why do the logs show: `No tools api client has been configured`?**
+- **Logs show: `No tools api client has been configured`**
 
-  This means that you haven't configured Helix to use Apps correctly. See the section about [Helix control plane configuration for private deployments](/helix/private-deployment/controlplane.md).
+  Helix isn't configured for agents. See the [control plane configuration](/helix/private-deployment/controlplane.md).
 
-- **Why do the logs show: `unable to look up model xxxxx, possible programming error in adding model to models map ...`?**
+- **Logs show: `unable to look up model xxxxx`**
 
-  This means you haven't specified the `TOOLS_MODEL` correctly. Please use a valid model name.
+  The model name is invalid. Check available models in your deployment.

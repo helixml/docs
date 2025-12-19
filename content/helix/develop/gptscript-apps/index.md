@@ -1,103 +1,113 @@
 ---
-title: GPTScript Apps
-description: Learn how to use GPTScript with Helix Apps to create your very own AI frontend.
+title: GPTScript
+description: Use GPTScript with Helix Agents to create scripted natural language workflows.
 weight: 6
 tags:
 - gptscript
-- apps
+- agents
 ---
 
-Helix supports [GPTScript](https://gptscript.ai) to allow you to write simple "scripted" natural language powered apps by just writing prompts. Also check out the [examples apps in the documentation](/helix/examples/apps/gptscript-app-recommendations/index.md)
+Helix supports [GPTScript](https://gptscript.ai) to create scripted natural language workflows. GPTScript lets you write prompts that can call tools, read files, and chain operations together.
 
-We support a development workflow where you run the Helix GPTScript Dev Server locally, and a production workflow where you deploy updates to GPTScript powered apps via `git push`.
+Also see the [GPTScript example agents](/helix/examples/apps/gptscript-app-recommendations/index.md).
 
-![](apps-01.png)
+## How It Works
 
-We provide a simple Javascript library (and API) to call into GPTScript you push to a git repo and run it securely in a container so you don't need to worry about the user convincing the LLM to run malicious commands – it all runs in a throwaway VM anyway.
+GPTScripts run securely in isolated containers. You can develop locally with the Helix GPTScript Dev Server, then deploy via `git push` to your connected repository.
 
-## Example Javascript Code
+![GPTScript workflow](apps-01.png)
 
-Install **[@helixml/apps-client](https://www.npmjs.com/package/@helixml/apps-client)** from npm:
+## JavaScript Client
+
+Install the **[@helixml/apps-client](https://www.npmjs.com/package/@helixml/apps-client)** package:
 
 ```bash
 npm i @helixml/apps-client
 ```
 
-Add to your Javascript code:
+Initialize the client with your agent's API key:
 
 ```js
 import AppClient from '@helixml/apps-client'
 
 const appClient = AppClient({
-  token: "your app token",
+  token: "YOUR_AGENT_API_KEY",
 })
 ```
 
-Where "your app token" comes from the API key for that app on the app configuration page at [https://app.tryhelix.ai/apps](https://app.tryhelix.ai/apps) (you'll need to link a github repository).
+Get your API key from the **Keys** section in your agent settings.
 
-![](apps-03.png)
-
-Then from inside your app, you can simply call the gptscript by using `appClient.runScript`. Ask the AI nicely for JSON output, then parse it on the Javascript side. Example:
+Call a GPTScript from your application:
 
 ```js
 const result = await appClient.runScript({
-    file_path: '/gptscripts/waitrose.gpt',
-    input: `--user_id '${email}' --number '2' --recipe_theme '${recipeTheme}'`,
+  file_path: '/gptscripts/recipe.gpt',
+  input: `--user_id '${userId}' --count '5' --theme '${theme}'`,
 })
 ```
 
-## Example gptscript
+## Writing GPTScripts
 
-GPTScript is pretty easy to write, first you declare which tools you want the script to be able to use, then you specify arguments (as shown being passed in above), then you just write instructions for the LLM (including calling its tools) in natural language. For example, here's a recipe suggestion picker for customized recipe recommendations:
+GPTScripts declare tools, arguments, and natural language instructions. Here's an example that generates personalized recipe recommendations:
 
-`waitrose.gpt`:
+`gptscripts/recipe.gpt`:
+
 ```
 tools: recipe.query, purchases.query, sys.read
-args: user_id: The user_id we want to know about.
-args: recipe_theme: The theme of the recipes.
-args: number: The number of recipes to output.
+args: user_id: The user ID to get recommendations for
+args: theme: The theme of recipes to suggest
+args: count: Number of recipes to return
 
 Do the following steps sequentially:
-  1. Run tool {recipe.query} to get a list of candidate recipes for the given
-     user as a CSV file written to recipes.csv.
-  2. Run tool {purchases.query} to get a list of the top 10 products most bought
-     by the given user written to purchases.csv.
-  3. Read files recipes.csv (the suggested recipes) and purchases.csv (the
-     user's previous top purchase history) and output a JSON list of {number},
-     {recipe_theme} theme recipes that you think the user would like based on
-     their purchase history.
+  1. Run {recipe.query} to get candidate recipes, written to recipes.csv
+  2. Run {purchases.query} to get the user's top 10 purchased products, written to purchases.csv
+  3. Read recipes.csv and purchases.csv, then output {count} {theme}-themed recipes
+     the user would likely enjoy based on their purchase history
 
-[...]
-
-Output the exact image url from the CSV file, do not invent one. Output format:
+Output format (use exact image URLs from the CSV, do not invent URLs):
 
 [{
-  "recipe.name": "name",
-  "recipe.summary": "summary",
-  "recipe.imageurl": "imageurl"
+  "name": "Recipe Name",
+  "summary": "Brief description",
+  "imageUrl": "https://..."
 }]
 ```
 
-<!-- TODO: write docs for apps/gptscript API -->
+## Agent Configuration
 
-## Example helix.yaml
+Add GPTScripts to your agent's `helix.yaml`:
 
-You must tell helix where to search for gptscripts in a simple `helix.yaml`:
+```yaml
+name: Recipe Agent
+description: Personalized recipe recommendations
+
+assistants:
+- model: qwen3:8b
+  gptscripts:
+  - name: recipe-suggestions
+    file: gptscripts/recipe.gpt
+    description: Get personalized recipe recommendations
 ```
+
+Or specify a glob pattern:
+
+```yaml
 gptscript:
   files:
-    - gptscripts/*.gpt
+  - gptscripts/*.gpt
 ```
 
-## GPTScript tips
+## Tool Definitions
 
-One tip when writing gptscript, is to make the LLM spend as much time outputting things that are natural language, and not to spend time transferring data from one place to another. That's why in this example, we tell sqlite to write its result as a csv file using the `.output` command:
+Define custom tools within your GPTScript. This example queries SQLite and writes results to a file:
+
 ```
 ---
 name: purchases.query
 tools: sys.exec
-description: Query for the top 10 products most bought products by user_id, writing result to purchases.csv.
---command
+description: Query top 10 products purchased by user_id, output to purchases.csv
+args: user_id: The user ID to query
+
 sqlite3 recipes.sqlite <<EOF
 .headers on
 .mode csv
@@ -109,4 +119,19 @@ ORDER BY quantity DESC
 LIMIT 10;
 EOF
 ```
-Then we simply read that into the context window. If you don't write it to a file, you end up with the LLM processing the raw output and summarizing it as markdown, which is wasteful and slow when you just want to pass it as the _input_ to the next step -- in that case, just use a file!
+
+## Tips
+
+**Use files for intermediate data**: Have tools write output to files rather than returning it directly. This avoids the LLM summarizing raw data when you just need to pass it to the next step.
+
+```
+# Good: Write to file, read in next step
+.output results.csv
+SELECT ...
+
+# Avoid: LLM will try to summarize/format the raw output
+```
+
+**Request structured output**: Ask for JSON output explicitly, then parse it in your application code.
+
+**Chain operations sequentially**: Use numbered steps to ensure operations happen in order.

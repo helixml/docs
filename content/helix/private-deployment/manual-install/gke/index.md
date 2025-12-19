@@ -66,20 +66,15 @@ You may need to install [gke-gcloud-auth-plugin](https://cloud.google.com/kubern
 
 Now you're ready to install Helix.
 
-### 1. Install Keycloak
-
-{{< include "helm-keycloak.md" >}}
-
-
-### 2. Install the Helm Repository
+### 1. Install the Helm Repository
 
 {{< include "helm-repo.md" >}}
 
-### 3. Apply the Chart
+### 2. Apply the Chart
 
 {{< include "helm-controlplane.md" >}}
 
-### 4. Deploying a Runner
+### 3. Deploying a Runner
 
 Here is some useful information when you configure the runner:
 

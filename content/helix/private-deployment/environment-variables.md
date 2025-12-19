@@ -1,44 +1,180 @@
 ---
-title: Helix Environment Variables
-description: Learn about the environment variables used to configure Helix.
+title: Environment Variables
+description: Reference for Helix environment variables.
 weight: 6
 tags:
 - config
 ---
 
-When deploying Helix with Docker Compose, you can configure various settings using environment variables defined in the `.env` file. This page describes the key environment variables used to configure the Helix control plane and runner.
+Configure Helix using environment variables in your `.env` file (Docker Compose) or Helm values (Kubernetes).
 
-## Control Plane Environment Variables
+## Core Configuration
 
-The main environment variables for configuring the Helix control plane can be found in the [`.env.example-prod`](https://github.com/helixml/helix/blob/main/.env.example-prod) file:
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SERVER_URL` | Public URL where the Helix server is hosted | - |
+| `LICENSE_KEY` | License key from [deploy.helix.ml](https://deploy.helix.ml/licenses) | - |
+| `RUNNER_TOKEN` | Authentication token for Helix runners | - |
 
-- `KEYCLOAK_ADMIN_PASSWORD`: Set the admin password for Keycloak authentication
-- `POSTGRES_ADMIN_PASSWORD`: Set the admin password for the Postgres database  
-- `RUNNER_TOKEN`: Set an authentication token for the Helix runner
-- `KEYCLOAK_FRONTEND_URL`: Set the URL where Keycloak authentication is hosted, e.g. `http://yourdomain.com/auth/`
-- `SERVER_URL`: Set the URL where the Helix server is hosted
-- `TOGETHER_API_KEY`: Set the API key for Together.ai, currently needed for QA pair generation
+## AI Providers
 
-### Additional optional integrations
+Helix supports multiple AI providers. Configure one or more based on your deployment needs.
 
-- `GOOGLE_ANALYTICS_FRONTEND`: Google Analytics ID
-- `SENTRY_DSN_FRONTEND` / `SENTRY_DSN_API`: Sentry DSNs for frontend and API monitoring
-- `EMAIL_SMTP_HOST` / `EMAIL_SMTP_PORT` / `EMAIL_SMTP_USERNAME` / `EMAIL_SMTP_PASSWORD`: SMTP config for sending email notifications 
-- `EMAIL_MAILGUN_DOMAIN` / `EMAIL_MAILGUN_API_KEY`: Mailgun config for sending email notifications
-- `SUBSCRIPTION_QUOTAS_FINETUNING_FREE_MAX_CHUNKS`: Set the maximum number of fine-tuning chunks for free users
+### Inference Provider
 
-## Runner Environment Variables
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `INFERENCE_PROVIDER` | Primary provider: `helix`, `openai`, or `togetherai` | `helix` |
 
-Key environment variables for the Helix runner are defined in [`runner_config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go):
+### OpenAI
 
-- `RUNTIME_AXOLOTL_ENABLED`: Enable/disable fine-tuning and inference for Mistral-7B and SDXL models (default `true`)
-- `RUNTIME_AXOLOTL_WARMUP_MODELS`: Comma-separated list of Mistral-7B and SDXL models to pre-warm, e.g. `mistralai/Mistral-7B-Instruct-v0.1,stabilityai/stable-diffusion-xl-base-1.0`
-- `RUNTIME_OLLAMA_ENABLED`: Enable/disable LLM inference with Ollama backend (default `true`) 
-- `RUNTIME_OLLAMA_WARMUP_MODELS`: Comma-separated list of LLM models to enable and pre-download for inference, e.g. `llama3:instruct,mixtral:instruct`
-- `HF_TOKEN`: for text fine tuning which uses Mistral-7B model weights, you now need to accept sharing your contact information with Mistral [here](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) and then fetch an access token from [here](https://huggingface.co/settings/tokens) and then specify it in this environment variable
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `OPENAI_API_KEY` | OpenAI API key | - |
+| `OPENAI_BASE_URL` | OpenAI API base URL | `https://api.openai.com/v1` |
+| `OPENAI_MODELS` | Comma-separated list of allowed models | - |
 
-### Important notes
+### Together AI
 
-- If using Helix on Kubernetes, the Helm chart values like `runner.models` map to the `RUNTIME_OLLAMA_WARMUP_MODELS` env var.
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `TOGETHER_API_KEY` | Together AI API key | - |
+| `TOGETHER_BASE_URL` | Together AI API base URL | `https://api.together.xyz/v1` |
+| `TOGETHER_MODELS` | Comma-separated list of allowed models | - |
 
-The full list of available environment variables can be found for the Control Plane [`config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/config.go) and for the Runner [`runner_config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go).
+### Anthropic
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `ANTHROPIC_API_KEY` | Anthropic API key | - |
+| `ANTHROPIC_BASE_URL` | Anthropic API base URL | `https://api.anthropic.com/v1` |
+| `ANTHROPIC_MODELS` | Comma-separated list of allowed models | - |
+
+### vLLM
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `VLLM_API_KEY` | vLLM API key | - |
+| `VLLM_BASE_URL` | vLLM API base URL | - |
+| `VLLM_MODELS` | Comma-separated list of allowed models | - |
+
+### Dynamic Providers
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `DYNAMIC_PROVIDERS` | Additional providers in format `provider1:api_key1:base_url1,provider2:api_key2:base_url2` | - |
+| `ENABLE_CUSTOM_USER_PROVIDERS` | Allow users to configure their own providers | `false` |
+| `PROVIDERS_MANAGEMENT_ENABLED` | Allow users to add their own API keys | `false` |
+
+## Authentication
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `AUTH_PROVIDER` | Auth provider: `regular` (built-in) or `oidc` | `regular` |
+| `AUTH_REGISTRATION_ENABLED` | Allow new user registration | `true` |
+| `ADMIN_USER_IDS` | Comma-separated list of admin user IDs, or `all` | - |
+
+### Built-in Authentication
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `REGULAR_AUTH_ENABLED` | Enable built-in authentication | `true` |
+| `REGULAR_AUTH_TOKEN_VALIDITY` | Token validity duration | `168h` (7 days) |
+| `REGULAR_AUTH_JWT_SECRET` | JWT signing secret | - |
+
+### OIDC Authentication
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `OIDC_ENABLED` | Enable OIDC authentication | `false` |
+| `OIDC_URL` | OIDC provider URL | - |
+| `OIDC_CLIENT_ID` | OIDC client ID | `api` |
+| `OIDC_CLIENT_SECRET` | OIDC client secret | - |
+| `OIDC_AUDIENCE` | Expected JWT audience claim | - |
+| `OIDC_SCOPES` | Requested OIDC scopes | `openid,profile,email` |
+| `OIDC_SECURE_COOKIES` | Force secure cookies | `false` |
+
+## Database
+
+### PostgreSQL
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `POSTGRES_HOST` | PostgreSQL host | `postgres` |
+| `POSTGRES_PORT` | PostgreSQL port | `5432` |
+| `POSTGRES_DATABASE` | Database name | `helix` |
+| `POSTGRES_USER` | Database user | `helix` |
+| `POSTGRES_PASSWORD` | Database password | - |
+
+### PGVector (for RAG)
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `PGVECTOR_HOST` | PGVector host | `pgvector` |
+| `PGVECTOR_PORT` | PGVector port | `5432` |
+| `PGVECTOR_DATABASE` | Database name | `postgres` |
+| `PGVECTOR_USER` | Database user | `postgres` |
+| `PGVECTOR_PASSWORD` | Database password | - |
+
+## Tools & Agents
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `TOOLS_ENABLED` | Enable agent tools | `true` |
+| `TOOLS_MODEL` | Model for tool execution | `llama3:instruct` |
+| `TOOLS_TLS_SKIP_VERIFY` | Skip TLS verification for tool requests | `false` |
+
+## Helix Scheduler
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `HELIX_MODEL_TTL` | How long to keep models warm | `10s` |
+| `HELIX_SLOT_TTL` | Time before slots are considered dead | `600s` |
+| `HELIX_RUNNER_TTL` | Time before runners are considered dead | `30s` |
+| `HELIX_SCHEDULING_STRATEGY` | Scheduling strategy: `max_spread` or `bin_pack` | `max_spread` |
+| `HELIX_QUEUE_SIZE` | Workload queue buffer size | `100` |
+
+## Notifications
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `APP_URL` | Public app URL for notification links | `https://app.helix.ml` |
+| `EMAIL_SMTP_HOST` | SMTP server hostname | - |
+| `EMAIL_SMTP_PORT` | SMTP server port | - |
+| `EMAIL_SMTP_USERNAME` | SMTP username | - |
+| `EMAIL_SMTP_PASSWORD` | SMTP password | - |
+| `EMAIL_MAILGUN_DOMAIN` | Mailgun domain | - |
+| `EMAIL_MAILGUN_API_KEY` | Mailgun API key | - |
+
+## Monitoring
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `GOOGLE_ANALYTICS_FRONTEND` | Google Analytics ID | - |
+| `SENTRY_DSN_FRONTEND` | Sentry DSN for frontend | - |
+| `SENTRY_DSN_API` | Sentry DSN for API | - |
+| `DISABLE_LLM_CALL_LOGGING` | Disable LLM call logging | `false` |
+| `DISABLE_USAGE_LOGGING` | Disable usage logging | `false` |
+
+## Runner Configuration
+
+Configure runners using these environment variables (see [`runner_config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go)):
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `RUNTIME_OLLAMA_ENABLED` | Enable Ollama LLM inference | `true` |
+| `RUNTIME_OLLAMA_WARMUP_MODELS` | Models to pre-download (comma-separated) | - |
+| `RUNTIME_AXOLOTL_ENABLED` | Enable fine-tuning runtime | `true` |
+| `RUNTIME_AXOLOTL_WARMUP_MODELS` | Fine-tuning models to pre-warm | - |
+| `HF_TOKEN` | HuggingFace token for model access | - |
+
+Example warmup models:
+
+```bash
+RUNTIME_OLLAMA_WARMUP_MODELS=llama3:instruct,qwen3:8b,mixtral:instruct
+```
+
+## Full Reference
+
+- Control Plane: [`config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/config.go)
+- Runner: [`runner_config.go`](https://github.com/helixml/helix/blob/main/api/pkg/config/runner_config.go)

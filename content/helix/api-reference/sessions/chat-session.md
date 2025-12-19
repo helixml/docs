@@ -1,129 +1,156 @@
 ---
-title: Chat Session
+title: Chat Completions
 weight: 1
 prev: /helix/api-reference/sessions/_index.md
 aliases:
-  - /docs/chat-session
+- /docs/chat-session
+tags:
+- api
+- chat
 ---
 
-## Create an inference session
+The chat completions endpoint is OpenAI-compatible and supports both direct model access and agent interactions.
 
-An *inference session* is when a trained machine learning model is used to make predictions or decisions based on new data. Unlike training, which involves learning from data, inference applies the learned model to real-world inputs to produce outputs. Helix offers various [AI models](/helix/using-helix/text-inference/index.md) which can be used for inference.
+## Basic Request
 
-##### Example Request and Response
-
-```shell
-curl --location 'https://app.tryhelix.ai/api/v1/sessions/chat' \
---header 'Authorization: Bearer <YOUR_API_KEY' \
---header 'Content-Type: application/json' \
---data '{
-  "session_id": "",
-  "system": "you are an intelligent assistant that helps with geography",
-  "messages": [
-    {
-      "role": "user",
-      "content": { "content_type": "text", "parts": ["where are the Faroe islands located?"] }
-    }
-  ]
-}'
+```bash
+curl -X POST 'https://app.tryhelix.ai/v1/chat/completions' \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "What is the capital of France?"}
+    ]
+  }'
 ```
 
-will respond with
+Response:
 
 ```json
 {
-    "created": 1723155364,
-    "object": "chat.completion",
-    "id": "ses_01a4t10c132825d3k037tyh7ap",
-    "model": "llama3:instruct",
-    "choices": [
-        {
-            "index": 0,
-            "finish_reason": "stop",
-            "message": {
-                "role": "assistant",
-                "content": "The Faroe Islands (Føroyar in Faroese) are a North Atlantic archipelago located halfway between Iceland and Norway."
-            }
-        }
-    ],
-    "usage": {
-        "prompt_tokens": 0,
-        "completion_tokens": 168,
-        "total_tokens": 168
-    }
-}
-```
-
-##### HTTP Request
-
-```
-POST https://app.tryhelix.ai/api/v1/sessions/chat
-```
-
-##### HTTP Request Body
-Request body with the message and model to start chat completion.
-
-```json
-{
-  "app_id": "string",
-  "assistant_id": "string",
-  "legacy": true,
-  "lora_dir": "string",
-  "lora_id": "string",
-  "messages": [
+  "id": "ses_01a4t10c132825d3k037tyh7ap",
+  "object": "chat.completion",
+  "created": 1723155364,
+  "model": "qwen3:8b",
+  "choices": [
     {
-      "content": {
-        "content_type": "text",
-        "parts": [
-          "string"
-        ]
-      },
-      "created_at": "string",
-      "id": "string",
-      "role": "system",
-      "state": "",
-      "updated_at": "string"
-    }
-  ],
-  "model": "string",
-  "rag_source_id": "string",
-  "session_id": "string",
-  "stream": true,
-  "system": "string",
-  "tools": [
-    "string"
-  ],
-  "type": "text"
-}
-```
-
-`"type":"image|chat"`
-
-Switching over the `"type":"image"` will start a session with model `stabilityai/stable-diffusion-xl-base-1.0` that generates an image.
-
-##### HTTP Response
-```json
-{
-  "choices": [],
-  "created": 0,
-  "data": [
-    {
-      "b64_json": "string",
-      "embedding": [
-        0
-      ],
       "index": 0,
-      "object": "string",
-      "url": "string"
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "The capital of France is Paris."
+      }
     }
   ],
-  "id": "string",
-  "model": "string",
-  "object": "string",
   "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
+    "prompt_tokens": 24,
+    "completion_tokens": 8,
+    "total_tokens": 32
   }
 }
+```
+
+## Streaming
+
+Enable streaming for real-time responses:
+
+```bash
+curl -X POST 'https://app.tryhelix.ai/v1/chat/completions' \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "Tell me a story"}
+    ],
+    "stream": true
+  }'
+```
+
+## Using with Agents
+
+To use a specific agent, use an agent-specific API key (generated in agent settings). The agent's configuration, including system prompt, knowledge, and tools, will be automatically applied.
+
+```bash
+curl -X POST 'https://app.tryhelix.ai/v1/chat/completions' \
+  -H 'Authorization: Bearer YOUR_AGENT_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "What can you help me with?"}
+    ]
+  }'
+```
+
+## Request Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `model` | string | Model identifier (e.g., `qwen3:8b`, `llama3:instruct`) |
+| `messages` | array | Array of message objects with `role` and `content` |
+| `stream` | boolean | Enable streaming responses |
+| `temperature` | number | Sampling temperature (0-2) |
+| `max_tokens` | integer | Maximum tokens to generate |
+| `top_p` | number | Nucleus sampling parameter |
+
+## Message Roles
+
+| Role | Description |
+|------|-------------|
+| `system` | Sets the behavior of the assistant |
+| `user` | Messages from the user |
+| `assistant` | Previous assistant responses (for context) |
+
+## Python Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://app.tryhelix.ai/v1",
+    api_key="YOUR_API_KEY"
+)
+
+# Basic completion
+response = client.chat.completions.create(
+    model="qwen3:8b",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello!"}
+    ]
+)
+print(response.choices[0].message.content)
+
+# Streaming
+stream = client.chat.completions.create(
+    model="qwen3:8b",
+    messages=[{"role": "user", "content": "Tell me a story"}],
+    stream=True
+)
+for chunk in stream:
+    if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="")
+```
+
+## JavaScript Example
+
+```javascript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  baseURL: 'https://app.tryhelix.ai/v1',
+  apiKey: 'YOUR_API_KEY',
+});
+
+const response = await client.chat.completions.create({
+  model: 'qwen3:8b',
+  messages: [
+    { role: 'user', content: 'Hello!' }
+  ],
+});
+
+console.log(response.choices[0].message.content);
 ```

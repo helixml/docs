@@ -1,14 +1,15 @@
 ---
-title: List all Helix Apps
+title: List Agents
 weight: 3
 prev: /helix/api-reference/apps/app-create.md
 aliases:
   - /docs/apps/list-apps
+tags:
+- agents
+- api
 ---
 
-
-
-## List all apps and their metadata
+## List all agents and their metadata
 
 ```
 curl --location 'https://app.tryhelix.ai/api/v1/apps' \

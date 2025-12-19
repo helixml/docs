@@ -7,6 +7,10 @@ tags:
 - install
 ---
 
+{{< tip >}}
+**Quick Start:** Deploy Helix instantly with [Helix Launchpad](https://helix.ml/home) - managed infrastructure with one-click deployment.
+{{< /tip >}}
+
 Explore the following sections to learn how to deploy Helix on private infrastructure:
 
 <!--more-->

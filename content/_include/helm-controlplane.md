@@ -136,10 +136,6 @@ kubectl create secret generic pgvector-auth-secret \
 kubectl create secret generic runner-token-secret \
   --from-literal=token=your-secure-runner-token-here
 
-kubectl create secret generic keycloak-auth-secret \
-  --from-literal=user=admin \
-  --from-literal=password=your-secure-keycloak-admin-password
-
 # Create provider API key secrets
 kubectl create secret generic openai-credentials \
   --from-literal=api-key=sk-your-openai-api-key

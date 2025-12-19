@@ -1,95 +1,95 @@
 ---
 title: GPTScript Food Recommendations
-linkTile: GPTScript Recommendations
+linkTitle: GPTScript Recommendations
 description: Use Helix with GPTScript to build a recommendations app with a frontend.
 weight: 1
 tags:
 - gptscript
+- agents
 ---
 
-You can use this sample React app as a starting point for your own AI powered apps.
+You can use this sample React app as a starting point for your own AI-powered applications.
 
-![](apps-04.png)
+![Recipe recommendations app](apps-04.png)
 
-## Step 1: Fork the example repo
+## Step 1: Fork the Example Repo
 
 Go to GitHub and fork [github.com/helixml/demo-recipes](https://github.com/helixml/demo-recipes).
 
-## Step 2: Connect the repo to Helix Cloud
+## Step 2: Connect the Repo to Helix
 
-Go to [app.tryhelix.ai/apps](https://app.tryhelix.ai/apps) and click New App:
+In the Helix UI, go to **Agents** and click **New Agent**. Select **Connect GitHub Repository**.
 
-![](apps-05.png)
+Connect to your GitHub account, then select your fork from the dropdown:
 
-Connect to your GitHub account, then select the fork from the dropdown:
+![Select repository](apps-06.png)
 
-![](apps-06.png)
+Click **Connect Repo**.
 
-Click the play button. Click Connect Repo.
+This sets up a deploy key and webhooks so Helix can read the repo contents (even if private) and automatically deploy changes when you push.
 
-This will set up a deploy key and webhooks so that Helix can read the contents of the repo (even if it's private) and be notified when you push to the git repo so that Helix can automatically deploy changes to the gptscripts.
+## Step 3: Deploy the Frontend
 
-## Step 3: Deploy the frontend app somewhere
+Deploy the frontend app to a web server of your choice (Netlify, Vercel, or your own platform).
 
-Now deploy the frontend app to a web server of your choice, for example Netlify, Vercel, or your own internal web application platform.
-
-You can skip this step if you just want to test local development for now.
+You can skip this step if you just want to test local development.
 
 ## Step 4: Local Development
 
-Clone the repo locally, [get an API key from OpenAI](https://github.com/gptscript-ai/gptscript?tab=readme-ov-file#2-get-an-api-key-from-openai) and then run:
+Clone the repo locally, [get an API key from OpenAI](https://github.com/gptscript-ai/gptscript?tab=readme-ov-file#2-get-an-api-key-from-openai), then run:
 
-Run:
 ```bash
 bash helix-server.sh
 ```
-This will start the helix dev server, which runs gptscript in a container locally on your machine.
 
-The `apps-client` JS library will automatically try to connect to the gptscript dev server if you are running the app locally.
+This starts the Helix dev server, which runs GPTScript in a container locally.
 
-Now start the server:
+The `apps-client` JS library automatically connects to the GPTScript dev server when running locally.
+
+Start the frontend:
+
 ```bash
 yarn install
 yarn start
 ```
 
-The app should pop up in your browser:
+The app opens in your browser:
 
-![](apps-07.png)
+![App running locally](apps-07.png)
 
-Start by putting your name in the box, and see that the "hello world" `gptscripts/welcome.gpt`:
+Enter your name in the box to test the "hello world" script (`gptscripts/welcome.gpt`):
+
 ```
 description: Returns back the input of the script
 args: input: Any string
 echo "Welcome ${input}!"
 ```
-Indeed returns "welcome, yourname".
 
-Now, enter either `alice@alice.com` or `bob@bob.com` (since these are the users who are registered in the bundled sqlite database in the demo) and select a type of recipe you'd like to recommend to them based on their purchase history.
+This returns "Welcome, yourname".
 
-If you watch the helix dev server, you'll be able to see gptscript doing its thing.
+Now enter either `alice@alice.com` or `bob@bob.com` (users in the bundled SQLite database) and select a recipe type to get recommendations based on their purchase history.
 
-![](apps-08.png)
+Watch the Helix dev server to see GPTScript processing:
+
+![GPTScript output](apps-08.png)
 
 ## Step 5: Deploy to Production
 
-Now you should have the github repo (your fork) hooked up to an external hosting service like Netlify or Vercel (step 3) and also hooked up to Helix Cloud, where Helix can receive the webhooks and immediately deploy updates to the gptscripts.
+With your fork connected to both an external hosting service (Netlify/Vercel) and Helix, you can deploy changes with a simple push.
 
-Try changing something, for example add a word to the suggested summary/justification field in `waitrose.gpt`, then just do:
+Try changing something in `waitrose.gpt`, then:
 
-```
-git commit -am "deploy change to wording"
+```bash
+git commit -am "update recipe wording"
 git push
 ```
 
-Now Helix will receive the webhook from GitHub and instantly future requests for that gptscript will use the updated version.
+Helix receives the webhook and immediately deploys the updated GPTScript.
 
-## Step 6: Customize the app for your own use case
+## Step 6: Customize for Your Use Case
 
-You've seen how you can develop a sophisticated, AI powered app just with Javascript and natural language (and a bit of sqlite).
-Start customizing the app for your own use cases. We'd love to see what you build!
+You've seen how to build an AI-powered app with JavaScript and natural language. Start customizing for your own use cases.
 
-## Come talk to us!
+## Questions?
 
-Come join us in [Discord](https://discord.gg/VJftd844GE) to give us feedback on this and talk about your use case!
-We'd love to see what you build.
+Join us on [Discord](https://discord.gg/VJftd844GE) to share what you build!

@@ -1,14 +1,14 @@
 ---
-title: Helix App Examples
-linkTitle: Apps
+title: Helix Agent Examples
+linkTitle: Agents
 weight: 20
 aliases:
 - /helix/examples/apps/tools-api-simple/
 tags:
-- apps
+- agents
 ---
 
-Explore the following Helix app examples:
+Explore the following Helix agent examples:
 
 <!--more-->
 

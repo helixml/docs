@@ -1,16 +1,19 @@
 ---
-title: Helix Apps
+title: Helix Agents API
 weight: 2
 prev: /helix/api-reference/sessions/_index.md
 aliases:
   - /docs/apps
 tags:
-- apps
+- agents
+- api
 ---
 
-A Helix App is a way of packaging tools, scripts, user interfaces and configuration to produce an LLM-powered solution. Apps are stored in version control and are tracked by Helix. Instructions to create and interact with a Helix app on https://app.tryhelix.ai are available [here](/helix/getting-started/_index.md).
+Helix Agents combine language models with skills, knowledge bases, and integrations to create AI-powered solutions. Agents are defined using [AI Spec](https://aispec.org/) configuration and can be deployed via the CLI or GitHub integration.
 
-The API Specs to query and interact with Apps in Helix are detailed in the sections below
+See the [Developing Helix Agents](/helix/develop/apps/) guide for instructions on creating and configuring agents.
+
+The API endpoints for managing agents are detailed in the sections below
 
 {{< default-section-cards-list >}}
 

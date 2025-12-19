@@ -46,7 +46,7 @@ cd /opt/HelixML
 docker compose up -d --remove-orphans
 ```
 
-The stack might take a minute to boot up. Check `docker logs -f helix-api-1` and `docker logs -f helix-keycloak-1` for progress. It's normal for the API to retry connecting to keycloak until keycloak comes up. When the API logs:
+The stack might take a minute to boot up. Check `docker logs -f helix-api-1` for progress. When the API logs:
 ```
 2024-05-08T06:26:28Z INF app/api/cmd/helix/serve.go:288 > Helix server listening on 0.0.0.0:80
 ```
@@ -54,7 +54,7 @@ You will be ready to proceed to the next step.
 
 ### 4. Browse to the UI
 
-If you are using `SERVER_URL=http://localhost:8080` and `KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth/` in your `.env` file, you can now load `http://localhost:8080` in your browser. View the [user documentation](/helix/using-helix/_index.md) to learn how to use the Helix UI.
+If you are using `SERVER_URL=http://localhost:8080` in your `.env` file, you can now load `http://localhost:8080` in your browser. View the [user documentation](/helix/using-helix/_index.md) to learn how to use the Helix UI.
 
 ### (Optional) Using an external LLM provider
 

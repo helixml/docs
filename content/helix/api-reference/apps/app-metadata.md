@@ -1,16 +1,19 @@
 ---
-title: Get app metadata
+title: Get Agent Metadata
 weight: 4
 prev: /helix/api-reference/apps/app-list.md
 aliases:
   - /docs/apps/get-app
+tags:
+- agents
+- api
 ---
 
 See the Helix [OpenAPI Spec](https://github.com/helixml/helix/blob/main/api/pkg/server/swagger.yaml) or the [code](https://github.com/helixml/helix/blob/main/api/pkg/server/server.go#L81-L215) for more information.
 
-## Get the app metadata for a single app
+## Get metadata for a single agent
 
-First get the ID of the app you're interested in from the [Helix apps list](/helix/api-reference/apps/app-list.md)
+First get the ID of the agent from the [List Agents](/helix/api-reference/apps/app-list.md) endpoint
 
 ```
 curl -X 'GET' \

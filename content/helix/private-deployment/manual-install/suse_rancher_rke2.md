@@ -50,28 +50,7 @@ The Helix Control Plane provides the API, web interface, and postgres database a
 
 This section details how to install the Helix control plane on an RKE2 cluster.
 
-### 1. Install Keycloak
-
-Helix uses Keycloak for authentication. If you have one already, you can skip this step. Otherwise, install one through Helm:
-
-```bash
-HELIX_VERSION=$(curl -s https://get.helixml.tech/latest.txt)
-helm upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
-  --version "24.3.1" \
-  --set global.security.allowInsecureImages=true \
-  --set image.registry=registry.helixml.tech \
-  --set image.repository=helix/keycloak-bitnami \
-  --set image.tag="${HELIX_VERSION}" \
-  --set auth.adminUser=admin \
-  --set auth.adminPassword=oh-hallo-insecure-password \
-  --set httpRelativePath="/auth/"
-```
-
-Note: These are pinned versions that have been tested and are known to work. Newer versions may work, but they have not been tested with Helix.
-
-You do not need to expose a service to access Keycloak from outside the cluster - it is used as an internal implementation detail of Helix (and Helix manages the helix Keycloak realm via admin access).
-
-### 2. Configure NVIDIA GPU Operator (if using GPU nodes)
+### 1. Configure NVIDIA GPU Operator (if using GPU nodes)
 
 If you're planning to use GPU nodes for Helix Runners, install the NVIDIA GPU Operator on your RKE2 cluster:
 
@@ -86,14 +65,14 @@ helm install --wait --generate-name \
   nvidia/gpu-operator
 ```
 
-### 3. Install the Helix Helm Repository
+### 2. Install the Helix Helm Repository
 
 ```bash
 helm repo add helix https://charts.helixml.tech
 helm repo update
 ```
 
-### 4. Apply the Helix Control Plane Chart
+### 3. Apply the Helix Control Plane Chart
 
 Download the example values file to configure the Helix control plane:
 
@@ -114,7 +93,7 @@ helm upgrade --install my-helix-controlplane helix/helix-controlplane \
   --set image.tag="${LATEST_RELEASE}"
 ```
 
-### 5. Configure Ingress with SUSE Rancher
+### 4. Configure Ingress with SUSE Rancher
 
 RKE2 includes Traefik as the default ingress controller. To expose the Helix Control Plane using Traefik:
 
@@ -196,11 +175,7 @@ SUSE Rancher provides built-in monitoring tools that can be enabled for your RKE
    - Check NVIDIA driver pods are running: `kubectl get pods -n gpu-operator-resources`
    - Validate device plugin: `kubectl describe node <gpu-node> | grep -i nvidia`
 
-2. **Control plane unable to reach Keycloak**:
-   - Check Keycloak pods: `kubectl get pods | grep keycloak`
-   - Examine Keycloak logs: `kubectl logs <keycloak-pod-name>`
-
-3. **Runner can't connect to control plane**:
+2. **Runner can't connect to control plane**:
    - Ensure the runner.host is correctly set to the control plane service name
    - Verify the runner token matches what's configured in the control plane
 
