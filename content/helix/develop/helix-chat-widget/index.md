@@ -1,14 +1,15 @@
 ---
 title: Helix Chat Widget
-description:  Learn about Helix Chat Widget and how to easily embed it into your web applications.
+description: Embed the Helix Chat Widget into your web applications to expose your agents.
 weight: 9
 aliases:
 - /helix/develop/chat-widget/
 tags:
 - ui
+- agents
 ---
 
-The Helix Chat Widget is a UI component that makes it easy to expose Helix models in your apps and on your website. It is packaged both as a React component and a browser-side library.
+The Helix Chat Widget is a UI component for embedding Helix agents in your website or application. It's available as both a React component and a browser-side library.
 
 ## Embedding the Helix Chat Widget in Your Web Page
 
@@ -44,24 +45,18 @@ Initialize the Chat Widget by calling the global `ChatWidget` function with your
 ```js
 ChatWidget({
     url: 'https://app.tryhelix.ai/v1/chat/completions',
-    model: 'llama3:instruct',
-    bearerToken: 'YOUR_APP_API_KEY',
+    model: 'qwen3:8b',
+    bearerToken: 'YOUR_AGENT_API_KEY',
 })
 ```
-<br>
 
-Obtain your app scoped API Key by clicking on the `Apps` section in Helix, and scroll to your app. Click 'Add API Key' to generate a new App scoped API Key.
-
-Replace `YOUR_APP_API_KEY` with your actual App scoped API token.
-
-![](helix-account.png)
+Get your API key from the **Keys** section in your agent settings. Replace `YOUR_AGENT_API_KEY` with your actual key.
 
 ### Example
 
-<!-- Explain what you are going to code before giving the code solution -->
-This example shows the Helix Chat Widget integrated with <a href="https://docs.helixml.tech/helix/develop/helix-tools-example/" target="_self">Helix API Tools</a> to provide a seamless experience.
+This example shows the Helix Chat Widget integrated with a Helix agent that has API integrations configured.
 
-When the rendered search widget is clicked.
+When the search widget is clicked:
 ![](helix-chat-widget-search.png)
 
 The Helix Chat widget opens and the user can input their query.
@@ -129,7 +124,7 @@ You can customize the appearance and behavior of the Chat Widget by passing addi
 
 - `url`: String. The endpoint URL for the remote API from which the answers will be fetched.
 - `model`: String. Identifier for the specific model to be queried at the remote API.
-- `bearerToken`: (Optional) String. Bearer token for authentication with the remote API, if required.
+- `bearerToken`: (Optional) String. Your agent's API key for authentication.
 - `title`: (Optional) String. Title text for the chat window.
 - `logo`: (Optional) String. URL of the logo image to display in the header.
 - `placeholder`: (Optional) String. Placeholder text for the search input.
