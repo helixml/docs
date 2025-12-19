@@ -219,10 +219,6 @@ assistants:
       Authorization: Bearer ${MCP_API_KEY}
 ```
 
-### GPTScripts
-
-Add [GPTScript](https://gptscript.ai) tools for scripted natural language workflows. See the [GPTScript documentation](/helix/develop/gptscript-apps/index.md) for details.
-
 ### Secrets
 
 Store sensitive values using environment variable syntax:

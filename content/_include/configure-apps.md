@@ -1,4 +1,4 @@
-Helix Apps are a fun new way to define LLM applications as code (LLMGitOps!?). Your users can create `helix.yaml` configuration files that tell Helix what tools it has access to (e.g. APIs) and what scripts it can run (e.g. GPTScript).
+Helix Agents are defined as code using `helix.yaml` configuration files that specify tools, knowledge sources, and integrations.
 
 To enable this you need to provide some extra configuration and create a Github App to request access to a user's repository.
 

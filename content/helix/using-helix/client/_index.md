@@ -42,18 +42,14 @@ Usage:
   helix [command]
 
 Available Commands:
-  app              Helix app management
-  apply            Create or update an application
+  agent            Helix agent management
+  apply            Create or update an agent
   completion       Generate the autocompletion script for the specified shell
-  evals            A CLI tool for evaluating finetuned LLMs
-  gptscript        Start the helix gptscript server.
-  gptscript-runner Start the helix gptscript runner.
   help             Help about any command
   knowledge        Helix knowledge management
-  qapairs          A CLI tool for running QA pair commands
-  run              Run a session in helix.
-  runner           Start a helix runner.
-  serve            Start the helix api server.
+  run              Run a session in helix
+  runner           Start a helix runner
+  serve            Start the helix api server
   version          Print version
 
 Flags:
