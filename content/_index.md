@@ -4,7 +4,7 @@ toc: false
 description: Helix is an enterprise-grade platform for coding agents and AI assistants. Run fleets of background coding agents on real GPU-accelerated desktops with RAG, API integration, and multi-provider LLM support.
 ---
 
-{{< index/hero title="Deploy AI Agents on Your Own Infrastructure" subtitle="HelixML is an enterprise-grade platform for coding agents and AI assistants. Run fleets of background coding agents on real GPU-accelerated desktops. Built-in RAG, API integration, MCP servers, and multi-provider LLM support. Complete data security and control." ref="/helix/_index.md" image="dashboard.png" >}}
+{{< index/hero title="Deploy AI Agents on Your Own Infrastructure" subtitle="HelixML is an enterprise-grade platform for coding agents and AI assistants. Run fleets of background coding agents on real GPU-accelerated desktops. Built-in RAG, API integration, MCP servers, and multi-provider LLM support. Complete data security and control." ref="/helix/_index.md" image="helix-code.svg" >}}
 
 {{< index/features >}}
 {{% index/feature-card title="Coding Agents" icon="cube" %}}
