@@ -3,49 +3,57 @@ title: Sessions
 weight: 1
 prev: /helix/api-reference/_index.md
 aliases:
-  - /docs/sessions
+- /docs/sessions
 tags:
 - sessions
+- api
 ---
 
-An Helix session object is a structured data entity used to represent and manage the state, context, and interactions during a conversation between a user and an the Helix system. This object typically contains information necessary to maintain the continuity of the dialogue, track user inputs, and store any relevant context or variables that might influence the responses. All sessions are identified by a unique session ID.
+Sessions represent conversations between users and Helix. Each session maintains context, tracks interactions, and stores conversation history.
 
-## Explore Session metadata
+## List Sessions
 
-Create a chat session on [Helix](https://app.tryhelix.ai/session/ses_01j56vxhjn6qh23hecxdan147a) and grab the session id from the browser URL.
-
-```shell
-curl 'https://app.tryhelix.ai/api/v1/sessions/<SESSION_ID>' \
-  -H 'Authorization: Bearer <YOUR_API_KEY>' \
-  --compressed
+```bash
+curl 'https://app.tryhelix.ai/api/v1/sessions' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-The response will show all of details of a session.
+## Get Session
+
+Retrieve details of a specific session:
+
+```bash
+curl 'https://app.tryhelix.ai/api/v1/sessions/{session_id}' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+```
+
+Response:
 
 ```json
 {
-    "id": "ses_testnan1brx876npc23",
-    "name": "magical-chat-815",
-    "parent_session": "",
-    "parent_app": "",
-    "config": {
-        ...
-    },
-    "mode": "inference",
-    "type": "image",
-    "model_name": "stabilityai/stable-diffusion-xl-base-1.0",
-    "lora_dir": "",
-    "interactions": [
-        {
-            ...
-        },
-    ]
+  "id": "ses_01j56vxhjn6qh23hecxdan147a",
+  "name": "magical-chat-815",
+  "parent_app": "app_01hzm1232trzrcdg01nvmfqz89",
+  "mode": "inference",
+  "model_name": "qwen3:8b",
+  "interactions": [
+    {
+      "id": "int_01j56vxhjn6qh23hecxdan147b",
+      "created": "2024-08-08T15:42:44Z",
+      "message": "Hello, how can I help?",
+      "role": "assistant"
+    }
+  ],
+  "created": "2024-08-08T15:42:44Z",
+  "updated": "2024-08-08T15:42:44Z"
 }
-
 ```
 
-The [Helix Open API Spec](https://github.com/helixml/helix/blob/main/api/pkg/server/swagger.yaml) details the session request and response objects.
+## Delete Session
 
-The API Specs to query and interact with Sessions in Helix are detailed in the sections below
+```bash
+curl -X DELETE 'https://app.tryhelix.ai/api/v1/sessions/{session_id}' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+```
 
 {{< default-section-cards-list >}}

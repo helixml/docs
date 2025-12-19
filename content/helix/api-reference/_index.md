@@ -3,39 +3,86 @@ title: API Reference
 weight: 8
 prev: /helix/private-deployment/_index.md
 aliases:
-  - /docs/api
+- /docs/api
 tags:
 - api
 ---
 
-The REST API is the fundamental fabric of Helix. All operations and communications between components, and external user commands are REST API calls that the Control Plane handles. For general background information, get familiar with the [Helix architecture](/helix/getting-started/architecture/index.md) and the components involved.
+Helix provides an OpenAI-compatible REST API for interacting with agents, sessions, and resources.
 
-With Helix's API, you can access a wide range of features, including natural language processing, machine learning models, data analysis, and more. Here's how to get started:
+## Authentication
 
-1. **API Key and Authentication**: First, sign up on [Helix](https://app.tryhelix.ai/) and obtain your API key from the [Account section](https://app.tryhelix.ai/account). The API key is required to authenticate your requests and ensure secure communication between your application and Helix.
-
-All API requests should include your API key in an Authorization HTTP header as follows:
+All API requests require authentication via an API key in the `Authorization` header:
 
 ```
-Authorization: Bearer Helix_API_KEY
+Authorization: Bearer YOUR_API_KEY
 ```
 
-2. **Making Requests**: Use HTTP methods like GET, POST, PUT, and DELETE to interact with the API. Depending on the feature you're utilizing, you may need to send JSON data, files, or other inputs in your requests.
+Get your API key from the [Account page](https://app.tryhelix.ai/account) or generate agent-specific keys in agent settings.
 
-3. **Handling Responses**: The API will return responses in JSON format, containing the results of your request, status codes, and any relevant error messages. Properly handle these responses in your application to ensure smooth operation.
+## Base URL
 
+```
+https://app.tryhelix.ai/api/v1
+```
 
-## API Reference
+For private deployments, use your deployment URL.
 
-You can access up-to-date API documentation in your helix deployment at `/api-reference`. For example, for our SaaS you can view [https://app.tryhelix.ai/api-reference](https://app.tryhelix.ai/api-reference).
+## OpenAI Compatibility
 
-## More Information
+The chat completions endpoint is fully compatible with OpenAI's API:
 
-Get your API key from [Account](https://app.tryhelix.ai/account) page in the app.
+```bash
+curl -X POST https://app.tryhelix.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "Hello!"}
+    ]
+  }'
+```
 
-For the rest of the endpoints, see the generated [OpenAPI Spec](https://github.com/helixml/helix/blob/main/api/pkg/server/swagger.yaml) or the [code](https://github.com/helixml/helix/blob/main/api/pkg/server/server.go#L81-L215).
+This means you can use the OpenAI SDK:
 
-Please encourage us to write more on this on [Discord](https://discord.gg/VJftd844GE)!
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://app.tryhelix.ai/v1",
+    api_key="YOUR_API_KEY"
+)
+
+response = client.chat.completions.create(
+    model="qwen3:8b",
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+```
+
+## Key Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `POST /v1/chat/completions` | OpenAI-compatible chat completions |
+| `GET /api/v1/apps` | List agents |
+| `GET /api/v1/apps/{id}` | Get agent details |
+| `GET /api/v1/sessions` | List sessions |
+| `GET /api/v1/sessions/{id}` | Get session details |
+| `GET /api/v1/knowledge` | List knowledge bases |
+| `GET /api/v1/knowledge/{id}` | Get knowledge details |
+
+## Interactive Documentation
+
+Access the full interactive API documentation at `/api-reference` on your Helix deployment:
+
+- **SaaS**: [app.tryhelix.ai/api-reference](https://app.tryhelix.ai/api-reference)
+- **Private**: `https://your-deployment/api-reference`
+
+## OpenAPI Specification
+
+The complete OpenAPI spec is available at:
+- [swagger.yaml](https://github.com/helixml/helix/blob/main/api/pkg/server/swagger.yaml)
 
 <!--more-->
 
