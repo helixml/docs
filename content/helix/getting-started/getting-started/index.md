@@ -87,8 +87,7 @@ Once deployed, you can interact with AI models through the web interface or API:
 
 Create custom AI applications using:
 
-- **Helix Apps** - Define tools, knowledge bases, and system prompts
-- **GPTScript Integration** - Build complex workflows with GPTScript
+- **Helix Agents** - Define tools, knowledge bases, and system prompts
 - **API Integration** - Use the OpenAI-compatible API in your applications
 
 ### Coding Agents

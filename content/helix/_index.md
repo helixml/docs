@@ -64,7 +64,7 @@ A Kanban board shows what every agent is working on, where they're stuck, and wh
 
 ## Skills and Tools
 
-Agents interact with external systems through skills and tools. Define REST APIs with OpenAPI schemas and agents can call them. Connect MCP (Model Context Protocol) servers for standardized tool interfaces. Write GPTScript for custom logic. OAuth token management handles authentication to third-party services automatically.
+Agents interact with external systems through skills and tools. Define REST APIs with OpenAPI schemas and agents can call them. Connect MCP (Model Context Protocol) servers for standardized tool interfaces. OAuth token management handles authentication to third-party services automatically.
 
 The agent hierarchy works like this: Sessions manage lifecycle and state. Agents coordinate skills and handle LLM interactions. Skills group related tools for specific capabilities. Tools are individual actions—API calls, functions, scripts.
 
