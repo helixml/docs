@@ -52,7 +52,7 @@ The platform supports RAG (Retrieval-Augmented Generation), API calling, vision,
 
 Helix lets you run fleets of background coding agents, each with its own GPU-accelerated Linux desktop. These aren't terminal wrappers or sandboxed environments—they're real desktops you can stream from anywhere with sub-100ms latency.
 
-![Helix Code - GPU-accelerated AI coding agents](helix-code.svg)
+![Kanban board showing tasks across Backlog and Planning with live desktop preview](ubuntu-agent.png)
 
 Agents follow a spec-first workflow: they write design docs before touching code, giving you a chance to review and approve the architecture. Once you sign off, they implement. This catches design issues early instead of after thousands of lines have been written.
 
