@@ -1,56 +1,168 @@
 ---
-title: GitOps AI Apps via GitHub
-linkTitle: GitOps Apps
-description: Create AI Helix Apps direct from GitHub.
+title: GitOps Agents via GitHub
+linkTitle: GitOps Agents
+description: Deploy and manage Helix Agents directly from GitHub repositories.
 weight: 2
 tags:
-- apps
+- agents
 - github
+- gitops
 ---
 
-Helix delivers on AI GitOps by watching for Helix Apps in a GitHub repository. Once connected, Helix will receive a webhook from GitHub to tell Helix the App needs updating. So to update your app, simply `git push`!
+Helix supports GitOps workflows by watching for agent configurations in GitHub repositories. Once connected, Helix receives webhooks from GitHub and automatically updates your agent whenever you push changes. Simply `git push` to deploy.
 
-Follow the instructions below to get started with GitHub Helix Apps.
+## How It Works
 
-#### 1. Create your Helix app on Github
+1. Create a `helix.yaml` file in your repository root
+2. Connect the repository to Helix
+3. Helix deploys the agent and watches for changes
+4. Push commits to `main` to update your agent
 
-{{< tip >}}
-The AI Spec must be defined on the root of a Github repo with the name `helix.yaml` for doing this with the UI.
-{{< /tip >}}
+## Getting Started
 
-Click on one of the links below to take you to the template creation page on Github:
+### 1. Create Your Agent Repository
 
-- https://github.com/new?template_name=example-app-api-template&template_owner=helixml
+Create a new repository from the Helix template:
 
-Create a new repository using this template. You can make it private if you like, since you will give Helix permission to access all your repos later.
+https://github.com/new?template_name=example-app-api-template&template_owner=helixml
 
-#### 2. Connect your repository to Helix.
+You can make the repository private - Helix only accesses repositories you explicitly grant access to.
 
-1. Click on the menu (three dots) next to the `Signed in as` panel. Then click on `Apps`.
-2. Click `New App +` at the top right.
-3. Follow the instructions to give Helix access to your repositories. Helix will only access repositories that you maintain/own.
-4. Filter the repositories for the one you just created above.
-5. Click `Connect Repo`.
+The repository must contain a `helix.yaml` file at the root defining your agent configuration:
 
-This will now clone the repo and add it as an app. The next window shows a summary of the information located in the `helix.yaml`.
+```yaml
+name: My GitHub Agent
+description: An agent deployed via GitOps
 
-From now on, Helix will stay in sync via a Github webhook. Any commit to `main` will result in Helix updating itself.
+assistants:
+- model: qwen3:8b
+  system_prompt: |
+    You are a helpful assistant.
+```
 
-#### 3. Test Your App
+### 2. Connect Your Repository
 
-{{< tip >}}
-This will be improved soon.
-{{< /tip >}}
+Connect your GitHub repository to Helix:
 
-1. Click on your `App` and scroll to the bottom right. Copy the `key` under `API Keys`. If none exist, you will see an option to create an App API Key.
-2. Run a curl request using this key as the bearer token. This will trigger your app. This example uses model llama3:instruct but any [Helix supported AI Model](/helix/using-helix/text-inference/index.md) can be used.
+1. Navigate to **Agents** in the Helix UI
+2. Click **New Agent +**
+3. Select **Connect GitHub Repository**
+4. Authorize Helix to access your repositories
+5. Select your repository and click **Connect**
+
+Helix clones the repository and deploys the agent. From this point, any commit to `main` triggers an automatic update via GitHub webhook.
+
+### 3. Use Your Agent
+
+Get your agent's API key from the **Keys** section in the agent settings, then query it via the API:
 
 ```bash
-curl -i -H "Authorization: Bearer YOUR_APP_API_KEY" https://app.tryhelix.ai/v1/chat/completions --data-raw '{"messages":[{"role":"user","content":"Using the Coinbase API, what is the live Bitcoin price in GBP"}], "model":"llama3:instruct", "stream":false}'
+curl -X POST https://app.tryhelix.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_AGENT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "Hello, how can you help me?"}
+    ]
+  }'
 ```
 
-You should see a response that looks something like:
+## Example: API Integration Agent
+
+Here's an example `helix.yaml` for an agent that calls external APIs:
+
+```yaml
+name: Crypto Price Agent
+description: Get live cryptocurrency prices
+
+assistants:
+- model: qwen3:8b
+  system_prompt: |
+    You help users check cryptocurrency prices. Use the Coinbase API
+    to fetch current prices when asked.
+
+  apis:
+  - name: Coinbase
+    description: Get cryptocurrency prices and exchange rates
+    url: https://api.coinbase.com
+    schema: |
+      openapi: 3.0.0
+      info:
+        title: Coinbase API
+        version: 1.0.0
+      paths:
+        /v2/prices/{pair}/spot:
+          get:
+            summary: Get spot price for a currency pair
+            operationId: getSpotPrice
+            parameters:
+            - name: pair
+              in: path
+              required: true
+              schema:
+                type: string
+              description: Currency pair (e.g., BTC-USD, ETH-GBP)
+```
+
+Query the agent:
+
+```bash
+curl -X POST https://app.tryhelix.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_AGENT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "messages": [
+      {"role": "user", "content": "What is the current Bitcoin price in GBP?"}
+    ]
+  }'
+```
+
+Response:
 
 ```json
-{"created":1715691428,"object":"chat.completion","id":"51aaec1f-0ed4-4a06-815a-23171f69aa0c","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","content":"**The live Bitcoin price in GBP is £49,074.38.**"}}],"usage":{"prompt_tokens":0,"completion_tokens":0,"total_tokens":0}}
+{
+  "id": "51aaec1f-0ed4-4a06-815a-23171f69aa0c",
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "The current Bitcoin price is £49,074.38 GBP."
+      }
+    }
+  ]
+}
 ```
+
+## Updating Your Agent
+
+To update your agent, simply push changes to your repository:
+
+```bash
+# Edit helix.yaml
+git add helix.yaml
+git commit -m "Update agent configuration"
+git push origin main
+```
+
+Helix receives the webhook and automatically redeploys your agent with the new configuration.
+
+## Managing Secrets
+
+For API keys and sensitive values, use environment variable syntax in your `helix.yaml`:
+
+```yaml
+assistants:
+- model: qwen3:8b
+  apis:
+  - name: My API
+    url: https://api.example.com
+    headers:
+      Authorization: Bearer ${MY_API_KEY}
+```
+
+Configure the actual secret values in the Helix UI under **Keys** in your agent settings. Secrets are stored securely and never committed to your repository.

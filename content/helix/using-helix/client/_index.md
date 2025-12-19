@@ -6,7 +6,7 @@ weight: 1
 
 ## Helix Client
 
-The Helix client is a tool designed to make it easy to interact with Helix programmatically without a UI interface. The Helix client can be used to create sessions, deploy agents, and list knowledge contexts.
+The Helix CLI is a tool for interacting with Helix programmatically. Use it to deploy agents, create sessions, manage knowledge bases, and more.
 
 ## Installation
 
@@ -64,7 +64,7 @@ Use "helix [command] --help" for more information about a command.
 
 ## Apply
 
-The apply command is used to apply the supplied configuration to create or update a helix application.
+The apply command is used to apply the supplied configuration to create or update a Helix agent.
 
 ```shell
 helix apply -f hn-scraper.yaml
@@ -98,7 +98,7 @@ assistants:
           enabled: true
 ```
 
-More information on how to create Helix apps can be found in the Apps section.
+See the [Developing Helix Agents](/helix/develop/apps/) guide for more information on creating agents.
 
 ## Agents
 
