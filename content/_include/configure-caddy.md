@@ -12,4 +12,4 @@ sudo caddy reload
 
 Then load `https://<YOUR_CONTROLPLANE_HOSTNAME>` in your browser. Caddy will automatically provision TLS certificates.
 
-Ensure you are using `https` URLs for `KEYCLOAK_FRONTEND_URL` and `SERVER_URL` in your controlplane `.env` file.
+Ensure you are using an `https` URL for `SERVER_URL` in your controlplane `.env` file.

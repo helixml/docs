@@ -26,15 +26,11 @@ This section details how to install the Helix control plane.
 
 There is an [example script in the repository](https://github.com/helixml/helix/blob/main/scripts/kind_helm_install.sh) that shows you an example of deploying the control plane to a kind cluster.
 
-### 1. Install Keycloak
-
-{{< include "helm-keycloak.md" >}}
-
-### 2. Install the Helm Repository
+### 1. Install the Helm Repository
 
 {{< include "helm-repo.md" >}}
 
-### 3. Apply the Chart
+### 2. Apply the Chart
 
 {{< include "helm-controlplane.md" >}}
 
