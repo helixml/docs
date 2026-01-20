@@ -68,7 +68,7 @@ If you have an NVIDIA GPU and want to run local models, attach a runner:
 docker run --gpus all \
   -e RUNNER_TOKEN=your-token-here \
   -e API_HOST=http://your-helix-server:8080 \
-  registry.helix.ml/helix/runner:latest
+  registry.helixml.tech/helix/runner:latest
 ```
 
 Alternatively, use external LLM providers (OpenAI, Anthropic, Together) without a local GPU. Configure these in **Account** → **AI Providers**.
