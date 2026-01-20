@@ -88,4 +88,4 @@ The intelligent GPU scheduler packs models efficiently into available memory and
 
 ## Deployment Options
 
-For Docker deployments, use the [quickstart installer]({{< ref "/helix/private-deployment/controlplane" >}}) to get running in minutes. Kubernetes users can deploy with Helm charts documented in the [private deployment guide]({{< ref "/helix/private-deployment/controlplane" >}}). To evaluate before self-hosting, try [Helix Cloud](https://app.helix.ml).
+For Docker deployments, use the [quickstart installer]({{< ref "/helix/private-deployment/controlplane" >}}) to get running in minutes. Kubernetes users can deploy with Helm charts documented in the [private deployment guide]({{< ref "/helix/private-deployment/controlplane" >}}). To evaluate before self-hosting, try [Helix Cloud](https://app.tryhelix.ai).

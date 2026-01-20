@@ -226,18 +226,26 @@ Helix supports different agent execution modes:
 
 | Type | Description |
 |------|-------------|
-| **standard** | Normal tool-calling agent with iterative execution |
-| **reasoning** | Extended thinking mode for complex problems |
-| **coder** | Code execution with sandbox environment |
-| **external_agent** | Runs in isolated desktop environment |
+| **helix_basic** | Simple chat assistant without tool calling |
+| **helix_agent** | Standard agent with skills and tool calling |
+| **zed_external** | Runs in isolated desktop environment with Zed IDE (Helix Code) |
 
 Set the agent type in the assistant configuration:
 
 ```yaml
 assistants:
 - model: qwen3:8b
-  agent_type: reasoning
+  agent_type: helix_agent
   max_iterations: 20
+```
+
+For Helix Code sandboxes, use `zed_external`:
+
+```yaml
+assistants:
+- model: claude-sonnet-4-20250514
+  agent_type: zed_external
+  generation_model_provider: anthropic
 ```
 
 ## Example: Full Agent Configuration
