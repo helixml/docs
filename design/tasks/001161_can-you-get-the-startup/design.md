@@ -29,3 +29,10 @@ No complex architecture. The startup script installs:
 The startup script should:
 1. Download and install Hugo 0.147.0 extended to a location in PATH
 2. Run `npm install` in the docs directory
+
+## Implementation Notes
+
+- Adapted Hugo installation logic from `docs/scripts/pages-deploy.sh`
+- Used `sudo mv /tmp/hugo /usr/local/bin/hugo` to make Hugo available system-wide (more reliable than modifying PATH)
+- Added version check to skip reinstallation if correct version already exists (idempotent)
+- Script uses absolute path `/home/retro/work/docs` for npm install since the script runs from helix-specs directory
