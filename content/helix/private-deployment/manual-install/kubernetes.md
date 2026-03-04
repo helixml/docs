@@ -47,13 +47,11 @@ This section describes how to install a Helix runner on Kubernetes.
 Then, install the runner:
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helixml.tech/latest.txt)
 helm upgrade --install my-helix-runner helix/helix-runner \
   --set runner.host="my-helix-controlplane" \
   --set runner.token="oh-hallo-insecure-token" \
   --set runner.memory=24GB \
-  --set replicaCount=1 \
-  --set image.tag="${LATEST_RELEASE}-small"
+  --set replicaCount=1
 ```
 
 ## More Help
