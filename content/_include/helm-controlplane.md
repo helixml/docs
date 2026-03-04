@@ -14,14 +14,19 @@ curl -o values-example.yaml https://raw.githubusercontent.com/helixml/helix/main
 
 You **must** edit the provider configuration in this file so that Helix can run. Specifying a remote provider (e.g. `openai` or `togetherai`) is the easiest, but you must provide API keys to do that. A `helix` provider ensures local operation but then you must also add a runner.
 
-Now you're ready to install the control plane helm chart with the latest images.
+Now you're ready to install the control plane helm chart.
 
 ```bash
-export LATEST_RELEASE=$(curl -s https://get.helixml.tech/latest.txt)
-
 helm upgrade --install my-helix-controlplane helix/helix-controlplane \
-  -f values-example.yaml \
-  --set image.tag="${LATEST_RELEASE}"
+  -f values-example.yaml
+```
+
+The chart automatically uses the correct image version via its `appVersion`. To pin a specific version:
+
+```bash
+helm upgrade --install my-helix-controlplane helix/helix-controlplane \
+  --version 2.7.12 \
+  -f values-example.yaml
 ```
 
 Ensure all the pods start. If they do not inspect the logs.
