@@ -2,7 +2,7 @@
 
 ## Quick Start
 
-Pre-requisites: [Hugo](https://gohugo.io/installation/), [Go](https://golang.org/doc/install), [Git](https://git-scm.com) and [Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+Pre-requisites: [Hugo](https://gohugo.io/installation/), [Go](https://golang.org/doc/install), [Git](https://git-scm.com), and [Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 Launch the live server:
 
