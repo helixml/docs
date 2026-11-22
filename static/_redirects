@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects (https://developers.cloudflare.com/pages/configuration/redirects/).
+# Kodit's docs moved out of this site. MCP directories still link to
+# /kodit/getting-started/ and /kodit/reference/ (44 referring domains).
+/kodit        https://github.com/helixml/kodit  301
+/kodit/*      https://github.com/helixml/kodit  301
